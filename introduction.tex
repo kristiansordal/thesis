@@ -1,0 +1,30 @@
+\chapter{Introduction}
+
+\section{Sparse Matrix Vector Multiplication}
+% Sparse Matrix Vector Multiplication, which throughout this thesis will be referred to as \textit{SpMV} is a computational kernel that is used in many areas of scientific computing, especially when solving systems of linear equations, or for large scale simulations. Given two dense vectors \(x\) and \(y\), and a sparse matrix \(A\), we can represent SpMV on the form
+
+
+Sparse Matrix Vector Multiplication (SpMV) is a common operation encountered in many areas of scientific computation. The matrices used in such operations are simultaneously large, but also sparse. \textit{Sparse} in this context means that the average number of nonzeros per row is on the order of \(\mathcal{O}\left(1\right)\), and thus it is worthwhile to treat nonzeros differently from non-valued entries. The performance of Sparse Matrix Vector Multiplication can be improved by utilizing parallel computing.
+\medskip
+
+SpMV is known to be quite hard to optimize, both in sequential and parallel implementations. This is in part due to the fact that the operation has a low computational density.
+
+\subsection{Computational Density}
+
+The \textit{computational density} of an operation is defined by the relation between the number of floating point operations (FLOPS) and the number of memory accesses. We can then represent the computational density as in \ref{eq:computationaldensity}.
+
+\begin{equation}
+    \text{Computational density} = \frac{\text{FLOPS}}{\text{Memory accesses}}
+    \label{eq:computationaldensity}
+\end{equation}
+
+It becomes clear that operations with low computational density wont scale with the increased comptuing power 
+% \begin{equation}
+%     y = Ax
+%     \label{eq:spmv}
+% \end{equation}
+
+% SpMV is known to be quite hard to optimize, both in sequential and parallel. This is due in part to the fact that the operation has a low computational density.
+
+
+

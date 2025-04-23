@@ -1,0 +1,164 @@
+
+% eX3 - High-Performance Computing Reports
+%
+% Copyright (C) 2020 Simula Research Laboratory
+% Authors: James D. Trotter <james@simula.no>
+%
+% Hardware
+
+\begin{table}
+  \centering
+  \caption{Hardware used in our experiments. STREAM Triad was run with the \texttt{-march=native} and  \texttt{-O3} compilation flags.}
+  \linespread{0.85}
+  \renewcommand{\arraystretch}{1.2}
+  \setlength{\tabcolsep}{3pt}
+  \footnotesize\sffamily
+  \begin{tabularx}{1.1\textwidth}{
+      >{\hsize=1.7\hsize\raggedright\arraybackslash}X
+      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
+      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
+      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
+      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
+      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
+      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
+      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X}
+    \toprule
+    & {\small Xeon-A}
+    & {\small Xeon-B}
+    & {\small Naples}
+    & {\small Rome}
+    & {\small Milan}
+    & {\small TX2}
+    & {\small Hi1620} \\
+
+    \midrule
+
+    CPUs
+    & Intel Xeon Gold 6130
+    & Intel Xeon Platinum 8168
+    & AMD Epyc 7601
+    & AMD Epyc 7302P
+    & AMD Epyc 7763
+    & Cavium TX2 CN9980
+    & HiSilicon Kunpeng 920-6426 \\
+
+    Instr. set
+    & x86-64
+    & x86-64
+    & x86-64
+    & x86-64
+    & x86-64
+    & ARMv8.1
+    & ARMv8.2 \\
+
+    Microarch.
+    & Skylake
+    & Skylake
+    & Zen
+    & Zen 2
+    & Zen 3
+    & Vulcan
+    & TaiShan v110 \\
+
+    Sockets & 2 & 2 & 2 & 1 & 2 & 2 & 2 \\
+
+    Cores
+    & $2\times 16$
+    & $2\times 24$
+    & $2\times 32$
+    & $1\times 16$
+    & $2\times 64$
+    & $2\times 32$
+    & $2\times 64$ \\
+
+    Freq.~[GHz]
+    & $1.9$--$3.6$
+    & $2.5$--$3.7$
+    & $2.7$--$3.2$
+    & $1.5$--$3.3$
+    & $2.5$--$3.5$
+    & $2.0$--$2.5$
+    & $2.6$ \\
+
+    \midrule
+    L1I/core [KiB]  & 32 & 32 & 64 & 32 & 32 & 32 & 64 \\
+    L1D/core [KiB]  & 32 & 32 & 32 & 32 & 32 & 32 & 64 \\
+    L2/core [KiB]   & 1024 & 1024 & 512 & 512 & 512 & 256 & 512 \\
+    L3/socket [MiB] & 22 & 33 & 64 & 16 & 256 & 32 & 64 \\
+    Mem. channels & $2\times 6$ & $2\times 6$ & $2\times 8$ & $1\times 8$ & $2\times 8$ & $2\times 8$ & $2\times 8$ \\
+    Bandwidth [GB/s] & 256 & 256 & 342 & 204.8 & 409.6 & 342 & 342 \\
+    Triad [GB/s] & 147.1 & 137.4 & 169.7 & 90.9 & 256.5 & 236.4 & 260.4 \\
+
+    % fp64 flops/core/cycle
+    % & $32$
+    % & $32$
+    % & $ 8$
+    % & $16$
+    % & $16$
+    % & $ 8$
+    % & $ 4$ \\
+
+    % Theoretical fp64 perf.
+    % & $1\,946$\,Gflop/s
+    % & $3\,840$\,Gflop/s
+    % & $1\,382$\,Gflop/s
+    % &    $768$\,Gflop/s
+    % & $5\,120$\,Gflop/s
+    % & $1\,024$\,Gflop/s
+    % & $1\,331$\,Gflop/s \\
+
+    \bottomrule
+  \end{tabularx}
+  \label{tbl:hardware}
+\end{table}
+
+
+
+% \begin{table*}[thb]
+%   \centering
+%   \caption{\small Hardware used in our experiments. STREAM Triad \cite{mccalpin1995memory} was run with the \texttt{-march=native} and  \texttt{O3} compilation flags.}
+%   \footnotesize
+%   \setlength{\tabcolsep}{4pt}
+%   \resizebox{\textwidth}{!}{
+%   \begin{tabular}{lrrrrrr}
+%     \toprule
+%     Chip	&	{\scriptsize AMD Epyc}	&	{\scriptsize AMD Epyc}	&	{\scriptsize AMD Epyc}	&	{\scriptsize AMD Epyc}	&	{\scriptsize Intel Xeon}	&	{\scriptsize Intel Xeon}	\\
+%     Model	&	{\scriptsize 7763}	&	{\scriptsize 7601}	&	{\scriptsize  7413}	&	{\scriptsize 7302P}	&	{\scriptsize Gold 6130}	&	{\scriptsize Platinum 8360Y}	\\
+%     \midrule													
+%     Instruction set	&	x86-64	&	x86-64	&	x86-64	&	x86-64	&	x86-64	&	x86-64	\\
+%     Microarchitecture	&	Zen3	&	Zen	&	Zen3	&	Zen2	&	 Skylake (server) 	&	Ice Lake (server)  	\\
+%     Cores/Threads	&	2 $\times$ 64/128	&	2 $\times$ 32/64	&	2 $\times$ 24/48	&	16/32	&	 2 $\times$ 32/64     	&	  2 $\times$ 36/72 	\\
+%     Core frequency(GHz)	&	2.45 to 5.5	&	2.7 to 3.2	&	2.65 to 3.6	&	3.0 to 3.3	&	 1.9 to 3.6  	&	  1.8 to 3.6 	\\
+%     L1I/L1D/L2 (KiB per core)	&	32/32/512	&	64/32/512	&	32/32/512	&	32/32/512	&	32/32/1024	&	 32/48/1280 	\\
+%     L3 cache (MiB)	&	2 $\times$ 256 (8 $\times$ 32)	&	2 $\times$ 64 (8 $\times$ 8)	&	2 $\times$ 128 (4 $\times$ 32)	&
+%                                                                                                                                                  128 (8 $\times$ 16)		&	2 $\times$ 22 	&	2 $\times$ 54	\\
+%     Memory Channels	&	 2 $\times$ 8 	&	 2 $\times$ 8 	&	 2 $\times$ 8 	&	8	&	2 $\times$ 6	&	 2 $\times$ 8 	\\
+%     Total Memory (GB)	&	2048	&	2048	&	512	&	256	&	384	&	2048	\\
+%     Max.~bandwidth (GB/s)	&	381.4	&	340.8	&	381.4	&	190.7	&	238.4	&	381.4	\\
+%     STREAM Triad (GB/s)	&	200.8	&	161.4	&	200.8	&	90.6	&	147.1	&	293.1	\\
+%     \addlinespace
+%     \bottomrule
+    
+%   \end{tabular}}
+%   \label{tbl:hardware}
+% \end{table*}
+% %milan 8*32
+
+
+
+
+    %  Chip & {\scriptsize AMD Epyc} & {\scriptsize Intel Xeon } & {\scriptsize AMD Epyc } & {\scriptsize Cavium ThunderX2} & {\scriptsize HiSilicon Kunpeng} \\
+    %  Model & {\scriptsize 7302P} & {\scriptsize Gold 6130} & {\scriptsize 7601} & {\scriptsize  CN9980} & {\scriptsize 920-6428} \\ 
+    % \midrule
+    % Instruction set      & x86-64             & x86-64           & x86-64    & ARMv8.1  & ARMv8.2    \\
+    % Microarchitecture    & Zen 2       & Skylake (server) & Zen      & 	Vulcan  & TaiShan v110      \\
+    % Cores/Threads        & 16/32              & 2 $\times$ 32/64     & 2 $\times$ 32/64 &  2 $\times$ 32/128   &  2 $\times$ 64/64    \\
+    % Core frequency (GHz)      & 3.0 to 3.3       & 1.9 to 3.6  & 2.7 to 3.2 &  2.0 to 2.5  &  2.8   \\
+    % L1I/L1D/L2 (KiB per core)     & 32/32/512     & 32/32/1024    & 64/32/512   & 32/32/256 & 64/64/512  \\  
+    % L3 cache (MiB per socket)  & 128 (8x16) 	  & 22 (16x1.375)   & 64	(8x8)  & 32	(32x1)  & 64	(64x1)  \\
+    % Memory Channels        &  8 & 2 $\times$ 6  & 2 $\times$ 8 & 2 $\times$ 8 & 2 $\times$ 8  \\
+    % Total Memory (GB)        & 256 & 384 & 2048 & 1024 & 1024  \\  
+    % Max.~bandwidth (GB/s)      & 204.8       & 238.4        & 340.8  & 317.9   & 381.4   \\
+    %       STREAM Triad  (GB/s)             & 90.6       & 147.1      & 161.4  &  173.3 &  193.5  \\
+                         
+    %                      \addlin

@@ -1,0 +1,118 @@
+
+\chapter{Results} \label{results}
+
+
+
+\begin{figure}[htpb]
+\begin{center}
+\begin{tikzpicture}[
+  /pgfplots/every axis/.append style={ % add these settings to all the axis environments in the tikzpicture
+    ybar stacked,
+    bar width=7pt, % Adjust this for width of bars
+    enlarge x limits=0.3, % Space between bars
+    legend style={cells={anchor=west}, legend pos=north east},
+    legend pos=outer north east,
+    ylabel={Time (s)},
+    xlabel={Nodes},
+    % symbolic x coords={64, 128, 192, 256},
+    symbolic x coords={1,2,3,4},
+    xtick=data,
+    % nodes near coords,
+    % every node near coord/.append style={font=\small},
+    ymin=0,
+    ymax=22,
+  },
+        ]
+
+% % SpMV Time table (corrected)
+\pgfplotstableread{
+Processors Proc1Node Proc2Node
+1 18.882 17.655
+2 16.248 15.578
+3 14.589 9.478
+4 12.56 7.010
+}\spmvdata
+
+% Halo Time table (corrected)
+\pgfplotstableread{
+Processors Proc1Node Proc2Node
+1 0.00119 2.180983
+2 4.355867 3.998552
+3 3.007078 3.342139
+4 1.608495 3.38635
+}\halodata
+
+
+
+
+SpMV Time for Proc1Node
+\begin{axis}[bar shift=-5pt]
+\addplot+[fill=blue!90] table[x=Processors, y=Proc1Node] {\spmvdata};
+\addplot+[fill=red!90] table[x=Processors, y=Proc1Node] {\halodata};
+\addplot+[fill=blue!50] coordinates {(1,0)};
+\addplot+[fill=red!50] coordinates {(1,0)};
+\addlegendentry{Comp Time (1 proc/node)} 
+\addlegendentry{Comm Time (1 proc/node)} 
+\addlegendentry{Comp Time (2 proc/node)}
+\addlegendentry{Comm Time (2 proc/node)} 
+\end{axis}
+
+\begin{axis}[bar shift=5pt]
+\addplot+[fill=blue!50] table[x=Processors, y=Proc2Node] {\spmvdata};
+\addplot+[fill=red!50] table[x=Processors, y=Proc2Node] {\halodata};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}
+\caption{Stacked bar chart of SpMV and Halo Time.}%
+\label{fig:stacked-bar-chart}
+\end{figure}
+
+
+
+
+
+
+\begin{figure}[htpb]
+\begin{center}
+\begin{tikzpicture}
+\pgfplotstableread{
+4.352 6.021 8.219 10.142
+3.883 6.381 9.094 11.599
+5.565 6.489 9.276 12.038
+6.368 6.62  9.668 12.226
+4.412 6.1 8.918 11.852
+4.863 6.259 9.111 12.304
+4.277 6.338 9.284 11.934
+3.708 6.228 8.93 11.195
+4.966 5.867 8.332 11.763
+3.756 6.319 9.184 11.881
+3.491 6.471 9.738 12.537
+3.219 6.014 8.533 11.833
+4.185 6.724 9.322 12.075
+3.94 5.854 8.189 10.247
+4.352 6.021 8.219 10.142
+}\datatable
+	\begin{axis}[
+		boxplot/draw direction = y,
+		x axis line style = {opacity=0},
+		axis x line* = bottom,
+		axis y line = left,
+		enlarge y limits,
+		ymajorgrids,
+		xtick = {1, 2, 3, 4},
+        ylabel={GFLOPS},
+        xlabel={Nodes (64 procs/node)},
+	]
+		\foreach \n in {0,...,3} {
+			\addplot+[boxplot, fill, draw=black] table[y index=\n] {\datatable};
+		}
+	\end{axis}
+
+\end{tikzpicture}
+\end{center}
+\caption{Aggregated Results of SpMV on defq chip}
+\end{figure}
+
+\input{CPUtable}
+

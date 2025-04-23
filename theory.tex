@@ -1,0 +1,26 @@
+
+\chapter{Theory}
+
+\section{Definitions}
+
+\begin{definition}[Separator]
+    In the context of SpMV, a separator is a node in the graph that has an edge that strides between two partitions.
+\end{definition}
+
+\section{Amdahl's Law}
+
+Amdahl’s Law provides a theoretical framework for understanding the limits of performance improvement when additional computational resources are applied to a given problem. It quantifies the potential speedup achieved by optimizing a specific portion of a system, emphasizing that the overall gain is constrained by the proportion of time the optimized component contributes to execution.
+
+\begin{definition}[Amdahl’s Law] The maximum achievable speedup of a computation is limited by the fraction of execution time that remains sequential, even when an arbitrarily large number of parallel resources is employed. \end{definition}
+
+In the context of parallel computing, this principle highlights that while increasing the number of processing units can accelerate the parallelizable portion of a workload, the sequential fraction imposes a fundamental performance ceiling. Formally, if \(S\)  denotes the total speedup, \(t_{p}\) represents the fraction of execution time that can be parallelized, and \(s_{p}\) is the speedup achieved for that parallelizable portion, Amdahl’s Law is expressed as:
+\begin{equation} S = \frac{1}{(1 - t_p) + \frac{t_p}{s_p}} \end{equation}
+This equation reveals that as \(s_{p} \rightarrow \infty\), the theoretical maximum speedup approaches \(\frac{1}{1-t_{p}}\), illustrating that the non-parallelizable portion becomes the dominant limiting factor in scalability.
+
+
+\section{Partitioning Graph}
+When performing Sparse Matric Vector Multiplication in parallel, it is crucial to partition the matrix in such a way that the computation difference between all ranks is as small as possible. This is done by using a graph partitioner. In this project, the METIS graph partitioner was used. In particular, METIS' provides a function \texttt{METIS\_partgraphkway}, given a parameter \(nprocs\) representing the number of processes the program is ran on, attempts to partition the graph in \(nprocs\) equal sized parts. It gives no guarantees that the partition will be optimal, because this problem is NP-Hard. It does however give an approximation which is good enough for all intents ant purposes 
+
+\section{Separator}
+When a graph is partitioned into different parts, there will inevitably be some edges which strides across different partitions. The endpoints of these edges are called separators, and will become important when it comes to reducing the communication load of the SpMV computation.
+

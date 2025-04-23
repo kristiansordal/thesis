@@ -1,0 +1,72 @@
+\chapter{Background}
+
+\section{CSR Storage Format}
+CSR (Compressed Sparse Row) is the most widely used storage format for sparse matrices. As its name suggests, it compresses the amount of memory used to store a matrix without loss of information. It does so by utilizing three vectors \(A_{p}, A_{j}, A_{x}\). Figure \ref{fig:csrformat} shows an example of a matrix stored in CSR format, adapted from \cite{gupta2024gamgi}.
+
+
+
+\begin{figure}[ht]
+    \centering
+    \incfig{csrformat}
+    \caption{Example matrix represented in CSR Format.}
+    \label{fig:csrformat}
+\end{figure}
+
+
+The first vector, \(A_{p}\) stores the indices of the first nonzero in the vectors \(A_{p}\) and \(A_{x}\). For a given entry \(A_{p}[i]\), \(A_{p}[i]\) is the index of the first nonzero in the \(i^{\text{th}}\) row. \(A_{j}[j]\) and \(A_{x}[j]\) denotes the column index and value of the \(j^{\text{th}}\) nonzero, respectively.
+\medskip
+
+A sequential implementation of SpMV on a matrix stored in the CSR format can be implemented in the following manner:
+\medskip
+
+\begin{algorithm}[H]
+    \caption{Sequential CSR-based SpMV}
+    \SetAlgoVlined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{\(A_{p},A_{j},A_{x},x\)}
+    \Output{\(y\)\newline}
+
+    \For{\(i \gets 0\) \KwTo \(n\)}{
+        \(y[i] \gets 0\)\\
+        \For{\(j \gets A_{p}[i]\) \KwTo \(A_{p}[i+1]\)}{
+            \(y[i] \gets y[i] + A_{x}[j] \cdot x[A_{j}[j]]\)\\
+        }
+    }
+\end{algorithm}
+\medskip
+
+This algorithm can be parallelized using shared memory parallelization using OpenMPs \texttt{\#pragma omp parallel for} directive in the following manner:
+\medskip
+
+\begin{algorithm}[H]
+    \caption{Sequential CSR-based SpMV}
+    \SetAlgoVlined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{\(A_{p},A_{j},A_{x},x\)}
+    \Output{\(y\)\newline}
+
+    \textbf{\#pragma omp parallel for}\\
+    \For{\(i \gets 0\) \KwTo \(n\)}{
+        \(y[i] \gets 0\)\\
+        \For{\(j \gets A_{p}[i]\) \KwTo \(A_{p}[i+1]\)}{
+            \(y[i] \gets y[i] + A_{x}[j] \cdot x[A_{j}[j]]\)\\
+        }
+    }
+\end{algorithm}
+
+\section{Load Balancing}
+
+
+
+
+\section{Distributed Memory CSR}
+
+
+
+
+
+
+
+

@@ -1,0 +1,8 @@
+\begin{thebibliography}{1}
+
+\bibitem{gupta2024gamgi}
+Gautam Gupta, Sivasankaran Rajamanickam, and Erik~G. Boman.
+\newblock {GAMGI}: Communication-reducing algebraic multigrid for gpus.
+\newblock In {\em Proceedings of the 28th ACM SIGPLAN Annual Symposium on Principles and Practice of Parallel Programming (PPoPP)}, pages 61--75. ACM, 2024.
+
+\end{thebibliography}
