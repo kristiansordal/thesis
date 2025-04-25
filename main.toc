@@ -2,21 +2,22 @@
 \contentsline {chapter}{Acknowledgements}{iii}{chapter*.1}%
 \contentsline {chapter}{Abstract}{v}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Sparse Matrix Vector Multiplication}{1}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Computational Density}{1}{subsection.1.1.1}%
+\contentsline {section}{\numberline {1.1}Research Question}{1}{section.1.1}%
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}CSR Storage Format}{3}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Load Balancing}{4}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Distributed Memory CSR}{4}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Theory}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Definitions}{5}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Amdahl's Law}{5}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Partitioning Graph}{6}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Separator}{6}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Communication Strategies}{7}{chapter.4}%
-\contentsline {section}{\numberline {4.1}1a - Exchange entire vector}{7}{section.4.1}%
-\contentsline {section}{\numberline {4.2}1b - Exchange only separators}{8}{section.4.2}%
-\contentsline {section}{\numberline {4.3}1c - Exchange only required separators}{9}{section.4.3}%
-\contentsline {section}{\numberline {4.4}1d - Exchange only required separator values}{10}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Previous Work}{11}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Results}{13}{chapter.6}%
+\contentsline {section}{\numberline {2.1}Sparse Matrix-Vector Multiplication}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Computational Density}{3}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}CSR Storage Format}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Distributed and Shared Memory}{5}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Load Balancing}{5}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Separator}{5}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Distributed Memory CSR}{6}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Theory}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Definitions}{7}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Amdahl's Law}{7}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Communication Strategies}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}1a - Exchange entire vector}{9}{section.4.1}%
+\contentsline {section}{\numberline {4.2}1b - Exchange only separators}{10}{section.4.2}%
+\contentsline {section}{\numberline {4.3}1c - Exchange only required separators}{11}{section.4.3}%
+\contentsline {section}{\numberline {4.4}1d - Exchange only required separator values}{12}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Results}{13}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Previous Work}{15}{chapter.6}%

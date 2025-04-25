@@ -18,9 +18,4 @@ In the context of parallel computing, this principle highlights that while incre
 This equation reveals that as \(s_{p} \rightarrow \infty\), the theoretical maximum speedup approaches \(\frac{1}{1-t_{p}}\), illustrating that the non-parallelizable portion becomes the dominant limiting factor in scalability.
 
 
-\section{Partitioning Graph}
-When performing Sparse Matric Vector Multiplication in parallel, it is crucial to partition the matrix in such a way that the computation difference between all ranks is as small as possible. This is done by using a graph partitioner. In this project, the METIS graph partitioner was used. In particular, METIS' provides a function \texttt{METIS\_partgraphkway}, given a parameter \(nprocs\) representing the number of processes the program is ran on, attempts to partition the graph in \(nprocs\) equal sized parts. It gives no guarantees that the partition will be optimal, because this problem is NP-Hard. It does however give an approximation which is good enough for all intents ant purposes 
-
-\section{Separator}
-When a graph is partitioned into different parts, there will inevitably be some edges which strides across different partitions. The endpoints of these edges are called separators, and will become important when it comes to reducing the communication load of the SpMV computation.
 

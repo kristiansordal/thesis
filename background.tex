@@ -1,5 +1,31 @@
 \chapter{Background}
 
+\section{Sparse Matrix-Vector Multiplication}
+
+Sparse Matrix-Vector Multiplication (SpMV) is a fundamental operation encountered in many areas of scientific computing. It is especially prominent in solving large systems of linear equations and in large-scale simulations. The matrices involved are typically both very large and very sparse. 
+
+In this context, \textit{sparse} means that the average number of nonzeros per row is on the order of \(\mathcal{O}(1)\), making it worthwhile to store and operate only on nonzero elements explicitly. Optimizing the performance of SpMV, particularly through parallel computing techniques, is crucial for enhancing the efficiency of many scientific applications.
+
+However, SpMV is notoriously difficult to optimize, both in sequential and parallel implementations. One major reason is its inherently low computational density.
+
+\subsection{Computational Density}
+
+The \textit{computational density} of an operation describes the relation between the number of floating-point operations (FLOPS) and the number of memory accesses required. It is formally defined as:
+
+\begin{equation}
+    \text{Computational density} = \frac{\text{FLOPS}}{\text{Memory accesses}}
+    \label{eq:computationaldensity}
+\end{equation}
+
+For SpMV, we read 12 bytes  
+
+Operations with low computational density, such as SpMV, are often \textit{memory bound} rather than \textit{compute bound}. This means that increasing the computational power of a system (e.g., faster processors) does not necessarily lead to proportional speedups in SpMV performance, as memory bandwidth remains the limiting factor.
+
+
+% (Optional small paragraph to transition)
+% As a result, optimizing SpMV performance requires careful consideration of data access patterns, communication overheads, and parallelization strategies. 
+
+
 \section{CSR Storage Format}
 CSR (Compressed Sparse Row) is the most widely used storage format for sparse matrices. As its name suggests, it compresses the amount of memory used to store a matrix without loss of information. It does so by utilizing three vectors \(A_{p}, A_{j}, A_{x}\). Figure \ref{fig:csrformat} shows an example of a matrix stored in CSR format, adapted from \cite{gupta2024gamgi}.
 
@@ -28,36 +54,46 @@ A sequential implementation of SpMV on a matrix stored in the CSR format can be 
     \Output{\(y\)\newline}
 
     \For{\(i \gets 0\) \KwTo \(n\)}{
-        \(y[i] \gets 0\)\\
+        sum \(\gets 0\)\\
         \For{\(j \gets A_{p}[i]\) \KwTo \(A_{p}[i+1]\)}{
-            \(y[i] \gets y[i] + A_{x}[j] \cdot x[A_{j}[j]]\)\\
+            sum \( = \text{sum} + A_{x}[j] \cdot x[A_{j}[j]]\)\\
         }
+        \(y[i] \gets\) sum
     }
 \end{algorithm}
 \medskip
 
-This algorithm can be parallelized using shared memory parallelization using OpenMPs \texttt{\#pragma omp parallel for} directive in the following manner:
-\medskip
 
-\begin{algorithm}[H]
-    \caption{Sequential CSR-based SpMV}
-    \SetAlgoVlined
-    \SetKwInOut{Input}{Input}
-    \SetKwInOut{Output}{Output}
-    \Input{\(A_{p},A_{j},A_{x},x\)}
-    \Output{\(y\)\newline}
+% This algorithm can be parallelized using shared memory parallelization using OpenMPs \texttt{\#pragma omp parallel for} directive in the following manner:
+% \medskip
 
-    \textbf{\#pragma omp parallel for}\\
-    \For{\(i \gets 0\) \KwTo \(n\)}{
-        \(y[i] \gets 0\)\\
-        \For{\(j \gets A_{p}[i]\) \KwTo \(A_{p}[i+1]\)}{
-            \(y[i] \gets y[i] + A_{x}[j] \cdot x[A_{j}[j]]\)\\
-        }
-    }
-\end{algorithm}
+% \begin{algorithm}[H]
+%     \caption{Sequential CSR-based SpMV}
+%     \SetAlgoVlined
+%     \SetKwInOut{Input}{Input}
+%     \SetKwInOut{Output}{Output}
+%     \Input{\(A_{p},A_{j},A_{x},x\)}
+%     \Output{\(y\)\newline}
+
+%     \textbf{\#pragma omp parallel for}\\
+%     \For{\(i \gets 0\) \KwTo \(n\)}{
+%         \(y[i] \gets 0\)\\
+%         \For{\(j \gets A_{p}[i]\) \KwTo \(A_{p}[i+1]\)}{
+%             \(y[i] \gets y[i] + A_{x}[j] \cdot x[A_{j}[j]]\)\\
+%         }
+%     }
+% \end{algorithm}
+
+% \section{Computational Density}
+
+\section{Distributed and Shared Memory}
+This thesis examines the performance of SpMV in a hybrid environment combining distributed and shared memory. The matrix is divided among multiple nodes in a cluster, where each node has its own local memory. Within each node, OpenMP is used to parallelize the local SpMV computation. After completing local operations, nodes exchange data through the Message Passing Interface (MPI) to assemble the final result. 
 
 \section{Load Balancing}
+In a distributed memory system, it is important to partition the matrix so that the computational workload is evenly divided among the processes. This is typically achieved through the use of graph partitioning tools. A widely used tool for this purpose is METIS, which provides the function \texttt{METIS\_PartGraphKway}. Given a parameter \(nprocs\), representing the number of processes the program will run on, \texttt{METIS\_PartGraphKway} attempts to partition the graph into \(nprocs\) equally sized parts. Since finding an optimal partition is an NP-hard problem, METIS does not guarantee an optimal solution, but it produces high-quality approximations that are sufficient for practical use.
 
+\section{Separator}
+When a graph is partitioned into different parts, there will inevitably be some edges which strides across different partitions. The endpoints of these edges are called separators, and will become important when it comes to reducing the communication load of the SpMV computation.
 
 
 
