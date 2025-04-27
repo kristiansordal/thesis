@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1745685396.17291 "main.aux" "main.bbl" "main" 1745685478.53241 0
+["bibtex main"] 1745755969.90208 "main.aux" "main.bbl" "main" 1745761973.32591 0
   "./references.bib" 1745396300.40518 1867 9187eedbcaf6be433719dd8028b20bd7 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/bibtex/bst/base/plain.bst" 1710106625 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1745685478.25356 9974 f2a9dc5af6e818ad7ccaa4634539c8a6 "pdflatex"
+  "main.aux" 1745761973.01 10084 e30c7bc6f75ad6c73cac42993e2a6d94 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1745685475.14185 "main.tex" "main.pdf" "main" 1745685478.53256 0
+["pdflatex"] 1745761970.42456 "main.tex" "main.pdf" "main" 1745761973.32605 0
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1710106625 2375 baa924870cfb487815765f9094cf3728 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1710106625 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1710106625 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -372,7 +372,7 @@
   "CPUtable.tex" 1738227375.87057 6161 0a853db3c35467629f260a995e22638a ""
   "abstract.tex" 1738231815.33248 620 b62cd52b383d5e56551b76a9f0e08fe9 ""
   "acknowledgements.tex" 1745516983.11163 83 736b6d20c1373926384b1714fd219581 ""
-  "background.tex" 1745685474.2406 8447 9eddafbcde4b1cd5d5dd62a53fbfadac ""
+  "background.tex" 1745761970.15853 8516 6e9f42d471adf4a616184816b8496f29 ""
   "commstrats.tex" 1745341419.25517 6995 3381df51f4780fbe18b878d4771387df ""
   "copyright.tex" 1736241582.61685 361 f437c4cc58b729a5e68a27c7f190e098 ""
   "figures/1acomm.png" 1742200476.07984 17033 221c28863fd6ba4f6da8b50632e4a926 ""
@@ -383,16 +383,17 @@
   "figures/csrformat.pdf" 1745393769.95702 1366 104edb951c9c81fda8331705bdd7403c ""
   "figures/csrformat.pdf_tex" 1745393769.95731 3903 bbd404505f908f7be59dc5084370f13b ""
   "introduction.tex" 1745492218.42142 310 fcac195509cb580125570b9215783af0 ""
-  "main.aux" 1745685478.25356 9974 f2a9dc5af6e818ad7ccaa4634539c8a6 "pdflatex"
-  "main.bbl" 1745685396.22942 365 571cf33a87de1960d7191f059ff81352 "bibtex main"
-  "main.out" 1745685478.26204 3453 c89bf8f09f0edd910de78976dc02b6a9 "pdflatex"
-  "main.tex" 1745403238.86768 843 fa50105cd87ed3cec68fbf18bcd8185a ""
-  "main.toc" 1745685478.26285 1821 ed94be80767956528b6fd0555631fd7f "pdflatex"
+  "latencynumber.tex" 1745755263.09975 1177 23817f3169f84e2256279615ec5e1e86 ""
+  "main.aux" 1745761973.01 10084 e30c7bc6f75ad6c73cac42993e2a6d94 "pdflatex"
+  "main.bbl" 1745755969.96628 365 571cf33a87de1960d7191f059ff81352 "bibtex main"
+  "main.out" 1745761973.01453 3543 6d0a74ced8524c5bd1a750f0f4d50b16 "pdflatex"
+  "main.tex" 1745738334.37285 843 fa50105cd87ed3cec68fbf18bcd8185a ""
+  "main.toc" 1745761973.01525 1889 819de3a9fd889550160b41849f237284 "pdflatex"
   "preamble.tex" 1745342465.73098 9297 8baec9dd703881348bb92cba2b7b0f36 ""
   "prevwork.tex" 1739348244.815 24 f553919be72df69a76c6460e0c33fb95 ""
   "results.tex" 1738744205.33266 2720 4f8106aee4d943f32dd6a7968e8baefd ""
   "settings.tex" 1736241505.80692 1679 a6d13370c8c5b3d7d3043c0452017d5a ""
-  "theory.tex" 1745412655.92282 1642 f22dad06b25fc82214d1a9a253ff36c7 ""
+  "theory.tex" 1745755557.78929 1779 cd0dfa75157181e404d2f62a73a1f5b8 ""
   "titlepage.tex" 1736241523.03543 504 5e2fc24f6a28370a527817fde532ab5e ""
   (generated)
   "main.aux"

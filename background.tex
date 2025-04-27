@@ -95,17 +95,12 @@ This thesis examines the performance of SpMV in a hybrid environment combining d
 \section{Load Balancing}
 In a distributed memory system, it is important to partition the matrix so that the computational workload is evenly divided among the processes. This is typically achieved through the use of graph partitioning tools. A widely used tool for this purpose is METIS, which provides the function \texttt{METIS\_PartGraphKway}. Given a parameter \(nprocs\), representing the number of processes the program will run on, \texttt{METIS\_PartGraphKway} attempts to partition the graph into \(nprocs\) equally sized parts. Since finding an optimal partition is an NP-hard problem, METIS does not guarantee an optimal solution, but it produces high-quality approximations that are sufficient for practical use.
 
-% \subsection{Reordering}
-% We also want to reorder the matrix because it makes everything easier. W
-
-
 \subsection{Separator}
 When a graph is partitioned into different parts, there will inevitably be some edges which strides across different partitions. The endpoints of these edges are called separators, and will become important when it comes to reducing the communication load of the SpMV computation.
 
 \subsection{Reordering}
-We want to reorder the graph in such a way that communication is easy. We do this by checking whether or not a certain entry in \texttt{row\_ptr} is a separator. If it is, we mark it, and later we reorder it such that it is at the beginning of the ranks part of the row pointer. Furthermore we also count the number of separator each rank has. This makes communication real easy.
+After partitioning the matrix into different parts, we obtain a partition vector \(p\), where the \(p[i]\) stores the index of the partition the \(i^{\text{th}}\) entry in \(A_{p}\). It is necessary to reorder the entries in \(A_{p}\) in accordance with the partition vector, such that all entries belonging to the same partition are stored in sequence. The algorithm below gives an outline of how this can be achieved. Here \(n_{p}\) is the number of partitions, \(n_{r}\) is the size of \(A_{p}\), and \(n_{c}\) is the size of \(A_{j}\) and \(A_{x}\).
 
- 
 \begin{algorithm}[H]
     \caption{Reordering of Separators}
     \SetAlgoVlined

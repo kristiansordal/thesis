@@ -681,6 +681,11 @@ INPUT ./theory.tex
 INPUT ./theory.tex
 INPUT ./theory.tex
 INPUT theory.tex
+INPUT ./latencynumber.tex
+INPUT ./latencynumber.tex
+INPUT ./latencynumber.tex
+INPUT ./latencynumber.tex
+INPUT latencynumber.tex
 INPUT ./commstrats.tex
 INPUT ./commstrats.tex
 INPUT ./commstrats.tex
