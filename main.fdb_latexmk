@@ -1,14 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1745415433.65363 "main.aux" "main.bbl" "main" 1745518303.02481 0
+["bibtex main"] 1745685396.17291 "main.aux" "main.bbl" "main" 1745685478.53241 0
   "./references.bib" 1745396300.40518 1867 9187eedbcaf6be433719dd8028b20bd7 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/bibtex/bst/base/plain.bst" 1710106625 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1745518302.75087 9701 49df96904fddda69c5b97baf2400e976 "pdflatex"
+  "main.aux" 1745685478.25356 9974 f2a9dc5af6e818ad7ccaa4634539c8a6 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1745518299.68979 "main.tex" "main.pdf" "main" 1745518303.02494 0
+["pdflatex"] 1745685475.14185 "main.tex" "main.pdf" "main" 1745685478.53256 0
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1710106625 2375 baa924870cfb487815765f9094cf3728 ""
+  "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1710106625 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1710106625 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc" 1710106625 2840 216e6e45ad352e2456e1149f28885bee ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc" 1710106625 2327 9d6df24f9c4f7368395224341a95523a ""
@@ -29,6 +30,8 @@
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmr7.tfm" 1710106625 12064 09aa3eeac96bf141d673bb1b0385ce55 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmr9.tfm" 1710106625 12084 b7f5e4c003de6f57f07c7e9fee73a37c ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm" 1710106625 17144 271aaf9ebb339934b04110dc5211fba4 ""
+  "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmri7.tfm" 1710106625 17168 78a37e395d0470967cfda94332b0716a ""
+  "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmri9.tfm" 1710106625 17148 ca1ae65757b004f470b8cd636199f6fc ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmss10.tfm" 1710106625 11176 53ebf7a171df1f9447b387b178768bb5 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm" 1710106625 1368 6a60e6a5e029141041d64d339b87e533 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/lmbsy10.tfm" 1710106625 1300 2df9da0fc09d4a8c772b3dd386a47c6a ""
@@ -65,6 +68,7 @@
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm" 1710106625 692 1b6510779f0f05e9cbf03e0f6c8361e6 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb" 1710106625 116908 1fca96723793882c2e0160350c192fc8 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb" 1710106625 116427 4a5b1ccaa7cce719091920a86b58608d ""
+  "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb" 1710106625 23055 2e5b42921de910eaa97b85df04ca4891 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb" 1710106625 30388 702fae6a5f0e6e9c48a1d872b442ffcf ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb" 1710106625 30696 2654571912f9cd384da9f7cb8a60c568 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmmi7.pfb" 1710106625 30789 be3ebdf20b6442cc4aaf81a81e17daf4 ""
@@ -368,7 +372,7 @@
   "CPUtable.tex" 1738227375.87057 6161 0a853db3c35467629f260a995e22638a ""
   "abstract.tex" 1738231815.33248 620 b62cd52b383d5e56551b76a9f0e08fe9 ""
   "acknowledgements.tex" 1745516983.11163 83 736b6d20c1373926384b1714fd219581 ""
-  "background.tex" 1745518297.97197 5561 7ad5c40dcd77a4bfd6a1301accffb2f6 ""
+  "background.tex" 1745685474.2406 8447 9eddafbcde4b1cd5d5dd62a53fbfadac ""
   "commstrats.tex" 1745341419.25517 6995 3381df51f4780fbe18b878d4771387df ""
   "copyright.tex" 1736241582.61685 361 f437c4cc58b729a5e68a27c7f190e098 ""
   "figures/1acomm.png" 1742200476.07984 17033 221c28863fd6ba4f6da8b50632e4a926 ""
@@ -379,11 +383,11 @@
   "figures/csrformat.pdf" 1745393769.95702 1366 104edb951c9c81fda8331705bdd7403c ""
   "figures/csrformat.pdf_tex" 1745393769.95731 3903 bbd404505f908f7be59dc5084370f13b ""
   "introduction.tex" 1745492218.42142 310 fcac195509cb580125570b9215783af0 ""
-  "main.aux" 1745518302.75087 9701 49df96904fddda69c5b97baf2400e976 "pdflatex"
-  "main.bbl" 1745415433.71883 365 571cf33a87de1960d7191f059ff81352 "bibtex main"
-  "main.out" 1745518302.75469 3334 48939c0efef1082dbd757b10802a5b70 "pdflatex"
+  "main.aux" 1745685478.25356 9974 f2a9dc5af6e818ad7ccaa4634539c8a6 "pdflatex"
+  "main.bbl" 1745685396.22942 365 571cf33a87de1960d7191f059ff81352 "bibtex main"
+  "main.out" 1745685478.26204 3453 c89bf8f09f0edd910de78976dc02b6a9 "pdflatex"
   "main.tex" 1745403238.86768 843 fa50105cd87ed3cec68fbf18bcd8185a ""
-  "main.toc" 1745518302.75552 1729 ade16fb628e9fa5537cf23d0a1382b45 "pdflatex"
+  "main.toc" 1745685478.26285 1821 ed94be80767956528b6fd0555631fd7f "pdflatex"
   "preamble.tex" 1745342465.73098 9297 8baec9dd703881348bb92cba2b7b0f36 ""
   "prevwork.tex" 1739348244.815 24 f553919be72df69a76c6460e0c33fb95 ""
   "results.tex" 1738744205.33266 2720 4f8106aee4d943f32dd6a7968e8baefd ""

@@ -4,7 +4,10 @@
 
 Sparse Matrix-Vector Multiplication (SpMV) is a fundamental operation encountered in many areas of scientific computing. It is especially prominent in solving large systems of linear equations and in large-scale simulations. The matrices involved are typically both very large and very sparse. 
 
-In this context, \textit{sparse} means that the average number of nonzeros per row is on the order of \(\mathcal{O}(1)\), making it worthwhile to store and operate only on nonzero elements explicitly. Optimizing the performance of SpMV, particularly through parallel computing techniques, is crucial for enhancing the efficiency of many scientific applications.
+A matrix can in theory be considered sparse if it is worthwhile to treat zero values separately. In theory, this translates to a matrix being less than full, i.e. less than \( \mathcal{O}\left(n^2\right)\) nonzeros for a \(n \times  n\) matrix. However, in the context of sparse linear algebra, sparse means that there is a constant number of nonzeros per row, i.e. \(\mathcal{O}\left(n\right)\) nonzeros per row. The matrices used in scientific computing, such as matrices based on meshes, or graphs such as social networks all have this property. Optimizing the performance of SpMV, particularly through parallel computing techiniques, is crucial for enhancing the efficiency of many scientific applications.
+% In theory, 
+
+% In this context, \textit{sparse} means that the average number of nonzeros per row is on the order of \(\mathcal{O}(1)\), making it worthwhile to store and operate only on nonzero elements explicitly. Optimizing the performance of SpMV, particularly through parallel computing techniques, is crucial for enhancing the efficiency of many scientific applications.
 
 However, SpMV is notoriously difficult to optimize, both in sequential and parallel implementations. One major reason is its inherently low computational density.
 
@@ -92,9 +95,68 @@ This thesis examines the performance of SpMV in a hybrid environment combining d
 \section{Load Balancing}
 In a distributed memory system, it is important to partition the matrix so that the computational workload is evenly divided among the processes. This is typically achieved through the use of graph partitioning tools. A widely used tool for this purpose is METIS, which provides the function \texttt{METIS\_PartGraphKway}. Given a parameter \(nprocs\), representing the number of processes the program will run on, \texttt{METIS\_PartGraphKway} attempts to partition the graph into \(nprocs\) equally sized parts. Since finding an optimal partition is an NP-hard problem, METIS does not guarantee an optimal solution, but it produces high-quality approximations that are sufficient for practical use.
 
-\section{Separator}
+% \subsection{Reordering}
+% We also want to reorder the matrix because it makes everything easier. W
+
+
+\subsection{Separator}
 When a graph is partitioned into different parts, there will inevitably be some edges which strides across different partitions. The endpoints of these edges are called separators, and will become important when it comes to reducing the communication load of the SpMV computation.
 
+\subsection{Reordering}
+We want to reorder the graph in such a way that communication is easy. We do this by checking whether or not a certain entry in \texttt{row\_ptr} is a separator. If it is, we mark it, and later we reorder it such that it is at the beginning of the ranks part of the row pointer. Furthermore we also count the number of separator each rank has. This makes communication real easy.
+
+ 
+\begin{algorithm}[H]
+    \caption{Reordering of Separators}
+    \SetAlgoVlined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{\(n_{p}, n_{r}, n_{c}, p, A_{p}, A_{j}, A_{x}\)}
+    \Output{Reordered \(A_{p}, A_{j}, A_{x}\)}
+    
+    newId \(\gets [0] \cdot n_{r}\)\\
+    oldId \(\gets [0] \cdot n_{r}\)\\
+    id \(\gets 0\)\\
+    \(p_{0} \gets 0\)\\
+    \phantom{a}\\
+    
+    \For{\(r \in \{0, \dotsc, n_{p}-1\}\)}{
+        \For{\(i \in \{0, \dotsc, n_{r}-1\}\)}{
+            \If{\(p[i] = r\)}{
+                oldId[id] \(\gets i\)\\
+                newId[i] \(\gets\) id\\
+                id \(\gets\) id + 1\\
+            }
+        }
+        \(p[r+1] \gets\) id\\
+    }
+    \phantom{a}\\
+    
+    newV \(\gets [0] \cdot (n_{r} + 1)\)\\
+    newE \(\gets [0] \cdot n_{c}\)\\
+    newA \(\gets [0] \cdot n_{c}\)\\
+    
+    \phantom{a}\\
+    \For{\(i \in \{0, \dotsc, n_{r}-1\}\)}{
+        degree \(\gets A_{p}[\text{oldId}[i]+1] - A_{p}[\text{oldId}[i]]\)\\
+        newV[\(i+1\)] \(\gets\) newV[i] + degree\\
+    }
+    \phantom{a}\\
+    
+    \For{\(i \in \{0, \dotsc, n_{r}-1\}\)}{
+        degree \(\gets A_{p}[\text{oldId}[i]+1] - A_{p}[\text{oldId}[i]]\)\\
+        \For{\(j \in \{0, \dotsc, \text{degree}-1\}\)}{
+            newE[newV[i]+j] \(\gets A_{j}[A_{p}[\text{oldId}[i]] + j]\)\\
+            newA[newV[i]+j] \(\gets A_{x}[A_{p}[\text{oldId}[i]] + j]\)\\
+        }
+        \For{\(j \in \{newV[i], \dotsc, newV[i+1]-1\}\)}{
+            newE[j] \(\gets\) \text{newId}[newE[j]]\\
+        }
+    }
+    \phantom{a}\\
+    
+    Overwrite \(A_{p} \gets\) newV, \(A_{j} \gets\) newE, \(A_{x} \gets\) newA\\
+\end{algorithm}
 
 
 \section{Distributed Memory CSR}

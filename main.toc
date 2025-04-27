@@ -9,15 +9,16 @@
 \contentsline {section}{\numberline {2.2}CSR Storage Format}{4}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Distributed and Shared Memory}{5}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Load Balancing}{5}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Separator}{5}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Distributed Memory CSR}{6}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Theory}{7}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Definitions}{7}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Amdahl's Law}{7}{section.3.2}%
-\contentsline {chapter}{\numberline {4}Communication Strategies}{9}{chapter.4}%
-\contentsline {section}{\numberline {4.1}1a - Exchange entire vector}{9}{section.4.1}%
-\contentsline {section}{\numberline {4.2}1b - Exchange only separators}{10}{section.4.2}%
-\contentsline {section}{\numberline {4.3}1c - Exchange only required separators}{11}{section.4.3}%
-\contentsline {section}{\numberline {4.4}1d - Exchange only required separator values}{12}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Results}{13}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Previous Work}{15}{chapter.6}%
+\contentsline {subsection}{\numberline {2.4.1}Separator}{5}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Reordering}{6}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Distributed Memory CSR}{7}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Theory}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Definitions}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Amdahl's Law}{9}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Communication Strategies}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}1a - Exchange entire vector}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}1b - Exchange only separators}{12}{section.4.2}%
+\contentsline {section}{\numberline {4.3}1c - Exchange only required separators}{13}{section.4.3}%
+\contentsline {section}{\numberline {4.4}1d - Exchange only required separator values}{14}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Results}{15}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Previous Work}{17}{chapter.6}%

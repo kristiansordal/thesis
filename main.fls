@@ -657,6 +657,8 @@ INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmr9.tfm
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmr7.tfm
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT ./figures/csrformat.pdf_tex
 INPUT ./figures/csrformat.pdf_tex
@@ -668,11 +670,12 @@ INPUT ./figures/csrformat.pdf
 INPUT ./figures/csrformat.pdf
 INPUT ./figures/csrformat.pdf
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmr10.tfm
-INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmri9.tfm
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/tfm/public/lm/ec-lmri7.tfm
 INPUT ./theory.tex
 INPUT ./theory.tex
 INPUT ./theory.tex
@@ -788,6 +791,7 @@ INPUT ./main.out
 INPUT ./main.out
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb
+INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
 INPUT /opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/lm/lmmi7.pfb
