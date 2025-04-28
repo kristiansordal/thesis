@@ -1,0 +1,25 @@
+\babel@toc {british}{}\relax 
+\contentsline {chapter}{Acknowledgements}{iii}{chapter*.1}%
+\contentsline {chapter}{Abstract}{v}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Research Question}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Sparse Matrix-Vector Multiplication}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Computational Density}{3}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}CSR Storage Format}{4}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Distributed and Shared Memory}{5}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Load Balancing}{5}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Separator}{5}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Reordering}{6}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}Distributed Memory CSR}{7}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Theory}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Definitions}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Amdahl's Law}{9}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Latency}{10}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Communication Strategies}{11}{chapter.4}%
+\contentsline {section}{\numberline {4.1}1a - Exchange entire vector}{11}{section.4.1}%
+\contentsline {section}{\numberline {4.2}1b - Exchange only separators}{12}{section.4.2}%
+\contentsline {section}{\numberline {4.3}1c - Exchange only required separators}{13}{section.4.3}%
+\contentsline {section}{\numberline {4.4}1d - Exchange only required separator values}{14}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Results}{15}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Previous Work}{17}{chapter.6}%
