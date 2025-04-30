@@ -5,4 +5,10 @@ Gautam Gupta, Sivasankaran Rajamanickam, and Erik~G. Boman.
 \newblock {GAMGI}: Communication-reducing algebraic multigrid for gpus.
 \newblock In {\em Proceedings of the 28th ACM SIGPLAN Annual Symposium on Principles and Practice of Parallel Programming (PPoPP)}, pages 61--75. ACM, 2024.
 
+\bibitem{norvig_latency}
+Peter Norvig.
+\newblock Latency numbers every programmer should know.
+\newblock \url{https://norvig.com/21-days.html#Latency}, 2021.
+\newblock Accessed: 2025-04-29.
+
 \end{thebibliography}

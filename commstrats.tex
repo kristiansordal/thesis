@@ -56,6 +56,61 @@ An improvement to the previous strategy can be achieved by recognizing that only
 
 To facilitate this strategy, separator values are reordered such that they appear at the beginning of each process's local segment of \(y\). Once this structure is established, communication is performed using \texttt{MPI\_Allgatherv}, transmitting only the subset of \(y\) that contains separator values. The number of separators on each process must be known beforehand, which can be computed by counting the number of elements that have neighbours belonging to a different partition.
 
+
+\subsection{Reordering}
+After partitioning the matrix into different parts, we obtain a partition vector \(p\), where the \(p[i]\) stores the index of the partition the \(i^{\text{th}}\) entry in \(A_{p}\). It is necessary to reorder the entries in \(A_{p}\) in accordance with the partition vector, such that all entries belonging to the same partition are stored in sequence. The algorithm below gives an outline of how this can be achieved. Here \(n_{p}\) is the number of partitions, \(n_{r}\) is the size of \(A_{p}\), and \(n_{c}\) is the size of \(A_{j}\) and \(A_{x}\).
+
+\begin{algorithm}[H]
+    \caption{Reordering of Separators}
+    \SetAlgoVlined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{\(n_{p}, n_{r}, n_{c}, p, A_{p}, A_{j}, A_{x}\)}
+    \Output{Reordered \(A_{p}, A_{j}, A_{x}\)}
+    
+    newId \(\gets [0] \cdot n_{r}\)\\
+    oldId \(\gets [0] \cdot n_{r}\)\\
+    id \(\gets 0\)\\
+    \(p_{0} \gets 0\)\\
+    \phantom{a}\\
+    
+    \For{\(r \in \{0, \dotsc, n_{p}-1\}\)}{
+        \For{\(i \in \{0, \dotsc, n_{r}-1\}\)}{
+            \If{\(p[i] = r\)}{
+                oldId[id] \(\gets i\)\\
+                newId[i] \(\gets\) id\\
+                id \(\gets\) id + 1\\
+            }
+        }
+        \(p[r+1] \gets\) id\\
+    }
+    \phantom{a}\\
+    
+    newV \(\gets [0] \cdot (n_{r} + 1)\)\\
+    newE \(\gets [0] \cdot n_{c}\)\\
+    newA \(\gets [0] \cdot n_{c}\)\\
+    
+    \phantom{a}\\
+    \For{\(i \in \{0, \dotsc, n_{r}-1\}\)}{
+        degree \(\gets A_{p}[\text{oldId}[i]+1] - A_{p}[\text{oldId}[i]]\)\\
+        newV[\(i+1\)] \(\gets\) newV[i] + degree\\
+    }
+    \phantom{a}\\
+    
+    \For{\(i \in \{0, \dotsc, n_{r}-1\}\)}{
+        degree \(\gets A_{p}[\text{oldId}[i]+1] - A_{p}[\text{oldId}[i]]\)\\
+        \For{\(j \in \{0, \dotsc, \text{degree}-1\}\)}{
+            newE[newV[i]+j] \(\gets A_{j}[A_{p}[\text{oldId}[i]] + j]\)\\
+            newA[newV[i]+j] \(\gets A_{x}[A_{p}[\text{oldId}[i]] + j]\)\\
+        }
+        \For{\(j \in \{newV[i], \dotsc, newV[i+1]-1\}\)}{
+            newE[j] \(\gets\) \text{newId}[newE[j]]\\
+        }
+    }
+    \phantom{a}\\
+    
+    Overwrite \(A_{p} \gets\) newV, \(A_{j} \gets\) newE, \(A_{x} \gets\) newA\\
+\end{algorithm}
 % It becomes evident that this is a better strategy when we realize that it is not necessary to communicate non-separator values of \(y\), as these values are only ever needed by the rank they are computed on. Separators on the other hand, are needed by other ranks, and therefore need to be communicated. This strategy can be implemented by reordering and counting the number of separators on each rank, and only sending these values to all other ranks, again using \textit{allgather}.
 
 
