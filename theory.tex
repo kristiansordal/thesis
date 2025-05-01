@@ -1,6 +1,13 @@
 
 \chapter{Theory}
 
+\section{Sparse Matrix-Vector Multiplication}
+Sparse Matrix-Vector Multiplication (SpMV) is a fundamental operation encountered in many areas of scientific computing. It is especially prominent in solving large systems of linear equations and in large-scale simulations. The matrices involved are typically both very large and very sparse. 
+
+A matrix can in theory be considered sparse if it is worthwhile to treat zero values separately. In theory, this translates to a matrix being less than full, i.e. less than \( \mathcal{O}\left(n^2\right)\) nonzeros for a \(n \times  n\) matrix. However, in the context of sparse linear algebra, sparse means that there is a constant number of nonzeros per row, i.e. \(\mathcal{O}\left(n\right)\) nonzeros per row. The matrices used in scientific computing, such as matrices based on meshes, or graphs such as social networks all have this property. Optimizing the performance of SpMV, particularly through parallel computing techiniques, is crucial for enhancing the efficiency of many scientific applications.
+
+However, SpMV is notoriously difficult to optimize, both in sequential and parallel implementations. One major reason is its inherently low computational intensity.
+
 \section{Definitions}
 
 \begin{definition}[Separator]

@@ -7,8 +7,8 @@
    viewBox="0 0 240 120"
    version="1.1"
    id="svg8"
-   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
-   sodipodi:docname="figurename.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   sodipodi:docname="testfig.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,24 @@
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
-     id="defs2" />
+     id="defs2">
+    <marker
+       id="marker-arrow-1.5924"
+       orient="auto-start-reverse"
+       refY="0"
+       refX="0"
+       markerHeight="3"
+       markerWidth="2">
+      <g
+         transform="scale(1.0733986435569)"
+         id="g1"><path
+   d="M -1.55415,2.0722 C -1.42464,1.29512 0,0.1295 0.38852,0 0,-0.1295 -1.42464,-1.29512 -1.55415,-2.0722"
+   style="fill:none;stroke:#000000;stroke-width:{0.6};stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1        inkscape:connector-curvature="
+   id="path1-8" />
+0&quot; /&gt;
+   </g>
+    </marker>
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -26,8 +43,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.99437388"
-     inkscape:cx="286.10969"
-     inkscape:cy="183.02975"
+     inkscape:cx="285.10403"
+     inkscape:cy="182.52692"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,7 +52,7 @@
      width="200mm"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1502"
+     inkscape:window-width="1504"
      inkscape:window-height="912"
      inkscape:window-x="5"
      inkscape:window-y="135"
@@ -50,7 +67,9 @@
        spacingx="10"
        spacingy="10"
        empspacing="4"
-       dotted="false" />
+       dotted="false"
+       originx="0"
+       originy="0" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -70,8 +89,8 @@
      id="layer1"
      transform="translate(0,-177)">
     <path
-       style="fill:#ffff00;stroke:#000000;stroke-width:0.421322"
-       d="m 80.888421,237 c 30.067079,-45.89774 8.514569,-23.01483 40.444209,2.2628 31.92964,25.27763 35.38868,22.8829 37.78341,18.8917 2.39472,-3.9912 14.63441,-37.51733 10.64321,-39.11381 -3.99121,-1.59648 -6.65647,-38.58165 -49.75925,3.45905 -43.102784,42.04069 -45.763588,34.05828 -45.763588,34.05828 0,0 -22.616829,-16.76306 -22.616829,-15.43266"
-       id="path185" />
+       style="fill:none;stroke:black;stroke-width:0.4213225;stroke-opacity:1;fill-opacity:1;marker-start:none;stroke-dasharray:none;marker-end:url(#marker-arrow-1.5924)"
+       d="m 41.508531,217.71029 70.511289,48.95878 31.66356,-61.73064 -68.648728,-3.45904"
+       id="path1" />
   </g>
 </svg>

@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.2.1 (9c6d41e, 2022-07-14), www.inkscape.org
+%% Creator: Inkscape 1.4 (e7c3feb1, 2024-10-09), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'csrformat.pdf' (pdf, eps, ps)
 %%
@@ -56,17 +56,7 @@
     \put(0,0){\includegraphics[width=\unitlength,page=1]{csrformat.pdf}}%
     \put(0.44119558,0.32917837){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$A_{p} =$\end{tabular}}}}%
     \put(0.44287024,0.25475388){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$A_{j} =$\end{tabular}}}}%
-    \put(0.5442639,0.32794336){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
-    \put(0.60293185,0.3277078){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}%
-    \put(0.66118768,0.32770774){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}4\end{tabular}}}}%
-    \put(0.71944345,0.32770774){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}5\end{tabular}}}}%
-    \put(0.77769947,0.32770774){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}6\end{tabular}}}}%
-    \put(0.54623146,0.24780025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}0\\\end{tabular}}}}%
-    \put(0.6044871,0.24780025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}1\\\end{tabular}}}}%
-    \put(0.66274312,0.24780025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}2\\\end{tabular}}}}%
-    \put(0.72099889,0.24780025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}3\\\end{tabular}}}}%
-    \put(0.77925491,0.24780025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}1\\\end{tabular}}}}%
-    \put(0.83751062,0.24780025){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}2\\\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{csrformat.pdf}}%
     \put(0.44119558,0.17640972){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}$A_{x} =$\end{tabular}}}}%
   \end{picture}%
 \endgroup%

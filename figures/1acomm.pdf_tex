@@ -1,4 +1,4 @@
-%% Creator: Inkscape 1.2.1 (9c6d41e, 2022-07-14), www.inkscape.org
+%% Creator: Inkscape 1.4 (e7c3feb1, 2024-10-09), www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file '1acomm.pdf' (pdf, eps, ps)
 %%
@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{276.77049772bp}%
+    \setlength{\unitlength}{276.76913524bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,15 +50,15 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.22878178)%
+  \begin{picture}(1,1.22882487)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{1acomm.pdf}}%
-    \put(0.14111599,0.96348463){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rank 1\end{tabular}}}}%
-    \put(0.73495037,0.96348463){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rank 2\end{tabular}}}}%
+    \put(0.14111369,0.96352625){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rank 0\end{tabular}}}}%
+    \put(0.734951,0.96352625){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rank 1\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{1acomm.pdf}}%
-    \put(0.73305831,0.22294754){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rank 4\end{tabular}}}}%
-    \put(0.13922385,0.22294754){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rank 3\end{tabular}}}}%
+    \put(0.73305892,0.22298551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rank 3\end{tabular}}}}%
+    \put(0.13922154,0.22298551){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0}\smash{\begin{tabular}[t]{l}Rank 2\end{tabular}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{1acomm.pdf}}%
   \end{picture}%
 \endgroup%

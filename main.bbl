@@ -11,4 +11,10 @@ Peter Norvig.
 \newblock \url{https://norvig.com/21-days.html#Latency}, 2021.
 \newblock Accessed: 2025-04-29.
 
+\bibitem{ellpackformat}
+Cong Zheng, Shuo Gu, Tong-Xiang Gu, Bing Yang, and Xing-Ping Liu.
+\newblock Biell: A bisection ellpack-based storage format for optimizing spmv on gpus.
+\newblock {\em Journal of Parallel and Distributed Computing}, 74(7):2639--2647, 2014.
+\newblock Special Issue on Perspectives on Parallel and Distributed Processing.
+
 \end{thebibliography}

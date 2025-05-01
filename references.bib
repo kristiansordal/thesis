@@ -54,3 +54,36 @@
     howpublished = {\url{https://norvig.com/21-days.html#Latency}},
     note = {Accessed: 2025-04-29},
 }
+
+
+@article{ellpackformat,
+    title = {BiELL: A bisection ELLPACK-based storage format for optimizing SpMV
+             on GPUs},
+    journal = {Journal of Parallel and Distributed Computing},
+    volume = {74},
+    number = {7},
+    pages = {2639-2647},
+    year = {2014},
+    note = {Special Issue on Perspectives on Parallel and Distributed Processing
+            },
+    issn = {0743-7315},
+    doi = {https://doi.org/10.1016/j.jpdc.2014.03.002},
+    url = {https://www.sciencedirect.com/science/article/pii/S0743731514000458},
+    author = {Cong Zheng and Shuo Gu and Tong-Xiang Gu and Bing Yang and
+              Xing-Ping Liu},
+    keywords = {Sparse matrix–vector multiplication, GPU, BiELL, BiJAD},
+    abstract = {Sparse matrix–vector multiplication (SpMV) is one of the most
+                important high level operations for basic linear algebra.
+                Nowadays, the GPU has evolved into a highly parallel coprocessor
+                which is suited to compute-intensive, highly parallel
+                computation. Achieving high performance of SpMV on GPUs is
+                relatively challenging, especially when the matrix has no
+                specific structure. For these general sparse matrices, a new data
+                structure based on the bisection ELLPACK format, BiELL, is
+                designed to realize the load balance better, and thus improve the
+                performance of the SpMV. Besides, based on the same idea of JAD
+                format, the BiJAD format can be obtained. Experimental results on
+                various matrices show that the BiELL and BiJAD formats perform
+                better than other similar formats, especially when the number of
+                non-zero elements per row varies a lot.},
+}

@@ -4,28 +4,31 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Research Question}{1}{section.1.1}%
 \contentsline {chapter}{\numberline {2}Theory}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Definitions}{3}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Amdahl's Law}{3}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Latency}{4}{section.2.3}%
-\contentsline {chapter}{\numberline {3}Background}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}CSR Storage Format}{5}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Sparse Matrix-Vector Multiplication}{6}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Computational Intensity}{6}{subsection.3.2.1}%
-\contentsline {section}{\numberline {3.3}Sequential SpMV}{7}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Shared Memory SpMV}{8}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Scheduling options}{8}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Dynamic scheduling}{9}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}First touch policy}{9}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Performance impact of first touch policy}{10}{subsection.3.4.4}%
-\contentsline {section}{\numberline {3.5}Distributed Memory SpMV}{10}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Load Balancing}{10}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Separator}{11}{subsection.3.6.1}%
-\contentsline {section}{\numberline {3.7}Distributed Memory CSR}{11}{section.3.7}%
-\contentsline {chapter}{\numberline {4}Communication Strategies}{13}{chapter.4}%
-\contentsline {section}{\numberline {4.1}1a - Exchange entire vector}{13}{section.4.1}%
-\contentsline {section}{\numberline {4.2}1b - Exchange only separators}{14}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Reordering}{15}{subsection.4.2.1}%
-\contentsline {section}{\numberline {4.3}1c - Exchange only required separators}{17}{section.4.3}%
-\contentsline {section}{\numberline {4.4}1d - Exchange only required separator values}{18}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Results}{19}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Previous Work}{23}{chapter.6}%
+\contentsline {section}{\numberline {2.1}Sparse Matrix-Vector Multiplication}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Definitions}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Amdahl's Law}{4}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Latency}{4}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Background}{7}{chapter.3}%
+\contentsline {section}{\numberline {3.1}CSR Storage Format}{7}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Computational Intensity}{8}{subsection.3.1.1}%
+\contentsline {section}{\numberline {3.2}Other storage formats}{8}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}COO Format}{8}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}CSC Format}{9}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}ELLPack Format}{9}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Sequential SpMV}{10}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Shared Memory SpMV}{11}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Scheduling options}{12}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Dynamic scheduling}{12}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}First touch policy}{13}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Performance impact of first touch policy}{13}{subsection.3.4.4}%
+\contentsline {section}{\numberline {3.5}Distributed Memory SpMV}{13}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Load Balancing}{14}{subsection.3.5.1}%
+\contentsline {chapter}{\numberline {4}Communication Strategies}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Exchange entire vector}{16}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Exchange only separators}{16}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Reordering}{17}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Exchange only required separators}{18}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Exchange only required separator values}{19}{section.4.4}%
+\contentsline {section}{\numberline {4.5}2d - Fully scalable communication}{19}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Results}{21}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Previous Work}{25}{chapter.6}%
