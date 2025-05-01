@@ -205,6 +205,10 @@ There are no fixed criterion of the imbalance value that leads to optimal commun
 \medskip
 
 
+\subsection{Graph Partitioners}
+There are many options when it comes to picking which graph partitioner to use, each with their own benefits and drawbacks. For the experiments performed in this thesis, the METIS graph partitioner has been used. The algorithms used in for graph partitioning in METIS are based on multilevel recursive-bisection. These kinds of algorithms optimize for communication reduction by minimizing the edge-cut, while trying to keep the size difference between partitions within the constraint given by the imbalance value.
+
+
 
 
 % In order to reduce the total communication volume, tools such as graph partiotioners or hypergraph partitioners are often used. These tools
