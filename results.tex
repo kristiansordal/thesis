@@ -1,6 +1,12 @@
-
 \chapter{Results} \label{results}
 
+\section{Theoretical Maximum}
+As has been established, the maximum performance scales with the available memory bandwidth of the system, and not with the amount of processes used. For SpMV, a total of 6 bytes are read per FLOP, which means that the theoretical maximum is given by \ref{eq:theoretical_max}. This is under the assumption that all resources on the system is dedicated to the SpMV operation, which is not the case in reality. At most, somewhere in the neighbourhood of 80\% of the systems resources can be expected to be utilized.
+
+\begin{equation}
+\text{Maximum Theoretical Performance} = \frac{\text{Memory bandwidth}}{6}
+\label{eq:theoretical_max}
+\end{equation}
 
 
 \begin{figure}[htpb]
@@ -172,7 +178,148 @@ SpMV Time for Proc1Node
     \label{fig:road_usa}
 \end{figure}
 
+
+\section{GFLOPS \romeq}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Serena_rome16q}
+    \end{center}
+    \caption{Serena}
+    \label{fig:Serena_rome16q}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{bone010_rome16q}
+    \end{center}
+    \caption{bone010}
+    \label{fig:bone010_rome16q}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{af_shell10_rome16q}
+    \end{center}
+    \caption{af\_shell10}
+    \label{fig:af_shell10_rome16q}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Bump_2911_rome16q}
+    \end{center}
+    \caption{Bump\_2911}
+    \label{fig:Bump_2911_rome16q}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Cube_Coup_dt0_rome16q}
+    \end{center}
+    \caption{Cube\_Coup\_dt0}
+    \label{fig:Cube_Coup_dt0_rome16q}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{dielFilterV3real_rome16q}
+    \end{center}
+    \caption{dielFilterV3real}
+    \label{fig:dielFilterV3real_rome16q}
+\end{figure}
+
+% \section{GFLOPS \fpgaq}
+
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Long_Coup_dt0_rome16q}
+    \end{center}
+    \caption{Long\_Coup\_dt0}
+    \label{fig:Long_Coup_dt0_rome16q}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{nlpkkt200_rome16q}
+    \end{center}
+    \caption{nlpkkt200}
+    \label{fig:nlpkkt200_rome16q}
+\end{figure}
+
+
+
+
+\section{GFLOPS \fpgaq}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Serena_fpgaq}
+    \end{center}
+    \caption{Serena}
+    \label{fig:Serena_fpgaq}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{bone010_fpgaq}
+    \end{center}
+    \caption{bone010}
+    \label{fig:bone010_fpgaq}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{af_shell10_fpgaq}
+    \end{center}
+    \caption{af\_shell10}
+    \label{fig:af_shell10_fpgaq}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Bump_2911_fpgaq}
+    \end{center}
+    \caption{Bump\_2911}
+    \label{fig:Bump_2911_fpgaq}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Cube_Coup_dt0_fpgaq}
+    \end{center}
+    \caption{Cube\_Coup\_dt0}
+    \label{fig:Cube_Coup_dt0_fpgaq}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{dielFilterV3real_fpgaq}
+    \end{center}
+    \caption{dielFilterV3real}
+    \label{fig:dielFilterV3real_fpgaq}
+\end{figure}
+
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Long_Coup_dt0_fpgaq}
+    \end{center}
+    \caption{Long\_Coup\_dt0}
+    \label{fig:Long_Coup_dt0_fpgaq}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{nlpkkt200_fpgaq}
+    \end{center}
+    \caption{nlpkkt200}
+    \label{fig:nlpkkt200_fpgaq}
+\end{figure}
+
 % \begin{figure}[H]
+
 %     \begin{center}
 %         \includegraphics[width=0.95\textwidth]{road_usa}
 %     \end{center}

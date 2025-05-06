@@ -1,10 +1,20 @@
 \chapter{Communication Strategies}
 
-This thesis evaluates and compares several communication strategies for Sparse Matrix-Vector Multiplication (SpMV) in a parallel, distributed memory setting. During each iteration of SpMV, every process computes a partial result of the output vector 
-\(y\).
+% This thesis evaluates and compares several communication strategies for Sparse Matrix-Vector Multiplication (SpMV) in a parallel, distributed memory setting. During each iteration of SpMV, every process computes a partial result of the output vector 
+% \(y\).
+% \medskip
+
+% In subsequent iterations, these computed values may be required by other processes to proceed with their own calculations. To ensure correctness, it is therefore necessary to communicate between processes so that each has access to the values it depends on. This section outlines a progression of increasingly efficient strategies for managing this communication.
+% \medskip
+
+In parallel implementations of Sparse Matrix-Vector Multiplication (SpMV), effective communication management is critical due to its significant influence on overall performance. Communication often emerges as a bottleneck in distributed-memory systems because the speed at which data moves between nodes is significantly lower than within-node memory access speeds. Consequently, reducing communication volume and optimizing communication patterns can yield substantial performance improvements.
 \medskip
 
-In subsequent iterations, these computed values may be required by other processes to proceed with their own calculations. To ensure correctness, it is therefore necessary to communicate between processes so that each has access to the values it depends on. This section outlines a progression of increasingly efficient strategies for managing this communication.
+This chapter evaluates a series of progressively optimized communication strategies employed in distributed-memory parallel SpMV. Starting from the simplest method, exchanging the entire result vector between all nodes, the strategies become increasingly selective and efficient, focusing specifically on exchanging only the essential data elements required by each node. These approaches leverage knowledge of the matrix structure, partitioning methods, and computational dependencies to minimize communication overhead.
+\medskip
+
+% The following sections describe each strategy in detail, highlighting their theoretical motivations, implementation specifics using MPI (Message Passing Interface), and potential advantages or disadvantages. The strategies discussed include exchanging the entire vector, exchanging only separator elements, selectively exchanging required separators, and finally, communicating only specific separator values needed by dependent nodes. Additionally, the chapter introduces considerations for fully scalable two-dimensional (2D) communication methods, providing a foundation for scalable performance on large-scale computing clusters.
+
 
 
 \begin{figure}[ht]
@@ -50,7 +60,7 @@ The most straightforward approach is to have each rank send all of its computed 
 
 \section{Exchange only separators}
 
-An improvement to the previous strategy can be achieved by recognizing that only separator values—those required by multiple processes—must be communicated. Non-separator values are used exclusively by the process that computed them and therefore do not need to be communicated.
+An improvement to the previous strategy can be achieved by recognizing that only separator values, those required by multiple processes, must be communicated. Non-separator values are used exclusively by the process that computed them and therefore do not need to be communicated.
 
 To facilitate this strategy, separator values are reordered such that they appear at the beginning of each process's local segment of \(y\). Once this structure is established, communication is performed using \texttt{MPI\_Allgatherv}, transmitting only the subset of \(y\) that contains separator values. The number of separators on each process must be known beforehand, which can be computed by counting the number of elements that have neighbours belonging to a different partition.
 

@@ -8,27 +8,32 @@
 \contentsline {section}{\numberline {2.2}Definitions}{3}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Amdahl's Law}{4}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Latency}{4}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}NUMA Architecture}{5}{subsection.2.4.1}%
 \contentsline {chapter}{\numberline {3}Background}{7}{chapter.3}%
 \contentsline {section}{\numberline {3.1}CSR Storage Format}{7}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Computational Intensity}{8}{subsection.3.1.1}%
 \contentsline {section}{\numberline {3.2}Other storage formats}{8}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}COO Format}{8}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}CSC Format}{9}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}ELLPack Format}{9}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.3}ELLPack Format}{10}{subsection.3.2.3}%
 \contentsline {section}{\numberline {3.3}Sequential SpMV}{10}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Shared Memory SpMV}{11}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}Scheduling options}{12}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Dynamic scheduling}{12}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}First touch policy}{13}{subsection.3.4.3}%
-\contentsline {subsection}{\numberline {3.4.4}Performance impact of first touch policy}{13}{subsection.3.4.4}%
+\contentsline {subsection}{\numberline {3.4.2}Dynamic Scheduling}{12}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}First-Touch Policy}{13}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Performance Implications of the First-Touch Policy}{13}{subsection.3.4.4}%
 \contentsline {section}{\numberline {3.5}Distributed Memory SpMV}{13}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}Load Balancing}{14}{subsection.3.5.1}%
-\contentsline {chapter}{\numberline {4}Communication Strategies}{15}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Exchange entire vector}{16}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Exchange only separators}{16}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Reordering}{17}{subsection.4.2.1}%
-\contentsline {section}{\numberline {4.3}Exchange only required separators}{18}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Exchange only required separator values}{19}{section.4.4}%
-\contentsline {section}{\numberline {4.5}2d - Fully scalable communication}{19}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Results}{21}{chapter.5}%
-\contentsline {chapter}{\numberline {6}Previous Work}{25}{chapter.6}%
+\contentsline {subsection}{\numberline {3.5.2}Graph Partitioners}{14}{subsection.3.5.2}%
+\contentsline {chapter}{\numberline {4}Communication Strategies}{17}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Exchange entire vector}{17}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Exchange only separators}{18}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Reordering}{19}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Exchange only required separators}{21}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Exchange only required separator values}{21}{section.4.4}%
+\contentsline {section}{\numberline {4.5}2d - Fully scalable communication}{22}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Results}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Theoretical Maximum}{23}{section.5.1}%
+\contentsline {section}{\numberline {5.2}GFLOPS AMD EPYC 7302P}{27}{section.5.2}%
+\contentsline {section}{\numberline {5.3}GFLOPS AMD EPYC 7413}{35}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Previous Work}{41}{chapter.6}%
