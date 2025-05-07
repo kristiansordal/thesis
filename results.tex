@@ -9,145 +9,42 @@ As has been established, the maximum performance scales with the available memor
 \end{equation}
 
 
-\begin{figure}[htpb]
-\begin{center}
-\begin{tikzpicture}[
-  /pgfplots/every axis/.append style={ % add these settings to all the axis environments in the tikzpicture
-    ybar stacked,
-    bar width=7pt, % Adjust this for width of bars
-    enlarge x limits=0.3, % Space between bars
-    legend style={cells={anchor=west}, legend pos=north east},
-    legend pos=outer north east,
-    ylabel={Time (s)},
-    xlabel={Nodes},
-    % symbolic x coords={64, 128, 192, 256},
-    symbolic x coords={1,2,3,4},
-    xtick=data,
-    % nodes near coords,
-    % every node near coord/.append style={font=\small},
-    ymin=0,
-    ymax=22,
-  },
-        ]
+\section{Matrices}
 
-% % SpMV Time table (corrected)
-\pgfplotstableread{
-Processors Proc1Node Proc2Node
-1 18.882 17.655
-2 16.248 15.578
-3 14.589 9.478
-4 12.56 7.010
-}\spmvdata
-
-% Halo Time table (corrected)
-\pgfplotstableread{
-Processors Proc1Node Proc2Node
-1 0.00119 2.180983
-2 4.355867 3.998552
-3 3.007078 3.342139
-4 1.608495 3.38635
-}\halodata
-
-
-
-
-SpMV Time for Proc1Node
-\begin{axis}[bar shift=-5pt]
-\addplot+[fill=blue!90] table[x=Processors, y=Proc1Node] {\spmvdata};
-\addplot+[fill=red!90] table[x=Processors, y=Proc1Node] {\halodata};
-\addplot+[fill=blue!50] coordinates {(1,0)};
-\addplot+[fill=red!50] coordinates {(1,0)};
-\addlegendentry{Comp Time (1 proc/node)} 
-\addlegendentry{Comm Time (1 proc/node)} 
-\addlegendentry{Comp Time (2 proc/node)}
-\addlegendentry{Comm Time (2 proc/node)} 
-\end{axis}
-
-\begin{axis}[bar shift=5pt]
-\addplot+[fill=blue!50] table[x=Processors, y=Proc2Node] {\spmvdata};
-\addplot+[fill=red!50] table[x=Processors, y=Proc2Node] {\halodata};
-\end{axis}
-
-\end{tikzpicture}
-\end{center}
-\caption{Stacked bar chart of SpMV and Halo Time.}%
-\label{fig:stacked-bar-chart}
+\begin{figure}[htbp]
+  \centering
+  \captionsetup[sub]{font=tiny, textfont=tiny}
+  \setlength{\tabcolsep}{4pt} % adjust horizontal padding between columns
+  \begin{tabular}{cccc}
+      \subcaptionbox{\tiny{bone010}\label{fig:bone010}}{%
+      \includegraphics[width=0.23\textwidth]{bone010.png}%
+    } &
+    \subcaptionbox{\tiny{af\_shell10}\label{fig:af_shell10}}{%
+      \includegraphics[width=0.23\textwidth]{af_shell10.png}%
+    } &
+    \subcaptionbox{\tiny{Serena}\label{fig:Serena}}{%
+      \includegraphics[width=0.23\textwidth]{Serena.png}%
+    } &
+    \subcaptionbox{\tiny{Long\_Coup\_dt0}\label{fig:Long_Coup_dt0}}{%
+      \includegraphics[width=0.23\textwidth]{Long_Coup_dt0.png}%
+    } \\[6pt] % a little extra vertical gap
+    \subcaptionbox{\tiny{dielFilterV3real}\label{fig:dielFilterV3real}}{%
+      \includegraphics[width=0.23\textwidth]{dielFilterV3real.png}%
+    } &
+    \subcaptionbox{\tiny{Cube\_Coup\_dt0}\label{fig:Cube_Coup_dt0_1}}{%
+      \includegraphics[width=0.23\textwidth]{Cube_Coup_dt0.png}%
+    } &
+    \subcaptionbox{\tiny{Bump\_2911}\label{fig:Bump_2911}}{%
+      \includegraphics[width=0.23\textwidth]{Bump_2911.png}%
+    } &
+    \subcaptionbox{\tiny{nlpkkt200}\label{fig:nlpkkt200}}{%
+      \includegraphics[width=0.23\textwidth]{nlpkkt200.png}%
+    }
+  \end{tabular}
+  \caption{Overview of all eight images.}
+  \label{fig:all_images}
 \end{figure}
 
-
-
-
-
-
-\begin{figure}[htpb]
-\begin{center}
-\begin{tikzpicture}
-\pgfplotstableread{
-4.352 6.021 8.219 10.142
-3.883 6.381 9.094 11.599
-5.565 6.489 9.276 12.038
-6.368 6.62  9.668 12.226
-4.412 6.1 8.918 11.852
-4.863 6.259 9.111 12.304
-4.277 6.338 9.284 11.934
-3.708 6.228 8.93 11.195
-4.966 5.867 8.332 11.763
-3.756 6.319 9.184 11.881
-3.491 6.471 9.738 12.537
-3.219 6.014 8.533 11.833
-4.185 6.724 9.322 12.075
-3.94 5.854 8.189 10.247
-4.352 6.021 8.219 10.142
-}\datatable
-	\begin{axis}[
-		boxplot/draw direction = y,
-		x axis line style = {opacity=0},
-		axis x line* = bottom,
-		axis y line = left,
-		enlarge y limits,
-		ymajorgrids,
-		xtick = {1, 2, 3, 4},
-        ylabel={GFLOPS},
-        xlabel={Nodes (64 procs/node)},
-	]
-		\foreach \n in {0,...,3} {
-			\addplot+[boxplot, fill, draw=black] table[y index=\n] {\datatable};
-		}
-	\end{axis}
-
-\end{tikzpicture}
-\end{center}
-\caption{Aggregated Results of SpMV on defq chip}
-\end{figure}
-
-
-% \begin{figure}[H]
-%     \begin{center}
-%         \includegraphics[width=0.95\textwidth]{Lynx1151_mpi0.png}
-%     \end{center}
-%     \caption{}
-%     \label{fig:}
-% \end{figure}
-% \begin{figure}[H]
-%     \begin{center}
-%         \includegraphics[width=0.95\textwidth]{Lynx1151_mpi1.png}
-%     \end{center}
-%     \caption{}
-%     \label{fig:}
-% \end{figure}
-% \begin{figure}[H]
-%     \centering
-%     \subfigure[]{
-%         \includegraphics[width=0.45\textwidth]{Lynx144_mpi0.png}
-%         \label{fig:mpi0}
-%     } \hfill
-%     \subfigure[]{
-%         \includegraphics[width=0.45\textwidth]{Lynx144_mpi1.png}
-%         \label{fig:mpi1}
-%     }
-%     \caption{}
-%     \label{fig:side_by_side}
-% \end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{Lynx144.png}
@@ -318,38 +215,99 @@ SpMV Time for Proc1Node
     \label{fig:nlpkkt200_fpgaq}
 \end{figure}
 
-% \begin{figure}[H]
 
+% \begin{figure}[H]
 %     \begin{center}
-%         \includegraphics[width=0.95\textwidth]{road_usa}
+%         \includegraphics[width=0.95\textwidth]{Serena_defq_commload_single.png}
 %     \end{center}
-%     \caption{SpMV performance with 1 process vs 2 processes per node on road\_usa}
-%     \label{fig:road_usa}
+%     \title{Communication load serena \defq}
+%     \caption{}
+%     \label{fig:Serena_defq_commload_single.png}
 % \end{figure}
-% Lynx297_mpi0.png
-% Lynx297_mpi1.png
-% Lynx649_mpi0.png
-% Lynx649_mpi1.png
-% Lynx68_mpi0.png
-% Lynx68_mpi1.png
-% Serena_mpi0.png
-% Serena_mpi1.png
-% bone010_mpi0.png
-% bone010_mpi1.png
-% delaunay_n24_mpi0.png
-% delaunay_n24_mpi1.png
-% dielFilterV2real_mpi0.png
-% dielFilterV2real_mpi1.png
-% dielFilterV3real_mpi0.png
-% dielFilterV3real_mpi1.png
-% hugebubbles00010_mpi0.png
-% hugebubbles00010_mpi1.png
-% hugetrace00020_mpi0.png
-% hugetrace00020_mpi1.png
-% rgg_n_2_24_s0_mpi0.png
-% rgg_n_2_24_s0_mpi1.png
-% road_usa_mpi0.png
-% road_usa_mpi1.png
+
+% \begin{figure}[H]
+%     \begin{center}
+%         \includegraphics[width=0.95\textwidth]{bone010_defq_commload_single.png}
+%     \end{center}
+%     \caption{}
+%     \label{fig:bone010_defq_commload_single.png}
+% \end{figure}
+
+% \begin{figure}[H]
+%     \begin{center}
+%         \includegraphics[width=0.95\textwidth]{nlpkkt200_defq_commload_single.png}
+%     \end{center}
+%     \caption{}
+%     \label{fig:nlpkkt200_defq_commload_single.png}
+% \end{figure}
+
+
+\subsection{Communication time}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Serena_tcomm_single_defq.png}
+    \end{center}
+    \caption{}
+    \label{fig:Serena_tcomm_single_defq.png}
+\end{figure}
+
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{bone010_tcomm_single_defq.png}
+    \end{center}
+    \caption{}
+    \label{fig:bone010_tcomm_single_defq.png}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{nlpkkt200_tcomm_single_defq.png}
+    \end{center}
+    \caption{}
+    \label{fig:nlpkkt200_tcomm_single_defq.png}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Bump_2911_tcomm_single_defq.png}
+    \end{center}
+    \caption{}
+    \label{fig:Bump_2911_tcomm_single_defq.png}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{af_shell10_tcomm_single_defq.png}
+    \end{center}
+    \caption{}
+    \label{fig:af_shell10_tcomm_single_defq.png}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{dielFilterV3real_tcomm_single_defq.png}
+    \end{center}
+    \caption{}
+    \label{fig:dielFilterV3real_tcomm_single_defq.png}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Cube_Coup_dt0_tcomm_single_defq.png}
+    \end{center}
+    \caption{}
+    \label{fig:Cube_Coup_dt0_tcomm_single_defq.png}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.95\textwidth]{Long_Coup_dt0_tcomm_single_defq.png}
+    \end{center}
+    \caption{}
+    \label{fig:Long_Coup_dt0_tcomm_single_defq.png}
+\end{figure}
 
 \input{CPUtable}
 

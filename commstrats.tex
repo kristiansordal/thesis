@@ -178,4 +178,26 @@ This approach eliminates all unnecessary data transfers but introduces additiona
     \label{fig:1dcomm}
 \end{figure}
 
-\section{2d - Fully scalable communication}
+
+\section{Exchange Required Elements - Memory Scalable}
+The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire vector \(x\), and will run into performance issues when \(x\) is so large that it doesn't fit into memory. Usually, this is not a problem when SpMV is ran on CPUs, as they have large amounts of memory. Even on GPUs this problem might not be encountered, as modern GPUs have sufficient memory for large matrices.
+\medskip
+
+\subsection{Intelligence processing units}
+paragraph on IPUs goes here
+% There has emerged a new kind of processing units, namely IPUs. These kinds of processes have a large amount of physical cores, but each core has a highly limited amount of storage.
+
+
+\subsection{Memory Scalable}
+Instead of storing the entire vector, each rank only stores its local part of the vector. In addition, it is necessary to allocate enough space for the separators elements that are needed from the other ranks. In order to achieve this, \(x\) is renumbered such that every ranks part of the vector is.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{2dcomm}
+    \caption{2dcomm}
+    \label{fig:2dcomm}
+\end{figure}
+
+
+
+

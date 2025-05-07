@@ -1,6 +1,6 @@
 \babel@toc {british}{}\relax 
 \contentsline {chapter}{Acknowledgements}{iii}{chapter*.1}%
-\contentsline {chapter}{Abstract}{v}{chapter*.2}%
+\contentsline {chapter}{Abstract}{vii}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Research Question}{1}{section.1.1}%
 \contentsline {chapter}{\numberline {2}Theory}{3}{chapter.2}%
@@ -31,9 +31,13 @@
 \contentsline {subsection}{\numberline {4.2.1}Reordering}{19}{subsection.4.2.1}%
 \contentsline {section}{\numberline {4.3}Exchange only required separators}{21}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Exchange only required separator values}{21}{section.4.4}%
-\contentsline {section}{\numberline {4.5}2d - Fully scalable communication}{22}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Results}{23}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Theoretical Maximum}{23}{section.5.1}%
-\contentsline {section}{\numberline {5.2}GFLOPS AMD EPYC 7302P}{27}{section.5.2}%
-\contentsline {section}{\numberline {5.3}GFLOPS AMD EPYC 7413}{35}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Previous Work}{41}{chapter.6}%
+\contentsline {section}{\numberline {4.5}Exchange Required Elements - Memory Scalable}{22}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Intelligence processing units}{22}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Memory Scalable}{22}{subsection.4.5.2}%
+\contentsline {chapter}{\numberline {5}Results}{25}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Theoretical Maximum}{25}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Matrices}{26}{section.5.2}%
+\contentsline {section}{\numberline {5.3}GFLOPS AMD EPYC 7302P}{29}{section.5.3}%
+\contentsline {section}{\numberline {5.4}GFLOPS AMD EPYC 7413}{37}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Communication time}{41}{subsection.5.4.1}%
+\contentsline {chapter}{\numberline {6}Previous Work}{47}{chapter.6}%

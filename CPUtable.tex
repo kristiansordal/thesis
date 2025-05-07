@@ -24,7 +24,7 @@
       >{\hsize=0.9\hsize\raggedleft\arraybackslash}X}
     \toprule
     & {\small Xeon-A}
-    & {\small Xeon-B}
+    & {\small FPGAQ}
     & {\small Naples}
     & {\small Rome}
     & {\small Milan}
@@ -35,7 +35,7 @@
 
     CPUs
     & Intel Xeon Gold 6130
-    & Intel Xeon Platinum 8168
+    & AMD Epyc 7413
     & AMD Epyc 7601
     & AMD Epyc 7302P
     & AMD Epyc 7763
@@ -53,7 +53,7 @@
 
     Microarch.
     & Skylake
-    & Skylake
+    & Zen 3 
     & Zen
     & Zen 2
     & Zen 3
@@ -73,7 +73,7 @@
 
     Freq.~[GHz]
     & $1.9$--$3.6$
-    & $2.5$--$3.7$
+    & $2.6$--$3.6$
     & $2.7$--$3.2$
     & $1.5$--$3.3$
     & $2.5$--$3.5$
@@ -81,13 +81,13 @@
     & $2.6$ \\
 
     \midrule
-    L1I/core [KiB]  & 32 & 32 & 64 & 32 & 32 & 32 & 64 \\
+    L1I/core [KiB]  & 32 & 64 & 64 & 32 & 32 & 32 & 64 \\
     L1D/core [KiB]  & 32 & 32 & 32 & 32 & 32 & 32 & 64 \\
-    L2/core [KiB]   & 1024 & 1024 & 512 & 512 & 512 & 256 & 512 \\
-    L3/socket [MiB] & 22 & 33 & 64 & 16 & 256 & 32 & 64 \\
-    Mem. channels & $2\times 6$ & $2\times 6$ & $2\times 8$ & $1\times 8$ & $2\times 8$ & $2\times 8$ & $2\times 8$ \\
-    Bandwidth [GB/s] & 256 & 256 & 342 & 204.8 & 409.6 & 342 & 342 \\
-    Triad [GB/s] & 147.1 & 137.4 & 169.7 & 90.9 & 256.5 & 236.4 & 260.4 \\
+    L2/core [KiB]   & 1024 & 512 & 512 & 512 & 512 & 256 & 512 \\
+    L3/socket [MiB] & 22 & 128 & 64 & 16 & 256 & 32 & 64 \\
+    Mem. channels & $2\times 6$ & $2\times 8$ & $2\times 8$ & $1\times 8$ & $2\times 8$ & $2\times 8$ & $2\times 8$ \\
+    Bandwidth [GB/s] & 256 & 256(to be added) & 342 & 204.8 & 409.6 & 342 & 342 \\
+    Triad [GB/s] & 147.1 & 137.4(to be added) & 169.7 & 90.9 & 256.5 & 236.4 & 260.4 \\
 
     % fp64 flops/core/cycle
     % & $32$
