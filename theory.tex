@@ -8,33 +8,61 @@ A matrix can in theory be considered sparse if it is worthwhile to treat zero va
 
 However, SpMV is notoriously difficult to optimize, both in sequential and parallel implementations. One major reason is its inherently low computational intensity.
 
+% \section{Definitions}
+
+% \begin{definition}[Separator]
+%     In the context of SpMV, a separator is a node in the graph that has an edge that strides between two partitions.
+% \end{definition}
+
+% \section{Amdahl's Law}
+
+% Amdahl’s Law provides a theoretical framework for understanding the limits of performance improvement when additional computational resources are applied to a given problem. It quantifies the potential speedup achieved by optimizing a specific portion of a system, emphasizing that the overall gain is constrained by the proportion of time the optimized component contributes to execution.
+
+% \begin{definition}[Amdahl’s Law] The maximum achievable speedup of a computation is limited by the fraction of execution time that remains sequential, even when an arbitrarily large number of parallel resources is employed. \end{definition}
+
+% In the context of parallel computing, this principle highlights that while increasing the number of processing units can accelerate the parallelizable portion of a workload, the sequential fraction imposes a fundamental performance ceiling. Formally, if \(S\)  denotes the total speedup, \(t_{p}\) represents the fraction of execution time that can be parallelized, and \(s_{p}\) is the speedup achieved for that parallelizable portion, Amdahl’s Law is expressed as:
+% \begin{equation} S = \frac{1}{(1 - t_p) + \frac{t_p}{s_p}} \end{equation}
+% This equation reveals that as \(s_{p} \rightarrow \infty\), the theoretical maximum speedup approaches \(\frac{1}{1-t_{p}}\), illustrating that the non-parallelizable portion becomes the dominant limiting factor in scalability.
+
 \section{Definitions}
 
-\begin{definition}[Separator]
-    In the context of SpMV, a separator is a node in the graph that has an edge that strides between two partitions.
-\end{definition}
-
-\section{Amdahl's Law}
-
-Amdahl’s Law provides a theoretical framework for understanding the limits of performance improvement when additional computational resources are applied to a given problem. It quantifies the potential speedup achieved by optimizing a specific portion of a system, emphasizing that the overall gain is constrained by the proportion of time the optimized component contributes to execution.
-
-\begin{definition}[Amdahl’s Law] The maximum achievable speedup of a computation is limited by the fraction of execution time that remains sequential, even when an arbitrarily large number of parallel resources is employed. \end{definition}
-
-In the context of parallel computing, this principle highlights that while increasing the number of processing units can accelerate the parallelizable portion of a workload, the sequential fraction imposes a fundamental performance ceiling. Formally, if \(S\)  denotes the total speedup, \(t_{p}\) represents the fraction of execution time that can be parallelized, and \(s_{p}\) is the speedup achieved for that parallelizable portion, Amdahl’s Law is expressed as:
-\begin{equation} S = \frac{1}{(1 - t_p) + \frac{t_p}{s_p}} \end{equation}
-This equation reveals that as \(s_{p} \rightarrow \infty\), the theoretical maximum speedup approaches \(\frac{1}{1-t_{p}}\), illustrating that the non-parallelizable portion becomes the dominant limiting factor in scalability.
-
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}[c]{|p{4cm}|p{8cm}|}
+            \hline
+             \textbf{Term}&\textbf{Definition}  \\
+            \hline
+             Node&A node, or a compute node, is a computeunit within a larger parallel computing system.    \\
+            \hline
+                 Dual/single socket&A dual or single socket node refers to the amount of processors on a node. Dual socketed nodes have two processors, that are connected through an interconnect.\\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{table}
 
 \section{Latency}
-
-It is worthwhile to speak on the typical latency numbers for various operations on a computer. 
+The execution time of computational operations can vary significantly, and it is important to have some understanding of the latency times associated with typical operations. Referencing these latency numbers can be valuable when interpreting benchmark results and the performance of different programs.
 \input{latencynumber}
 
+\section{Parallel Architectures}
+There are two main architectures used in the parallel computing industry: Shared Memory Architecture and Distributed Memory Architecture. The following sections gives an overview of the key difference between the two.
 
-\subsection{NUMA Architecture}
+\subsection{Shared Memory Architecture}
+On a system with shared memory architecture, every processing unit (PU) have access to the same memory, treat it as a global address space. On such systems, the biggest challenge is that of \textit{cache coherency}, where in order to prevent race conditions, every read of the cache must reflect the latest write (adapted from \cite{manchanda2010non}). 
 
+\subsection{Distributed Memory Architecture}
+On systems with distributed memory architecture, every processor have their own local memory, not accesible by other processors. When a process needs to access memory from another process, explicit communication of the data stored at that memory address needs to occur, and happens through whichever network the processors are connected with (adapted from \cite{manchanda2010non}). Figure \ref{fig:sharedmemory} shows the difference between shared and distributed memory architectures.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{sharedmemory}
+    \caption{Shared and Distributed Memory Architecture (adapted from \cite{llnlparallel})}
+    \label{fig:sharedmemory}
+\end{figure}
+
+\subsection{Non-Uniform Memory Access}
 Non-Uniform Memory Access (NUMA) refers to a multiprocessor system architecture in which memory access latencies depend on the location of the memory relative to a given processor. Unlike traditional symmetric multiprocessing (SMP) systems, where all processors share equal access times to a centralized memory pool, NUMA architectures consist of multiple processor sockets or nodes, each directly connected to its own local memory. These nodes are interconnected by a high-speed communication network, typically an interconnect, facilitating access to remote memory residing on other nodes.
 
-In NUMA systems, accessing local memory, that is, memory located on the same node as the processor, provides significantly lower latency and higher bandwidth compared to accessing remote memory located on other nodes. Thus, maintaining good memory locality is critical for achieving optimal performance. If data accessed by a processor primarily resides in remote memory, performance degradation may occur due to increased latency and reduced bandwidth, particularly when frequent remote memory accesses occur.
+% In NUMA systems, accessing local memory, that is, memory located on the same node as the processor, provides significantly lower latency and higher bandwidth compared to accessing remote memory located on other nodes. Thus, maintaining good memory locality is critical for achieving optimal performance. If data accessed by a processor primarily resides in remote memory, performance degradation may occur due to increased latency and reduced bandwidth, particularly when frequent remote memory accesses occur.
 
-Because of this architecture, software must be carefully designed to maximize locality and minimize remote memory access. Strategies such as the first-touch policy, where memory pages are allocated based on the location of the thread first accessing the memory, are commonly employed to enhance memory locality and overall application performance on NUMA systems.
+% Because of this architecture, software must be carefully designed to maximize locality and minimize remote memory access. Strategies such as the first-touch policy, where memory pages are allocated based on the location of the thread first accessing the memory, are commonly employed to enhance memory locality and overall application performance on NUMA systems.

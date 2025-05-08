@@ -6,14 +6,14 @@ CSR (Compressed Sparse Row) is the most widely used storage format for sparse ma
 \begin{figure}[ht]
     \centering
     \incfig{csrformat}
-    \caption{Example matrix represented in CSR Format.}
+    \caption{Matrix represented in the CSR format.}
     \label{fig:csrformat}
 \end{figure}
 
 The first vector, \(A_{p}\) stores the indices of the first non-zero in the vectors \(A_{p}\) and \(A_{x}\). For a given entry \(A_{p}[i]\), \(A_{p}[i]\) is the index of the first non-zero in the \(i^{\text{th}}\) row. \(A_{j}[j]\) and \(A_{x}[j]\) denotes the column index and value of the \(j^{\text{th}}\) non-zero, respectively.
 \medskip
 
-Throughout the remainder of this thesis, we operate under the assumption that all matrices are represented in CSR (Compressed Sparse Row) format, unless explicitly noted otherwise.
+Throughout the remainder of this thesis, we operate under the assumption that all matrices are represented in CSR format, unless explicitly noted otherwise.
 
 
 \subsection{Computational Intensity}
@@ -36,7 +36,7 @@ The Coordinate List (COO) format stores the matrix as a set of triples on the fo
 \begin{figure}[H]
     \centering
     \incfig{cooformat}
-    \caption{cooformat}
+    \caption{Example Matrix represented in the COO format.}
     \label{fig:cooformat}
 \end{figure}
 
@@ -47,7 +47,7 @@ The Compressed Sparse Column (CSC) format is similar to the CSR format, but inst
 \begin{figure}[H]
     \centering
     \incfig{cscformat}
-    \caption{cscformat}
+    \caption{Matrix represented in the CSC format.}
     \label{fig:cscformat}
 \end{figure}
 
@@ -57,7 +57,7 @@ For an \(M \times  N\) matrix with a maximum of \(K\) non-zeros per row, the ELL
 \begin{figure}[ht]
     \centering
     \incfig{ellpackformat}
-    \caption{ellpackformat}
+    \caption{Matrix Represented in the ELLPACK format.}
     \label{fig:ellpackformat}
 \end{figure}
 
@@ -140,7 +140,7 @@ As seen in \autoref{alg:sharedmemoryspmv}, the outer loop is parallelized, which
 \begin{figure}[H]
     \centering
     \incfig{staticscheduling}
-    \caption{staticscheduling}
+    \caption{Row distribution among threads under static scheduling.}
     \label{fig:staticscheduling}
 \end{figure}
 
@@ -165,7 +165,6 @@ Dynamic scheduling in OpenMP involves precomputing the range of iterations witho
 At first glance, dynamic scheduling appears to resolve the workload imbalance inherent in static scheduling, even though it comes with more overhead. While this assumption holds true on smaller systems, such as personal laptops equipped with fewer physical cores and a single processor socket, it does not readily apply to larger, dual-socket systems utilized in this thesis. Here, the first-touch memory policy becomes particularly significant.
 
 \subsection{First-Touch Policy}
-
 The first-touch policy stipulates that the initial thread accessing a memory page allocates this page to its local memory domain. Consequently, if thread  first accesses a memory page, it is stored locally to thread . Subsequent accesses by thread  to this page result in non-local memory access, compelling thread  to retrieve the data from either remote or main memory. Such accesses incur performance penalties due to significantly higher latency compared to local memory access.
 
 \subsection{Performance Implications of the First-Touch Policy}

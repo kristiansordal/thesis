@@ -5,6 +5,17 @@ Gautam Gupta, Sivasankaran Rajamanickam, and Erik~G. Boman.
 \newblock {GAMGI}: Communication-reducing algebraic multigrid for gpus.
 \newblock In {\em Proceedings of the 28th ACM SIGPLAN Annual Symposium on Principles and Practice of Parallel Programming (PPoPP)}, pages 61--75. ACM, 2024.
 
+\bibitem{llnlparallel}
+{Lawrence Livermore National Laboratory}.
+\newblock Introduction to parallel computing tutorial.
+\newblock \url{ http://hpc.llnl.gov/documentation/tutorials/introduction-parallel-computing-tutorial }, 2024.
+\newblock Accessed: 2025-05-08.
+
+\bibitem{manchanda2010non}
+Nakul Manchanda and Karan Anand.
+\newblock Non-uniform memory access (numa).
+\newblock {\em New York University}, 4, 2010.
+
 \bibitem{norvig_latency}
 Peter Norvig.
 \newblock Latency numbers every programmer should know.
