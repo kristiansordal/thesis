@@ -28,7 +28,8 @@ The \textit{computational intensity} of an operation describes the relation betw
 Operations with low computational intensity, such as SpMV, are often \textit{memory bound} rather than \textit{compute bound}. This means that increasing the computational power of a system (e.g., faster processors) does not necessarily lead to proportional speedups in SpMV performance, as memory bandwidth remains the limiting factor.
 
 \section{Other storage formats}
-There are of course other ways to store a matrix, each with their own benefits and drawbacks.
+There exists many other lesser used storage formats for matrices
+% There are of course other ways to store a matrix, each with their own benefits and drawbacks.
 
 \subsection{COO Format}
 The Coordinate List (COO) format stores the matrix as a set of triples on the form \(i,j,x\), where \(i\) is the row index, \(j\) is the column index, and \(x\) is the value stored at \((i,j)\) in the matrix. In this format all \(0\) entries are ignored.
@@ -85,10 +86,14 @@ A sequential implementation of SpMV on a matrix stored in the CSR format can be 
 \label{alg:sequentialspmv}
 \medskip
 
-For SpMV on well structured matrices, i.e. those similar to the matrix shown in Figure \ref{fig:Cube_Coup_dt0}  we read 12 bytes, and perform 2 FLOPS for each non-zero in the matrix. Keen-eyed readers might notice that this does not coincide with the amount of FLOPS read per non-zero in \autoref{alg:sequentialspmv}. Here we read two doubles, and one integer, which would be equivalent to 20 bytes. The reason for the discrepancy is due to the fact that after the first time \(x\) is accessed, it is loaded into cache, and heavily reused in subsequent iterations, and can for that reason be disregarded.
+% For SpMV on well structured matrices, i.e. those similar to the matrix shown in Figure \ref{fig:Cube_Coup_dt0}  we read 12 bytes, and perform 2 FLOPS for each non-zero in the matrix. Keen-eyed readers might notice that this does not coincide with the amount of FLOPS read per non-zero in \autoref{alg:sequentialspmv}. Here we read two doubles, and one integer, which would be equivalent to 20 bytes. The reason for the discrepancy is due to the fact that after the first time \(x\) is accessed, it is loaded into cache, and heavily reused in subsequent iterations, and can for that reason be disregarded.
 
-For heavily unstructured matrices, it is possible that we acutally read up to 76 bytes per 2 FLOPS. This will occur if there is no cache reuse, and a new cache line (64 bytes) is loaded for each non-zero.
+% For heavily unstructured matrices, it is possible that we acutally read up to 76 bytes per 2 FLOPS. This will occur if there is no cache reuse, and a new cache line (64 bytes) is loaded for each non-zero.
 
+For SpMV on well structured matrices such as those similar to the matrix illustrated in Figure \ref{fig:Cube_Coup_dt0}, each non-zero element typically incurs a data movement cost of approximately 12 bytes and results in 2 floating-point operations (FLOPs). This estimation may appear inconsistent with the data access pattern described in \autoref{alg:sequentialspmv}, where two double-precision values and one integer are accessed per non-zero, corresponding to a total of 20 bytes. The apparent discrepancy arises from the caching behavior of the input vector \(x\): after the initial access, elements of \(x\) are frequently reused and thus remain in cache, reducing the effective memory traffic associated with subsequent accesses.
+\medskip
+
+In contrast, for highly unstructured matrices, the absence of data locality can significantly degrade cache reuse. In the worst case scenario, each non-zero may trigger the loading of an entire 64 byte cache line, with only a small fraction of it being used. Consequently, the effective data movement can increase to as much as 76 bytes per 2 FLOPs.
 
 \begin{figure}[H]
     \centering
@@ -202,17 +207,43 @@ Table \ref{tab:latencynumbers} illustrates that accesses to main memory exhibit 
 
 \section{Distributed Memory SpMV}
 
-In distributed memory, the workload is spread across multiple nodes. Physically, each node is its own dual-socketed system, each with its own memory. If data stored on one node is needed by another node, explicit communication has to occur between the nodes. This is typically done using the Message Passing Interface (MPI).
+In distributed memory systems, the computational workload is distributed across multiple nodes, each typically comprising a dual-socket architecture with local memory. Unlike shared memory systems, data access across nodes is non-trivial and requires explicit communication, most commonly implemented using the Message Passing Interface (MPI).
+
+For distributed sparse matrix-vector multiplication (SpMV), the computation proceeds similarly to the shared memory case (\autoref{alg:sharedmemoryspmv}). The sparse matrix is divided across nodes, and each node computes its local segment of the output vector \(y\). At the end of each iteration, partial results are assembled to produce the global vector, necessitating inter-node communication.
+
 \medskip
 
-For distributed memory SpMV, \autoref{alg:sharedmemoryspmv} is still utilized for computing the result vector \(y\), but the matrix is split between nodes, and each node computes a local part of \(y\). The final vector has to be assembled at the end of each iteration of SpMV. 
-\medskip
+While the thread scheduling and memory locality issues discussed in \ref{sec:schedulingoptions} remain relevant, distributed memory systems introduce the additional challenge of communication overhead. As shown in Table \ref{tab:latencynumbers}, inter-node communication is significantly more expensive than memory accesses. Consequently, minimizing the total communication volume per SpMV iteration is critical for performance.
 
-On distributed memory systems, the challenges discussed in \ref{sec:schedulingoptions} are still relevant, but such systems also pose challenges in regards to the communication volume between nodes. As is evident from Table \ref{tab:latencynumbers}, communication between nodes (i.e. sending bytes over the network) is slow. As communication between nodes is slow, reducing the total communication volume per iteration of SpMV is crucial for performance.
+
+
+
+% In distributed memory, the workload is spread across multiple nodes. Physically, each node is its own dual-socketed system, each with its own memory. If data stored on one node is needed by another node, explicit communication has to occur between the nodes. This is typically done using the Message Passing Interface (MPI).
+% \medskip
+
+% For distributed memory SpMV, \autoref{alg:sharedmemoryspmv} is still utilized for computing the result vector \(y\), but the matrix is split between nodes, and each node computes a local part of \(y\). The final vector has to be assembled at the end of each iteration of SpMV. 
+% \medskip
+
+% On distributed memory systems, the challenges discussed in \ref{sec:schedulingoptions} are still relevant, but such systems also pose challenges in regards to the communication volume between nodes. As is evident from Table \ref{tab:latencynumbers}, communication between nodes (i.e. sending bytes over the network) is slow. As communication between nodes is slow, reducing the total communication volume per iteration of SpMV is crucial for performance.
 
 \subsection{Load Balancing}
-In order to reduce the total communication volume, it is necessary to partition the graph into several part, usually one part per node, or one part per socket. The question falls on how to most effectively partition the graph in order to reduce the communication volume. Firstly, the graph partitoner needs to ensure that the size of each partition balanced according to some criterion. Usually this criterion is described as a percentage of allowed imbalance. Secondly, it needs to minimize the amount of edges that strides across partitions, or in other words, minimize the \textit{edge cut} between partitions. The endpoints of such edges is called a \textit{separator} element. Formally, a separator \(S\) in a graph \(G\) is a set of elements such that \(G \setminus S\) is a disconnected graph.
+To reduce communication volume, the matrix must be partitioned effectively across processing units. Typically, this involves assigning subgraphs or matrix blocks to either nodes or sockets. The quality of the partition is dependent upon finding a balance between creating parts that are roughly equal in size, and creating parts that minimize the communication load. Enforcing the size of each partition is usually done by specifing some imbalance thershold (e.g. 3\%). However, minimizing the communication load is more difficult. 
 \medskip
+
+The communication volume between two partitions is determined by the size of the edge-cut of the subgraphs assigned to each partition. Given two subgraphs \(G_{1}(V_{1},E_{1})\) and \(G_{2}(V_{2},E_{2})\), the edge-cut is the set \(e \in E_{1} \cap E_{2}\), and the communication volume between these two partitions is given by \(2 \cdot  \left| e \right|\), because both of endpoints of the edges in this set needs to be communicated.
+\medskip
+
+Finding a partition that minimizes the sizes of all edge-cuts between partitions is an NP-Hard problem and therefore all partitions produced are approximations. Finding partitions that optimize for either criteria is trivial. For the size criteria it is possible to simply assign a node to the part that currently has the fewest nodes, until every node is assigned to some part. For the edge-cut criteria it is possible to assign all nodes to a single part of the partition, which effectively brings the communication volume to zero.
+
+% A well-designed partitioning strategy must satisfy two key criteria:
+% \begin{enumerate}
+%     \item \textbf{Load Balance:} Each partition should contain approximately equal computational work, commonly enforced by setting an allowable imbalance threshold (e.g., 3\%).
+%     \item \textbf{Communication Minimization:} The number of dependencies (edges) crossing partitions—referred to as the \emph{edge cut}—should be minimized. The nodes at either end of these edges form the \emph{separator set}, which induces communication between partitions.
+% \end{enumerate}
+
+
+% In order to reduce the total communication volume, it is necessary to partition the graph into several part, usually one part per node, or one part per socket. The question falls on how to most effectively partition the graph in order to reduce the communication volume. Firstly, the graph partitoner needs to ensure that the size of each partition balanced according to some criterion. Usually this criterion is described as a percentage of allowed imbalance. Secondly, it needs to minimize the amount of edges that strides across partitions, or in other words, minimize the \textit{edge cut} between partitions. The endpoints of such edges is called a \textit{separator} element. Formally, a separator \(S\) in a graph \(G\) is a set of elements such that \(G \setminus S\) is a disconnected graph.
+% \medskip
 
 There are no fixed criterion of the imbalance value that leads to optimal communication reduction. It is possible to assign the entire graph to one part, leaving the other parts of the partitions empty, which effectively eliminates all communication, but this is clearly not optimal as the entire computational workload is assigned to a single process, leaving all other processes with no work. Usually an imabalence value of around 3\% is sufficient for most matrices.
 \medskip

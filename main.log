@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  8 MAY 2025 13:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  8 MAY 2025 15:05
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1412,7 +1412,7 @@ Package hyperref Info: Link coloring ON on input line 9.
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 (./titlepage.tex
-<./figures/UiBmerkegrayscaleV8.pdf, id=111, 597.23125pt x 845.1575pt>
+<./figures/UiBmerkegrayscaleV8.pdf, id=147, 597.23125pt x 845.1575pt>
 File: ./figures/UiBmerkegrayscaleV8.pdf Graphic file (type pdf)
 <use ./figures/UiBmerkegrayscaleV8.pdf>
 Package pdftex.def Info: ./figures/UiBmerkegrayscaleV8.pdf  used on input line 15.
@@ -1514,17 +1514,15 @@ Package microtype Info: Character `029' is missing
 
 [8
 
-] (./main.toc)
+] (./main.toc
+
+[9])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
 
 
-[9]
-
-[10
-
-] (./theory.tex
+[10] (./theory.tex
 Chapter 1.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1533,10 +1531,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [1
 
+
 {/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] (./latencynumber.tex)
 
 [2] (./figures/sharedmemory.pdf_tex
-<./figures/sharedmemory.pdf, id=221, page=1, 682.86612pt x 341.43306pt>
+<./figures/sharedmemory.pdf, id=266, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/sharedmemory.pdf Graphic file (type pdf)
 <use ./figures/sharedmemory.pdf, page 1>
 Package pdftex.def Info: ./figures/sharedmemory.pdf , page1 used on input line 56.
@@ -1548,12 +1547,12 @@ Package pdftex.def Info: ./figures/sharedmemory.pdf , page1 used on input line 5
 [4]
 Chapter 2.
 (./figures/csrformat.pdf_tex
-<./figures/csrformat.pdf, id=337, page=1, 682.86612pt x 341.43306pt>
+<./figures/csrformat.pdf, id=382, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/csrformat.pdf Graphic file (type pdf)
 <use ./figures/csrformat.pdf, page 1>
 Package pdftex.def Info: ./figures/csrformat.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/csrformat.pdf, id=338, page=2, 682.86612pt x 341.43306pt>
+<./figures/csrformat.pdf, id=383, page=2, 682.86612pt x 341.43306pt>
 File: ./figures/csrformat.pdf Graphic file (type pdf)
 <use ./figures/csrformat.pdf, page 2>
 Package pdftex.def Info: ./figures/csrformat.pdf , page2 used on input line 59.
@@ -1566,7 +1565,7 @@ Package pdftex.def Info: ./figures/csrformat.pdf , page2 used on input line 59.
 
 pdfTeX warning: pdflatex (file ./figures/csrformat.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >] (./figures/cooformat.pdf_tex
-<./figures/cooformat.pdf, id=349, page=1, 682.86612pt x 341.43306pt>
+<./figures/cooformat.pdf, id=394, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/cooformat.pdf Graphic file (type pdf)
 <use ./figures/cooformat.pdf, page 1>
 Package pdftex.def Info: ./figures/cooformat.pdf , page1 used on input line 56.
@@ -1577,18 +1576,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [6] (./figures/cscformat.pdf_tex
-<./figures/cscformat.pdf, id=355, page=1, 682.86612pt x 341.43306pt>
+<./figures/cscformat.pdf, id=400, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/cscformat.pdf Graphic file (type pdf)
 <use ./figures/cscformat.pdf, page 1>
 Package pdftex.def Info: ./figures/cscformat.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/cscformat.pdf, id=356, page=2, 682.86612pt x 341.43306pt>
+<./figures/cscformat.pdf, id=401, page=2, 682.86612pt x 341.43306pt>
 File: ./figures/cscformat.pdf Graphic file (type pdf)
 <use ./figures/cscformat.pdf, page 2>
 Package pdftex.def Info: ./figures/cscformat.pdf , page2 used on input line 59.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
 )
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 55.
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 56.
  (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1608,7 +1607,7 @@ pdfTeX warning: pdflatex (file ./figures/cscformat.pdf): PDF inclusion: multiple
 
 pdfTeX warning: pdflatex (file ./figures/cscformat.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >] (./figures/ellpackformat.pdf_tex
-<./figures/ellpackformat.pdf, id=367, page=1, 682.86612pt x 341.43306pt>
+<./figures/ellpackformat.pdf, id=412, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/ellpackformat.pdf Graphic file (type pdf)
 <use ./figures/ellpackformat.pdf, page 1>
 Package pdftex.def Info: ./figures/ellpackformat.pdf , page1 used on input line 56.
@@ -1616,23 +1615,20 @@ Package pdftex.def Info: ./figures/ellpackformat.pdf , page1 used on input line 
 )
 
 [8 <./figures/ellpackformat.pdf>]
-<./figures/Cube_Coup_dt0.png, id=382, 348.92859pt x 348.92859pt>
+<./figures/Cube_Coup_dt0.png, id=427, 348.92859pt x 348.92859pt>
 File: ./figures/Cube_Coup_dt0.png Graphic file (type png)
 <use ./figures/Cube_Coup_dt0.png>
-Package pdftex.def Info: ./figures/Cube_Coup_dt0.png  used on input line 97.
+Package pdftex.def Info: ./figures/Cube_Coup_dt0.png  used on input line 102.
 (pdftex.def)             Requested size: 166.4475pt x 166.44559pt.
-<./figures/shermanACd.png, id=384, 348.92859pt x 348.92859pt>
+<./figures/shermanACd.png, id=429, 348.92859pt x 348.92859pt>
 File: ./figures/shermanACd.png Graphic file (type png)
 <use ./figures/shermanACd.png>
-Package pdftex.def Info: ./figures/shermanACd.png  used on input line 103.
+Package pdftex.def Info: ./figures/shermanACd.png  used on input line 108.
 (pdftex.def)             Requested size: 166.4475pt x 166.44559pt.
-
-Underfull \vbox (badness 3826) has occurred while \output is active []
-
 
 
 [9 <./figures/Cube_Coup_dt0.png> <./figures/shermanACd.png>] (./figures/staticscheduling.pdf_tex
-<./figures/staticscheduling.pdf, id=395, page=1, 682.86612pt x 341.43306pt>
+<./figures/staticscheduling.pdf, id=440, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/staticscheduling.pdf Graphic file (type pdf)
 <use ./figures/staticscheduling.pdf, page 1>
 Package pdftex.def Info: ./figures/staticscheduling.pdf , page1 used on input line 56.
@@ -1643,17 +1639,157 @@ Package pdftex.def Info: ./figures/staticscheduling.pdf , page1 used on input li
 
 [11]
 
-[12])
+[12]) (./commstrats.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [13]
 
-[14] (./main.bbl)
+[14]
+Chapter 3.
+
+Overfull \hbox (5.72179pt too wide) in paragraph at lines 10--12
+\T1/lmr/m/n/12 (-20) In par-al-lel im-ple-ment-a-tions of Sparse Matrix-Vector Mul-ti-plic-a-tion (SpMV),
+ []
+
+(./figures/examplegraph.pdf_tex
+<./figures/examplegraph.pdf, id=473, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/examplegraph.pdf Graphic file (type pdf)
+<use ./figures/examplegraph.pdf, page 1>
+Package pdftex.def Info: ./figures/examplegraph.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+) (./figures/1acomm-2.pdf_tex
+<./figures/1acomm-2.pdf, id=475, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/1acomm-2.pdf Graphic file (type pdf)
+<use ./figures/1acomm-2.pdf, page 1>
+Package pdftex.def Info: ./figures/1acomm-2.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1acomm-2.pdf, id=476, page=2, 682.86612pt x 341.43306pt>
+File: ./figures/1acomm-2.pdf Graphic file (type pdf)
+<use ./figures/1acomm-2.pdf, page 2>
+Package pdftex.def Info: ./figures/1acomm-2.pdf , page2 used on input line 59.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1acomm-2.pdf, id=477, page=3, 682.86612pt x 341.43306pt>
+File: ./figures/1acomm-2.pdf Graphic file (type pdf)
+<use ./figures/1acomm-2.pdf, page 3>
+Package pdftex.def Info: ./figures/1acomm-2.pdf , page3 used on input line 62.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+)
 
 [15
 
+]
+Overfull \hbox (9.79208pt too wide) in paragraph at lines 65--66
+\T1/lmr/m/n/12 (-20) struc-ture is es-tab-lished, com-mu-nic-a-tion is per-formed us-ing \T1/lmtt/m/n/12 MPI_Allgatherv\T1/lmr/m/n/12 (-20) ,
+ []
+
+(./figures/1bcomm.pdf_tex
+<./figures/1bcomm.pdf, id=484, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/1bcomm.pdf Graphic file (type pdf)
+<use ./figures/1bcomm.pdf, page 1>
+Package pdftex.def Info: ./figures/1bcomm.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1bcomm.pdf, id=485, page=2, 682.86612pt x 341.43306pt>
+File: ./figures/1bcomm.pdf Graphic file (type pdf)
+<use ./figures/1bcomm.pdf, page 2>
+Package pdftex.def Info: ./figures/1bcomm.pdf , page2 used on input line 59.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1bcomm.pdf, id=486, page=3, 682.86612pt x 341.43306pt>
+File: ./figures/1bcomm.pdf Graphic file (type pdf)
+<use ./figures/1bcomm.pdf, page 3>
+Package pdftex.def Info: ./figures/1bcomm.pdf , page3 used on input line 62.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[16 <./figures/examplegraph.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[17 <./figures/1acomm-2.pdf> <./figures/1acomm-2.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1acomm-2.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <./figures/1acomm-2.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1acomm-2.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+Overfull \vbox (127.24481pt too high) has occurred while \output is active []
+
+
+
+[18 <./figures/1bcomm.pdf> <./figures/1bcomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1bcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <./figures/1bcomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1bcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>] (./figures/1ccomm.pdf_tex
+<./figures/1ccomm.pdf, id=511, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/1ccomm.pdf Graphic file (type pdf)
+<use ./figures/1ccomm.pdf, page 1>
+Package pdftex.def Info: ./figures/1ccomm.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1ccomm.pdf, id=512, page=2, 682.86612pt x 341.43306pt>
+File: ./figures/1ccomm.pdf Graphic file (type pdf)
+<use ./figures/1ccomm.pdf, page 2>
+Package pdftex.def Info: ./figures/1ccomm.pdf , page2 used on input line 59.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1ccomm.pdf, id=513, page=3, 682.86612pt x 341.43306pt>
+File: ./figures/1ccomm.pdf Graphic file (type pdf)
+<use ./figures/1ccomm.pdf, page 3>
+Package pdftex.def Info: ./figures/1ccomm.pdf , page3 used on input line 62.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+) (./figures/1dcomm.pdf_tex
+<./figures/1dcomm.pdf, id=514, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/1dcomm.pdf Graphic file (type pdf)
+<use ./figures/1dcomm.pdf, page 1>
+Package pdftex.def Info: ./figures/1dcomm.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1dcomm.pdf, id=515, page=2, 682.86612pt x 341.43306pt>
+File: ./figures/1dcomm.pdf Graphic file (type pdf)
+<use ./figures/1dcomm.pdf, page 2>
+Package pdftex.def Info: ./figures/1dcomm.pdf , page2 used on input line 59.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1dcomm.pdf, id=516, page=3, 682.86612pt x 341.43306pt>
+File: ./figures/1dcomm.pdf Graphic file (type pdf)
+<use ./figures/1dcomm.pdf, page 3>
+Package pdftex.def Info: ./figures/1dcomm.pdf , page3 used on input line 62.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+)
+
+[19 <./figures/1ccomm.pdf> <./figures/1ccomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1ccomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <./figures/1ccomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1ccomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>] (./figures/2dcomm.pdf_tex
+<./figures/2dcomm.pdf, id=524, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/2dcomm.pdf Graphic file (type pdf)
+<use ./figures/2dcomm.pdf, page 1>
+Package pdftex.def Info: ./figures/2dcomm.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+))
+
+[20 <./figures/1dcomm.pdf> <./figures/1dcomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1dcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <./figures/1dcomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1dcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+
+[21 <./figures/2dcomm.pdf>]
+
+[22
+
+] (./main.bbl)
+
+[23
 
 ] (./main.aux)
  ***********
@@ -1661,21 +1797,21 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 5BC923BB407BA1E10F92E3067A008063;3991.
+(rerunfilecheck)             Checksum: 98E83EB09DA8B8A42DB3A45BE0A25C62;5756.
  ) 
 Here is how much of TeX's memory you used:
- 51509 strings out of 473190
- 1190719 string characters out of 5704335
- 1958944 words of memory out of 5000000
- 73513 multiletter control sequences out of 15000+600000
- 667779 words of font info for 213 fonts, out of 8000000 for 9000
+ 51713 strings out of 473190
+ 1195339 string characters out of 5704335
+ 1961944 words of memory out of 5000000
+ 73639 multiletter control sequences out of 15000+600000
+ 677748 words of font info for 229 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  104i,16n,104p,1001b,644s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (25 pages, 415297 bytes).
+Output written on main.pdf (33 pages, 452358 bytes).
 PDF statistics:
- 524 PDF objects out of 1000 (max. 8388607)
- 416 compressed objects within 5 object streams
- 77 named destinations out of 1000 (max. 500000)
- 62228 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 645 PDF objects out of 1000 (max. 8388607)
+ 514 compressed objects within 6 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 66466 words of extra memory for PDF output out of 74296 (max. 10000000)
 
