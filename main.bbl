@@ -1,9 +1,20 @@
 \begin{thebibliography}{1}
 
+\bibitem{hypergraphpartitioning}
+U.V. Catalyurek and C.~Aykanat.
+\newblock Hypergraph-partitioning-based decomposition for parallel sparse-matrix vector multiplication.
+\newblock {\em IEEE Transactions on Parallel and Distributed Systems}, 10(7):673--693, 1999.
+
 \bibitem{gupta2024gamgi}
 Gautam Gupta, Sivasankaran Rajamanickam, and Erik~G. Boman.
 \newblock {GAMGI}: Communication-reducing algebraic multigrid for gpus.
 \newblock In {\em Proceedings of the 28th ACM SIGPLAN Annual Symposium on Principles and Practice of Parallel Programming (PPoPP)}, pages 61--75. ACM, 2024.
+
+\bibitem{karypis1997metis}
+George Karypis and Vipin Kumar.
+\newblock {METIS: A Software Package for Partitioning Unstructured Graphs, Partitioning Meshes, and Computing Fill-Reducing Orderings of Sparse Matrices}.
+\newblock Technical report, University of Minnesota, Department of Computer Science / Army HPC Research Center, 1997.
+\newblock Version 3.0.3.
 
 \bibitem{llnlparallel}
 {Lawrence Livermore National Laboratory}.

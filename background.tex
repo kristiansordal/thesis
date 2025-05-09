@@ -149,20 +149,6 @@ As seen in \autoref{alg:sharedmemoryspmv}, the outer loop is parallelized, which
     \label{fig:staticscheduling}
 \end{figure}
 
-% \subsection{Dynamic scheduling}
-% With dynamic scheduling, OpenMP still precomputes the span of iterations, however threads are not assigned a specific set of iterations to execute. If thread \(A\) is assigned a set of sparse rows, and thread \(B\) is assigned a set of dense rows, then with static scheduling, \(A\) will be idle and not perform any computation while \(B\) is busy with its dense rows. With dynamic scheduling, iterations will be dynamically assigned to threads that are idle, which can distribute the workload more evenly in cases where the computational load of each iteration can differ. 
-% \medskip
-
-% At first glance, it might seem that this will fix the problem static schecduling poses in regards to workload imbalance. This can be the case on single socketed machines with few physical cores such as on a personal laptop, but as the systems that are used in this thesis are dual-socketed, and have a large number of physical cores, it is crucial to consider the impact that \textit{first touch policy} has.
-
-% \subsection{First touch policy}
-% In short, first touch policy means that the first thread to access a memory page will be the one to allocate it to its local memory. This means that if thread \(A\) accesses a memory page, and then thread \(B\) accesses the same memory page, thread \(B\) will not have access to the data in its local memory, and will have to access it from the main memory. This can lead to performance degradation if the data is accessed frequently, as accessing data from main memory is significantly slower than accessing it from local memory. 
-
-
-% \subsection{Performance impact of first touch policy}
-% As seen in table \ref{tab:latencynumbers}, accesses to main are significantly slower than accesses to say the L1 cache, and on dual-socketed nodes, accesses to main memory on the opposite socket have to be sent through the interlink, which is once again signicantly slower than accessing main memory. From this it becomes evident that using dynamic (or guided) scheduling is not a solution to the performance issues that might arise from poorly structured matrices.
-
-
 \subsection{Dynamic Scheduling}
 
 Dynamic scheduling in OpenMP involves precomputing the range of iterations without assigning specific iteration subsets to individual threads in advance. Under static scheduling, if thread \(A\) receives sparse rows and thread \(B\) receives dense rows, thread \(A\) will become idle prematurely while thread \(B\) remains computationally engaged. In contrast, dynamic scheduling allocates iterations at runtime to threads as they become available, thus potentially balancing the computational load more effectively, particularly when iteration workloads vary significantly.
@@ -206,7 +192,6 @@ Table \ref{tab:latencynumbers} illustrates that accesses to main memory exhibit 
 % \section{Computational Intensity}
 
 \section{Distributed Memory SpMV}
-
 In distributed memory systems, the computational workload is distributed across multiple nodes, each typically comprising a dual-socket architecture with local memory. Unlike shared memory systems, data access across nodes is non-trivial and requires explicit communication, most commonly implemented using the Message Passing Interface (MPI).
 
 For distributed sparse matrix-vector multiplication (SpMV), the computation proceeds similarly to the shared memory case (\autoref{alg:sharedmemoryspmv}). The sparse matrix is divided across nodes, and each node computes its local segment of the output vector \(y\). At the end of each iteration, partial results are assembled to produce the global vector, necessitating inter-node communication.
@@ -216,52 +201,37 @@ For distributed sparse matrix-vector multiplication (SpMV), the computation proc
 While the thread scheduling and memory locality issues discussed in \ref{sec:schedulingoptions} remain relevant, distributed memory systems introduce the additional challenge of communication overhead. As shown in Table \ref{tab:latencynumbers}, inter-node communication is significantly more expensive than memory accesses. Consequently, minimizing the total communication volume per SpMV iteration is critical for performance.
 
 
-
-
-% In distributed memory, the workload is spread across multiple nodes. Physically, each node is its own dual-socketed system, each with its own memory. If data stored on one node is needed by another node, explicit communication has to occur between the nodes. This is typically done using the Message Passing Interface (MPI).
-% \medskip
-
-% For distributed memory SpMV, \autoref{alg:sharedmemoryspmv} is still utilized for computing the result vector \(y\), but the matrix is split between nodes, and each node computes a local part of \(y\). The final vector has to be assembled at the end of each iteration of SpMV. 
-% \medskip
-
-% On distributed memory systems, the challenges discussed in \ref{sec:schedulingoptions} are still relevant, but such systems also pose challenges in regards to the communication volume between nodes. As is evident from Table \ref{tab:latencynumbers}, communication between nodes (i.e. sending bytes over the network) is slow. As communication between nodes is slow, reducing the total communication volume per iteration of SpMV is crucial for performance.
-
-\subsection{Load Balancing}
-To reduce communication volume, the matrix must be partitioned effectively across processing units. Typically, this involves assigning subgraphs or matrix blocks to either nodes or sockets. The quality of the partition is dependent upon finding a balance between creating parts that are roughly equal in size, and creating parts that minimize the communication load. Enforcing the size of each partition is usually done by specifing some imbalance thershold (e.g. 3\%). However, minimizing the communication load is more difficult. 
+\subsection{Load Balancing and Graph Partitioning}
+Even with a well-balanced distribution, excessive communication between nodes can become a performance bottleneck if data dependencies span many partitions. An effective partitioning strategy must therefore strike a careful balance between distributing the computational load evenly and reducing the amount of communication required between ranks. This trade-off is naturally captured by the graph partitioning problem.
 \medskip
 
-The communication volume between two partitions is determined by the size of the edge-cut of the subgraphs assigned to each partition. Given two subgraphs \(G_{1}(V_{1},E_{1})\) and \(G_{2}(V_{2},E_{2})\), the edge-cut is the set \(e \in E_{1} \cap E_{2}\), and the communication volume between these two partitions is given by \(2 \cdot  \left| e \right|\), because both of endpoints of the edges in this set needs to be communicated.
+The graph partitioning problem involes dividing an undirected graph \(G(V,E)\), where \(V\) is the set of vertices and \(E\) is the set of edges into \(K\) disjoint subsets (or partitions) such that each subset contains a comparable amount of vertices, and the number of edges connecting different subsets is minimized. Each vertex \(v_{i} \in V\) may be assigned a weight \(w_{i}\), and each edge \(e_{ij} \in E\) may carry a cost \(c_{ij}\). The sum of weights \(W_{k}\) of each partition \(P_{k}\) must not exceed a specified imbalance threshold \(\epsilon\) relative to the average weight of each partition. An edge can be classified as either an internal edge (those that connect nodes in the same partition), or an external edge (those that connect vertices in different partitions), and the cutsize is defined as the sum of the costs of all external edges. The goal is to minize the cutsize, while preserving the balance between the size of each partition. This problem is known to be NP-Hard, even for obtaining bipartitions on unweighted graphs (adapted from \cite{hypergraphpartitioning}).
 \medskip
 
-Finding a partition that minimizes the sizes of all edge-cuts between partitions is an NP-Hard problem and therefore all partitions produced are approximations. Finding partitions that optimize for either criteria is trivial. For the size criteria it is possible to simply assign a node to the part that currently has the fewest nodes, until every node is assigned to some part. For the edge-cut criteria it is possible to assign all nodes to a single part of the partition, which effectively brings the communication volume to zero.
+Algorithms that aim to solve the graph partitioning problem rely on heuristics that provide good approximations in practice. Optimizing for one objective at the expense of the other is trivial but undesirable: assigning all vertices to a single partition minimizes communication to zero but results in extreme load imbalance, whereas naïvely assigning vertices to maintain balance without regard to connectivity may lead to high communication costs.
 
-% A well-designed partitioning strategy must satisfy two key criteria:
-% \begin{enumerate}
-%     \item \textbf{Load Balance:} Each partition should contain approximately equal computational work, commonly enforced by setting an allowable imbalance threshold (e.g., 3\%).
-%     \item \textbf{Communication Minimization:} The number of dependencies (edges) crossing partitions—referred to as the \emph{edge cut}—should be minimized. The nodes at either end of these edges form the \emph{separator set}, which induces communication between partitions.
-% \end{enumerate}
-
-
-% In order to reduce the total communication volume, it is necessary to partition the graph into several part, usually one part per node, or one part per socket. The question falls on how to most effectively partition the graph in order to reduce the communication volume. Firstly, the graph partitoner needs to ensure that the size of each partition balanced according to some criterion. Usually this criterion is described as a percentage of allowed imbalance. Secondly, it needs to minimize the amount of edges that strides across partitions, or in other words, minimize the \textit{edge cut} between partitions. The endpoints of such edges is called a \textit{separator} element. Formally, a separator \(S\) in a graph \(G\) is a set of elements such that \(G \setminus S\) is a disconnected graph.
-% \medskip
-
-There are no fixed criterion of the imbalance value that leads to optimal communication reduction. It is possible to assign the entire graph to one part, leaving the other parts of the partitions empty, which effectively eliminates all communication, but this is clearly not optimal as the entire computational workload is assigned to a single process, leaving all other processes with no work. Usually an imabalence value of around 3\% is sufficient for most matrices.
+\subsection{METIS}
+The graph partitioner used for the experiments in this thesis is called METIS. METIS is a software package for partitioning large irregular graphs, and has other uses such as partitioning meshes and computing fill-reducing orderings of sparse matrices. METIS provides algorithms that are based on multilevel graph partitoning. These algorithms partition the graph through a coarsening and refinement phase. In the coarsening phase, the size of the graph is reduced by way of collapsing the vertices and edges, and then partition the smaller graph. In the refinement phase, the graph is gradually expanded to its original size, and the portion of the graph that is close to the boundary is the primary focus, ensuring the quality of the partition is kept (adapted from \cite{karypis1997metis}).
 \medskip
 
+The way METIS partitions graph does not necessarily optimize for minimizing the communication volume, but rather obtaining partitions that are roughly equal in size. It is possible that there are partitions that have a larger imbalance between the size of partitions, but much smaller communication volumes. In order to obtain partitions that optimize for minimizing communication, it is necessary to look to hypergraph partitioners.
 
-\subsection{Graph Partitioners}
-There are many options when it comes to picking which graph partitioner to use, each with their own benefits and drawbacks. For the experiments performed in this thesis, the METIS graph partitioner has been used. The algorithms used in for graph partitioning in METIS are based on multilevel recursive-bisection. These kinds of algorithms optimize for communication reduction by minimizing the edge-cut, while trying to keep the size difference between partitions within the constraint given by the imbalance value.
-\medskip
+\begin{figure}[H]
+    \centering
+    \incfig{coarseninggraph}
+    \caption{Illustration of multilevel graph partitioning.}
+    \label{fig:coarseninggraph}
+\end{figure}
 
-It is worth mentioning that the problem graph partitioners are trying to solve, mainly that of a perfect bisection, is NP-Hard. Therefore the best these tools can provide us are approximations. They are however very reliable and produce good partitions that are sufficient for our usage
-\medskip
+\subsubsection{Hypergraph Partitioning}
 
 
-The following algorithm outlines how a graph (or matrix) is partitioned and reordered. Given a matrix \(g\) stored in the CSR Format, the number of partitions \(n_{p}\), and a partition vector \(p\) of size \(n_{p} + 1\), that is to store the size of the partition such that the size of the \(i^{th}\) ranks size is given by \(p[i+1] - p[i]\).
-\medskip
 
+
+% Algorithm~\ref{alg:partitioning} outlines the procedure used to partition a sparse matrix using METIS and reorder its rows and columns to reflect the resulting partition layout. This reordering ensures that each partition corresponds to a contiguous block of rows, improving data locality and facilitating parallel distribution.
 \begin{algorithm}[H]
     \caption{Partitioning and reordering a matrix.}
+    \label{alg:partitioning}
     \SetAlgoVlined
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
@@ -316,9 +286,6 @@ The following algorithm outlines how a graph (or matrix) is partitioned and reor
     g.values \(\gets\) newValues\\
 
     \KwRet g\\
-
-
-
 \end{algorithm}
 
 

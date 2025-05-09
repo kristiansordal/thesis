@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1746708916.99372 "main.aux" "main.bbl" "main" 1746709517.27946 0
-  "./references.bib" 1746699407.26231 4434 dae9e24b82c67db113f24f2795b356bd ""
+["bibtex main"] 1746795855.59729 "main.aux" "main.bbl" "main" 1746795859.05836 0
+  "./references.bib" 1746788389.44637 5519 9a8b1add48fc78b11e798f849a6f4d41 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/bibtex/bst/base/plain.bst" 1741388039 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1746709516.97615 11960 371ec2135a2deb55ee78ec05ae2c2dad "pdflatex"
+  "main.aux" 1746795858.76661 12735 be36f5649deaad2c98ffbc2c8cae5d86 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1746709513.96807 "main.tex" "main.pdf" "main" 1746709517.2796 0
+["pdflatex"] 1746795855.65881 "main.tex" "main.pdf" "main" 1746795859.05851 0
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1741388039 2375 baa924870cfb487815765f9094cf3728 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1741388039 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1741388039 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -370,8 +370,8 @@
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1741388039 3346141 1288109d02d1c772df65535881471649 ""
   "abstract.tex" 1738231815.33248 620 b62cd52b383d5e56551b76a9f0e08fe9 ""
   "acknowledgements.tex" 1745516983.11163 83 736b6d20c1373926384b1714fd219581 ""
-  "background.tex" 1746709512.16654 23248 c15cf18a3aa1cf116f5506ba071faae7 ""
-  "commstrats.tex" 1746696141.49952 11624 5f0b6c0f46f58aa028a4fb28a9591473 ""
+  "background.tex" 1746795852.01472 21396 634b054048fd93a62660e99d58fc10a1 ""
+  "commstrats.tex" 1746777059.24393 12161 de76e705322bf4bfda15aa08f4163fb1 ""
   "copyright.tex" 1736241582.61685 361 f437c4cc58b729a5e68a27c7f190e098 ""
   "figures/1acomm-2.pdf" 1746020038.02329 4450 e7950493d1300e7fdba7801687acb91f ""
   "figures/1acomm-2.pdf_tex" 1746020038.02364 3368 3dc3c5646e10877fe04d332e5231986e ""
@@ -385,6 +385,8 @@
   "figures/2dcomm.pdf_tex" 1746615736.78749 2057 ea301d974087405c9edbefe600956845 ""
   "figures/Cube_Coup_dt0.png" 1746624769.88083 7618 ce093e4e96f31fc9648e1bd840d95bc8 ""
   "figures/UiBmerkegrayscaleV8.pdf" 1736241765.48121 46613 5281c52bd83aa19d94fa4b8ebd237c78 ""
+  "figures/coarseninggraph.pdf" 1746786796.53321 33267 3604d1529ecded48fe39bdfe7b7ab87b ""
+  "figures/coarseninggraph.pdf_tex" 1746786796.5337 2075 bff8063a5bfbb7423461c4a653276c95 ""
   "figures/cooformat.pdf" 1746107669.65525 5673 e6158434319a0251a2db3bd163a22e0f ""
   "figures/cooformat.pdf_tex" 1746107669.6554 2063 69c9bd6529b576028492b1c9fd893ed9 ""
   "figures/cscformat.pdf" 1746108345.896 5985 2ba18dd10e3e99e4fe80b69067359668 ""
@@ -401,11 +403,11 @@
   "figures/staticscheduling.pdf" 1746102777.19578 2114 d1c9e3e463e6ade6a8d6e7aad3ca8026 ""
   "figures/staticscheduling.pdf_tex" 1746102777.19607 2605 f083ab5074b3a380a0ca38a05e3d4d0e ""
   "latencynumber.tex" 1746696836.76361 1324 0d401711b1d3361bcc2b84b4635ecb46 ""
-  "main.aux" 1746709516.97615 11960 371ec2135a2deb55ee78ec05ae2c2dad "pdflatex"
-  "main.bbl" 1746708917.10519 1315 1c7a043bf6e864449fa37dbd666ac810 "bibtex main"
-  "main.out" 1746709516.98075 5756 98e83eb09da8b8a42db3a45be0a25c62 "pdflatex"
-  "main.tex" 1746705863.2254 864 20dcb7d125ec03485a7584224a5ca678 ""
-  "main.toc" 1746709516.98153 2987 f3322d6871d96df9b8be20100e80789a "pdflatex"
+  "main.aux" 1746795858.76661 12735 be36f5649deaad2c98ffbc2c8cae5d86 "pdflatex"
+  "main.bbl" 1746795855.65446 1936 e0e8c81a054463ec3a5ae4098c112940 "bibtex main"
+  "main.out" 1746795858.77112 5812 d50ff6784789013ee3c1e6f78238e6ed "pdflatex"
+  "main.tex" 1746777071.16226 864 20dcb7d125ec03485a7584224a5ca678 ""
+  "main.toc" 1746795858.7721 3070 5c2dd79da93c8681d6f85c39d1d71b6d "pdflatex"
   "preamble.tex" 1746627243.34042 9506 c6efc6723efca2dd46fb4704de08943b ""
   "quote.tex" 1746689414.58408 291 6af61b5da57f8cbe0a9b8987437163de ""
   "settings.tex" 1746280199.68062 1679 a6d13370c8c5b3d7d3043c0452017d5a ""

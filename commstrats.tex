@@ -13,6 +13,10 @@ In parallel implementations of Sparse Matrix-Vector Multiplication (SpMV), effec
 This chapter evaluates a series of progressively optimized communication strategies employed in distributed-memory parallel SpMV. Starting from the simplest method, exchanging the entire result vector between all nodes, the strategies become increasingly selective and efficient, focusing specifically on exchanging only the essential data elements required by each node. These approaches leverage knowledge of the matrix structure, partitioning methods, and computational dependencies to minimize communication overhead.
 \medskip
 
+
+% This chapter evaluates a series of progressively optimized communication strategies employed in distributed-memory parallel SpMV. Starting from the simplest method, exchanging the entire result vector between all nodes, the strategies become increasingly selective and efficient, focusing specifically on exchanging only the essential data elements required by each node. These approaches leverage knowledge of the matrix structure, partitioning methods, and computational dependencies to minimize communication overhead.
+% \medskip
+
 % The following sections describe each strategy in detail, highlighting their theoretical motivations, implementation specifics using MPI (Message Passing Interface), and potential advantages or disadvantages. The strategies discussed include exchanging the entire vector, exchanging only separator elements, selectively exchanging required separators, and finally, communicating only specific separator values needed by dependent nodes. Additionally, the chapter introduces considerations for fully scalable two-dimensional (2D) communication methods, providing a foundation for scalable performance on large-scale computing clusters.
 
 
