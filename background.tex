@@ -86,10 +86,6 @@ A sequential implementation of SpMV on a matrix stored in the CSR format can be 
 \label{alg:sequentialspmv}
 \medskip
 
-% For SpMV on well structured matrices, i.e. those similar to the matrix shown in Figure \ref{fig:Cube_Coup_dt0}  we read 12 bytes, and perform 2 FLOPS for each non-zero in the matrix. Keen-eyed readers might notice that this does not coincide with the amount of FLOPS read per non-zero in \autoref{alg:sequentialspmv}. Here we read two doubles, and one integer, which would be equivalent to 20 bytes. The reason for the discrepancy is due to the fact that after the first time \(x\) is accessed, it is loaded into cache, and heavily reused in subsequent iterations, and can for that reason be disregarded.
-
-% For heavily unstructured matrices, it is possible that we acutally read up to 76 bytes per 2 FLOPS. This will occur if there is no cache reuse, and a new cache line (64 bytes) is loaded for each non-zero.
-
 For SpMV on well structured matrices such as those similar to the matrix illustrated in Figure \ref{fig:Cube_Coup_dt0}, each non-zero element typically incurs a data movement cost of approximately 12 bytes and results in 2 floating-point operations (FLOPs). This estimation may appear inconsistent with the data access pattern described in \autoref{alg:sequentialspmv}, where two double-precision values and one integer are accessed per non-zero, corresponding to a total of 20 bytes. The apparent discrepancy arises from the caching behavior of the input vector \(x\): after the initial access, elements of \(x\) are frequently reused and thus remain in cache, reducing the effective memory traffic associated with subsequent accesses.
 \medskip
 
@@ -162,35 +158,6 @@ The first-touch policy stipulates that the initial thread accessing a memory pag
 
 Table \ref{tab:latencynumbers} illustrates that accesses to main memory exhibit substantially higher latency compared to local cache (e.g., L1 cache) accesses. In dual-socket configurations, accessing memory residing on the remote socket involves inter-socket communication through an interlink, further exacerbating latency. Consequently, dynamic (or guided) scheduling alone does not mitigate the performance degradation arising from poorly structured matrices, as it inadvertently exacerbates memory locality issues inherent to the first-touch policy on NUMA architectures.
 
-
-
-
-
-
-
-
-% This algorithm can be parallelized using shared memory parallelization using OpenMPs \texttt{\#pragma omp parallel for} directive in the following manner:
-% \medskip
-
-% \begin{algorithm}[H]
-%     \caption{Sequential CSR-based SpMV}
-%     \SetAlgoVlined
-%     \SetKwInOut{Input}{Input}
-%     \SetKwInOut{Output}{Output}
-%     \Input{\(A_{p},A_{j},A_{x},x\)}
-%     \Output{\(y\)\newline}
-
-%     \textbf{\#pragma omp parallel for}\\
-%     \For{\(i \gets 0\) \KwTo \(n\)}{
-%         \(y[i] \gets 0\)\\
-%         \For{\(j \gets A_{p}[i]\) \KwTo \(A_{p}[i+1]\)}{
-%             \(y[i] \gets y[i] + A_{x}[j] \cdot x[A_{j}[j]]\)\\
-%         }
-%     }
-% \end{algorithm}
-
-% \section{Computational Intensity}
-
 \section{Distributed Memory SpMV}
 In distributed memory systems, the computational workload is distributed across multiple nodes, each typically comprising a dual-socket architecture with local memory. Unlike shared memory systems, data access across nodes is non-trivial and requires explicit communication, most commonly implemented using the Message Passing Interface (MPI).
 
@@ -211,7 +178,7 @@ The graph partitioning problem involes dividing an undirected graph \(G(V,E)\), 
 Algorithms that aim to solve the graph partitioning problem rely on heuristics that provide good approximations in practice. Optimizing for one objective at the expense of the other is trivial but undesirable: assigning all vertices to a single partition minimizes communication to zero but results in extreme load imbalance, whereas naïvely assigning vertices to maintain balance without regard to connectivity may lead to high communication costs.
 
 \subsection{METIS}
-The graph partitioner used for the experiments in this thesis is called METIS. METIS is a software package for partitioning large irregular graphs, and has other uses such as partitioning meshes and computing fill-reducing orderings of sparse matrices. METIS provides algorithms that are based on multilevel graph partitoning. These algorithms partition the graph through a coarsening and refinement phase. In the coarsening phase, the size of the graph is reduced by way of collapsing the vertices and edges, and then partition the smaller graph. In the refinement phase, the graph is gradually expanded to its original size, and the portion of the graph that is close to the boundary is the primary focus, ensuring the quality of the partition is kept (adapted from \cite{karypis1997metis}).
+The graph partitioner used for the experiments in this thesis is called METIS. METIS is a software package for partitioning large irregular graphs, and has other uses such as partitioning meshes and computing fill-reducing orderings of sparse matrices. METIS provides algorithms that are based on multilevel graph partitoning. These algorithms partition the graph through a coarsening and refinement phase. In the coarsening phase, the size of the graph is reduced by way of collapsing the vertices and edges, and then partition the smaller graph. In the refinement phase, the graph is gradually expanded to its original size, and the portion of the graph that is close to the boundary is the primary focus, ensuring the quality of the partition is kept (adapted from \cite{karypis1997metis}). \autoref{alg:partitioning} shows how to partition and reorder the vertices of a graph according to the generated partition, using METIS' \(K\)-way partition algorithm.
 \medskip
 
 The way METIS partitions graph does not necessarily optimize for minimizing the communication volume, but rather obtaining partitions that are roughly equal in size. It is possible that there are partitions that have a larger imbalance between the size of partitions, but much smaller communication volumes. In order to obtain partitions that optimize for minimizing communication, it is necessary to look to hypergraph partitioners.
@@ -223,12 +190,18 @@ The way METIS partitions graph does not necessarily optimize for minimizing the 
     \label{fig:coarseninggraph}
 \end{figure}
 
-\subsubsection{Hypergraph Partitioning}
+\subsection{Hypergraph Partitioning}
+\begin{quote}
+    A \emph{hypergraph} \(H = (V,N)\) is defined as a set of vertices \(V\) and a set of nets (hyperedges) \(N\) among those vertices. Every net \(n_{j} \in N\) is a subset of vertcies, i.e., \(n_{j} \subseteq V\). The vertices in a net \(n_{j}\) are called its \textit{pins} and denoted as \(pins[n_{j}]\). The size of a net is equal to the number of its pins, i.e., \(s_{j} = \left|  pins[n_{j}] \right|\). The set of nets connected to a vertx \(v_{i}\) is denoted as \(nets[v_{i}]\). The degree of a vertex is equal to the number of nets it is connected to, i.e., \(d_{i} = \left| nets[v_{i}] \right|\).
+\end{quote}
+
+\begin{flushright}
+    \cite{hypergraphpartitioning}
+\end{flushright}
+\medskip
+Hypergraph partitioners try to solve the same problems, and employ similar algorithms as those graph partitioners use, however they use these algorithms on hypergraphs, and not regular graphs. \k Cataly\" urek and Ayakanat showed in \cite{hypergraphpartitioning} that using the hypergraph partitioner they developed, they could get up to 63\% less communication volume, with an average reduction in communication volume of 30\% - 38\%, when compared to METIS.
 
 
-
-
-% Algorithm~\ref{alg:partitioning} outlines the procedure used to partition a sparse matrix using METIS and reorder its rows and columns to reflect the resulting partition layout. This reordering ensures that each partition corresponds to a contiguous block of rows, improving data locality and facilitating parallel distribution.
 \begin{algorithm}[H]
     \caption{Partitioning and reordering a matrix.}
     \label{alg:partitioning}
