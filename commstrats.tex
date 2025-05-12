@@ -187,18 +187,19 @@ This approach eliminates all unnecessary data transfers but introduces additiona
 The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire vector \(x\), and will run into performance issues when \(x\) is so large that it doesn't fit into memory. Usually, this is not a problem when SpMV is ran on CPUs, as they have large amounts of memory. Even on GPUs this problem might not be encountered, as modern GPUs have sufficient memory for large matrices.
 \medskip
 
-\subsection{Intelligence processing units}
-paragraph on IPUs goes here
-% There has emerged a new kind of processing units, namely IPUs. These kinds of processes have a large amount of physical cores, but each core has a highly limited amount of storage.
+\subsection{IPUs and emerging architectures}
+In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This comes in the form of packaging thousands of small processor cores into a single device, where each core has its own local memory, and no device-level shared memory \cite{10.3389/fphy.2023.979699}. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Such architectures necessitates a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial.
+\medskip
+
 
 
 \subsection{Memory Scalable}
-Instead of storing the entire vector, each rank only stores its local part of the vector. In addition, it is necessary to allocate enough space for the separators elements that are needed from the other ranks. In order to achieve this, \(x\) is renumbered such that every ranks part of the vector is.
+Instead of storing the entire vector, each rank only stores its local part of the vector. In addition, it is necessary to allocate enough space for the separators elements that are needed from the other ranks. In order to achieve this, \(x\) is renumbered such that every ranks part of the vector is 0-indexed. For the local part of the \(x\) vector this is done by simply subtracting the position of the first local entry assigned to that rank from each entry in the local vector. It is slightly more complicated to renumber the separator elements, and the technicalities of how to do this will not be discussed here.
 
 \begin{figure}[ht]
     \centering
     \incfig{2dcomm}
-    \caption{2dcomm}
+    \caption{Global indexing vs. Local indexing of \(x\).}
     \label{fig:2dcomm}
 \end{figure}
 

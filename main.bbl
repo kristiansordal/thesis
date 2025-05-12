@@ -1,5 +1,10 @@
 \begin{thebibliography}{1}
 
+\bibitem{10.3389/fphy.2023.979699}
+Luk Burchard, Kristian~Gregorius Hustad, Johannes Langguth, and Xing Cai.
+\newblock Enabling unstructured-mesh computation on massively tiled ai processors: An example of accelerating in silico cardiac simulation.
+\newblock {\em Frontiers in Physics}, Volume 11 - 2023, 2023.
+
 \bibitem{hypergraphpartitioning}
 U.V. Catalyurek and C.~Aykanat.
 \newblock Hypergraph-partitioning-based decomposition for parallel sparse-matrix vector multiplication.
@@ -9,6 +14,12 @@ U.V. Catalyurek and C.~Aykanat.
 Gautam Gupta, Sivasankaran Rajamanickam, and Erik~G. Boman.
 \newblock {GAMGI}: Communication-reducing algebraic multigrid for gpus.
 \newblock In {\em Proceedings of the 28th ACM SIGPLAN Annual Symposium on Principles and Practice of Parallel Programming (PPoPP)}, pages 61--75. ACM, 2024.
+
+\bibitem{cerebras2024wse3}
+Cerebras~Systems Inc.
+\newblock Wse-3 datasheet.
+\newblock \url{https://cerebras.net/product/system/}, 2024.
+\newblock DS03 v3 821.
 
 \bibitem{karypis1997metis}
 George Karypis and Vipin Kumar.
