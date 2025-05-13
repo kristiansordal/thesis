@@ -1,6 +1,28 @@
 \chapter{Introduction}
+Sparse Matrix Vector Multiplication (SpMV) is a fundamental computational kernel in numerous scientific and engineering applications, including numerical simulation, optimization, and machine learning. Due to its common presence in iterative solvers and graph based computations, improving the performance of SpMV remains a critical goal in the field of high performance computing. However, SpMV is inherently memory bound and characterized by irregular memory access patterns, which makes it challenging to achieve high computational efficiency. 
+\medskip
+
+Parallelization of SpMV offers a pathway to performance improvement, but the associated communication overhead becomes a primary bottleneck when operating in distributed memory environments. Unlike shared memory systems, where all processors can access a global memory space, distributed systems require explicit data exchanges between compute nodes. These communications often dominate the runtime cost, especially for large scale problems where data dependencies span across multiple nodes. The situation is exacerbated by the low computational intensity of SpMV operations, which further limits the benefits of increased computational resources unless communication is carefully managed.
+\medskip
 
 
-\section{Research Question}
+This thesis aims to investigate the impact of different communication strategies on the performance of parallel SpMV in hybrid shared-distributed memory settings. By combining a shared memory model within individual compute nodes through the use of OpenMP and a distributed memory model for inter node communication using MPI, the study explores how various strategies, ranging from full vector broadcasts to minimal selective updates, affect both communication volume and execution time.
+\medskip
 
-This thesis aims to investigate the impact different communication strategies have on the performance of parallel SpMV. The implementation of SpMV uses a shared memory layout on each socket of a node, and distributed memory for communication across nodes.
+We evaluate several communication schemes, including:
+
+\begin{itemize}
+    \item Full vector exchange, where the entire input or result vector is communicated across nodes.
+
+    \item Separator based methods, where only the boundary elements (separators) are exchanged.
+
+    \item Minimally selective communication, which restricts communication to only those separator values that are actually required for computation on neighbouring nodes.
+\end{itemize}
+\medskip
+
+These strategies are benchmarked on modern multicore architectures to assess their scalability and efficiency. Particular attention is paid to how different partitioning techniques, such as graph and hypergraph partitioning, influence the communication patterns and associated costs.
+\medskip
+
+The central research question guiding this work is:
+
+How do different communication strategies affect the performance of distributed SpMV, and what trade offs exist between communication volume, computational load balancing, and total execution time?
