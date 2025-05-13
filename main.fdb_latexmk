@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1747057312.12906 "main.aux" "main.bbl" "main" 1747057343.03679 0
+["bibtex main"] 1747124078.92784 "main.aux" "main.bbl" "main" 1747124560.46207 0
   "./references.bib" 1747046944.70745 8771 72e9a365034e70aeba023c9e17ba0363 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/bibtex/bst/base/plain.bst" 1741388039 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1747057342.73066 28625 ae9c27de6a972ed6240fd1d4251f431e "pdflatex"
+  "main.aux" 1747124560.13595 29631 45a50406f9bfa0aa109287a44ff8f2d0 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1747057312.21316 "main.tex" "main.pdf" "main" 1747057343.03698 0
+["pdflatex"] 1747124530.76596 "main.tex" "main.pdf" "main" 1747124560.46224 0
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1741388039 2375 baa924870cfb487815765f9094cf3728 ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1741388039 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1741388039 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -377,8 +377,8 @@
   "CPUtable.tex" 1746623759.28109 6174 e77aaadcf337ecf854dbb0ae45c1809f ""
   "abstract.tex" 1738231815.33248 620 b62cd52b383d5e56551b76a9f0e08fe9 ""
   "acknowledgements.tex" 1745516983.11163 83 736b6d20c1373926384b1714fd219581 ""
-  "background.tex" 1746876513.89916 18747 c88cf1867cad4bf2df36714b5edd8b86 ""
-  "commstrats.tex" 1747050303.05493 13105 e2fdcfa16412d032fc6405665338962a ""
+  "background.tex" 1747123583.50373 18786 743073bd663b5332217b786cbda1febf ""
+  "commstrats.tex" 1747124356.96156 13640 e84d2fe4ef07cc4a34c6b3dc2e0a1765 ""
   "copyright.tex" 1736241582.61685 361 f437c4cc58b729a5e68a27c7f190e098 ""
   "figures/1acomm-2.pdf" 1746020038.02329 4450 e7950493d1300e7fdba7801687acb91f ""
   "figures/1acomm-2.pdf_tex" 1746020038.02364 3368 3dc3c5646e10877fe04d332e5231986e ""
@@ -388,8 +388,8 @@
   "figures/1ccomm.pdf_tex" 1746098899.35701 3359 681218a77340eea4f27284feeed6aed0 ""
   "figures/1dcomm.pdf" 1746098962.27507 4334 adc1335ecaa701467e39d0959633d683 ""
   "figures/1dcomm.pdf_tex" 1746098962.27527 3359 3beb6fe9ee7a9f20ede7224f948afed0 ""
-  "figures/2dcomm.pdf" 1746615736.78731 5871 770a9f153c55a6842a4dd6d79a6d70c3 ""
-  "figures/2dcomm.pdf_tex" 1746615736.78749 2057 ea301d974087405c9edbefe600956845 ""
+  "figures/2dcomm.pdf" 1747124529.73414 5768 45d1be724850da2671f145efcb185f1e ""
+  "figures/2dcomm.pdf_tex" 1747124529.73431 2058 a43db2db67c2a4d77da36aae3975e79a ""
   "figures/Bump_2911.png" 1746624821.36641 7128 0c641fc68944eacbe1392c0dfe684f14 ""
   "figures/Bump_2911_commload_rome16q.png" 1746879212.88643 406902 9ce790053f04d4c2a4fe9b156b8ad93f ""
   "figures/Bump_2911_commload_single_defq.png" 1746882525.65684 407110 e50a28a9ac13678597a2d4045e658eb9 ""
@@ -450,14 +450,14 @@
   "figures/staticscheduling.pdf_tex" 1746102777.19607 2605 f083ab5074b3a380a0ca38a05e3d4d0e ""
   "introduction.tex" 1745492218.42142 310 fcac195509cb580125570b9215783af0 ""
   "latencynumber.tex" 1746696836.76361 1324 0d401711b1d3361bcc2b84b4635ecb46 ""
-  "main.aux" 1747057342.73066 28625 ae9c27de6a972ed6240fd1d4251f431e "pdflatex"
-  "main.bbl" 1747057312.20705 2408 69fa44d4c34936e8c6c4fe3ef76f37fe "bibtex main"
-  "main.out" 1747057342.73507 7655 96f6ea915b74d5343b4bc3df94fbd603 "pdflatex"
+  "main.aux" 1747124560.13595 29631 45a50406f9bfa0aa109287a44ff8f2d0 "pdflatex"
+  "main.bbl" 1747124078.99777 2408 69fa44d4c34936e8c6c4fe3ef76f37fe "bibtex main"
+  "main.out" 1747124560.14078 7416 4307f6d887865a8dcc654a8a0fe609d4 "pdflatex"
   "main.tex" 1747057250.61359 799 b7769caa4c2c5774f295b9f40611ba4d ""
-  "main.toc" 1747057342.73577 3944 e6570c0cde7e3661ff563a40d0d3f242 "pdflatex"
+  "main.toc" 1747124560.14144 3840 0409e2faf6707c4da460e8dc06507f94 "pdflatex"
   "preamble.tex" 1746882563.09173 9540 eb9d19a455502847c5c7c6b230dea6fe ""
   "quote.tex" 1746689414.58408 291 6af61b5da57f8cbe0a9b8987437163de ""
-  "results.tex" 1747057243.83479 12178 3ca8fbbe97683d1d95974a561887f258 ""
+  "results.tex" 1747123150.15731 12178 3ca8fbbe97683d1d95974a561887f258 ""
   "settings.tex" 1747052007.73529 1679 a6d13370c8c5b3d7d3043c0452017d5a ""
   "theory.tex" 1746704291.73352 6702 19cd9baeeb3e6ef8ffde347f66f30c28 ""
   "titlepage.tex" 1736241523.03543 504 5e2fc24f6a28370a527817fde532ab5e ""

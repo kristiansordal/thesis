@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  12 MAY 2025 15:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  13 MAY 2025 10:22
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1412,7 +1412,7 @@ Package hyperref Info: Link coloring ON on input line 8.
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 (./titlepage.tex
-<./figures/UiBmerkegrayscaleV8.pdf, id=191, 597.23125pt x 845.1575pt>
+<./figures/UiBmerkegrayscaleV8.pdf, id=187, 597.23125pt x 845.1575pt>
 File: ./figures/UiBmerkegrayscaleV8.pdf Graphic file (type pdf)
 <use ./figures/UiBmerkegrayscaleV8.pdf>
 Package pdftex.def Info: ./figures/UiBmerkegrayscaleV8.pdf  used on input line 15.
@@ -1548,7 +1548,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [3{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] (./latencynumber.tex)
 
 [4] (./figures/sharedmemory.pdf_tex
-<./figures/sharedmemory.pdf, id=331, page=1, 682.86612pt x 341.43306pt>
+<./figures/sharedmemory.pdf, id=326, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/sharedmemory.pdf Graphic file (type pdf)
 <use ./figures/sharedmemory.pdf, page 1>
 Package pdftex.def Info: ./figures/sharedmemory.pdf , page1 used on input line 56.
@@ -1560,12 +1560,12 @@ Package pdftex.def Info: ./figures/sharedmemory.pdf , page1 used on input line 5
 [6]
 Chapter 3.
 (./figures/csrformat.pdf_tex
-<./figures/csrformat.pdf, id=445, page=1, 682.86612pt x 341.43306pt>
+<./figures/csrformat.pdf, id=440, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/csrformat.pdf Graphic file (type pdf)
 <use ./figures/csrformat.pdf, page 1>
 Package pdftex.def Info: ./figures/csrformat.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/csrformat.pdf, id=446, page=2, 682.86612pt x 341.43306pt>
+<./figures/csrformat.pdf, id=441, page=2, 682.86612pt x 341.43306pt>
 File: ./figures/csrformat.pdf Graphic file (type pdf)
 <use ./figures/csrformat.pdf, page 2>
 Package pdftex.def Info: ./figures/csrformat.pdf , page2 used on input line 59.
@@ -1578,7 +1578,7 @@ Package pdftex.def Info: ./figures/csrformat.pdf , page2 used on input line 59.
 
 pdfTeX warning: pdflatex (file ./figures/csrformat.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >] (./figures/cooformat.pdf_tex
-<./figures/cooformat.pdf, id=457, page=1, 682.86612pt x 341.43306pt>
+<./figures/cooformat.pdf, id=452, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/cooformat.pdf Graphic file (type pdf)
 <use ./figures/cooformat.pdf, page 1>
 Package pdftex.def Info: ./figures/cooformat.pdf , page1 used on input line 56.
@@ -1589,12 +1589,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [8] (./figures/cscformat.pdf_tex
-<./figures/cscformat.pdf, id=464, page=1, 682.86612pt x 341.43306pt>
+<./figures/cscformat.pdf, id=458, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/cscformat.pdf Graphic file (type pdf)
 <use ./figures/cscformat.pdf, page 1>
 Package pdftex.def Info: ./figures/cscformat.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/cscformat.pdf, id=465, page=2, 682.86612pt x 341.43306pt>
+<./figures/cscformat.pdf, id=459, page=2, 682.86612pt x 341.43306pt>
 File: ./figures/cscformat.pdf Graphic file (type pdf)
 <use ./figures/cscformat.pdf, page 2>
 Package pdftex.def Info: ./figures/cscformat.pdf , page2 used on input line 59.
@@ -1620,7 +1620,7 @@ pdfTeX warning: pdflatex (file ./figures/cscformat.pdf): PDF inclusion: multiple
 
 pdfTeX warning: pdflatex (file ./figures/cscformat.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >] (./figures/ellpackformat.pdf_tex
-<./figures/ellpackformat.pdf, id=477, page=1, 682.86612pt x 341.43306pt>
+<./figures/ellpackformat.pdf, id=472, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/ellpackformat.pdf Graphic file (type pdf)
 <use ./figures/ellpackformat.pdf, page 1>
 Package pdftex.def Info: ./figures/ellpackformat.pdf , page1 used on input line 56.
@@ -1628,12 +1628,12 @@ Package pdftex.def Info: ./figures/ellpackformat.pdf , page1 used on input line 
 )
 
 [10 <./figures/ellpackformat.pdf>]
-<./figures/Cube_Coup_dt0.png, id=492, 348.92859pt x 348.92859pt>
+<./figures/Cube_Coup_dt0.png, id=487, 348.92859pt x 348.92859pt>
 File: ./figures/Cube_Coup_dt0.png Graphic file (type png)
 <use ./figures/Cube_Coup_dt0.png>
 Package pdftex.def Info: ./figures/Cube_Coup_dt0.png  used on input line 98.
 (pdftex.def)             Requested size: 166.4475pt x 166.44559pt.
-<./figures/shermanACd.png, id=494, 348.92859pt x 348.92859pt>
+<./figures/shermanACd.png, id=489, 348.92859pt x 348.92859pt>
 File: ./figures/shermanACd.png Graphic file (type png)
 <use ./figures/shermanACd.png>
 Package pdftex.def Info: ./figures/shermanACd.png  used on input line 104.
@@ -1641,7 +1641,7 @@ Package pdftex.def Info: ./figures/shermanACd.png  used on input line 104.
 
 
 [11 <./figures/Cube_Coup_dt0.png> <./figures/shermanACd.png>] (./figures/staticscheduling.pdf_tex
-<./figures/staticscheduling.pdf, id=504, page=1, 682.86612pt x 341.43306pt>
+<./figures/staticscheduling.pdf, id=499, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/staticscheduling.pdf Graphic file (type pdf)
 <use ./figures/staticscheduling.pdf, page 1>
 Package pdftex.def Info: ./figures/staticscheduling.pdf , page1 used on input line 56.
@@ -1653,7 +1653,7 @@ Package pdftex.def Info: ./figures/staticscheduling.pdf , page1 used on input li
 [13]
 
 [14] (./figures/coarseninggraph.pdf_tex
-<./figures/coarseninggraph.pdf, id=530, page=1, 682.86612pt x 341.43306pt>
+<./figures/coarseninggraph.pdf, id=525, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/coarseninggraph.pdf Graphic file (type pdf)
 <use ./figures/coarseninggraph.pdf, page 1>
 Package pdftex.def Info: ./figures/coarseninggraph.pdf , page1 used on input line 56.
@@ -1664,7 +1664,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [15]) (./commstrats.tex
-Underfull \vbox (badness 2689) has occurred while \output is active []
+Underfull \vbox (badness 1320) has occurred while \output is active []
 
 
 
@@ -1682,23 +1682,23 @@ Overfull \hbox (5.72179pt too wide) in paragraph at lines 10--12
  []
 
 (./figures/examplegraph.pdf_tex
-<./figures/examplegraph.pdf, id=605, page=1, 682.86612pt x 341.43306pt>
+<./figures/examplegraph.pdf, id=602, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/examplegraph.pdf Graphic file (type pdf)
 <use ./figures/examplegraph.pdf, page 1>
 Package pdftex.def Info: ./figures/examplegraph.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
 ) (./figures/1acomm-2.pdf_tex
-<./figures/1acomm-2.pdf, id=607, page=1, 682.86612pt x 341.43306pt>
+<./figures/1acomm-2.pdf, id=604, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/1acomm-2.pdf Graphic file (type pdf)
 <use ./figures/1acomm-2.pdf, page 1>
 Package pdftex.def Info: ./figures/1acomm-2.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/1acomm-2.pdf, id=608, page=2, 682.86612pt x 341.43306pt>
+<./figures/1acomm-2.pdf, id=605, page=2, 682.86612pt x 341.43306pt>
 File: ./figures/1acomm-2.pdf Graphic file (type pdf)
 <use ./figures/1acomm-2.pdf, page 2>
 Package pdftex.def Info: ./figures/1acomm-2.pdf , page2 used on input line 59.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/1acomm-2.pdf, id=609, page=3, 682.86612pt x 341.43306pt>
+<./figures/1acomm-2.pdf, id=606, page=3, 682.86612pt x 341.43306pt>
 File: ./figures/1acomm-2.pdf Graphic file (type pdf)
 <use ./figures/1acomm-2.pdf, page 3>
 Package pdftex.def Info: ./figures/1acomm-2.pdf , page3 used on input line 62.
@@ -1711,17 +1711,17 @@ Overfull \hbox (9.79208pt too wide) in paragraph at lines 69--70
  []
 
 (./figures/1bcomm.pdf_tex
-<./figures/1bcomm.pdf, id=615, page=1, 682.86612pt x 341.43306pt>
+<./figures/1bcomm.pdf, id=612, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/1bcomm.pdf Graphic file (type pdf)
 <use ./figures/1bcomm.pdf, page 1>
 Package pdftex.def Info: ./figures/1bcomm.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/1bcomm.pdf, id=616, page=2, 682.86612pt x 341.43306pt>
+<./figures/1bcomm.pdf, id=613, page=2, 682.86612pt x 341.43306pt>
 File: ./figures/1bcomm.pdf Graphic file (type pdf)
 <use ./figures/1bcomm.pdf, page 2>
 Package pdftex.def Info: ./figures/1bcomm.pdf , page2 used on input line 59.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/1bcomm.pdf, id=617, page=3, 682.86612pt x 341.43306pt>
+<./figures/1bcomm.pdf, id=614, page=3, 682.86612pt x 341.43306pt>
 File: ./figures/1bcomm.pdf Graphic file (type pdf)
 <use ./figures/1bcomm.pdf, page 3>
 Package pdftex.def Info: ./figures/1bcomm.pdf , page3 used on input line 62.
@@ -1743,7 +1743,7 @@ pdfTeX warning: pdflatex (file ./figures/1acomm-2.pdf): PDF inclusion: multiple 
 
 pdfTeX warning: pdflatex (file ./figures/1acomm-2.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-Overfull \vbox (127.24481pt too high) has occurred while \output is active []
+Overfull \vbox (142.61478pt too high) has occurred while \output is active []
 
 
 
@@ -1754,33 +1754,33 @@ pdfTeX warning: pdflatex (file ./figures/1bcomm.pdf): PDF inclusion: multiple pd
 
 pdfTeX warning: pdflatex (file ./figures/1bcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >] (./figures/1ccomm.pdf_tex
-<./figures/1ccomm.pdf, id=643, page=1, 682.86612pt x 341.43306pt>
+<./figures/1ccomm.pdf, id=640, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/1ccomm.pdf Graphic file (type pdf)
 <use ./figures/1ccomm.pdf, page 1>
 Package pdftex.def Info: ./figures/1ccomm.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/1ccomm.pdf, id=644, page=2, 682.86612pt x 341.43306pt>
+<./figures/1ccomm.pdf, id=641, page=2, 682.86612pt x 341.43306pt>
 File: ./figures/1ccomm.pdf Graphic file (type pdf)
 <use ./figures/1ccomm.pdf, page 2>
 Package pdftex.def Info: ./figures/1ccomm.pdf , page2 used on input line 59.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/1ccomm.pdf, id=645, page=3, 682.86612pt x 341.43306pt>
+<./figures/1ccomm.pdf, id=642, page=3, 682.86612pt x 341.43306pt>
 File: ./figures/1ccomm.pdf Graphic file (type pdf)
 <use ./figures/1ccomm.pdf, page 3>
 Package pdftex.def Info: ./figures/1ccomm.pdf , page3 used on input line 62.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
 ) (./figures/1dcomm.pdf_tex
-<./figures/1dcomm.pdf, id=646, page=1, 682.86612pt x 341.43306pt>
+<./figures/1dcomm.pdf, id=643, page=1, 682.86612pt x 341.43306pt>
 File: ./figures/1dcomm.pdf Graphic file (type pdf)
 <use ./figures/1dcomm.pdf, page 1>
 Package pdftex.def Info: ./figures/1dcomm.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/1dcomm.pdf, id=647, page=2, 682.86612pt x 341.43306pt>
+<./figures/1dcomm.pdf, id=644, page=2, 682.86612pt x 341.43306pt>
 File: ./figures/1dcomm.pdf Graphic file (type pdf)
 <use ./figures/1dcomm.pdf, page 2>
 Package pdftex.def Info: ./figures/1dcomm.pdf , page2 used on input line 59.
 (pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-<./figures/1dcomm.pdf, id=648, page=3, 682.86612pt x 341.43306pt>
+<./figures/1dcomm.pdf, id=645, page=3, 682.86612pt x 341.43306pt>
 File: ./figures/1dcomm.pdf Graphic file (type pdf)
 <use ./figures/1dcomm.pdf, page 3>
 Package pdftex.def Info: ./figures/1dcomm.pdf , page3 used on input line 62.
@@ -1793,7 +1793,13 @@ pdfTeX warning: pdflatex (file ./figures/1ccomm.pdf): PDF inclusion: multiple pd
 > <./figures/1ccomm.pdf
 
 pdfTeX warning: pdflatex (file ./figures/1ccomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
+>] (./figures/2dcomm.pdf_tex
+<./figures/2dcomm.pdf, id=653, page=1, 682.86612pt x 170.71654pt>
+File: ./figures/2dcomm.pdf Graphic file (type pdf)
+<use ./figures/2dcomm.pdf, page 1>
+Package pdftex.def Info: ./figures/2dcomm.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 92.47209pt.
+)
 
 [24 <./figures/1dcomm.pdf> <./figures/1dcomm.pdf
 
@@ -1801,13 +1807,7 @@ pdfTeX warning: pdflatex (file ./figures/1dcomm.pdf): PDF inclusion: multiple pd
 > <./figures/1dcomm.pdf
 
 pdfTeX warning: pdflatex (file ./figures/1dcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] (./figures/2dcomm.pdf_tex
-<./figures/2dcomm.pdf, id=667, page=1, 682.86612pt x 341.43306pt>
-File: ./figures/2dcomm.pdf Graphic file (type pdf)
-<use ./figures/2dcomm.pdf, page 1>
-Package pdftex.def Info: ./figures/2dcomm.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
-)) (./results.tex
+>]) (./results.tex
 
 [25 <./figures/2dcomm.pdf>]
 
@@ -1815,27 +1815,27 @@ Package pdftex.def Info: ./figures/2dcomm.pdf , page1 used on input line 56.
 
 ]
 Chapter 5.
-<./figures/bone010.png, id=681, 348.92859pt x 348.92859pt>
+<./figures/bone010.png, id=678, 348.92859pt x 348.92859pt>
 File: ./figures/bone010.png Graphic file (type png)
 <use ./figures/bone010.png>
 Package pdftex.def Info: ./figures/bone010.png  used on input line 22.
 (pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
-<./figures/af_shell10.png, id=682, 348.92859pt x 348.92859pt>
+<./figures/af_shell10.png, id=679, 348.92859pt x 348.92859pt>
 File: ./figures/af_shell10.png Graphic file (type png)
 <use ./figures/af_shell10.png>
 Package pdftex.def Info: ./figures/af_shell10.png  used on input line 25.
 (pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
-<./figures/Serena.png, id=683, 348.92859pt x 348.92859pt>
+<./figures/Serena.png, id=680, 348.92859pt x 348.92859pt>
 File: ./figures/Serena.png Graphic file (type png)
 <use ./figures/Serena.png>
 Package pdftex.def Info: ./figures/Serena.png  used on input line 28.
 (pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
-<./figures/Long_Coup_dt0.png, id=684, 348.92859pt x 348.92859pt>
+<./figures/Long_Coup_dt0.png, id=681, 348.92859pt x 348.92859pt>
 File: ./figures/Long_Coup_dt0.png Graphic file (type png)
 <use ./figures/Long_Coup_dt0.png>
 Package pdftex.def Info: ./figures/Long_Coup_dt0.png  used on input line 31.
 (pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
-<./figures/dielFilterV3real.png, id=685, 348.92859pt x 348.92859pt>
+<./figures/dielFilterV3real.png, id=682, 348.92859pt x 348.92859pt>
 File: ./figures/dielFilterV3real.png Graphic file (type png)
 <use ./figures/dielFilterV3real.png>
 Package pdftex.def Info: ./figures/dielFilterV3real.png  used on input line 34.
@@ -1844,12 +1844,12 @@ File: ./figures/Cube_Coup_dt0.png Graphic file (type png)
 <use ./figures/Cube_Coup_dt0.png>
 Package pdftex.def Info: ./figures/Cube_Coup_dt0.png  used on input line 37.
 (pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
-<./figures/Bump_2911.png, id=686, 348.92859pt x 348.92859pt>
+<./figures/Bump_2911.png, id=683, 348.92859pt x 348.92859pt>
 File: ./figures/Bump_2911.png Graphic file (type png)
 <use ./figures/Bump_2911.png>
 Package pdftex.def Info: ./figures/Bump_2911.png  used on input line 40.
 (pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
-<./figures/nlpkkt200.png, id=687, 348.92859pt x 348.92859pt>
+<./figures/nlpkkt200.png, id=684, 348.92859pt x 348.92859pt>
 File: ./figures/nlpkkt200.png Graphic file (type png)
 <use ./figures/nlpkkt200.png>
 Package pdftex.def Info: ./figures/nlpkkt200.png  used on input line 43.
@@ -1877,17 +1877,17 @@ Overfull \hbox (2.23126pt too wide) in paragraph at lines 76--76
 
 
 [28 <./figures/bone010.png> <./figures/af_shell10.png> <./figures/Serena.png> <./figures/Long_Coup_dt0.png> <./figures/dielFilterV3real.png> <./figures/Bump_2911.png> <./figures/nlpkkt200.png>]
-<./figures/Serena_commload_single_defq.png, id=708, 847.0044pt x 413.3844pt>
+<./figures/Serena_commload_single_defq.png, id=705, 847.0044pt x 413.3844pt>
 File: ./figures/Serena_commload_single_defq.png Graphic file (type png)
 <use ./figures/Serena_commload_single_defq.png>
 Package pdftex.def Info: ./figures/Serena_commload_single_defq.png  used on input line 85.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/bone010_commload_single_defq.png, id=709, 847.0044pt x 413.3844pt>
+<./figures/bone010_commload_single_defq.png, id=706, 847.0044pt x 413.3844pt>
 File: ./figures/bone010_commload_single_defq.png Graphic file (type png)
 <use ./figures/bone010_commload_single_defq.png>
 Package pdftex.def Info: ./figures/bone010_commload_single_defq.png  used on input line 94.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/Bump_2911_commload_single_defq.png, id=710, 847.0044pt x 413.3844pt>
+<./figures/Bump_2911_commload_single_defq.png, id=707, 847.0044pt x 413.3844pt>
 File: ./figures/Bump_2911_commload_single_defq.png Graphic file (type png)
 <use ./figures/Bump_2911_commload_single_defq.png>
 Package pdftex.def Info: ./figures/Bump_2911_commload_single_defq.png  used on input line 103.
@@ -1895,12 +1895,12 @@ Package pdftex.def Info: ./figures/Bump_2911_commload_single_defq.png  used on i
 
 
 [29 <./figures/Serena_commload_single_defq.png> <./figures/bone010_commload_single_defq.png>]
-<./figures/Cube_Coup_dt0_commload_single_defq.png, id=719, 847.0044pt x 413.3844pt>
+<./figures/Cube_Coup_dt0_commload_single_defq.png, id=716, 847.0044pt x 413.3844pt>
 File: ./figures/Cube_Coup_dt0_commload_single_defq.png Graphic file (type png)
 <use ./figures/Cube_Coup_dt0_commload_single_defq.png>
 Package pdftex.def Info: ./figures/Cube_Coup_dt0_commload_single_defq.png  used on input line 112.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/Long_Coup_dt0_commload_single_defq.png, id=720, 847.0044pt x 413.3844pt>
+<./figures/Long_Coup_dt0_commload_single_defq.png, id=717, 847.0044pt x 413.3844pt>
 File: ./figures/Long_Coup_dt0_commload_single_defq.png Graphic file (type png)
 <use ./figures/Long_Coup_dt0_commload_single_defq.png>
 Package pdftex.def Info: ./figures/Long_Coup_dt0_commload_single_defq.png  used on input line 121.
@@ -1911,12 +1911,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [30 <./figures/Bump_2911_commload_single_defq.png> <./figures/Cube_Coup_dt0_commload_single_defq.png>]
-<./figures/nlpkkt200_commload_single_defq.png, id=729, 847.0044pt x 413.3844pt>
+<./figures/nlpkkt200_commload_single_defq.png, id=726, 847.0044pt x 413.3844pt>
 File: ./figures/nlpkkt200_commload_single_defq.png Graphic file (type png)
 <use ./figures/nlpkkt200_commload_single_defq.png>
 Package pdftex.def Info: ./figures/nlpkkt200_commload_single_defq.png  used on input line 130.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/dielFilterV3real_commload_single_defq.png, id=730, 847.0044pt x 413.3844pt>
+<./figures/dielFilterV3real_commload_single_defq.png, id=727, 847.0044pt x 413.3844pt>
 File: ./figures/dielFilterV3real_commload_single_defq.png Graphic file (type png)
 <use ./figures/dielFilterV3real_commload_single_defq.png>
 Package pdftex.def Info: ./figures/dielFilterV3real_commload_single_defq.png  used on input line 139.
@@ -1927,12 +1927,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [31 <./figures/Long_Coup_dt0_commload_single_defq.png> <./figures/nlpkkt200_commload_single_defq.png>]
-<./figures/af_shell10_commload_single_defq.png, id=740, 847.0044pt x 413.3844pt>
+<./figures/af_shell10_commload_single_defq.png, id=736, 847.0044pt x 413.3844pt>
 File: ./figures/af_shell10_commload_single_defq.png Graphic file (type png)
 <use ./figures/af_shell10_commload_single_defq.png>
 Package pdftex.def Info: ./figures/af_shell10_commload_single_defq.png  used on input line 148.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/Serena_tcomm_single_defq.png, id=741, 847.0044pt x 413.3844pt>
+<./figures/Serena_tcomm_single_defq.png, id=737, 847.0044pt x 413.3844pt>
 File: ./figures/Serena_tcomm_single_defq.png Graphic file (type png)
 <use ./figures/Serena_tcomm_single_defq.png>
 Package pdftex.def Info: ./figures/Serena_tcomm_single_defq.png  used on input line 160.
@@ -1943,12 +1943,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [32 <./figures/dielFilterV3real_commload_single_defq.png> <./figures/af_shell10_commload_single_defq.png>]
-<./figures/bone010_tcomm_single_defq.png, id=750, 847.0044pt x 413.3844pt>
+<./figures/bone010_tcomm_single_defq.png, id=747, 847.0044pt x 413.3844pt>
 File: ./figures/bone010_tcomm_single_defq.png Graphic file (type png)
 <use ./figures/bone010_tcomm_single_defq.png>
 Package pdftex.def Info: ./figures/bone010_tcomm_single_defq.png  used on input line 169.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/Bump_2911_tcomm_single_defq.png, id=751, 847.0044pt x 413.3844pt>
+<./figures/Bump_2911_tcomm_single_defq.png, id=748, 847.0044pt x 413.3844pt>
 File: ./figures/Bump_2911_tcomm_single_defq.png Graphic file (type png)
 <use ./figures/Bump_2911_tcomm_single_defq.png>
 Package pdftex.def Info: ./figures/Bump_2911_tcomm_single_defq.png  used on input line 178.
@@ -1959,12 +1959,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [33 <./figures/Serena_tcomm_single_defq.png> <./figures/bone010_tcomm_single_defq.png>]
-<./figures/Cube_Coup_dt0_tcomm_single_defq.png, id=761, 847.0044pt x 413.3844pt>
+<./figures/Cube_Coup_dt0_tcomm_single_defq.png, id=758, 847.0044pt x 413.3844pt>
 File: ./figures/Cube_Coup_dt0_tcomm_single_defq.png Graphic file (type png)
 <use ./figures/Cube_Coup_dt0_tcomm_single_defq.png>
 Package pdftex.def Info: ./figures/Cube_Coup_dt0_tcomm_single_defq.png  used on input line 187.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/Long_Coup_dt0_tcomm_single_defq.png, id=762, 847.0044pt x 413.3844pt>
+<./figures/Long_Coup_dt0_tcomm_single_defq.png, id=759, 847.0044pt x 413.3844pt>
 File: ./figures/Long_Coup_dt0_tcomm_single_defq.png Graphic file (type png)
 <use ./figures/Long_Coup_dt0_tcomm_single_defq.png>
 Package pdftex.def Info: ./figures/Long_Coup_dt0_tcomm_single_defq.png  used on input line 196.
@@ -1975,12 +1975,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [34 <./figures/Bump_2911_tcomm_single_defq.png> <./figures/Cube_Coup_dt0_tcomm_single_defq.png>]
-<./figures/nlpkkt200_tcomm_single_defq.png, id=771, 847.0044pt x 413.3844pt>
+<./figures/nlpkkt200_tcomm_single_defq.png, id=768, 847.0044pt x 413.3844pt>
 File: ./figures/nlpkkt200_tcomm_single_defq.png Graphic file (type png)
 <use ./figures/nlpkkt200_tcomm_single_defq.png>
 Package pdftex.def Info: ./figures/nlpkkt200_tcomm_single_defq.png  used on input line 205.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/dielFilterV3real_tcomm_single_defq.png, id=772, 847.0044pt x 413.3844pt>
+<./figures/dielFilterV3real_tcomm_single_defq.png, id=769, 847.0044pt x 413.3844pt>
 File: ./figures/dielFilterV3real_tcomm_single_defq.png Graphic file (type png)
 <use ./figures/dielFilterV3real_tcomm_single_defq.png>
 Package pdftex.def Info: ./figures/dielFilterV3real_tcomm_single_defq.png  used on input line 214.
@@ -1991,12 +1991,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [35 <./figures/Long_Coup_dt0_tcomm_single_defq.png> <./figures/nlpkkt200_tcomm_single_defq.png>]
-<./figures/af_shell10_tcomm_single_defq.png, id=781, 847.0044pt x 413.3844pt>
+<./figures/af_shell10_tcomm_single_defq.png, id=778, 847.0044pt x 413.3844pt>
 File: ./figures/af_shell10_tcomm_single_defq.png Graphic file (type png)
 <use ./figures/af_shell10_tcomm_single_defq.png>
 Package pdftex.def Info: ./figures/af_shell10_tcomm_single_defq.png  used on input line 223.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/Serena_commload_rome16q.png, id=782, 847.0044pt x 413.3844pt>
+<./figures/Serena_commload_rome16q.png, id=779, 847.0044pt x 413.3844pt>
 File: ./figures/Serena_commload_rome16q.png Graphic file (type png)
 <use ./figures/Serena_commload_rome16q.png>
 Package pdftex.def Info: ./figures/Serena_commload_rome16q.png  used on input line 236.
@@ -2007,12 +2007,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [36 <./figures/dielFilterV3real_tcomm_single_defq.png> <./figures/af_shell10_tcomm_single_defq.png>]
-<./figures/bone010_commload_rome16q.png, id=791, 847.0044pt x 413.26395pt>
+<./figures/bone010_commload_rome16q.png, id=788, 847.0044pt x 413.26395pt>
 File: ./figures/bone010_commload_rome16q.png Graphic file (type png)
 <use ./figures/bone010_commload_rome16q.png>
 Package pdftex.def Info: ./figures/bone010_commload_rome16q.png  used on input line 245.
 (pdftex.def)             Requested size: 351.39041pt x 171.44458pt.
-<./figures/Bump_2911_commload_rome16q.png, id=792, 847.0044pt x 413.3844pt>
+<./figures/Bump_2911_commload_rome16q.png, id=789, 847.0044pt x 413.3844pt>
 File: ./figures/Bump_2911_commload_rome16q.png Graphic file (type png)
 <use ./figures/Bump_2911_commload_rome16q.png>
 Package pdftex.def Info: ./figures/Bump_2911_commload_rome16q.png  used on input line 254.
@@ -2023,12 +2023,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [37 <./figures/Serena_commload_rome16q.png> <./figures/bone010_commload_rome16q.png>]
-<./figures/Cube_Coup_dt0_commload_rome16q.png, id=801, 847.0044pt x 413.3844pt>
+<./figures/Cube_Coup_dt0_commload_rome16q.png, id=798, 847.0044pt x 413.3844pt>
 File: ./figures/Cube_Coup_dt0_commload_rome16q.png Graphic file (type png)
 <use ./figures/Cube_Coup_dt0_commload_rome16q.png>
 Package pdftex.def Info: ./figures/Cube_Coup_dt0_commload_rome16q.png  used on input line 263.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/Long_Coup_dt0_commload_rome16q.png, id=802, 847.0044pt x 413.3844pt>
+<./figures/Long_Coup_dt0_commload_rome16q.png, id=799, 847.0044pt x 413.3844pt>
 File: ./figures/Long_Coup_dt0_commload_rome16q.png Graphic file (type png)
 <use ./figures/Long_Coup_dt0_commload_rome16q.png>
 Package pdftex.def Info: ./figures/Long_Coup_dt0_commload_rome16q.png  used on input line 272.
@@ -2039,12 +2039,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [38 <./figures/Bump_2911_commload_rome16q.png> <./figures/Cube_Coup_dt0_commload_rome16q.png>]
-<./figures/nlpkkt200_commload_rome16q.png, id=811, 847.0044pt x 413.3844pt>
+<./figures/nlpkkt200_commload_rome16q.png, id=808, 847.0044pt x 413.3844pt>
 File: ./figures/nlpkkt200_commload_rome16q.png Graphic file (type png)
 <use ./figures/nlpkkt200_commload_rome16q.png>
 Package pdftex.def Info: ./figures/nlpkkt200_commload_rome16q.png  used on input line 281.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/dielFilterV3real_commload_rome16q.png, id=812, 847.0044pt x 413.3844pt>
+<./figures/dielFilterV3real_commload_rome16q.png, id=809, 847.0044pt x 413.3844pt>
 File: ./figures/dielFilterV3real_commload_rome16q.png Graphic file (type png)
 <use ./figures/dielFilterV3real_commload_rome16q.png>
 Package pdftex.def Info: ./figures/dielFilterV3real_commload_rome16q.png  used on input line 290.
@@ -2055,12 +2055,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [39 <./figures/Long_Coup_dt0_commload_rome16q.png> <./figures/nlpkkt200_commload_rome16q.png>]
-<./figures/af_shell10_commload_rome16q.png, id=822, 847.0044pt x 413.26395pt>
+<./figures/af_shell10_commload_rome16q.png, id=819, 847.0044pt x 413.26395pt>
 File: ./figures/af_shell10_commload_rome16q.png Graphic file (type png)
 <use ./figures/af_shell10_commload_rome16q.png>
 Package pdftex.def Info: ./figures/af_shell10_commload_rome16q.png  used on input line 299.
 (pdftex.def)             Requested size: 351.39041pt x 171.44458pt.
-<./figures/Serena_tcomm_rome16q.png, id=823, 847.0044pt x 413.3844pt>
+<./figures/Serena_tcomm_rome16q.png, id=820, 847.0044pt x 413.3844pt>
 File: ./figures/Serena_tcomm_rome16q.png Graphic file (type png)
 <use ./figures/Serena_tcomm_rome16q.png>
 Package pdftex.def Info: ./figures/Serena_tcomm_rome16q.png  used on input line 311.
@@ -2071,12 +2071,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [40 <./figures/dielFilterV3real_commload_rome16q.png> <./figures/af_shell10_commload_rome16q.png>]
-<./figures/bone010_tcomm_rome16q.png, id=832, 847.0044pt x 413.3844pt>
+<./figures/bone010_tcomm_rome16q.png, id=829, 847.0044pt x 413.3844pt>
 File: ./figures/bone010_tcomm_rome16q.png Graphic file (type png)
 <use ./figures/bone010_tcomm_rome16q.png>
 Package pdftex.def Info: ./figures/bone010_tcomm_rome16q.png  used on input line 320.
 (pdftex.def)             Requested size: 351.39041pt x 171.49455pt.
-<./figures/Bump_2911_tcomm_rome16q.png, id=833, 847.0044pt x 413.3844pt>
+<./figures/Bump_2911_tcomm_rome16q.png, id=830, 847.0044pt x 413.3844pt>
 File: ./figures/Bump_2911_tcomm_rome16q.png Graphic file (type png)
 <use ./figures/Bump_2911_tcomm_rome16q.png>
 Package pdftex.def Info: ./figures/Bump_2911_tcomm_rome16q.png  used on input line 329.
@@ -2087,12 +2087,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [41 <./figures/Serena_tcomm_rome16q.png> <./figures/bone010_tcomm_rome16q.png>]
-<./figures/Cube_Coup_dt0_tcomm_rome16q.png, id=842, 847.0044pt x 413.02306pt>
+<./figures/Cube_Coup_dt0_tcomm_rome16q.png, id=839, 847.0044pt x 413.02306pt>
 File: ./figures/Cube_Coup_dt0_tcomm_rome16q.png Graphic file (type png)
 <use ./figures/Cube_Coup_dt0_tcomm_rome16q.png>
 Package pdftex.def Info: ./figures/Cube_Coup_dt0_tcomm_rome16q.png  used on input line 338.
 (pdftex.def)             Requested size: 351.39041pt x 171.34465pt.
-<./figures/Long_Coup_dt0_tcomm_rome16q.png, id=843, 847.0044pt x 413.3844pt>
+<./figures/Long_Coup_dt0_tcomm_rome16q.png, id=840, 847.0044pt x 413.3844pt>
 File: ./figures/Long_Coup_dt0_tcomm_rome16q.png Graphic file (type png)
 <use ./figures/Long_Coup_dt0_tcomm_rome16q.png>
 Package pdftex.def Info: ./figures/Long_Coup_dt0_tcomm_rome16q.png  used on input line 347.
@@ -2103,12 +2103,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [42 <./figures/Bump_2911_tcomm_rome16q.png> <./figures/Cube_Coup_dt0_tcomm_rome16q.png>]
-<./figures/nlpkkt200_tcomm_rome16q.png, id=852, 847.0044pt x 413.26395pt>
+<./figures/nlpkkt200_tcomm_rome16q.png, id=849, 847.0044pt x 413.26395pt>
 File: ./figures/nlpkkt200_tcomm_rome16q.png Graphic file (type png)
 <use ./figures/nlpkkt200_tcomm_rome16q.png>
 Package pdftex.def Info: ./figures/nlpkkt200_tcomm_rome16q.png  used on input line 356.
 (pdftex.def)             Requested size: 351.39041pt x 171.44458pt.
-<./figures/dielFilterV3real_tcomm_rome16q.png, id=853, 847.0044pt x 413.3844pt>
+<./figures/dielFilterV3real_tcomm_rome16q.png, id=850, 847.0044pt x 413.3844pt>
 File: ./figures/dielFilterV3real_tcomm_rome16q.png Graphic file (type png)
 <use ./figures/dielFilterV3real_tcomm_rome16q.png>
 Package pdftex.def Info: ./figures/dielFilterV3real_tcomm_rome16q.png  used on input line 365.
@@ -2119,7 +2119,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [43 <./figures/Long_Coup_dt0_tcomm_rome16q.png> <./figures/nlpkkt200_tcomm_rome16q.png>]
-<./figures/af_shell10_tcomm_rome16q.png, id=862, 847.0044pt x 413.3844pt>
+<./figures/af_shell10_tcomm_rome16q.png, id=859, 847.0044pt x 413.3844pt>
 File: ./figures/af_shell10_tcomm_rome16q.png Graphic file (type png)
 <use ./figures/af_shell10_tcomm_rome16q.png>
 Package pdftex.def Info: ./figures/af_shell10_tcomm_rome16q.png  used on input line 374.
@@ -2158,21 +2158,21 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 96F6EA915B74D5343B4BC3DF94FBD603;7655.
+(rerunfilecheck)             Checksum: 4307F6D887865A8DCC654A8A0FE609D4;7416.
  ) 
 Here is how much of TeX's memory you used:
- 52461 strings out of 473190
- 1219210 string characters out of 5704335
+ 52459 strings out of 473190
+ 1219176 string characters out of 5704335
  1974959 words of memory out of 5000000
- 74251 multiletter control sequences out of 15000+600000
+ 74250 multiletter control sequences out of 15000+600000
  708690 words of font info for 275 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  104i,16n,104p,1154b,789s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr6.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (58 pages, 15017185 bytes).
+Output written on main.pdf (58 pages, 15017741 bytes).
 PDF statistics:
- 1023 PDF objects out of 1200 (max. 8388607)
- 763 compressed objects within 8 object streams
- 181 named destinations out of 1000 (max. 500000)
- 85186 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 1018 PDF objects out of 1200 (max. 8388607)
+ 757 compressed objects within 8 object streams
+ 180 named destinations out of 1000 (max. 500000)
+ 85178 words of extra memory for PDF output out of 89155 (max. 10000000)
 
