@@ -200,6 +200,10 @@ The way METIS partitions graph does not necessarily optimize for minimizing the 
 \end{flushright}
 \medskip
 Hypergraph partitioners try to solve the same problems, and employ similar algorithms as those graph partitioners use, however they use these algorithms on hypergraphs, and not regular graphs. \k Cataly\" urek and Ayakanat showed in \cite{hypergraphpartitioning} that using the hypergraph partitioner they developed, they could get up to 63\% less communication volume, with an average reduction in communication volume of 30\% - 38\%, when compared to METIS.
+\medskip
+
+As the improvement of the communication strategies are the main focus of the contents of this thesis, the specific partitioner tool that is used is not the biggest concern, and the programs implemented have opted for the usage of METIS, which as mentioned is a regular graph partitioner. It would be possible to refactor the code in such a way that a hypergraph partitioner such as PaToH can be used.
+
 
 
 \begin{algorithm}[H]
