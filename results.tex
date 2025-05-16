@@ -67,317 +67,79 @@ Cube\_Coup\_dt0&3D coupled consolidation problem (3D cube)\\
 Bump\_2911&3D geomechanical reservoir simulation\\
 \hline
 nlpkkt200&Symmetric indefinite KKT matrix\\
+\hline
 \end{tabular}
 \end{center}
 \end{table}
 
 All programs have been compiled with \texttt{-march=native} and \texttt{-O3} compilation flags.
 
-\section{Single Node Performance - \defq}
-The following results illustrate the communication volume as a percentage of the total number of elements in the \(x\) vector for the given matrix per iteration of SpMV. Each plot shows three communication strategies, these being the \textit{Exchange Separators}, \textit{Exchange required separators} and \textit{Exchange required elements} strategies, respectively. Results for the \textit{Exchange entire vector} communication strategy have been left out, as the communication volume remains constant at 100\% for all entries. Furthermore, the plots show three entries per communication strategy, in order to illustrate the communication volume of the rank that communicates the maximum of all ranks, the minimum of all ranks, and the average across all ranks.
+\section{Description of the results}
+Experiments have been ran on several systems available on Simulas eX\(^{3}\) machine. The systems the experiments have been ran on are \defq, \romeq\phantom{a}and \fpgaq.
 \medskip
 
-\subsection{Communication Volume}
+For each experiment, every matrix has been put through 100 iterations of SpMV, and every communication strategy has been tested on different configurations. For the single node experiments, each communication strategy has been ran with the number of MPI ranks being doubled until every available process on the chip is assigned one process. For multi node experiments, each , 
 
-\begin{figure}[H]
-    \title{Serena}
+\begin{table}[H]
     \begin{center}
-        \includegraphics[width=0.95\textwidth]{Serena_commload_single_defq.png }
+        \begin{tabular}[c]{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+            \hline
+            &\textbf{\defq}&\textbf{\fpgaq}&\textbf{\romeq}  \\
+            \hline
+            Dual Socketed&Yes&Yes&No  \\
+            \hline
+            No. of nodes&4&4&8  \\
+            \hline
+            Tested single node performance&No&No&Yes  \\
+            \hline
+            Single Node Ranks&N/A&N/A&\(1,2,4,8,16,32,64\)  \\
+            \hline
+            Multi Node Ranks (1 MPI Rank per node)&1,2,3,4&1,2,3,4&1,2,3,4,5,6,7,8  \\
+            \hline
+            Multi Node Ranks (1 MPI Rank per socket)&1,2,3,4&1,2,3,4&N/A  \\
+            \hline
+        \end{tabular}
     \end{center}
-    \caption{Serena}
-    \label{fig:Serena_commload_single_defq.png}
+    \caption{Configurations used on experiments}
+\end{table}
+
+\section{\defq - Single Node Performance}
+% The following results illustrate the communication volume as a percentage of the total number of elements in the \(x\) vector for the given matrix per iteration of SpMV. Each plot shows three communication strategies, these being the \textit{Exchange Separators}, \textit{Exchange required separators} and \textit{Exchange required elements} strategies, respectively. Results for the \textit{Exchange entire vector} communication strategy have been left out, as the communication volume remains constant at 100\% for all entries. Furthermore, the plots show three entries per communication strategy, in order to illustrate the communication volume of the rank that communicates the maximum of all ranks, the minimum of all ranks, and the average across all ranks.
+\medskip
+
+
+% \input{defqsingle.tex}
+\section{(Rome16q) \romeq}
+\begin{figure}[H]
+    \centering
+    \incfig[1]{tcomm\_2x4\_multi\_rome16q}
+    \caption{}
+    \label{fig:tcommromemulti}
 \end{figure}
 
 \begin{figure}[H]
-    \title{bone010}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{bone010_commload_single_defq.png}
-    \end{center}
-    \caption{bone010}
-    \label{fig:bone010_commload_single_defq.png}
+    \centering
+    \incfig[1]{commload\_2x4\_multi\_rome16q}
+    \caption{}
+    \label{fig:commlaoadromemulti}
 \end{figure}
+% \input{romemulti.tex}
 
+\section{(defq) \defq}
 \begin{figure}[H]
-    \title{Bump\_2911}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Bump\_2911_commload_single_defq.png}
-    \end{center}
-    \caption{Bump\_2911}
-    \label{fig:Bump_2911_defq_commload_single.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Cube\_Coup\_dt0}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Cube_Coup_dt0_commload_single_defq.png}
-    \end{center}
-    \caption{Cube\_Coup\_dt0}
-    \label{fig:Cube_Coup_dt0_commload_single_defq.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Long\_Coup\_dt0}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Long_Coup_dt0_commload_single_defq.png}
-    \end{center}
-    \caption{Long\_Coup\_dt0}
-    \label{fig:Long_Coup_dt0_commload_single_defq.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{nlpkkt200}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{nlpkkt200_commload_single_defq.png}
-    \end{center}
-    \caption{nlpkkt200}
-    \label{fig:nlpkkt200_defq_commload_single.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{dielFilterV3real}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{dielFilterV3real_commload_single_defq.png}
-    \end{center}
-    \caption{dielFilterV3real}
-    \label{fig:dielFilterV3real_commload_single_defq.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{af\_shell10}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{af_shell10_commload_single_defq.png}
-    \end{center}
-    \caption{af\_shell10}
-    \label{fig:af_shell10_defq_commload_single.png}
-\end{figure}
-
-\subsection{Communication Time}
-The following plots illustrate the time spent communicating per iteration of SpMV.
-
-\begin{figure}[H]
-    \title{Serena}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Serena_tcomm_single_defq.png }
-    \end{center}
-    \caption{Serena}
-    \label{fig:Serena_tcomm_single_defq.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{bone010}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{bone010_tcomm_single_defq.png}
-    \end{center}
-    \caption{bone010}
-    \label{fig:bone010_tcomm_single_defq.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Bump\_2911}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Bump\_2911_tcomm_single_defq.png}
-    \end{center}
-    \caption{Bump\_2911}
-    \label{fig:Bump_2911_defq_tcomm_single.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Cube\_Coup\_dt0}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Cube_Coup_dt0_tcomm_single_defq.png}
-    \end{center}
-    \caption{Cube\_Coup\_dt0}
-    \label{fig:Cube_Coup_dt0_tcomm_single_defq.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Long\_Coup\_dt0}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Long_Coup_dt0_tcomm_single_defq.png}
-    \end{center}
-    \caption{Long\_Coup\_dt0}
-    \label{fig:Long_Coup_dt0_tcomm_single_defq.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{nlpkkt200}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{nlpkkt200_tcomm_single_defq.png}
-    \end{center}
-    \caption{nlpkkt200}
-    \label{fig:nlpkkt200_defq_tcomm_single.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{dielFilterV3real}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{dielFilterV3real_tcomm_single_defq.png}
-    \end{center}
-    \caption{dielFilterV3real}
-    \label{fig:dielFilterV3real_tcomm_single_defq.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{af\_shell10}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{af_shell10_tcomm_single_defq.png}
-    \end{center}
-    \caption{af\_shell10}
-    \label{fig:af_shell10_defq_tcomm_single.png}
+    \centering
+    \incfig[1]{tcomm\_2x4\_single\_defq}
+    \caption{}
+    \label{fig:tcommdefqsingle}
 \end{figure}
 
 
-\subsection{Communication Volume \romeq}
-
-
-\begin{figure}[H]
-    \title{Serena}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Serena_commload_rome16q.png }
-    \end{center}
-    \caption{Serena}
-    \label{fig:Serena_commload_rome16q.png}
+\begin{figure}[ht]
+    \centering
+    \incfig{commload\_2x4\_single\_defq}
+    \caption{}
+    \label{}
 \end{figure}
-
-\begin{figure}[H]
-    \title{bone010}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{bone010_commload_rome16q.png}
-    \end{center}
-    \caption{bone010}
-    \label{fig:bone010_commload_rome16q.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Bump\_2911}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Bump\_2911_commload_rome16q.png}
-    \end{center}
-    \caption{Bump\_2911}
-    \label{fig:Bump_2911_rome16q_commload_single.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Cube\_Coup\_dt0}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Cube_Coup_dt0_commload_rome16q.png}
-    \end{center}
-    \caption{Cube\_Coup\_dt0}
-    \label{fig:Cube_Coup_dt0_commload_rome16q.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Long\_Coup\_dt0}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Long_Coup_dt0_commload_rome16q.png}
-    \end{center}
-    \caption{Long\_Coup\_dt0}
-    \label{fig:Long_Coup_dt0_commload_rome16q.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{nlpkkt200}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{nlpkkt200_commload_rome16q.png}
-    \end{center}
-    \caption{nlpkkt200}
-    \label{fig:nlpkkt200_rome16q_commload_single.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{dielFilterV3real}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{dielFilterV3real_commload_rome16q.png}
-    \end{center}
-    \caption{dielFilterV3real}
-    \label{fig:dielFilterV3real_commload_rome16q.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{af\_shell10}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{af_shell10_commload_rome16q.png}
-    \end{center}
-    \caption{af\_shell10}
-    \label{fig:af_shell10_rome16q_commload_single.png}
-\end{figure}
-
-\subsection{Communication Time \romeq}
-The following plots illustrate the time spent communicating per iteration of SpMV.
-
-\begin{figure}[H]
-    \title{Serena}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Serena_tcomm_rome16q.png }
-    \end{center}
-    \caption{Serena}
-    \label{fig:Serena_tcomm_rome16q.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{bone010}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{bone010_tcomm_rome16q.png}
-    \end{center}
-    \caption{bone010}
-    \label{fig:bone010_tcomm_rome16q.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Bump\_2911}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Bump\_2911_tcomm_rome16q.png}
-    \end{center}
-    \caption{Bump\_2911}
-    \label{fig:Bump_2911_rome16q_tcomm_single.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Cube\_Coup\_dt0}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Cube_Coup_dt0_tcomm_rome16q.png}
-    \end{center}
-    \caption{Cube\_Coup\_dt0}
-    \label{fig:Cube_Coup_dt0_tcomm_rome16q.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{Long\_Coup\_dt0}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{Long_Coup_dt0_tcomm_rome16q.png}
-    \end{center}
-    \caption{Long\_Coup\_dt0}
-    \label{fig:Long_Coup_dt0_tcomm_rome16q.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{nlpkkt200}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{nlpkkt200_tcomm_rome16q.png}
-    \end{center}
-    \caption{nlpkkt200}
-    \label{fig:nlpkkt200_rome16q_tcomm_single.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{dielFilterV3real}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{dielFilterV3real_tcomm_rome16q.png}
-    \end{center}
-    \caption{dielFilterV3real}
-    \label{fig:dielFilterV3real_tcomm_rome16q.png}
-\end{figure}
-
-\begin{figure}[H]
-    \title{af\_shell10}
-    \begin{center}
-        \includegraphics[width=0.95\textwidth]{af_shell10_tcomm_rome16q.png}
-    \end{center}
-    \caption{af\_shell10}
-    \label{fig:af_shell10_tcomm_rome16q.png}
-\end{figure}
-
-
 
 
 \input{CPUtable}

@@ -28,7 +28,7 @@ This chapter evaluates a series of progressively optimized communication strateg
     \label{fig:examplegraph}
 \end{figure}
 
-\section{Exchange entire vector}
+\section{Strategy A - Exchange entire vector}
 
 
 The most straightforward approach is to have each rank send all of its computed values of 
@@ -62,7 +62,7 @@ The most straightforward approach is to have each rank send all of its computed 
 
 \end{algorithm}
 
-\section{Exchange only separators}
+\section{Strategy B - Exchange only separators}
 
 An improvement to the previous strategy can be achieved by recognizing that only separator values, those required by multiple processes, must be communicated. Non-separator values are used exclusively by the process that computed them and therefore do not need to be communicated.
 
@@ -153,12 +153,44 @@ After partitioning the matrix into different parts, we obtain a partition vector
 % \end{figure}
 
 
-\section{Exchange only required separators}
-Further reduciton to the communication volume can be achieved by observing that not all separator values are required by every process. As the number of partitions increases, the set of dependencies between partitions tends towards sparcity. As a consequence of this, certain sets of separators may only need to be communicated to a given subset of processes. Using this strategy, each process only communicates its set of separator values to the processes that require them.
+\section{Strategy C - Exchange only required separators}
+Further reduciton to the communication volume can be achieved by observing that not all separator values are required by every process. As the number of partitions increases, the set of dependencies between partitions tends towards sparcity. As a consequence of this, certain sets of separators may only need to be communicated to a given subset of processes. Using this strategy, each process only communicates its set of separator values to the processes that require them. The communication pattern in illustrated in Figure \ref{fig:1ccomm}, and the \autoref{alg:1ccomm} shows how this can be implemented.
 % Another observation that can be made in order to further reduce the communication load comes when we realize that not every rank necessarily needs every separator. As we increase the number of partitions in the matrix, we increase the chance that there exists ranks whose separators are disjoint. If this is the case, we can further reduce the communication load by only sending a ranks separator to another rank if it is necessary 
 
 
 % Not all ranks need all separators. If rank 0 has some number of separators, none of which are needed by say rank 2, we don't need to communicate them. This strategy further reduces the communication load.
+
+\begin{algorithm}[H]
+    \label{alg:1ccomm}
+    \caption{Exchange only required separators}
+    \SetAlgoVlined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{y, rank,size, displacements, sendItems, sendCount}
+    \Output{\newline}
+
+    % mpiRequests \(\gets\) [MPI\_Request] \(\cdot\)  \(2 \cdot \) size\\
+    % reqCount \(\gets\) 0\\
+    MPI\_Requests \(\gets\) 0\\
+ 
+    \For{r = 0; r < size; r++}{
+        \If{rank = r or sendItems[r][rank] = 0}{
+            continue\\
+        }
+
+        Post non-blocking MPI receive for \(sendCount[r]\) elements at address \(y + displacements[r]\)\\
+        MPI\_Requests++\\
+    }
+
+    \For{r = 0; r < size; r++}{
+    \If{rank = r or sendItems[r][rank] = 0}{
+        continue\\
+    }
+    Post non-blocking MPI send of \(sendCount[rank]\) elements to address \(y + displacements[rank]\)\\
+    MPI\_Requests++\\
+    }
+    Wait for all non-blocking requests to complete\\
+\end{algorithm}
 
 
 \begin{figure}[ht]
@@ -190,6 +222,46 @@ The communication strategies discussed so far all have a common problem that pre
 Instead of storing the entire vector, each rank only stores its local part of the vector. In addition, it is necessary to allocate enough space for the separators elements that are needed from the other ranks. In order to achieve this, \(x\) is renumbered such that every ranks part of the vector is 0-indexed. For the local part of the \(x\) vector this is done by simply subtracting the position of the first local entry assigned to that rank from each entry in the local vector. It is slightly more complicated to renumber the separator elements, and the technicalities of how to do this will not be discussed here.
 \medskip
 
+\begin{algorithm}[H]
+    \label{alg:req_sep_exchange}
+    \caption{Exchange Required Separators}
+    \SetAlgoVlined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \Input{c, $V_n$, rank, size}
+    \Output{Updated vector $V_n$}
+
+    totalSend, totalRecv $\gets$ 0\\
+    \For{i = 0; i < size; i++}{
+        totalSend $\gets$ totalSend + c.sendCount[i]\\
+        totalRecv $\gets$ totalRecv + c.receiveCount[i]\\
+    }
+
+    Allocate sendBuffer[totalSend], recvBuffer[totalRecv]\\
+
+    sendOffset $\gets$ 0\\
+    \For{i = 0; i < size; i++}{
+        \For{j = 0; j < c.sendCount[i]; j++}{
+            sendBuffer[sendOffset++] $\gets$ $V_n$[c.sendItems[i][j]]\\
+        }
+    }
+
+    Compute sendDispls, recvDispls as prefix sums of c.sendCount, c.receiveCount\\
+
+    MPI\_Ialltoallv(sendBuffer, c.sendCount, sendDispls, recvBuffer, c.receiveCount, recvDispls)\\
+
+    MPI\_Waitall()\\
+
+    recvOffset $\gets$ 0\\
+    \For{i = 0; i < size; i++}{
+        \For{j = 0; j < c.receiveCount[i]; j++}{
+            $V_n$[c.receiveItems[i][j]] $\gets$ recvBuffer[recvOffset++]\\
+        }
+    }
+
+    Free sendBuffer, recvBuffer, sendDispls, recvDispls\\
+\end{algorithm}
+
 % There is no specific communication pattern that are required for 
 
 \begin{figure}[ht]
@@ -201,9 +273,6 @@ Instead of storing the entire vector, each rank only stores its local part of th
 
 
 
-\subsection{IPUs and emerging architectures}
-In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This comes in the form of packaging thousands of small processor cores into a single device, where each core has its own local memory, and no device-level shared memory \cite{10.3389/fphy.2023.979699}. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Such architectures necessitates a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial.
-\medskip
 
 
 
