@@ -72,74 +72,71 @@ nlpkkt200&Symmetric indefinite KKT matrix\\
 \end{center}
 \end{table}
 
-All programs have been compiled with \texttt{-march=native} and \texttt{-O3} compilation flags.
 
-\section{Description of the results}
+\section{Overview of Experiments}
 Experiments have been ran on several systems available on Simulas eX\(^{3}\) machine. The systems the experiments have been ran on are \defq, \romeq\phantom{a}and \fpgaq.
 \medskip
 
-For each experiment, every matrix has been put through 100 iterations of SpMV, and every communication strategy has been tested on different configurations. For the single node experiments, each communication strategy has been ran with the number of MPI ranks being doubled until every available process on the chip is assigned one process. For multi node experiments, each , 
+For each experiment, every matrix has been put through 100 iterations of SpMV, and every communication strategy has been tested on different configurations. For the single node experiments, each communication strategy has been ran with the number of MPI ranks being doubled until every available physical core on the chip is assigned one MPI rank. For multi node experiments on single socketed nodes, one MPI rank is assigned to each rank, and shared memory parallelization has been used within each node. On dual socketed nodes, experiments placing one MPI rank per node and placing one MPI rank per socket have been ran. All programs have been compiled with \texttt{-march=native} and \texttt{-O3} compilation flags.
+
+% \begin{table}[H]
+%     \begin{center}
+%         \begin{tabular}[c]{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+%             \hline
+%             &\textbf{\defq}&\textbf{\fpgaq}&\textbf{\romeq}  \\
+%             \hline
+%             No. of sockets&2&2&1  \\
+%             \hline
+%             No. of physical cores per socket&32&24&16  \\
+%             \hline
+%             No. of nodes&4&4&8  \\
+%             \hline
+%             Tested single node performance&Yes&No&No  \\
+%             \hline
+%             Single Node Ranks&\(1,2,4,8,16,32,64\)&N/A&N/A  \\
+%             \hline
+%         \end{tabular}
+%     \end{center}
+%     \caption{Configurations used on experiments}
+% \end{table}
+
+In the following presentation of the results, \ref{tab:commstratdesc} gives an overview of what the different strategies will be referred to, both when analyzing the results, and in the legends of the figures.
 
 \begin{table}[H]
     \begin{center}
-        \begin{tabular}[c]{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
+        \begin{tabular}[c]{|p{3cm}|p{5cm}|}
             \hline
-            &\textbf{\defq}&\textbf{\fpgaq}&\textbf{\romeq}  \\
+             \textbf{Strategy name}& \textbf{Strategy Description}  \\
             \hline
-            Dual Socketed&Yes&Yes&No  \\
+             Strategy A&Exchanges entire local vector.  \\
             \hline
-            No. of nodes&4&4&8  \\
+             Strategy B&Exchanges entire separator.  \\
             \hline
-            Tested single node performance&No&No&Yes  \\
+             Strategy C&Exchanges required separator.  \\
             \hline
-            Single Node Ranks&N/A&N/A&\(1,2,4,8,16,32,64\)  \\
+             Strategy D&Exchanges required separator elements  \\
             \hline
-            Multi Node Ranks (1 MPI Rank per node)&1,2,3,4&1,2,3,4&1,2,3,4,5,6,7,8  \\
-            \hline
-            Multi Node Ranks (1 MPI Rank per socket)&1,2,3,4&1,2,3,4&N/A  \\
+             Strategy E&Exchanges required separator elements, memory scalable  \\
             \hline
         \end{tabular}
     \end{center}
-    \caption{Configurations used on experiments}
+    \label{tab:commstratdesc}
 \end{table}
 
 \section{\defq - Single Node Performance}
-% The following results illustrate the communication volume as a percentage of the total number of elements in the \(x\) vector for the given matrix per iteration of SpMV. Each plot shows three communication strategies, these being the \textit{Exchange Separators}, \textit{Exchange required separators} and \textit{Exchange required elements} strategies, respectively. Results for the \textit{Exchange entire vector} communication strategy have been left out, as the communication volume remains constant at 100\% for all entries. Furthermore, the plots show three entries per communication strategy, in order to illustrate the communication volume of the rank that communicates the maximum of all ranks, the minimum of all ranks, and the average across all ranks.
+The results in this section illustrates the performance of the communication strategies when performed on a single node containing two \defq\phantom{a}chips.  
+\input{defqsingle}
 \medskip
 
 
-% \input{defqsingle.tex}
+% \inputdefqsingle.tex}
 \section{(Rome16q) \romeq}
-\begin{figure}[H]
-    \centering
-    \incfig[1]{tcomm\_2x4\_multi\_rome16q}
-    \caption{}
-    \label{fig:tcommromemulti}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig[1]{commload\_2x4\_multi\_rome16q}
-    \caption{}
-    \label{fig:commlaoadromemulti}
-\end{figure}
-% \input{romemulti.tex}
+\input{romemulti.tex}
 
 \section{(defq) \defq}
-\begin{figure}[H]
-    \centering
-    \incfig[1]{tcomm\_2x4\_single\_defq}
-    \caption{}
-    \label{fig:tcommdefqsingle}
-\end{figure}
+\section{(defq multi) \defq}
+\input{defqmulti}
 
-
-\begin{figure}[ht]
-    \centering
-    \incfig{commload\_2x4\_single\_defq}
-    \caption{}
-    \label{}
-\end{figure}
 
 
 \input{CPUtable}

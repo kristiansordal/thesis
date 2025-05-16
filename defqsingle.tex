@@ -1,148 +1,35 @@
 \begin{figure}[H]
     \centering
-    \incfig{nlpkkt200\_tcomm\_single\_defq}
-    \caption{Communication time - nlpkkt200}
-    \label{fig:nlpkkt200_tcomm_single_defq}
+    \incfig[1]{gflops\_2x4\_single\_defq}
+    \caption{Single Node - \defq}
+    \label{fig:gflopsdefqsingle}
+\end{figure}
+Figure \ref{fig:gflopsdefqsingle} presents the achieved GFLOPS for each communication strategy. The performance trends largely align with expectations: each successive strategy generally exhibits improved performance over its predecessor. However, an exception arises with strategy E, which consistently underperforms relative to strategy D. As detailed in Algorithm \ref{alg:req_sep_exchange}, strategy E incurs a significant overhead due to its requirement to pack and unpack every individual element exchanged across separator boundaries. This repeated packing and unpacking operation introduces substantial computational and memory overhead, which offsets the potential benefits of the strategy and explains its inferior performance. It is however important to keep in mind that the goal of strategy E is not necessarily to achieve the absolute highest possible GFLOPS performance, but rather to ensure that it is scalable to large matrices, and is able to run on architectures that have lower local memory.
+ 
+\begin{figure}[H]
+    \centering
+    \incfig[1]{t\_2x4\_single\_defq}
+    \caption{Total execution time of each communication strategy on a single node using the AMD \defq{} chip.}
+    \label{fig:tdefqsingle}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \incfig{Bump\_2911\_tcomm\_single\_defq}
-    \caption{Communication time - Bump\_2911}
-    \label{fig:Bump_2911_tcomm_single_defq}
+    \incfig[1]{tcomm\_2x4\_single\_defq}
+    \caption{Communication time component of each strategy on a single node using the \defq{} chip.}
+    \label{fig:tcommdefqsingle}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \incfig{Cube\_Coup\_dt0\_tcomm\_single\_defq}
-    \caption{Communication time - Cube\_Coup\_dt0}
-    \label{fig:Cube_Coup_dt0_tcomm_single_defq}
+    \incfig[1]{tcomp\_2x4\_single\_defq}
+    \caption{Computation time component of each strategy on a single node using the \defq{} chip.}
+    \label{fig:tcompdefqsingle}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \incfig{dielFilterV3real\_tcomm\_single\_defq}
-    \caption{Communication time - dielFilterV3real}
-    \label{fig:dielFilterV3real_tcomm_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{Long\_Coup\_dt0\_tcomm\_single\_defq}
-    \caption{Communication time - Long\_Coup\_dt0}
-    \label{fig:Long_Coup_dt0_tcomm_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{Serena\_tcomm\_single\_defq}
-    \caption{Communication time - Serena}
-    \label{fig:Serena_tcomm_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{af\_shell10\_tcomm\_single\_defq}
-    \caption{Communication time - af\_shell10}
-    \label{fig:af_shell10_tcomm_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{bone010\_tcomm\_single\_defq}
-    \caption{Communication time - bone010}
-    \label{fig:bone010_tcomm_single_defq}
-\end{figure}
-
-% GFLOPS Figures
-\begin{figure}[H]
-    \centering
-    \incfig{nlpkkt200\_gflops\_single\_defq}
-    \caption{GFLOPS - nlpkkt200}
-    \label{fig:nlpkkt200_gflops_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{Bump\_2911\_gflops\_single\_defq}
-    \caption{GFLOPS - Bump\_2911}
-    \label{fig:Bump_2911_gflops_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{Cube\_Coup\_dt0\_gflops\_single\_defq}
-    \caption{GFLOPS - Cube\_Coup\_dt0}
-    \label{fig:Cube_Coup_dt0_gflops_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{dielFilterV3real\_gflops\_single\_defq}
-    \caption{GFLOPS - dielFilterV3real}
-    \label{fig:dielFilterV3real_gflops_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{Long\_Coup\_dt0\_gflops\_single\_defq}
-    \caption{GFLOPS - Long\_Coup\_dt0}
-    \label{fig:Long_Coup_dt0_gflops_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{Serena\_gflops\_single\_defq}
-    \caption{GFLOPS - Serena}
-    \label{fig:Serena_gflops_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{af\_shell10\_gflops\_single\_defq}
-    \caption{GFLOPS - af\_shell10}
-    \label{fig:af_shell10_gflops_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{bone010\_gflops\_single\_defq}
-    \caption{GFLOPS - bone010}
-    \label{fig:bone010_gflops_single_defq}
-\end{figure}
-
-% Communication Volume Figures
-\begin{figure}[H]
-    \centering
-    \incfig{nlpkkt200\_commload\_single\_defq}
-    \caption{Communication volume - nlpkkt200}
-    \label{fig:nlpkkt200_commload_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{Bump\_2911\_commload\_single\_defq}
-    \caption{Communication volume - Bump\_2911}
-    \label{fig:Bump_2911_commload_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{Cube\_Coup\_dt0\_commload\_single\_defq}
-    \caption{Communication volume - Cube\_Coup\_dt0}
-    \label{fig:Cube_Coup_dt0_commload_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{dielFilterV3real\_commload\_single\_defq}
-    \caption{Communication volume - dielFilterV3real}
-    \label{fig:dielFilterV3real_commload_single_defq}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \incfig{Long\_Coup\_dt0\_commload\_single\_defq}
-    \caption{Communication volume - Long\_Coup\_dt0}
-    \label{fig:Long_Coup_dt0_commload_single_defq}
+    \incfig{commload\_2x4\_single\_defq}
+    \caption{Fraction of \(x\) communicated per SpMV iteration each strategy on a single node using the \defq{} chip.}
+    \label{fig:commloaddefqsingle}
 \end{figure}
