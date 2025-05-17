@@ -52,11 +52,11 @@ Figure \ref{fig:1acomm} illustrates the state of the vector before and after com
 An improvement to the previous strategy can be achieved by recognizing that only separator values, those required by multiple processes, must be communicated. Non-separator values are used exclusively by the process that computed them and therefore do not need to be communicated. 
 \medskip
 
-Let \(s_{\text{avg}}\) denote the average size of a separator, the total communication volume for strategy B is given by \ref{eq:1bcomm}
+Let \(n_{p}\) denote the total number of ranks, and let \(s_{i}\) be the size of the separator of rank \(i\). Since each rank sends its separator to each other rank (i.e. \(n_{p} - 1 other ranks\)), then the total communication volume is given by \ref{eq:1bcomm}.
 
 \begin{equation}
     \label{eq:1bcomm}
-    \text{Total Communication} = n_{p} \cdot (n_{p} - 1) \cdot s_{\text{avg}}
+    \sum_{i=1}^{n_{p}}(n_{p} - 1) \cdot s_{i} 
 \end{equation}
 
 To facilitate this strategy, separator values are reordered such that they appear at the beginning of each process's local segment of \(y\). Once this structure is established, communication is performed using \texttt{MPI\_Allgatherv}, transmitting only the subset of \(y\) that contains separator values. The number of separators on each process must be known beforehand, which can be computed by counting the number of elements that have neighbours belonging to a different partition.
@@ -148,11 +148,14 @@ After partitioning the matrix into different parts, we obtain a partition vector
 
 
 \section{Strategy C - Exchange only required separators}
-Further reduciton to the communication volume can be achieved by observing that not all separator values are required by every process. As the number of partitions increases, the set of dependencies between partitions tends towards sparcity. As a consequence of this, certain sets of separators may only need to be communicated to a given subset of processes. Using this strategy, each process only communicates its set of separator values to the processes that require them. The communication pattern in illustrated in Figure \ref{fig:1ccomm}, and the \autoref{alg:1ccomm} shows how this can be implemented.
-% Another observation that can be made in order to further reduce the communication load comes when we realize that not every rank necessarily needs every separator. As we increase the number of partitions in the matrix, we increase the chance that there exists ranks whose separators are disjoint. If this is the case, we can further reduce the communication load by only sending a ranks separator to another rank if it is necessary 
+Further reduciton to the communication volume can be achieved by observing that not all separator values are required by every process. As the number of partitions increases, the set of dependencies between partitions tends towards sparcity. As a consequence of this, certain sets of separators may only need to be communicated to a given subset of processes. Using this strategy, each process only communicates its set of separator values to the processes that require them. The communication pattern in illustrated in Figure \ref{fig:1ccomm}, and Algorithm \autoref{alg:1ccomm} shows how this can be implemented.
 
+Let \(n_{p}\) be the total number of ranks, \(n_{i}\) be the number of neighbours of rank \(i\), and \(s_{i}\) the size of the separator of rank \(i\). With \(n_{i} \leq n_{p}\), the total communication volume is given by \ref{eq:1ccomm}.
 
-% Not all ranks need all separators. If rank 0 has some number of separators, none of which are needed by say rank 2, we don't need to communicate them. This strategy further reduces the communication load.
+\begin{equation}
+    \label{eq:1ccomm}
+    \sum_{i=1}^{n_{p}} s_i \cdot  n_{i} 
+\end{equation}
 
 \begin{algorithm}[H]
     \label{alg:1ccomm}
@@ -196,8 +199,17 @@ Further reduciton to the communication volume can be achieved by observing that 
 
 \section{Exchange only required separator values}
 The final strategy aims to minimize communication overhead by transmitting only the exact subset of separator values that are both computed by and required for inter-process computation. If a specific separator value computed by one process is needed by exactly one other process, then only that single recipient receives the value.
+\medskip
 
 This approach eliminates all unnecessary data transfers but introduces additional complexity in managing communication schedules. Dependencies must be mapped at a fine-grained level, and communication patterns must be explicitly tailored to the structure of the matrix and its partitioning.
+\medskip
+
+Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of elements in rank \(i\)s separator that are required by other ranks. Since this communication strategy only communicated these elements, the total communication volume is given by \ref{eq:1dcomm}.
+
+\begin{equation}
+    \label{eq:1dcomm}
+    \sum_{i=1}^{n_{p}} d_{i} 
+\end{equation}
 
 
 

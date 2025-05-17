@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{10.3389/fphy.2023.979699}
 Luk Burchard, Kristian~Gregorius Hustad, Johannes Langguth, and Xing Cai.
@@ -38,11 +38,21 @@ Nakul Manchanda and Karan Anand.
 \newblock Non-uniform memory access (numa).
 \newblock {\em New York University}, 4, 2010.
 
+\bibitem{merrilduane}
+Duane Merrill and Michael Garland.
+\newblock Merge-based parallel sparse matrix-vector multiplication.
+\newblock In {\em SC '16: Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis}, pages 678--689, 2016.
+
 \bibitem{norvig_latency}
 Peter Norvig.
 \newblock Latency numbers every programmer should know.
 \newblock \url{https://norvig.com/21-days.html#Latency}, 2021.
 \newblock Accessed: 2025-04-29.
+
+\bibitem{ordersparse}
+James~D. Trotter, Sinan Ekmek\c{c}iba\c{s}\i{}, Johannes Langguth, Tugba Torun, Emre D\"{u}zak\i{}n, Aleksandar Ilic, and Didem Unat.
+\newblock Bringing order to sparsity: A sparse matrix reordering study on multicore cpus.
+\newblock In {\em Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis}, SC '23, New York, NY, USA, 2023. Association for Computing Machinery.
 
 \bibitem{ellpackformat}
 Cong Zheng, Shuo Gu, Tong-Xiang Gu, Bing Yang, and Xing-Ping Liu.

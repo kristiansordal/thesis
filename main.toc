@@ -34,7 +34,7 @@
 \contentsline {subsection}{\numberline {4.2.1}Reordering}{22}{subsection.4.2.1}%
 \contentsline {section}{\numberline {4.3}Strategy C - Exchange only required separators}{24}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Exchange only required separator values}{26}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Strategy E - Memory Scalable}{26}{section.4.5}%
+\contentsline {section}{\numberline {4.5}Strategy E - Memory Scalable}{27}{section.4.5}%
 \contentsline {chapter}{\numberline {5}Results}{29}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Theoretical Maximum}{29}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Matrices}{29}{section.5.2}%
@@ -44,4 +44,4 @@
 \contentsline {section}{\numberline {5.6}(defq) AMD EPYC 7601}{45}{section.5.6}%
 \contentsline {section}{\numberline {5.7}(defq multi) AMD EPYC 7601}{45}{section.5.7}%
 \contentsline {subsection}{\numberline {5.7.1}2 proc per node}{49}{subsection.5.7.1}%
-\contentsline {chapter}{\numberline {6}Previous Work}{53}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Related Work}{53}{chapter.6}%

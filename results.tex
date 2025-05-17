@@ -74,7 +74,7 @@ nlpkkt200&Symmetric indefinite KKT matrix\\
 
 
 \section{Overview of Experiments}
-Experiments have been ran on several systems available on Simulas eX\(^{3}\) machine. The systems the experiments have been ran on are \defq, \romeq\phantom{a}and \fpgaq.
+The experiments that have been ran in order to obtain the results in the following thesis have made use of systems on the Experimental Infrastructure for Exploration of Exascale Computing (eX\(^{3}\)).
 \medskip
 
 For each experiment, every matrix has been put through 100 iterations of SpMV, and every communication strategy has been tested on different configurations. For the single node experiments, each communication strategy has been ran with the number of MPI ranks being doubled until every available physical core on the chip is assigned one MPI rank. For multi node experiments on single socketed nodes, one MPI rank is assigned to each rank, and shared memory parallelization has been used within each node. On dual socketed nodes, experiments placing one MPI rank per node and placing one MPI rank per socket have been ran. All programs have been compiled with \texttt{-march=native} and \texttt{-O3} compilation flags.
@@ -104,7 +104,7 @@ In the following presentation of the results, \ref{tab:commstratdesc} gives an o
 
 \begin{table}[H]
     \begin{center}
-        \begin{tabular}[c]{|p{3cm}|p{5cm}|}
+        \begin{tabular}[c]{|p{3cm}|p{9.5cm}|}
             \hline
              \textbf{Strategy name}& \textbf{Strategy Description}  \\
             \hline
