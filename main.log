@@ -1703,4 +1703,566 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ]
 
-Package hyperref Warning: No autoref name for `algocfline' on input l
+Package hyperref Warning: No autoref name for `algocfline' on input line 18.
+
+(./figures/1acomm-2.pdf_tex
+<./figures/1acomm-2.pdf, id=621, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/1acomm-2.pdf Graphic file (type pdf)
+<use ./figures/1acomm-2.pdf, page 1>
+Package pdftex.def Info: ./figures/1acomm-2.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1acomm-2.pdf, id=622, page=2, 682.86612pt x 341.43306pt>
+File: ./figures/1acomm-2.pdf Graphic file (type pdf)
+<use ./figures/1acomm-2.pdf, page 2>
+Package pdftex.def Info: ./figures/1acomm-2.pdf , page2 used on input line 59.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1acomm-2.pdf, id=623, page=3, 682.86612pt x 341.43306pt>
+File: ./figures/1acomm-2.pdf Graphic file (type pdf)
+<use ./figures/1acomm-2.pdf, page 3>
+Package pdftex.def Info: ./figures/1acomm-2.pdf , page3 used on input line 62.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+)
+
+[20 <./figures/examplegraph.pdf>]
+Overfull \hbox (9.79208pt too wide) in paragraph at lines 62--63
+\T1/lmr/m/n/12 (-20) struc-ture is es-tab-lished, com-mu-nic-a-tion is per-formed us-ing \T1/lmtt/m/n/12 MPI_Allgatherv\T1/lmr/m/n/12 (-20) ,
+ []
+
+
+
+[21 <./figures/1acomm-2.pdf> <./figures/1acomm-2.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1acomm-2.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <./figures/1acomm-2.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1acomm-2.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>] (./figures/1bcomm.pdf_tex
+<./figures/1bcomm.pdf, id=645, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/1bcomm.pdf Graphic file (type pdf)
+<use ./figures/1bcomm.pdf, page 1>
+Package pdftex.def Info: ./figures/1bcomm.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1bcomm.pdf, id=646, page=2, 682.86612pt x 341.43306pt>
+File: ./figures/1bcomm.pdf Graphic file (type pdf)
+<use ./figures/1bcomm.pdf, page 2>
+Package pdftex.def Info: ./figures/1bcomm.pdf , page2 used on input line 59.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1bcomm.pdf, id=647, page=3, 682.86612pt x 341.43306pt>
+File: ./figures/1bcomm.pdf Graphic file (type pdf)
+<use ./figures/1bcomm.pdf, page 3>
+Package pdftex.def Info: ./figures/1bcomm.pdf , page3 used on input line 62.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[22]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[23]
+
+Package hyperref Warning: No autoref name for `algocfline' on input line 151.
+
+(./figures/1ccomm.pdf_tex
+<./figures/1ccomm.pdf, id=661, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/1ccomm.pdf Graphic file (type pdf)
+<use ./figures/1ccomm.pdf, page 1>
+Package pdftex.def Info: ./figures/1ccomm.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1ccomm.pdf, id=662, page=2, 682.86612pt x 341.43306pt>
+File: ./figures/1ccomm.pdf Graphic file (type pdf)
+<use ./figures/1ccomm.pdf, page 2>
+Package pdftex.def Info: ./figures/1ccomm.pdf , page2 used on input line 59.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1ccomm.pdf, id=663, page=3, 682.86612pt x 341.43306pt>
+File: ./figures/1ccomm.pdf Graphic file (type pdf)
+<use ./figures/1ccomm.pdf, page 3>
+Package pdftex.def Info: ./figures/1ccomm.pdf , page3 used on input line 62.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[24 <./figures/1bcomm.pdf> <./figures/1bcomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1bcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <./figures/1bcomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1bcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[25 <./figures/1ccomm.pdf> <./figures/1ccomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1ccomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <./figures/1ccomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1ccomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>] (./figures/1dcomm.pdf_tex
+<./figures/1dcomm.pdf, id=682, page=1, 682.86612pt x 341.43306pt>
+File: ./figures/1dcomm.pdf Graphic file (type pdf)
+<use ./figures/1dcomm.pdf, page 1>
+Package pdftex.def Info: ./figures/1dcomm.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1dcomm.pdf, id=683, page=2, 682.86612pt x 341.43306pt>
+File: ./figures/1dcomm.pdf Graphic file (type pdf)
+<use ./figures/1dcomm.pdf, page 2>
+Package pdftex.def Info: ./figures/1dcomm.pdf , page2 used on input line 59.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+<./figures/1dcomm.pdf, id=684, page=3, 682.86612pt x 341.43306pt>
+File: ./figures/1dcomm.pdf Graphic file (type pdf)
+<use ./figures/1dcomm.pdf, page 3>
+Package pdftex.def Info: ./figures/1dcomm.pdf , page3 used on input line 62.
+(pdftex.def)             Requested size: 369.88583pt x 184.94417pt.
+)
+
+[26 <./figures/1dcomm.pdf> <./figures/1dcomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1dcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+> <./figures/1dcomm.pdf
+
+pdfTeX warning: pdflatex (file ./figures/1dcomm.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>] (./figures/2dcomm.pdf_tex
+<./figures/2dcomm.pdf, id=693, page=1, 682.86612pt x 170.71654pt>
+File: ./figures/2dcomm.pdf Graphic file (type pdf)
+<use ./figures/2dcomm.pdf, page 1>
+Package pdftex.def Info: ./figures/2dcomm.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 92.47209pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[27]) (./results.tex
+
+[28 <./figures/2dcomm.pdf>]
+Chapter 5.
+<./figures/bone010.png, id=710, 348.92859pt x 348.92859pt>
+File: ./figures/bone010.png Graphic file (type png)
+<use ./figures/bone010.png>
+Package pdftex.def Info: ./figures/bone010.png  used on input line 22.
+(pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
+<./figures/af_shell10.png, id=711, 348.92859pt x 348.92859pt>
+File: ./figures/af_shell10.png Graphic file (type png)
+<use ./figures/af_shell10.png>
+Package pdftex.def Info: ./figures/af_shell10.png  used on input line 25.
+(pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
+<./figures/Serena.png, id=712, 348.92859pt x 348.92859pt>
+File: ./figures/Serena.png Graphic file (type png)
+<use ./figures/Serena.png>
+Package pdftex.def Info: ./figures/Serena.png  used on input line 28.
+(pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
+<./figures/Long_Coup_dt0.png, id=713, 348.92859pt x 348.92859pt>
+File: ./figures/Long_Coup_dt0.png Graphic file (type png)
+<use ./figures/Long_Coup_dt0.png>
+Package pdftex.def Info: ./figures/Long_Coup_dt0.png  used on input line 31.
+(pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
+<./figures/dielFilterV3real.png, id=714, 348.92859pt x 348.92859pt>
+File: ./figures/dielFilterV3real.png Graphic file (type png)
+<use ./figures/dielFilterV3real.png>
+Package pdftex.def Info: ./figures/dielFilterV3real.png  used on input line 34.
+(pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
+File: ./figures/Cube_Coup_dt0.png Graphic file (type png)
+<use ./figures/Cube_Coup_dt0.png>
+Package pdftex.def Info: ./figures/Cube_Coup_dt0.png  used on input line 37.
+(pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
+<./figures/Bump_2911.png, id=715, 348.92859pt x 348.92859pt>
+File: ./figures/Bump_2911.png Graphic file (type png)
+<use ./figures/Bump_2911.png>
+Package pdftex.def Info: ./figures/Bump_2911.png  used on input line 40.
+(pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
+<./figures/nlpkkt200.png, id=716, 348.92859pt x 348.92859pt>
+File: ./figures/nlpkkt200.png Graphic file (type png)
+<use ./figures/nlpkkt200.png>
+Package pdftex.def Info: ./figures/nlpkkt200.png  used on input line 43.
+(pdftex.def)             Requested size: 85.07216pt x 85.0703pt.
+
+Overfull \hbox (2.40286pt too wide) in paragraph at lines 19--45
+ [][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[29
+
+]
+Overfull \hbox (35.7762pt too wide) in paragraph at lines 51--72
+ [] 
+ []
+
+
+
+[30 <./figures/bone010.png> <./figures/af_shell10.png> <./figures/Serena.png> <./figures/Long_Coup_dt0.png> <./figures/dielFilterV3real.png> <./figures/Bump_2911.png> <./figures/nlpkkt200.png>]
+
+Package caption Warning: \label without proper reference on input line 123.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `tab:commstratdesc' on page 31 undefined on input line 103.
+
+
+Overfull \hbox (10.97359pt too wide) in paragraph at lines 107--122
+ [] 
+ []
+
+(./defqsingle.tex (./figures/gflops_2x4_single_defq.pdf_tex
+<./figures/gflops_2x4_single_defq.pdf, id=738, page=1, 1084.49625pt x 1742.87758pt>
+File: ./figures/gflops_2x4_single_defq.pdf Graphic file (type pdf)
+<use ./figures/gflops_2x4_single_defq.pdf, page 1>
+Package pdftex.def Info: ./figures/gflops_2x4_single_defq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[31]
+Overfull \vbox (15.38354pt too high) has occurred while \output is active []
+
+
+
+[32 <./figures/gflops_2x4_single_defq.pdf>] (./figures/t_2x4_single_defq.pdf_tex
+<./figures/t_2x4_single_defq.pdf, id=1257, page=1, 1096.49628pt x 1742.87758pt>
+File: ./figures/t_2x4_single_defq.pdf Graphic file (type pdf)
+<use ./figures/t_2x4_single_defq.pdf, page 1>
+Package pdftex.def Info: ./figures/t_2x4_single_defq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 587.94316pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[33]
+Overfull \vbox (24.24597pt too high) has occurred while \output is active []
+
+
+
+[34 <./figures/t_2x4_single_defq.pdf>] (./figures/tcomm_2x4_single_defq.pdf_tex
+<./figures/tcomm_2x4_single_defq.pdf, id=1814, page=1, 1108.49619pt x 1742.87758pt>
+File: ./figures/tcomm_2x4_single_defq.pdf Graphic file (type pdf)
+<use ./figures/tcomm_2x4_single_defq.pdf, page 1>
+Package pdftex.def Info: ./figures/tcomm_2x4_single_defq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 581.56058pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[35]
+Overfull \vbox (17.88518pt too high) has occurred while \output is active []
+
+
+
+[36 <./figures/tcomm_2x4_single_defq.pdf>] (./figures/tcomp_2x4_single_defq.pdf_tex
+<./figures/tcomp_2x4_single_defq.pdf, id=2353, page=1, 1103.14392pt x 1742.87758pt>
+File: ./figures/tcomp_2x4_single_defq.pdf Graphic file (type pdf)
+<use ./figures/tcomp_2x4_single_defq.pdf, page 1>
+Package pdftex.def Info: ./figures/tcomp_2x4_single_defq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 584.37955pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[37]
+Overfull \vbox (20.70717pt too high) has occurred while \output is active []
+
+
+
+[38 <./figures/tcomp_2x4_single_defq.pdf>] (./figures/commload_2x4_single_defq.pdf_tex
+<./figures/commload_2x4_single_defq.pdf, id=2894, page=1, 1146.72102pt x 1742.87758pt>
+File: ./figures/commload_2x4_single_defq.pdf Graphic file (type pdf)
+<use ./figures/commload_2x4_single_defq.pdf, page 1>
+Package pdftex.def Info: ./figures/commload_2x4_single_defq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 562.17345pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[39 <./figures/commload_2x4_single_defq.pdf>]) (./defqmulti.tex (./figures/gflops_2x4_multi_defq.pdf_tex
+<./figures/gflops_2x4_multi_defq.pdf, id=4550, page=1, 1084.49625pt x 1742.87758pt>
+File: ./figures/gflops_2x4_multi_defq.pdf Graphic file (type pdf)
+<use ./figures/gflops_2x4_multi_defq.pdf, page 1>
+Package pdftex.def Info: ./figures/gflops_2x4_multi_defq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[40]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[41]
+Overfull \vbox (73.58684pt too high) has occurred while \output is active []
+
+
+
+[42 <./figures/gflops_2x4_multi_defq.pdf>] (./figures/tcomm_2x4_multi_defq.pdf_tex
+<./figures/tcomm_2x4_multi_defq.pdf, id=4962, page=1, 1084.49625pt x 1742.87758pt>
+File: ./figures/tcomm_2x4_multi_defq.pdf Graphic file (type pdf)
+<use ./figures/tcomm_2x4_multi_defq.pdf, page 1>
+Package pdftex.def Info: ./figures/tcomm_2x4_multi_defq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
+)
+Overfull \vbox (15.38354pt too high) has occurred while \output is active []
+
+
+
+[43 <./figures/tcomm_2x4_multi_defq.pdf>] (./figures/commload_2x4_multi_defq.pdf_tex
+<./figures/commload_2x4_multi_defq.pdf, id=5374, page=1, 1205.50853pt x 1742.87758pt>
+File: ./figures/commload_2x4_multi_defq.pdf Graphic file (type pdf)
+<use ./figures/commload_2x4_multi_defq.pdf, page 1>
+Package pdftex.def Info: ./figures/commload_2x4_multi_defq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 534.7549pt.
+) (./figures/gflops_2x4_multi_defqmpi.pdf_tex
+<./figures/gflops_2x4_multi_defqmpi.pdf, id=5375, page=1, 1103.14392pt x 1742.87758pt>
+File: ./figures/gflops_2x4_multi_defqmpi.pdf Graphic file (type pdf)
+<use ./figures/gflops_2x4_multi_defqmpi.pdf, page 1>
+Package pdftex.def Info: ./figures/gflops_2x4_multi_defqmpi.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 584.37955pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[44 <./figures/commload_2x4_multi_defq.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[45]
+Overfull \vbox (38.88719pt too high) has occurred while \output is active []
+
+
+
+[46 <./figures/gflops_2x4_multi_defqmpi.pdf>] (./figures/tcomm_2x4_multi_defqmpi.pdf_tex
+<./figures/tcomm_2x4_multi_defqmpi.pdf, id=6652, page=1, 1084.49625pt x 1742.87758pt>
+File: ./figures/tcomm_2x4_multi_defqmpi.pdf Graphic file (type pdf)
+<use ./figures/tcomm_2x4_multi_defqmpi.pdf, page 1>
+Package pdftex.def Info: ./figures/tcomm_2x4_multi_defqmpi.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
+)
+Overfull \vbox (15.38354pt too high) has occurred while \output is active []
+
+
+
+[47 <./figures/tcomm_2x4_multi_defqmpi.pdf>] (./figures/commload_2x4_multi_defqmpi.pdf_tex
+<./figures/commload_2x4_multi_defqmpi.pdf, id=7113, page=1, 1158.72093pt x 1742.87758pt>
+File: ./figures/commload_2x4_multi_defqmpi.pdf Graphic file (type pdf)
+<use ./figures/commload_2x4_multi_defqmpi.pdf, page 1>
+Package pdftex.def Info: ./figures/commload_2x4_multi_defqmpi.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 556.34933pt.
+)) (./romemulti.tex (./figures/gflops_2x4_multi_rome16q.pdf_tex
+<./figures/gflops_2x4_multi_rome16q.pdf, id=7114, page=1, 1096.49628pt x 1742.87758pt>
+File: ./figures/gflops_2x4_multi_rome16q.pdf Graphic file (type pdf)
+<use ./figures/gflops_2x4_multi_rome16q.pdf, page 1>
+Package pdftex.def Info: ./figures/gflops_2x4_multi_rome16q.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 587.94316pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[48 <./figures/commload_2x4_multi_defqmpi.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[49]
+Overfull \vbox (67.0793pt too high) has occurred while \output is active []
+
+
+
+[50 <./figures/gflops_2x4_multi_rome16q.pdf>] (./figures/t_2x4_multi_rome16q.pdf_tex
+<./figures/t_2x4_multi_rome16q.pdf, id=8703, page=1, 1091.14401pt x 1742.87758pt>
+File: ./figures/t_2x4_multi_rome16q.pdf Graphic file (type pdf)
+<use ./figures/t_2x4_multi_rome16q.pdf, page 1>
+Package pdftex.def Info: ./figures/t_2x4_multi_rome16q.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 590.81534pt.
+)
+Overfull \vbox (11.7601pt too high) has occurred while \output is active []
+
+
+
+[51 <./figures/t_2x4_multi_rome16q.pdf>] (./figures/tcomm_2x4_multi_rome16q.pdf_tex
+<./figures/tcomm_2x4_multi_rome16q.pdf, id=9250, page=1, 1091.14401pt x 1742.87758pt>
+File: ./figures/tcomm_2x4_multi_rome16q.pdf Graphic file (type pdf)
+<use ./figures/tcomm_2x4_multi_rome16q.pdf, page 1>
+Package pdftex.def Info: ./figures/tcomm_2x4_multi_rome16q.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 590.81534pt.
+)
+Overfull \vbox (11.7601pt too high) has occurred while \output is active []
+
+
+
+[52 <./figures/tcomm_2x4_multi_rome16q.pdf>] (./figures/tcomp_2x4_multi_rome16q.pdf_tex
+<./figures/tcomp_2x4_multi_rome16q.pdf, id=9808, page=1, 1115.14395pt x 1742.87758pt>
+File: ./figures/tcomp_2x4_multi_rome16q.pdf Graphic file (type pdf)
+<use ./figures/tcomp_2x4_multi_rome16q.pdf, page 1>
+Package pdftex.def Info: ./figures/tcomp_2x4_multi_rome16q.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 578.10333pt.
+) (./figures/commload_2x4_multi_rome16q.pdf_tex
+<./figures/commload_2x4_multi_rome16q.pdf, id=9809, page=1, 1146.72102pt x 1742.87758pt>
+File: ./figures/commload_2x4_multi_rome16q.pdf Graphic file (type pdf)
+<use ./figures/commload_2x4_multi_rome16q.pdf, page 1>
+Package pdftex.def Info: ./figures/commload_2x4_multi_rome16q.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 562.17345pt.
+))
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[53 <./figures/tcomp_2x4_multi_rome16q.pdf>] (./fpgaqmulti.tex (./figures/gflops_2x4_multi_fpgaq.pdf_tex
+<./figures/gflops_2x4_multi_fpgaq.pdf, id=10370, page=1, 1084.49625pt x 1742.87758pt>
+File: ./figures/gflops_2x4_multi_fpgaq.pdf Graphic file (type pdf)
+<use ./figures/gflops_2x4_multi_fpgaq.pdf, page 1>
+Package pdftex.def Info: ./figures/gflops_2x4_multi_fpgaq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[54 <./figures/commload_2x4_multi_rome16q.pdf>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[55]
+Overfull \vbox (73.58684pt too high) has occurred while \output is active []
+
+
+
+[56 <./figures/gflops_2x4_multi_fpgaq.pdf>] (./figures/tcomm_2x4_multi_fpgaq.pdf_tex
+<./figures/tcomm_2x4_multi_fpgaq.pdf, id=12850, page=1, 1084.49625pt x 1742.87758pt>
+File: ./figures/tcomm_2x4_multi_fpgaq.pdf Graphic file (type pdf)
+<use ./figures/tcomm_2x4_multi_fpgaq.pdf, page 1>
+Package pdftex.def Info: ./figures/tcomm_2x4_multi_fpgaq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
+)
+Overfull \vbox (15.38354pt too high) has occurred while \output is active []
+
+
+
+[57 <./figures/tcomm_2x4_multi_fpgaq.pdf>] (./figures/commload_2x4_multi_fpgaq.pdf_tex
+<./figures/commload_2x4_multi_fpgaq.pdf, id=13303, page=1, 1158.72093pt x 1742.87758pt>
+File: ./figures/commload_2x4_multi_fpgaq.pdf Graphic file (type pdf)
+<use ./figures/commload_2x4_multi_fpgaq.pdf, page 1>
+Package pdftex.def Info: ./figures/commload_2x4_multi_fpgaq.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 556.34933pt.
+) (./figures/gflops_2x4_multi_fpgaqmpi.pdf_tex
+<./figures/gflops_2x4_multi_fpgaqmpi.pdf, id=13304, page=1, 1084.49625pt x 1742.87758pt>
+File: ./figures/gflops_2x4_multi_fpgaqmpi.pdf Graphic file (type pdf)
+<use ./figures/gflops_2x4_multi_fpgaqmpi.pdf, page 1>
+Package pdftex.def Info: ./figures/gflops_2x4_multi_fpgaqmpi.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[58 <./figures/commload_2x4_multi_fpgaq.pdf>]
+Overfull \vbox (15.38354pt too high) has occurred while \output is active []
+
+
+
+[59 <./figures/gflops_2x4_multi_fpgaqmpi.pdf>] (./figures/tcomm_2x4_multi_fpgaqmpi.pdf_tex
+<./figures/tcomm_2x4_multi_fpgaqmpi.pdf, id=14597, page=1, 1084.49625pt x 1742.87758pt>
+File: ./figures/tcomm_2x4_multi_fpgaqmpi.pdf Graphic file (type pdf)
+<use ./figures/tcomm_2x4_multi_fpgaqmpi.pdf, page 1>
+Package pdftex.def Info: ./figures/tcomm_2x4_multi_fpgaqmpi.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
+)
+Overfull \vbox (15.38354pt too high) has occurred while \output is active []
+
+
+
+[60 <./figures/tcomm_2x4_multi_fpgaqmpi.pdf>] (./figures/commload_2x4_multi_fpgaqmpi.pdf_tex
+<./figures/commload_2x4_multi_fpgaqmpi.pdf, id=15046, page=1, 1170.72096pt x 1742.87758pt>
+File: ./figures/commload_2x4_multi_fpgaqmpi.pdf Graphic file (type pdf)
+<use ./figures/commload_2x4_multi_fpgaqmpi.pdf, page 1>
+Package pdftex.def Info: ./figures/commload_2x4_multi_fpgaqmpi.pdf , page1 used on input line 56.
+(pdftex.def)             Requested size: 369.88583pt x 550.65819pt.
+)) (./CPUtable.tex
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 15.
+ (/opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/lm/t1lmss.fd
+File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `lmss' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+Overfull \hbox (36.99083pt too wide) in paragraph at lines 111--113
+ [][] 
+ []
+
+)) (./prevwork.tex
+
+[61 <./figures/commload_2x4_multi_fpgaqmpi.pdf>]
+
+[62]
+Chapter 6.
+)
+
+[63
+
+]
+
+[64
+
+] (./main.bbl
+
+[65
+
+]
+Underfull \hbox (badness 1014) in paragraph at lines 47--51
+[][]$\T1/lmtt/m/n/12 https : / / norvig . com / 21-[]days . html # Latency$[][]\T1/lmr/m/n/12 (+20) , 2021.  Ac-cessed:
+ []
+
+)
+
+[66] (./main.aux)
+ ***********
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: C423C3D6251DEA8E8482655FE0033419;7926.
+ ) 
+Here is how much of TeX's memory you used:
+ 52565 strings out of 473190
+ 1219622 string characters out of 5704335
+ 1973959 words of memory out of 5000000
+ 74246 multiletter control sequences out of 15000+600000
+ 709030 words of font info for 279 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 104i,16n,104p,1154b,789s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr6.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
+Output written on main.pdf (76 pages, 5407720 bytes).
+PDF statistics:
+ 16071 PDF objects out of 18468 (max. 8388607)
+ 10785 compressed objects within 108 object streams
+ 201 named destinations out of 1000 (max. 500000)
+ 85136 words of extra memory for PDF output out of 89155 (max. 10000000)
+
