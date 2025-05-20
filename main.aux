@@ -134,6 +134,8 @@
 \newlabel{eq:1bcomm@cref}{{[equation][2][4]4.2}{[1][21][]21}{}{}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Reordering}{22}{subsection.4.2.1}\protected@file@percent }
 \@writefile{loa}{\contentsline {algocf}{\numberline {5}{\ignorespaces Reordering of Separators}}{23}{algocf.5}\protected@file@percent }
+\newlabel{alg:reorderseparators}{{5}{23}{Reordering}{algocf.5}{}}
+\newlabel{alg:reorderseparators@cref}{{[algocf][5][]5}{[1][22][]23}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit  {Exchange Separators} communication pattern.}}{24}{figure.caption.18}\protected@file@percent }
 \newlabel{fig:1bcomm}{{4.3}{24}{Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Separators} communication pattern}{figure.caption.18}{}}
 \newlabel{fig:1bcomm@cref}{{[figure][3][4]4.3}{[1][22][]24}{}{}{}}
@@ -146,19 +148,21 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit  {Exchange Reuired Separators} communication pattern.}}{25}{figure.caption.19}\protected@file@percent }
 \newlabel{fig:1ccomm}{{4.4}{25}{Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Reuired Separators} communication pattern}{figure.caption.19}{}}
 \newlabel{fig:1ccomm@cref}{{[figure][4][4]4.4}{[1][24][]25}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Exchange only required separator values}{26}{section.4.4}\protected@file@percent }
-\newlabel{eq:1dcomm}{{4.4}{26}{Exchange only required separator values}{equation.4.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Strategy D - Exchange only required separator values}{26}{section.4.4}\protected@file@percent }
+\newlabel{eq:1dcomm}{{4.4}{26}{Strategy D - Exchange only required separator values}{equation.4.4}{}}
 \newlabel{eq:1dcomm@cref}{{[equation][4][4]4.4}{[1][26][]26}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit  {Exchange Reuired Elements} communication pattern.}}{26}{figure.caption.20}\protected@file@percent }
-\newlabel{fig:1dcomm}{{4.5}{26}{Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Reuired Elements} communication pattern}{figure.caption.20}{}}
-\newlabel{fig:1dcomm@cref}{{[figure][5][4]4.5}{[1][26][]26}{}{}{}}
+\newlabel{alg:reqsepexchange}{{7}{27}{Strategy D - Exchange only required separator values}{algocfline.7}{}}
+\newlabel{alg:reqsepexchange@cref}{{[algocfline][7][]7}{[1][26][]27}{}{}{}}
+\@writefile{loa}{\contentsline {algocf}{\numberline {7}{\ignorespaces Strategy D - Packing, exchanging and unpacking separator elements}}{27}{algocf.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.5}Strategy E - Memory Scalable}{27}{section.4.5}\protected@file@percent }
-\newlabel{alg:req_sep_exchange}{{7}{28}{Strategy E - Memory Scalable}{algocfline.7}{}}
-\newlabel{alg:req_sep_exchange@cref}{{[algocfline][7][]7}{[1][27][]28}{}{}{}}
-\@writefile{loa}{\contentsline {algocf}{\numberline {7}{\ignorespaces Exchange Required Separators}}{28}{algocf.7}\protected@file@percent }
+\newlabel{sec:memscal}{{4.5}{27}{Strategy E - Memory Scalable}{section.4.5}{}}
+\newlabel{sec:memscal@cref}{{[section][5][4]4.5}{[1][27][]27}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit  {Exchange Reuired Elements} communication pattern.}}{28}{figure.caption.20}\protected@file@percent }
+\newlabel{fig:1dcomm}{{4.5}{28}{Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Reuired Elements} communication pattern}{figure.caption.20}{}}
+\newlabel{fig:1dcomm@cref}{{[figure][5][4]4.5}{[1][26][]28}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Global indexing vs. Local indexing of \(x\).}}{28}{figure.caption.21}\protected@file@percent }
 \newlabel{fig:2dcomm}{{4.6}{28}{Global indexing vs. Local indexing of \(x\)}{figure.caption.21}{}}
-\newlabel{fig:2dcomm@cref}{{[figure][6][4]4.6}{[1][27][]28}{}{}{}}
+\newlabel{fig:2dcomm@cref}{{[figure][6][4]4.6}{[1][28][]28}{}{}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Results}{29}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -226,66 +230,67 @@
 \newlabel{fig:commloaddefqsingle}{{5.6}{39}{Fraction of \(x\) communicated per SpMV iteration each strategy on a single node using the \defq {} chip}{figure.caption.29}{}}
 \newlabel{fig:commloaddefqsingle@cref}{{[figure][6][5]5.6}{[1][39][]39}{}{}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5.5}AMD EPYC 7601{} - Multi Node Performance}{42}{section.5.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces multi Node - AMD EPYC 7601}}{42}{figure.caption.30}\protected@file@percent }
-\newlabel{fig:gflopsdefqmulti}{{5.7}{42}{multi Node - \defq }{figure.caption.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Achieved GFLOPS on multi node setup using the AMD EPYC 7601{} chip.}}{42}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:gflopsdefqmulti}{{5.7}{42}{Achieved GFLOPS on multi node setup using the \defq {} chip}{figure.caption.30}{}}
 \newlabel{fig:gflopsdefqmulti@cref}{{[figure][7][5]5.7}{[1][40][]42}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces \relax }}{43}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:tcommdefqmulti}{{5.8}{43}{\relax }{figure.caption.31}{}}
-\newlabel{fig:tcommdefqmulti@cref}{{[figure][8][5]5.8}{[1][43][]43}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces \relax }}{44}{figure.caption.32}\protected@file@percent }
-\newlabel{}{{5.9}{44}{\relax }{figure.caption.32}{}}
-\newlabel{@cref}{{[figure][9][5]5.9}{[1][44][]44}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}2 proc per node}{46}{subsection.5.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Multi Node - AMD EPYC 7601}}{46}{figure.caption.33}\protected@file@percent }
-\newlabel{fig:gflopsdefqmpimulti}{{5.10}{46}{Multi Node - \defq }{figure.caption.33}{}}
-\newlabel{fig:gflopsdefqmpimulti@cref}{{[figure][10][5]5.10}{[1][44][]46}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces \relax }}{47}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:tcommdefqmpimulti}{{5.11}{47}{\relax }{figure.caption.34}{}}
-\newlabel{fig:tcommdefqmpimulti@cref}{{[figure][11][5]5.11}{[1][47][]47}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces \relax }}{48}{figure.caption.35}\protected@file@percent }
-\newlabel{}{{5.12}{48}{\relax }{figure.caption.35}{}}
-\newlabel{@cref}{{[figure][12][5]5.12}{[1][48][]48}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}AMD EPYC 7302P{} - Multi Node Performance}{50}{section.5.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces \relax }}{50}{figure.caption.36}\protected@file@percent }
-\newlabel{fig:gflopsromemulti}{{5.13}{50}{\relax }{figure.caption.36}{}}
-\newlabel{fig:gflopsromemulti@cref}{{[figure][13][5]5.13}{[1][48][]50}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \relax }}{51}{figure.caption.37}\protected@file@percent }
-\newlabel{fig:tromemulti}{{5.14}{51}{\relax }{figure.caption.37}{}}
-\newlabel{fig:tromemulti@cref}{{[figure][14][5]5.14}{[1][51][]51}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces \relax }}{52}{figure.caption.38}\protected@file@percent }
-\newlabel{fig:tcommromemulti}{{5.15}{52}{\relax }{figure.caption.38}{}}
-\newlabel{fig:tcommromemulti@cref}{{[figure][15][5]5.15}{[1][52][]52}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Tcomp 2X4 Multi Rome16Q}}{53}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:tcomp_2x4_multi_rome16q}{{5.16}{53}{Tcomp 2X4 Multi Rome16Q}{figure.caption.39}{}}
-\newlabel{fig:tcomp_2x4_multi_rome16q@cref}{{[figure][16][5]5.16}{[1][53][]53}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces \relax }}{54}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:commlaoadromemulti}{{5.17}{54}{\relax }{figure.caption.40}{}}
-\newlabel{fig:commlaoadromemulti@cref}{{[figure][17][5]5.17}{[1][53][]54}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.7}AMD EPYC 7413{} - Multi Node Performance}{56}{section.5.7}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.18}{\ignorespaces multi Node - AMD EPYC 7413}}{56}{figure.caption.41}\protected@file@percent }
-\newlabel{fig:gflopsfpgaqmulti}{{5.18}{56}{multi Node - \fpgaq }{figure.caption.41}{}}
-\newlabel{fig:gflopsfpgaqmulti@cref}{{[figure][18][5]5.18}{[1][54][]56}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.19}{\ignorespaces \relax }}{57}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:tcommfpgaqmulti}{{5.19}{57}{\relax }{figure.caption.42}{}}
-\newlabel{fig:tcommfpgaqmulti@cref}{{[figure][19][5]5.19}{[1][57][]57}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.20}{\ignorespaces \relax }}{58}{figure.caption.43}\protected@file@percent }
-\newlabel{}{{5.20}{58}{\relax }{figure.caption.43}{}}
-\newlabel{@cref}{{[figure][20][5]5.20}{[1][58][]58}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.21}{\ignorespaces Multi Node - AMD EPYC 7413}}{59}{figure.caption.44}\protected@file@percent }
-\newlabel{fig:gflopsfpgaqmpimulti}{{5.21}{59}{Multi Node - \fpgaq }{figure.caption.44}{}}
-\newlabel{fig:gflopsfpgaqmpimulti@cref}{{[figure][21][5]5.21}{[1][58][]59}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.22}{\ignorespaces \relax }}{60}{figure.caption.45}\protected@file@percent }
-\newlabel{fig:tcommfpgaqmpimulti}{{5.22}{60}{\relax }{figure.caption.45}{}}
-\newlabel{fig:tcommfpgaqmpimulti@cref}{{[figure][22][5]5.22}{[1][60][]60}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.23}{\ignorespaces \relax }}{61}{figure.caption.46}\protected@file@percent }
-\newlabel{}{{5.23}{61}{\relax }{figure.caption.46}{}}
-\newlabel{@cref}{{[figure][23][5]5.23}{[1][61][]61}{}{}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Hardware used in our experiments. STREAM Triad was run with the \texttt  {-march=native} and \texttt  {-O3} compilation flags.}}{62}{table.caption.47}\protected@file@percent }
-\newlabel{tbl:hardware}{{5.1}{62}{Hardware used in our experiments. STREAM Triad was run with the \texttt {-march=native} and \texttt {-O3} compilation flags}{table.caption.47}{}}
-\newlabel{tbl:hardware@cref}{{[table][1][5]5.1}{[1][61][]62}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces \relax }}{44}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:tcommdefqmulti}{{5.8}{44}{\relax }{figure.caption.31}{}}
+\newlabel{fig:tcommdefqmulti@cref}{{[figure][8][5]5.8}{[1][43][]44}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces \relax }}{45}{figure.caption.32}\protected@file@percent }
+\newlabel{}{{5.9}{45}{\relax }{figure.caption.32}{}}
+\newlabel{@cref}{{[figure][9][5]5.9}{[1][45][]45}{}{}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}2 proc per node}{47}{subsection.5.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Multi Node - AMD EPYC 7601}}{47}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:gflopsdefqmpimulti}{{5.10}{47}{Multi Node - \defq }{figure.caption.33}{}}
+\newlabel{fig:gflopsdefqmpimulti@cref}{{[figure][10][5]5.10}{[1][45][]47}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces \relax }}{48}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:tcommdefqmpimulti}{{5.11}{48}{\relax }{figure.caption.34}{}}
+\newlabel{fig:tcommdefqmpimulti@cref}{{[figure][11][5]5.11}{[1][48][]48}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces \relax }}{49}{figure.caption.35}\protected@file@percent }
+\newlabel{}{{5.12}{49}{\relax }{figure.caption.35}{}}
+\newlabel{@cref}{{[figure][12][5]5.12}{[1][49][]49}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}AMD EPYC 7302P{} - Multi Node Performance}{51}{section.5.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Achieved GFLOPS on multi node setup using the AMD EPYC 7302P{} chip.}}{51}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:gflopsromemulti}{{5.13}{51}{Achieved GFLOPS on multi node setup using the \romeq {} chip}{figure.caption.36}{}}
+\newlabel{fig:gflopsromemulti@cref}{{[figure][13][5]5.13}{[1][49][]51}{}{}{}}
+\citation{10064025}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces \relax }}{53}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:tromemulti}{{5.14}{53}{\relax }{figure.caption.37}{}}
+\newlabel{fig:tromemulti@cref}{{[figure][14][5]5.14}{[1][52][]53}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces \relax }}{54}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:tcommromemulti}{{5.15}{54}{\relax }{figure.caption.38}{}}
+\newlabel{fig:tcommromemulti@cref}{{[figure][15][5]5.15}{[1][54][]54}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Tcomp 2X4 Multi Rome16Q}}{55}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:tcomp_2x4_multi_rome16q}{{5.16}{55}{Tcomp 2X4 Multi Rome16Q}{figure.caption.39}{}}
+\newlabel{fig:tcomp_2x4_multi_rome16q@cref}{{[figure][16][5]5.16}{[1][55][]55}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces \relax }}{56}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:commlaoadromemulti}{{5.17}{56}{\relax }{figure.caption.40}{}}
+\newlabel{fig:commlaoadromemulti@cref}{{[figure][17][5]5.17}{[1][55][]56}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}AMD EPYC 7413{} - Multi Node Performance}{58}{section.5.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.18}{\ignorespaces multi Node - AMD EPYC 7413}}{58}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:gflopsfpgaqmulti}{{5.18}{58}{multi Node - \fpgaq }{figure.caption.41}{}}
+\newlabel{fig:gflopsfpgaqmulti@cref}{{[figure][18][5]5.18}{[1][56][]58}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.19}{\ignorespaces \relax }}{59}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:tcommfpgaqmulti}{{5.19}{59}{\relax }{figure.caption.42}{}}
+\newlabel{fig:tcommfpgaqmulti@cref}{{[figure][19][5]5.19}{[1][59][]59}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.20}{\ignorespaces \relax }}{60}{figure.caption.43}\protected@file@percent }
+\newlabel{}{{5.20}{60}{\relax }{figure.caption.43}{}}
+\newlabel{@cref}{{[figure][20][5]5.20}{[1][60][]60}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.21}{\ignorespaces Multi Node - AMD EPYC 7413}}{61}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:gflopsfpgaqmpimulti}{{5.21}{61}{Multi Node - \fpgaq }{figure.caption.44}{}}
+\newlabel{fig:gflopsfpgaqmpimulti@cref}{{[figure][21][5]5.21}{[1][60][]61}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.22}{\ignorespaces \relax }}{62}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:tcommfpgaqmpimulti}{{5.22}{62}{\relax }{figure.caption.45}{}}
+\newlabel{fig:tcommfpgaqmpimulti@cref}{{[figure][22][5]5.22}{[1][62][]62}{}{}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.23}{\ignorespaces \relax }}{63}{figure.caption.46}\protected@file@percent }
+\newlabel{}{{5.23}{63}{\relax }{figure.caption.46}{}}
+\newlabel{@cref}{{[figure][23][5]5.23}{[1][63][]63}{}{}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Hardware used in our experiments. STREAM Triad was run with the \texttt  {-march=native} and \texttt  {-O3} compilation flags.}}{64}{table.caption.47}\protected@file@percent }
+\newlabel{tbl:hardware}{{5.1}{64}{Hardware used in our experiments. STREAM Triad was run with the \texttt {-march=native} and \texttt {-O3} compilation flags}{table.caption.47}{}}
+\newlabel{tbl:hardware@cref}{{[table][1][5]5.1}{[1][63][]64}{}{}{}}
 \citation{merrilduane}
 \citation{ordersparse}
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Related Work}{63}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Related Work}{65}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{loa}{\addvspace {10\p@ }}
@@ -304,4 +309,4 @@
 \bibcite{ellpackformat}{{11}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
 \gdef\svg@ink@ver@settings{{\m@ne }{inkscape}{1}}
-\gdef \@abspage@last{76}
+\gdef \@abspage@last{78}

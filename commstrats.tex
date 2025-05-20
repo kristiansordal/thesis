@@ -66,6 +66,7 @@ After partitioning the matrix into different parts, we obtain a partition vector
 
 \begin{algorithm}[H]
     \caption{Reordering of Separators}
+    \label{alg:reorderseparators}
     \SetAlgoVlined
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
@@ -190,18 +191,18 @@ Let \(n_{p}\) be the total number of ranks, \(n_{i}\) be the number of neighbour
 \end{algorithm}
 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \incfig{1ccomm}
     \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Reuired Separators} communication pattern.}
     \label{fig:1ccomm}
 \end{figure}
 
-\section{Exchange only required separator values}
-The final strategy aims to minimize communication overhead by transmitting only the exact subset of separator values that are both computed by and required for inter-process computation. If a specific separator value computed by one process is needed by exactly one other process, then only that single recipient receives the value.
+\section{Strategy D - Exchange only required separator values}
+The final strategy further reduces the communication volume by only communicating the separator elements to the rank with which that element induces a data dependency. This approach eliminates all unnecessary data transfers but introduces additional complexity in managing communication schedules. It requires careful management of the send and recieve lists, and introduces some additional overhead by means of a packing and unpacking step necessary for transmitting the data between ranks. This overhead does however not outweigh the benefits gained from the reduction in communication volume which this strategy yields.
 \medskip
 
-This approach eliminates all unnecessary data transfers but introduces additional complexity in managing communication schedules. Dependencies must be mapped at a fine-grained level, and communication patterns must be explicitly tailored to the structure of the matrix and its partitioning.
+Both strategy B and C requires reordering of the separator values, in order to make the communication of the separators easier, but due to the packing and unpacking step required for this strategy as seen in algorithm \ref{alg:reqsepexchange}, reordering the separator elements is not required for this communication strategy.
 \medskip
 
 Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of elements in rank \(i\)s separator that are required by other ranks. Since this communication strategy only communicated these elements, the total communication volume is given by \ref{eq:1dcomm}.
@@ -211,26 +212,9 @@ Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of e
     \sum_{i=1}^{n_{p}} d_{i} 
 \end{equation}
 
-
-
-\begin{figure}[ht]
-    \centering
-    \incfig{1dcomm}
-    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Reuired Elements} communication pattern.}
-    \label{fig:1dcomm}
-\end{figure}
-
-
-\section{Strategy E - Memory Scalable}
-The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire vector \(x\), and will run into performance issues when \(x\) is so large that it doesn't fit into memory. Usually, this is not a problem when SpMV is ran on CPUs, as they have large amounts of memory. Even on GPUs this problem might not be encountered, as modern GPUs have sufficient memory for large matrices.
-\medskip
-
-Instead of storing the entire vector, each rank only stores its local part of the vector. In addition, it is necessary to allocate enough space for the separators elements that are needed from the other ranks. In order to achieve this, \(x\) is renumbered such that every ranks part of the vector is 0-indexed. For the local part of the \(x\) vector this is done by simply subtracting the position of the first local entry assigned to that rank from each entry in the local vector. It is slightly more complicated to renumber the separator elements, and the technicalities of how to do this will not be discussed here.
-\medskip
-
 \begin{algorithm}[H]
-    \label{alg:req_sep_exchange}
-    \caption{Exchange Required Separators}
+    \label{alg:reqsepexchange}
+    \caption{Strategy D - Packing, exchanging and unpacking separator elements}
     \SetAlgoVlined
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
@@ -267,6 +251,30 @@ Instead of storing the entire vector, each rank only stores its local part of th
 
     Free sendBuffer, recvBuffer, sendDispls, recvDispls\\
 \end{algorithm}
+
+
+
+
+\begin{figure}[ht]
+    \centering
+    \incfig{1dcomm}
+    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Reuired Elements} communication pattern.}
+    \label{fig:1dcomm}
+\end{figure}
+
+
+\section{Strategy E - Memory Scalable}
+\label{sec:memscal}
+The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire vector \(x\), and will run into performance issues when \(x\) is so large that it doesn't fit into memory. Usually, this is not a problem when SpMV is ran on CPUs, as they have large amounts of memory. Even on GPUs this problem might not be encountered, as modern GPUs have sufficient memory for large matrices.
+\medskip
+
+% \Huge{WRITE ABOUT SEPARATOR REORDERING}
+
+Instead of storing the entire vector, each rank only stores its local part of the vector. In addition, it is necessary to allocate enough space for the separators elements that are needed from the other ranks. In order to achieve this, \(x\) is renumbered such that every ranks part of the vector is 0-indexed. For the local part of the \(x\) vector this is done by simply subtracting the position of the first local entry assigned to that rank from each entry in the local vector. It is also necessary to reorder the separator elements, as they will be stored after the entries in the local vector. This is achieved in a similar manner as the algorithm outlined in \ref{alg:reorderseparators}.
+
+% It is slightly more complicated to renumber the separator elements, and the technicalities of how to do this will not be discussed here.
+\medskip
+
 
 % There is no specific communication pattern that are required for 
 

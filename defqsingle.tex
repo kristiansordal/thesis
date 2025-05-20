@@ -4,7 +4,12 @@
     \caption{Single Node - \defq}
     \label{fig:gflopsdefqsingle}
 \end{figure}
-Figure \ref{fig:gflopsdefqsingle} presents the achieved GFLOPS for each communication strategy. The performance trends largely align with expectations: each successive strategy generally exhibits improved performance over its predecessor. However, an exception arises with strategy E, which consistently underperforms relative to strategy D. As detailed in Algorithm \ref{alg:req_sep_exchange}, strategy E incurs a significant overhead due to its requirement to pack and unpack every individual element exchanged across separator boundaries. This repeated packing and unpacking operation introduces substantial computational and memory overhead, which offsets the potential benefits of the strategy and explains its inferior performance. It is however important to keep in mind that the goal of strategy E is not necessarily to achieve the absolute highest possible GFLOPS performance, but rather to ensure that it is scalable to large matrices, and is able to run on architectures that have lower local memory.
+Figure \ref{fig:gflopsdefqsingle} presents the achieved GFLOPS for each communication strategy. The performance trends largely align with expectations: each successive strategy generally exhibits improved performance over its predecessor. However, an exception arises with strategy E, which consistently underperforms relative to strategy D.
+\medskip
+
+As discussed in section \ref{sec:memscal}, strategy E reorders the local vector and separators. The effect this reordering has on well ordered matrices is that it most likely reduces the amount of cache reuse. This has not been measured directly, but it is the most likely culprit to the discrepancy between the results of strategy D and E.
+
+% As detailed in Algorithm \ref{alg:reqsepexchange}, strategy E incurs a significant overhead due to its requirement to pack and unpack every individual element exchanged across separator boundaries. This repeated packing and unpacking operation introduces substantial computational and memory overhead, which offsets the potential benefits of the strategy and explains its inferior performance. It is however important to keep in mind that the goal of strategy E is not necessarily to achieve the absolute highest possible GFLOPS performance, but rather to ensure that it is scalable to large matrices, and is able to run on architectures that have lower local memory.
  
 \begin{figure}[H]
     \centering
