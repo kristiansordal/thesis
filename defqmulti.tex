@@ -1,11 +1,11 @@
+\subsection{One MPI rank per node}
 \begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_defq}
     \caption{Achieved GFLOPS on multi node setup using the \defq{} chip.}
     \label{fig:gflopsdefqmulti}
 \end{figure}
-
-The results presented in Figure \ref{fig:gflopsdefqmulti} illustrate the GFLOPS achieved when running SpMV for 100 iterations in a distributed and shared memory hybrid environment. For these results, 4 nodes running dual-socketed \defq{} chips have been used, with one MPI rank placed on each node. The results largely align with what is expected, as each consecutive communication strategy outperforms the previous.
+% The results presented in Figure \ref{fig:gflopsdefqmulti} illustrate the GFLOPS achieved when running SpMV for 100 iterations in a distributed and shared memory hybrid environment. For these results, 4 nodes running dual-socketed \defq{} chips have been used, with one MPI rank placed on each node. The results largely align with what is expected, as each consecutive communication strategy outperforms the previous.
 \medskip
 
 The results illustrate some quirks that are inherent to the \defq{} chip. As is evident from the plots, using only one node (and one MPI rank), consistently yield results that are either better or almost as good as the results achieved when using the maximum amount of available nodes. As an example, for the \texttt{Bump\_2911} matrix, strategy D achieves a GFLOPS performance of \(\approx 9\) GFLOPS on one node, with 64 OpenMP shared memory threads. When this is compared to Figure \ref{fig:gflopsdefqsingle} using 64 MPI ranks, which achieves \(\approx 30\) GFLOPS for the same matrix. It is clear that using only distributed memory far outperforms using only shared memory parallelization. The reasons for this is outside the scope of this thesis, but the \defq{} chip is a 1st generation chip, and does have a weak core to core connection, which could be the reason. 
@@ -26,7 +26,7 @@ The results illustrate some quirks that are inherent to the \defq{} chip. As is 
     \label{}
 \end{figure}
 
-\subsection{2 proc per node}
+\subsection{One MPI rank per socket}
 
 \begin{figure}[H]
     \centering

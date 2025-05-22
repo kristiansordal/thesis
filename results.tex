@@ -9,8 +9,66 @@ As has been established, the maximum performance scales with the available memor
 \end{equation}
 
 
-\section{Matrices}
-As the field of interest is that of results from scientific computing, the matrices shown in Figre \ref{fig:matricesused} have been selected. Matrices that are based on scientific computing problems are generally well structured and have nonzero entries centered around the main diagonal. Matrices with these kinds of structures tend to yield a larger cache hit rate than matrices based on social networks and other kinds of graphs. It is important to keep this in mind when interpreting the results, as other kinds of graphs can yield very different results.
+\section{Expreimental Setup}
+In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were ran on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled with the compiler flags \texttt{-march=native} and \texttt{-O3}.
+ 
+\subsection{Hardware Platforms}
+
+The experiments that have been ran target three high‐performance computing systems. \autoref{tab:hardware} gives an overview of the hardware that has been used in the experiments.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}[c]{|l|l|l|l|}
+            \hline
+            \textbf{Chip}&\textbf{Nodes}&\textbf{Sockets/node}&\textbf{Cores/socket}  \\
+            \hline
+            \defq{}&2&4&32  \\
+            \hline
+            \fpgaq{}&2&4&24  \\
+            \hline
+            \romeq{}&1&8&16  \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{Overview of hardware used in the experiments.}
+    \label{tab:hardware}
+\end{table}
+
+
+There has been performed experiments measuring both single node and multi node performance. For single node experiments, the number of MPI ranks is doubled until all cores on the given node is assigned a MPI rank, also OpenMP was not utilized for these experiments.
+\medskip
+
+For multi node experiments, two configuration have been tested. The first configuration involves assinging one MPI rank per node, and utilizing shared memory paralleization through the use of OpenMP within each node. The second configuration places one MPI rank per socket. These experiments aims to show the performance of the communication strategies on multi node systems. Furthermore, it is possible to compare the impact that the number of memory controllers utilized have on the results. Using one MPI rank per node only utilizes one of two memory controllers on a dual socketed systems, whereas using one MPI rank per socket utilizes both of the memory controller on the node.
+
+
+
+\subsection{Communication Strategies}
+The communication strategies used have been extensively discussed in \ref{sec:commstrats}, and \autoref{tab:commstratdesc} gives an overview of what the various communication strategies will be referred to in the folliwing sections, and the key idea they use to communicate the data-dependencies between ranks.
+
+\begin{table}[H]
+    \begin{center}
+        \begin{tabular}[c]{|p{3cm}|p{9.5cm}|}
+            \hline
+             \textbf{Strategy name}& \textbf{Strategy Description}  \\
+            \hline
+             Strategy A&Exchanges entire local vector.  \\
+            \hline
+             Strategy B&Exchanges entire separator.  \\
+            \hline
+             Strategy C&Exchanges required separator.  \\
+            \hline
+             Strategy D&Exchanges required separator elements  \\
+            \hline
+             Strategy E&Exchanges required separator elements, memory scalable  \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \caption{Names and description of communication strategies that have been tested.}
+    \label{tab:commstratdesc}
+\end{table}
+
+\subsection{Matrices}
+As the field of interest is that of results from scientific computing, the matrices shown in Figure \ref{fig:matricesused} have been selected, and \autoref{tab:matricesused} gives a brief description of the problem the matrices solve. Matrices that are based on scientific computing problems are generally well structured and have nonzero entries centered around the main diagonal. Matrices with these kinds of structures tend to yield a larger cache hit rate than matrices based on social networks and other kinds of graphs. It is important to keep this in mind when interpreting the results, as other kinds of graphs can yield very different results.
 
 \begin{figure}[H]
   \centering
@@ -70,65 +128,20 @@ nlpkkt200&Symmetric indefinite KKT matrix\\
 \hline
 \end{tabular}
 \end{center}
-\end{table}
-
-
-\section{Overview of Experiments}
-The experiments that have been ran in order to obtain the results in the following thesis have made use of systems on the Experimental Infrastructure for Exploration of Exascale Computing (eX\(^{3}\)).
-\medskip
-
-For each experiment, every matrix has been put through 100 iterations of SpMV, and every communication strategy has been tested on different configurations. For the single node experiments, each communication strategy has been ran with the number of MPI ranks being doubled until every available physical core on the chip is assigned one MPI rank. For multi node experiments on single socketed nodes, one MPI rank is assigned to each rank, and shared memory parallelization has been used within each node. On dual socketed nodes, experiments placing one MPI rank per node and placing one MPI rank per socket have been ran. All programs have been compiled with \texttt{-march=native} and \texttt{-O3} compilation flags.
-
-% \begin{table}[H]
-%     \begin{center}
-%         \begin{tabular}[c]{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
-%             \hline
-%             &\textbf{\defq}&\textbf{\fpgaq}&\textbf{\romeq}  \\
-%             \hline
-%             No. of sockets&2&2&1  \\
-%             \hline
-%             No. of physical cores per socket&32&24&16  \\
-%             \hline
-%             No. of nodes&4&4&8  \\
-%             \hline
-%             Tested single node performance&Yes&No&No  \\
-%             \hline
-%             Single Node Ranks&\(1,2,4,8,16,32,64\)&N/A&N/A  \\
-%             \hline
-%         \end{tabular}
-%     \end{center}
-%     \caption{Configurations used on experiments}
-% \end{table}
-
-In the following presentation of the results, \ref{tab:commstratdesc} gives an overview of what the different strategies will be referred to, both when analyzing the results, and in the legends of the figures.
-
-\begin{table}[H]
-    \begin{center}
-        \begin{tabular}[c]{|p{3cm}|p{9.5cm}|}
-            \hline
-             \textbf{Strategy name}& \textbf{Strategy Description}  \\
-            \hline
-             Strategy A&Exchanges entire local vector.  \\
-            \hline
-             Strategy B&Exchanges entire separator.  \\
-            \hline
-             Strategy C&Exchanges required separator.  \\
-            \hline
-             Strategy D&Exchanges required separator elements  \\
-            \hline
-             Strategy E&Exchanges required separator elements, memory scalable  \\
-            \hline
-        \end{tabular}
-    \end{center}
-    \label{tab:commstratdesc}
+\caption{Names and descriptions of the matrices used in the experiments.}
+\label{tab:matricesused}
 \end{table}
 
 \section{\defq{} - Single Node Performance}
-The results in this section illustrates the performance of the communication strategies when performed on a single node containing two \defq\phantom{a}chips.  
-\input{defqsingle}
+The results in this section present the performance metrics of the communication strategies when ran on a single node containing two \defq{} chips. Each communication strategy has been ran using \(1,2,4,8,16,32,64\) MPI ranks for each communication strategy.
 \medskip
 
+\input{defqsingle}
+
 \section{\defq{} - Multi Node Performance}
+The results in this section present the performance metrics when ran on one through four dual-socketed nodes with two \defq{} chips on each node. Two sets of results are presented, the first uses a configuration where only one MPI rank has been placed on each node, and the second places two MPI ranks per node, or in other words, one MPI rank per socket. On both configurations, 64 OpenMP threads have been used, as each chip have 32 physical cores. These results aim to illustrate the difference in performance in a multi-node configuration, both when utilizing only one memory controller (i.e. one MPI rank per node), and when utilizing two memory controllers (i.e. one MPI rank per socket). 
+\medskip
+
 \input{defqmulti}
 
 
