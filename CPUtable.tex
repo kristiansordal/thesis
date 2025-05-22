@@ -6,110 +6,93 @@
 %
 % Hardware
 
-\begin{table}
+\begin{table}[ht]
   \centering
-  \caption{Hardware used in our experiments. STREAM Triad was run with the \texttt{-march=native} and  \texttt{-O3} compilation flags.}
-  \linespread{0.85}
-  \renewcommand{\arraystretch}{1.2}
-  \setlength{\tabcolsep}{3pt}
+  \linespread{0.85}\renewcommand{\arraystretch}{1.2}
+  \setlength{\tabcolsep}{2pt}    % a little padding between columns
   \footnotesize\sffamily
-  \begin{tabularx}{1.1\textwidth}{
-      >{\hsize=1.7\hsize\raggedright\arraybackslash}X
-      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
-      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
-      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
-      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
-      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
-      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X
-      >{\hsize=0.9\hsize\raggedleft\arraybackslash}X}
+  %--------------------------------------------------------------------------------
+  % use tabular* + \extracolsep{\fill} to force it to exactly \textwidth
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}
+      l
+      >{\raggedleft\arraybackslash}p{0.18\textwidth}
+      >{\raggedleft\arraybackslash}p{0.18\textwidth}
+      >{\raggedleft\arraybackslash}p{0.18\textwidth}
+    @{}}
     \toprule
-    & {\small Xeon-A}
-    & {\small FPGAQ}
-    & {\small Naples}
-    & {\small Rome}
-    & {\small Milan}
-    & {\small TX2}
-    & {\small Hi1620} \\
-
+      & {\small FPGAQ}
+      & {\small Rome}
+      & {\small Defq} \\
     \midrule
-
     CPUs
-    & Intel Xeon Gold 6130
-    & AMD Epyc 7413
-    & AMD Epyc 7601
-    & AMD Epyc 7302P
-    & AMD Epyc 7763
-    & Cavium TX2 CN9980
-    & HiSilicon Kunpeng 920-6426 \\
+      & \fpgaq{} 
+      & \romeq{} 
+      & \defq{} \\
 
-    Instr. set
-    & x86-64
-    & x86-64
-    & x86-64
-    & x86-64
-    & x86-64
-    & ARMv8.1
-    & ARMv8.2 \\
+    Instr.\ setu w
+      & x86-64
+      & x86-64
+      & x86-64 \\
 
     Microarch.
-    & Skylake
-    & Zen 3 
-    & Zen
-    & Zen 2
-    & Zen 3
-    & Vulcan
-    & TaiShan v110 \\
+      & Zen 3
+      & Zen 2
+      & Zen 1 \\
 
-    Sockets & 2 & 2 & 2 & 1 & 2 & 2 & 2 \\
+    Sockets
+      & 2
+      & 1
+      & 2 \\
 
     Cores
-    & $2\times 16$
-    & $2\times 24$
-    & $2\times 32$
-    & $1\times 16$
-    & $2\times 64$
-    & $2\times 32$
-    & $2\times 64$ \\
+      & $2\times24$
+      & $1\times16$
+      & $2\times32$ \\
 
     Freq.~[GHz]
-    & $1.9$--$3.6$
-    & $2.6$--$3.6$
-    & $2.7$--$3.2$
-    & $1.5$--$3.3$
-    & $2.5$--$3.5$
-    & $2.0$--$2.5$
-    & $2.6$ \\
+      & $2.6$--$3.6$
+      & $1.5$--$3.3$
+      & $2.2$--$3.2$  \\
 
     \midrule
-    L1I/core [KiB]  & 32 & 64 & 64 & 32 & 32 & 32 & 64 \\
-    L1D/core [KiB]  & 32 & 32 & 32 & 32 & 32 & 32 & 64 \\
-    L2/core [KiB]   & 1024 & 512 & 512 & 512 & 512 & 256 & 512 \\
-    L3/socket [MiB] & 22 & 128 & 64 & 16 & 256 & 32 & 64 \\
-    Mem. channels & $2\times 6$ & $2\times 8$ & $2\times 8$ & $1\times 8$ & $2\times 8$ & $2\times 8$ & $2\times 8$ \\
-    Bandwidth [GB/s] & 256 & 256(to be added) & 342 & 204.8 & 409.6 & 342 & 342 \\
-    Triad [GB/s] & 147.1 & 137.4(to be added) & 169.7 & 90.9 & 256.5 & 236.4 & 260.4 \\
+    L1I/core [KiB]
+      & 64
+      & 32
+      & 64\\
 
-    % fp64 flops/core/cycle
-    % & $32$
-    % & $32$
-    % & $ 8$
-    % & $16$
-    % & $16$
-    % & $ 8$
-    % & $ 4$ \\
+    L1D/core [KiB]
+      & 32
+      & 32
+      & 32 \\
 
-    % Theoretical fp64 perf.
-    % & $1\,946$\,Gflop/s
-    % & $3\,840$\,Gflop/s
-    % & $1\,382$\,Gflop/s
-    % &    $768$\,Gflop/s
-    % & $5\,120$\,Gflop/s
-    % & $1\,024$\,Gflop/s
-    % & $1\,331$\,Gflop/s \\
+    L2/core [KiB]
+      & 512
+      & 512
+      & 512 \\
 
+    L3/socket [MiB]
+      & 128
+      & 16
+      & 128 \\
+
+    Mem.\ channels
+      & $2\times8$
+      & $1\times8$
+      & $2\times8$ \\
+
+    Bandwidth [GB/s]
+      & N/A
+      & 204.8
+      & N/A\\
+
+    Triad [GB/s]
+      & N/A
+      & 90.9
+      & N/A \\
     \bottomrule
-  \end{tabularx}
-  \label{tbl:hardware}
+  \end{tabular*}
+  \caption{Hardware used in the experiments. STREAM Triad was run with the \texttt{-march=native} and \texttt{-O3} compilation flags.}
+  \label{tab:hardware}
 \end{table}
 
 

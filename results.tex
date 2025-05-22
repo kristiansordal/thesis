@@ -9,30 +9,14 @@ As has been established, the maximum performance scales with the available memor
 \end{equation}
 
 
-\section{Expreimental Setup}
+\section{Experimental Setup}
 In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were ran on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled with the compiler flags \texttt{-march=native} and \texttt{-O3}.
  
 \subsection{Hardware Platforms}
 
 The experiments that have been ran target three high‐performance computing systems. \autoref{tab:hardware} gives an overview of the hardware that has been used in the experiments.
 
-\begin{table}[H]
-    \begin{center}
-        \begin{tabular}[c]{|l|l|l|l|}
-            \hline
-            \textbf{Chip}&\textbf{Nodes}&\textbf{Sockets/node}&\textbf{Cores/socket}  \\
-            \hline
-            \defq{}&2&4&32  \\
-            \hline
-            \fpgaq{}&2&4&24  \\
-            \hline
-            \romeq{}&1&8&16  \\
-            \hline
-        \end{tabular}
-    \end{center}
-    \caption{Overview of hardware used in the experiments.}
-    \label{tab:hardware}
-\end{table}
+\input{cputable}
 
 
 There has been performed experiments measuring both single node and multi node performance. For single node experiments, the number of MPI ranks is doubled until all cores on the given node is assigned a MPI rank, also OpenMP was not utilized for these experiments.
@@ -46,8 +30,10 @@ For multi node experiments, two configuration have been tested. The first config
 The communication strategies used have been extensively discussed in \ref{sec:commstrats}, and \autoref{tab:commstratdesc} gives an overview of what the various communication strategies will be referred to in the folliwing sections, and the key idea they use to communicate the data-dependencies between ranks.
 
 \begin{table}[H]
+    \caption{Names and description of communication strategies that have been tested.}
+    \label{tab:commstratdesc}
     \begin{center}
-        \begin{tabular}[c]{|p{3cm}|p{9.5cm}|}
+        \begin{tabular}[c]{|p{3cm}|p{8.5cm}|}
             \hline
              \textbf{Strategy name}& \textbf{Strategy Description}  \\
             \hline
@@ -57,14 +43,12 @@ The communication strategies used have been extensively discussed in \ref{sec:co
             \hline
              Strategy C&Exchanges required separator.  \\
             \hline
-             Strategy D&Exchanges required separator elements  \\
+             Strategy D&Exchanges required separator elements.  \\
             \hline
-             Strategy E&Exchanges required separator elements, memory scalable  \\
+             Strategy E&Exchanges required separator elements, memory scalable.  \\
             \hline
         \end{tabular}
     \end{center}
-    \caption{Names and description of communication strategies that have been tested.}
-    \label{tab:commstratdesc}
 \end{table}
 
 \subsection{Matrices}
@@ -73,7 +57,7 @@ As the field of interest is that of results from scientific computing, the matri
 \begin{figure}[H]
   \centering
   \captionsetup[sub]{font=tiny, textfont=tiny}
-  \setlength{\tabcolsep}{4pt} % adjust horizontal padding between columns
+  \setlength{\tabcolsep}{3pt} % adjust horizontal padding between columns
   \begin{tabular}{cccc}
       \subcaptionbox{\tiny{bone010}\label{fig:bone010}}{%
       \includegraphics[width=0.23\textwidth]{bone010.png}%
@@ -106,7 +90,7 @@ As the field of interest is that of results from scientific computing, the matri
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}[c]{|l|l|}
+\begin{tabular}[c]{|p{3cm}|p{8.5cm}|}
 \hline
 \textbf{Name}&\textbf{Purpose}  \\
 \hline
@@ -132,26 +116,27 @@ nlpkkt200&Symmetric indefinite KKT matrix\\
 \label{tab:matricesused}
 \end{table}
 
-\section{\defq{} - Single Node Performance}
-The results in this section present the performance metrics of the communication strategies when ran on a single node containing two \defq{} chips. Each communication strategy has been ran using \(1,2,4,8,16,32,64\) MPI ranks for each communication strategy.
+\section{\defq{}}
+The results in the following section present the performance metrics of 100 iteration of SpMV on various configurations using the \defq{} chip. For this hardware, both single node and multi node experiments have been performed.
+\medskip
+
+
+For the multi node experiments, 
+
+\subsection{Single Node Performance}
+For the single node experiments, no shared memory paralleization has been utilized. Each communication strategy has been ran using \(1,2,4,8,16,32\) and \(64\) MPI ranks, as the dual socketed system provides two 32-core \defq{} chips.
 \medskip
 
 \input{defqsingle}
 
-\section{\defq{} - Multi Node Performance}
+\subsection{Multi Node Performance}
 The results in this section present the performance metrics when ran on one through four dual-socketed nodes with two \defq{} chips on each node. Two sets of results are presented, the first uses a configuration where only one MPI rank has been placed on each node, and the second places two MPI ranks per node, or in other words, one MPI rank per socket. On both configurations, 64 OpenMP threads have been used, as each chip have 32 physical cores. These results aim to illustrate the difference in performance in a multi-node configuration, both when utilizing only one memory controller (i.e. one MPI rank per node), and when utilizing two memory controllers (i.e. one MPI rank per socket). 
 \medskip
-
 \input{defqmulti}
 
 
-\section{\romeq{} - Multi Node Performance}
+\section{\romeq{}}
 \input{romemulti.tex}
 
-\section{\fpgaq{} - Multi Node Performance}
+\section{\fpgaq{}}
 \input{fpgaqmulti.tex}
-
-
-
-\input{CPUtable}
-

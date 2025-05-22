@@ -37,14 +37,16 @@
 \contentsline {section}{\numberline {4.5}Strategy E - Memory Scalable}{27}{section.4.5}%
 \contentsline {chapter}{\numberline {5}Results}{29}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Theoretical Maximum}{29}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Expreimental Setup}{29}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Experimental Setup}{29}{section.5.2}%
 \contentsline {subsection}{\numberline {5.2.1}Hardware Platforms}{29}{subsection.5.2.1}%
 \contentsline {subsection}{\numberline {5.2.2}Communication Strategies}{30}{subsection.5.2.2}%
 \contentsline {subsection}{\numberline {5.2.3}Matrices}{31}{subsection.5.2.3}%
-\contentsline {section}{\numberline {5.3}AMD EPYC 7601{} - Single Node Performance}{32}{section.5.3}%
-\contentsline {section}{\numberline {5.4}AMD EPYC 7601{} - Multi Node Performance}{38}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}One MPI rank per node}{40}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}One MPI rank per socket}{45}{subsection.5.4.2}%
-\contentsline {section}{\numberline {5.5}AMD EPYC 7302P{} - Multi Node Performance}{49}{section.5.5}%
-\contentsline {section}{\numberline {5.6}AMD EPYC 7413{} - Multi Node Performance}{56}{section.5.6}%
-\contentsline {chapter}{\numberline {6}Related Work}{63}{chapter.6}%
+\contentsline {section}{\numberline {5.3}AMD EPYC 7601{}}{32}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Single Node Performance}{32}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Multi Node Performance}{35}{subsection.5.3.2}%
+\contentsline {subsubsection}{One MPI rank per node}{39}{section*.31}%
+\contentsline {subsubsection}{One MPI rank per socket}{39}{section*.35}%
+\contentsline {section}{\numberline {5.4}AMD EPYC 7302P{}}{39}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}One MPI rank per node}{39}{subsection.5.4.1}%
+\contentsline {section}{\numberline {5.5}AMD EPYC 7413{}}{39}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Related Work}{59}{chapter.6}%

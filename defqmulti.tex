@@ -1,5 +1,5 @@
-\subsection{One MPI rank per node}
-\begin{figure}[H]
+\subsubsection{One MPI rank per node}
+\begin{figure}[htpb]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_defq}
     \caption{Achieved GFLOPS on multi node setup using the \defq{} chip.}
@@ -11,7 +11,7 @@
 The results illustrate some quirks that are inherent to the \defq{} chip. As is evident from the plots, using only one node (and one MPI rank), consistently yield results that are either better or almost as good as the results achieved when using the maximum amount of available nodes. As an example, for the \texttt{Bump\_2911} matrix, strategy D achieves a GFLOPS performance of \(\approx 9\) GFLOPS on one node, with 64 OpenMP shared memory threads. When this is compared to Figure \ref{fig:gflopsdefqsingle} using 64 MPI ranks, which achieves \(\approx 30\) GFLOPS for the same matrix. It is clear that using only distributed memory far outperforms using only shared memory parallelization. The reasons for this is outside the scope of this thesis, but the \defq{} chip is a 1st generation chip, and does have a weak core to core connection, which could be the reason. 
 \medskip
 
-\begin{figure}[H]
+\begin{figure}[htpb]
     \centering
     \incfig[1]{tcomm\_2x4\_multi\_defq}
     \caption{}
@@ -19,23 +19,23 @@ The results illustrate some quirks that are inherent to the \defq{} chip. As is 
 \end{figure}
 
 
-\begin{figure}[H]
+\begin{figure}[htpb]
     \centering
     \incfig{commload\_2x4\_multi\_defq}
     \caption{}
     \label{}
 \end{figure}
 
-\subsection{One MPI rank per socket}
+\subsubsection{One MPI rank per socket}
 
-\begin{figure}[H]
+\begin{figure}[htpb]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_defqmpi}
     \caption{Multi Node - \defq}
     \label{fig:gflopsdefqmpimulti}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htpb]
     \centering
     \incfig[1]{tcomm\_2x4\_multi\_defqmpi}
     \caption{}
@@ -43,7 +43,7 @@ The results illustrate some quirks that are inherent to the \defq{} chip. As is 
 \end{figure}
 
 
-\begin{figure}[H]
+\begin{figure}[htpb]
     \centering
     \incfig{commload\_2x4\_multi\_defqmpi}
     \caption{}

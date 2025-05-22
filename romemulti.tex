@@ -1,4 +1,5 @@
-\begin{figure}[H]
+\subsection{One MPI rank per node}
+\begin{figure}[htpb]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_rome16q}
     \caption{Achieved GFLOPS on multi node setup using the \romeq{} chip.}
@@ -7,23 +8,21 @@
 
 Figure \ref{fig:gflopsromemulti} illustrates the achieved GFLOPS on up to 8 single socketed nodes using the \romeq{} chip. Notice how strategy A exhibits a "zig-zag" pattern depening on whether or not the number of nodes is even or odd. This is due to a quirk of how MPI decides to work (see \cite{10064025}).
 
-
-
-\begin{figure}[H]
+\begin{figure}[htpb]
     \centering
     \incfig[1]{t\_2x4\_multi\_rome16q}
     \caption{}
     \label{fig:tromemulti}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htpb]
     \centering
     \incfig[1]{tcomm\_2x4\_multi\_rome16q}
     \caption{}
     \label{fig:tcommromemulti}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[htpb]
     \centering
     \incfig{tcomp\_2x4\_multi\_rome16q}
     \caption{Tcomp 2X4 Multi Rome16Q}
@@ -31,16 +30,9 @@ Figure \ref{fig:gflopsromemulti} illustrates the achieved GFLOPS on up to 8 sing
 \end{figure}
 
 
-\begin{figure}[H]
+\begin{figure}[htpb]
     \centering
     \incfig[1]{commload\_2x4\_multi\_rome16q}
     \caption{}
     \label{fig:commlaoadromemulti}
 \end{figure}
-
-% \begin{figure}[H]
-%     \centering
-%     \incfig[1]{}
-%     \caption{}
-%     \label{fig:commlaoadromemulti}
-% \end{figure}
