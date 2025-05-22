@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  20 MAY 2025 14:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  21 MAY 2025 18:52
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -2057,7 +2057,7 @@ Overfull \vbox (48.93353pt too high) has occurred while \output is active []
 
 
 [47 <./figures/gflops_2x4_multi_defqmpi.pdf>] (./figures/tcomm_2x4_multi_defqmpi.pdf_tex
-<./figures/tcomm_2x4_multi_defqmpi.pdf, id=6910, page=1, 1084.49625pt x 1742.87758pt>
+<./figures/tcomm_2x4_multi_defqmpi.pdf, id=6964, page=1, 1084.49625pt x 1742.87758pt>
 File: ./figures/tcomm_2x4_multi_defqmpi.pdf Graphic file (type pdf)
 <use ./figures/tcomm_2x4_multi_defqmpi.pdf, page 1>
 Package pdftex.def Info: ./figures/tcomm_2x4_multi_defqmpi.pdf , page1 used on input line 56.
@@ -2068,13 +2068,13 @@ Overfull \vbox (15.38354pt too high) has occurred while \output is active []
 
 
 [48 <./figures/tcomm_2x4_multi_defqmpi.pdf>] (./figures/commload_2x4_multi_defqmpi.pdf_tex
-<./figures/commload_2x4_multi_defqmpi.pdf, id=7322, page=1, 1205.50853pt x 1742.87758pt>
+<./figures/commload_2x4_multi_defqmpi.pdf, id=7431, page=1, 1158.72093pt x 1742.87758pt>
 File: ./figures/commload_2x4_multi_defqmpi.pdf Graphic file (type pdf)
 <use ./figures/commload_2x4_multi_defqmpi.pdf, page 1>
 Package pdftex.def Info: ./figures/commload_2x4_multi_defqmpi.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 369.88583pt x 534.7549pt.
+(pdftex.def)             Requested size: 369.88583pt x 556.34933pt.
 )) (./romemulti.tex (./figures/gflops_2x4_multi_rome16q.pdf_tex
-<./figures/gflops_2x4_multi_rome16q.pdf, id=7323, page=1, 1096.49628pt x 1742.87758pt>
+<./figures/gflops_2x4_multi_rome16q.pdf, id=7432, page=1, 1096.49628pt x 1742.87758pt>
 File: ./figures/gflops_2x4_multi_rome16q.pdf Graphic file (type pdf)
 <use ./figures/gflops_2x4_multi_rome16q.pdf, page 1>
 Package pdftex.def Info: ./figures/gflops_2x4_multi_rome16q.pdf , page1 used on input line 56.
@@ -2095,7 +2095,7 @@ Overfull \vbox (82.44926pt too high) has occurred while \output is active []
 
 
 [51 <./figures/gflops_2x4_multi_rome16q.pdf>] (./figures/t_2x4_multi_rome16q.pdf_tex
-<./figures/t_2x4_multi_rome16q.pdf, id=8689, page=1, 1091.14401pt x 1742.87758pt>
+<./figures/t_2x4_multi_rome16q.pdf, id=9073, page=1, 1091.14401pt x 1742.87758pt>
 File: ./figures/t_2x4_multi_rome16q.pdf Graphic file (type pdf)
 <use ./figures/t_2x4_multi_rome16q.pdf, page 1>
 Package pdftex.def Info: ./figures/t_2x4_multi_rome16q.pdf , page1 used on input line 56.
@@ -2111,7 +2111,7 @@ Overfull \vbox (11.7601pt too high) has occurred while \output is active []
 
 
 [53 <./figures/t_2x4_multi_rome16q.pdf>] (./figures/tcomm_2x4_multi_rome16q.pdf_tex
-<./figures/tcomm_2x4_multi_rome16q.pdf, id=9240, page=1, 1091.14401pt x 1742.87758pt>
+<./figures/tcomm_2x4_multi_rome16q.pdf, id=9624, page=1, 1091.14401pt x 1742.87758pt>
 File: ./figures/tcomm_2x4_multi_rome16q.pdf Graphic file (type pdf)
 <use ./figures/tcomm_2x4_multi_rome16q.pdf, page 1>
 Package pdftex.def Info: ./figures/tcomm_2x4_multi_rome16q.pdf , page1 used on input line 56.
@@ -2122,13 +2122,13 @@ Overfull \vbox (11.7601pt too high) has occurred while \output is active []
 
 
 [54 <./figures/tcomm_2x4_multi_rome16q.pdf>] (./figures/tcomp_2x4_multi_rome16q.pdf_tex
-<./figures/tcomp_2x4_multi_rome16q.pdf, id=9798, page=1, 1115.14395pt x 1742.87758pt>
+<./figures/tcomp_2x4_multi_rome16q.pdf, id=10181, page=1, 1115.14395pt x 1742.87758pt>
 File: ./figures/tcomp_2x4_multi_rome16q.pdf Graphic file (type pdf)
 <use ./figures/tcomp_2x4_multi_rome16q.pdf, page 1>
 Package pdftex.def Info: ./figures/tcomp_2x4_multi_rome16q.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 578.10333pt.
 ) (./figures/commload_2x4_multi_rome16q.pdf_tex
-<./figures/commload_2x4_multi_rome16q.pdf, id=9799, page=1, 1158.72093pt x 1742.87758pt>
+<./figures/commload_2x4_multi_rome16q.pdf, id=10182, page=1, 1158.72093pt x 1742.87758pt>
 File: ./figures/commload_2x4_multi_rome16q.pdf Graphic file (type pdf)
 <use ./figures/commload_2x4_multi_rome16q.pdf, page 1>
 Package pdftex.def Info: ./figures/commload_2x4_multi_rome16q.pdf , page1 used on input line 56.
@@ -2139,7 +2139,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [55 <./figures/tcomp_2x4_multi_rome16q.pdf>]) (./fpgaqmulti.tex (./figures/gflops_2x4_multi_fpgaq.pdf_tex
-<./figures/gflops_2x4_multi_fpgaq.pdf, id=10359, page=1, 1084.49625pt x 1742.87758pt>
+<./figures/gflops_2x4_multi_fpgaq.pdf, id=10743, page=1, 1084.49625pt x 1742.87758pt>
 File: ./figures/gflops_2x4_multi_fpgaq.pdf Graphic file (type pdf)
 <use ./figures/gflops_2x4_multi_fpgaq.pdf, page 1>
 Package pdftex.def Info: ./figures/gflops_2x4_multi_fpgaq.pdf , page1 used on input line 56.
@@ -2160,7 +2160,7 @@ Overfull \vbox (73.58684pt too high) has occurred while \output is active []
 
 
 [58 <./figures/gflops_2x4_multi_fpgaq.pdf>] (./figures/tcomm_2x4_multi_fpgaq.pdf_tex
-<./figures/tcomm_2x4_multi_fpgaq.pdf, id=12841, page=1, 1084.49625pt x 1742.87758pt>
+<./figures/tcomm_2x4_multi_fpgaq.pdf, id=13231, page=1, 1084.49625pt x 1742.87758pt>
 File: ./figures/tcomm_2x4_multi_fpgaq.pdf Graphic file (type pdf)
 <use ./figures/tcomm_2x4_multi_fpgaq.pdf, page 1>
 Package pdftex.def Info: ./figures/tcomm_2x4_multi_fpgaq.pdf , page1 used on input line 56.
@@ -2171,13 +2171,13 @@ Overfull \vbox (15.38354pt too high) has occurred while \output is active []
 
 
 [59 <./figures/tcomm_2x4_multi_fpgaq.pdf>] (./figures/commload_2x4_multi_fpgaq.pdf_tex
-<./figures/commload_2x4_multi_fpgaq.pdf, id=13293, page=1, 1158.72093pt x 1742.87758pt>
+<./figures/commload_2x4_multi_fpgaq.pdf, id=13707, page=1, 1158.72093pt x 1742.87758pt>
 File: ./figures/commload_2x4_multi_fpgaq.pdf Graphic file (type pdf)
 <use ./figures/commload_2x4_multi_fpgaq.pdf, page 1>
 Package pdftex.def Info: ./figures/commload_2x4_multi_fpgaq.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 369.88583pt x 556.34933pt.
 ) (./figures/gflops_2x4_multi_fpgaqmpi.pdf_tex
-<./figures/gflops_2x4_multi_fpgaqmpi.pdf, id=13294, page=1, 1084.49625pt x 1742.87758pt>
+<./figures/gflops_2x4_multi_fpgaqmpi.pdf, id=13708, page=1, 1084.49625pt x 1742.87758pt>
 File: ./figures/gflops_2x4_multi_fpgaqmpi.pdf Graphic file (type pdf)
 <use ./figures/gflops_2x4_multi_fpgaqmpi.pdf, page 1>
 Package pdftex.def Info: ./figures/gflops_2x4_multi_fpgaqmpi.pdf , page1 used on input line 56.
@@ -2193,7 +2193,7 @@ Overfull \vbox (15.38354pt too high) has occurred while \output is active []
 
 
 [61 <./figures/gflops_2x4_multi_fpgaqmpi.pdf>] (./figures/tcomm_2x4_multi_fpgaqmpi.pdf_tex
-<./figures/tcomm_2x4_multi_fpgaqmpi.pdf, id=14587, page=1, 1084.49625pt x 1742.87758pt>
+<./figures/tcomm_2x4_multi_fpgaqmpi.pdf, id=15145, page=1, 1084.49625pt x 1742.87758pt>
 File: ./figures/tcomm_2x4_multi_fpgaqmpi.pdf Graphic file (type pdf)
 <use ./figures/tcomm_2x4_multi_fpgaqmpi.pdf, page 1>
 Package pdftex.def Info: ./figures/tcomm_2x4_multi_fpgaqmpi.pdf , page1 used on input line 56.
@@ -2204,7 +2204,7 @@ Overfull \vbox (15.38354pt too high) has occurred while \output is active []
 
 
 [62 <./figures/tcomm_2x4_multi_fpgaqmpi.pdf>] (./figures/commload_2x4_multi_fpgaqmpi.pdf_tex
-<./figures/commload_2x4_multi_fpgaqmpi.pdf, id=15035, page=1, 1170.72096pt x 1742.87758pt>
+<./figures/commload_2x4_multi_fpgaqmpi.pdf, id=15594, page=1, 1170.72096pt x 1742.87758pt>
 File: ./figures/commload_2x4_multi_fpgaqmpi.pdf Graphic file (type pdf)
 <use ./figures/commload_2x4_multi_fpgaqmpi.pdf, page 1>
 Package pdftex.def Info: ./figures/commload_2x4_multi_fpgaqmpi.pdf , page1 used on input line 56.
@@ -2224,6 +2224,9 @@ Overfull \hbox (36.99083pt too wide) in paragraph at lines 111--113
  []
 
 )) (./prevwork.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [63 <./figures/commload_2x4_multi_fpgaqmpi.pdf>]
 
@@ -2266,16 +2269,16 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  52577 strings out of 473190
  1219797 string characters out of 5704335
- 1973959 words of memory out of 5000000
+ 1975959 words of memory out of 5000000
  74253 multiletter control sequences out of 15000+600000
  709117 words of font info for 280 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  104i,16n,104p,1154b,789s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr6.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (78 pages, 5378205 bytes).
+Output written on main.pdf (78 pages, 5464165 bytes).
 PDF statistics:
- 16061 PDF objects out of 18468 (max. 8388607)
- 10781 compressed objects within 108 object streams
+ 16620 PDF objects out of 18468 (max. 8388607)
+ 11151 compressed objects within 112 object streams
  204 named destinations out of 1000 (max. 500000)
  85136 words of extra memory for PDF output out of 89155 (max. 10000000)
 
