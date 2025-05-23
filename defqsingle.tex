@@ -1,4 +1,4 @@
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_single\_defq}
     \caption{Single Node - \defq}
@@ -7,25 +7,25 @@
 Figure \ref{fig:gflopsdefqsingle} presents the achieved GFLOPS for each communication strategy. The performance trends largely align with expectations: each successive strategy generally exhibits improved performance over its predecessor. However, an exception arises with strategy E, which consistently underperforms relative to strategy D.
 \medskip
 
-As discussed in section \ref{sec:memscal}, strategy E reorders the local vector and separators. The effect this reordering has on well ordered matrices is that it cache reuse. This has not been measured directly, but it is the most likely culprit to the discrepancy between the results of strategy D and E.
+As discussed in section \ref{sec:memscal}, strategy E reorders the local vector and separators. The effect this reordering has on well ordered matrices is that it can reduce cache reuse. This has not been measured directly, but it is the most likely culprit to the discrepancy between the results of strategy D and E.
 
 % As detailed in Algorithm \ref{alg:reqsepexchange}, strategy E incurs a significant overhead due to its requirement to pack and unpack every individual element exchanged across separator boundaries. This repeated packing and unpacking operation introduces substantial computational and memory overhead, which offsets the potential benefits of the strategy and explains its inferior performance. It is however important to keep in mind that the goal of strategy E is not necessarily to achieve the absolute highest possible GFLOPS performance, but rather to ensure that it is scalable to large matrices, and is able to run on architectures that have lower local memory.
  
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
     \incfig[1]{t\_2x4\_single\_defq}
     \caption{Total execution time of each communication strategy on a single node using the \defq{} chip.}
     \label{fig:tdefqsingle}
 \end{figure}
 
-Figure \ref{fig:tdefqsingle} presents the total execution time for each communication strategy. It is closely related to Figure \ref{fig:gflopsdefqsingle}, as computing the GFLOPS number is given by \ref{eq:gflops}.
+Figure \ref{fig:tdefqsingle} presents the total execution time for each communication strategy. It is closely related to Figure \ref{fig:gflopsdefqsingle}, as computing the GFLOPS number is given by the total number of flops performed divided by the total execution time.
 
-\begin{equation}
-    \label{eq:gflops}
-    \text{GFLOPS} = \frac{\text{No. of flops performed}}{\text{Total execution time}}
-\end{equation}
+% \begin{equation}
+%     \label{eq:gflops}
+%     \text{GFLOPS} = \frac{\text{No. of flops performed}}{\text{Total execution time}}
+% \end{equation}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
     \incfig[1]{tcomm\_2x4\_single\_defq}
     % \caption{Communication time component of each strategy on a single node using the \defq{} chip.}
@@ -35,17 +35,17 @@ Figure \ref{fig:tdefqsingle} presents the total execution time for each communic
 
 Figure \ref{fig:tcommdefqsingle} present the time spent communicating the data data-dependencies between MPI ranks for each iteration of SpMV. The results clearly illustrate the performance benefits of optimizing communication in distributed single node SpMV. Strategy A acts as a baseline, by naively communicating the entire vector. Each successive communication strategy implements measures to reduce the communication volume, and it can be seen that this does indeed result in lower communication times. Strategy B limited communication to communicating only separators, Strategy C narrowed this to only communicating the separators to the rank that need them. Finally, strategy D and E further reduces the communication volume by only communicating necessary separator elements. This progresion confirms the role communication strategies play in reducing the bottleneck that the data-dependencies between nodes induce. The results emphasize that careful attention to communication minimization yields improvements communication time, and by extension in performance for memory-bound operations like SpMV.
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
     \incfig[1]{tcomp\_2x4\_single\_defq}
     \caption{Computation time component of each strategy on a single node using the \defq{} chip.}
     \label{fig:tcompdefqsingle}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
     \incfig{commload\_2x4\_single\_defq}
-    \caption{Fraction of \(x\) communicated per SpMV iteration each strategy on a single node using the \defq{} chip.}
+    \caption{Fraction of the size of the global \(x\) vector communicated per SpMV iteration each strategy on a single node using the \defq{} chip.}
     \label{fig:commloaddefqsingle}
 \end{figure}
 Figure \ref{fig:commloaddefqsingle} shows the fraction of the input vector \(x\) communicated per SpMV iteration across various matrices and ranks for different communication strategies. This figure provides an important quantitative counterpart to the timing data: it confirms that strategies which yielded lower communication time also effectively minimized the volume of communicated data. The results presented in this figure only show the communication volume for strategies B-D. Strategy A have been left out as the fraction of \(x\) communicated in each iteration is 1 no matter how many ranks are used. Strategy E has been left out as the communication volume for this strategy is the same as strategy D.
