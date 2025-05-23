@@ -1,38 +1,50 @@
-\subsection{One MPI rank per node}
 \begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_rome16q}
-    \caption{Achieved GFLOPS on multi node setup using the \romeq{} chip.}
+    \caption{Sustained GFLOPS performance of SpMV over 100 iterations on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
     \label{fig:gflopsromemulti}
 \end{figure}
 
-Figure \ref{fig:gflopsromemulti} illustrates the achieved GFLOPS on up to 8 single socketed nodes using the \romeq{} chip. Notice how strategy A exhibits a "zig-zag" pattern depening on whether or not the number of nodes is even or odd. This is due to a quirk of how MPI decides to work (see \cite{10064025}).
+Figure \ref{fig:gflopsromemulti} presents the achieved GFLOPS across up to eight single-socket nodes using the \romeq{} processor. These results offer a more fine-grained perspective on the performance of various communication strategies, particularly when employing a non-power-of-two number of MPI ranks. In contrast to the single node experiments discussed in Section \ref{sec:singlenode}, where the number of ranks were limited to powers of two, this linear range of nodes shows how the communication strategies behave under less ideal conditions.
+\medskip
+
+
+
+% The number of ranks for the single node results seen in Section \ref{sec:singlenode} were restricted to be powers of two, and as with everything in the computing world - powers of two tends to behave nicely.
+
+%  In contrast to the single-node experiments discussed in Section \ref{sec:singlenode}, which were limited to powers of two, this broader range allows us to observe behaviors under less idealized conditions. As is often the case in computing, configurations based on powers of two tend to exhibit more regular and favorable performance characteristics.
+
+% Strategy A exhibits a sawtooth-like pattern depending on whether the number of nodes is even or odd. This is due to a quirk of how MPI decides to work (see \cite{10064025}).
 
 \begin{figure}[H]
     \centering
     \incfig[1]{t\_2x4\_multi\_rome16q}
-    \caption{}
+    \caption{Total execution time for 100 iterations of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
     \label{fig:tromemulti}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \incfig[1]{tcomm\_2x4\_multi\_rome16q}
-    \caption{}
+    \caption{Communication time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
     \label{fig:tcommromemulti}
 \end{figure}
+
+The results in Figure \ref{fig:tcommromemulti} present the communication time per iteration of SpMV on up to eight \romeq{} nodes. Notably, Strategy A exhibits a sawtooth-like pattern, depending on whether or not the number of nodes used is even or odd. Such irregularities is can be explained by the underlying communication algorithms MPI decides to employ when using \texttt{MPI\_Allgatherv}. MPI decides on some internal algorithm to use in collective communication routines, depending on the number of ranks involved in the operation and the size of the messages amongst other factors. The exact algorithm MPI uses internally for these results is unknown, and outside the scope of this thesis, but it is the most probable reason that this sawtooth pattern is observed.
+
+
+
 
 \begin{figure}[H]
     \centering
     \incfig{tcomp\_2x4\_multi\_rome16q}
-    \caption{Tcomp 2X4 Multi Rome16Q}
+    \caption{Computation time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
     \label{fig:tcomp_2x4_multi_rome16q}
 \end{figure}
-
 
 \begin{figure}[H]
     \centering
     \incfig[1]{commload\_2x4\_multi\_rome16q}
-    \caption{}
+    \caption{Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
     \label{fig:commlaoadromemulti}
 \end{figure}

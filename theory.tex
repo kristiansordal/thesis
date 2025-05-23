@@ -52,6 +52,8 @@ On a system with shared memory architecture, every processing unit (PU) have acc
 
 \subsection{Distributed Memory Architecture}
 On systems with distributed memory architecture, every processor have their own local memory, not accesible by other processors. When a process needs to access memory from another process, explicit communication of the data stored at that memory address needs to occur, and happens through whichever network the processors are connected with (adapted from \cite{manchanda2010non}). Figure \ref{fig:sharedmemory} shows the difference between shared and distributed memory architectures.
+\medskip
+
 
 \begin{figure}[ht]
     \centering
@@ -63,6 +65,11 @@ On systems with distributed memory architecture, every processor have their own 
 \subsection{Non-Uniform Memory Access}
 Non-Uniform Memory Access (NUMA) refers to a multiprocessor system architecture in which memory access latencies depend on the location of the memory relative to a given processor. Unlike traditional symmetric multiprocessing (SMP) systems, where all processors share equal access times to a centralized memory pool, NUMA architectures consist of multiple processor sockets or nodes, each directly connected to its own local memory. These nodes are interconnected by a high-speed communication network, typically an interconnect, facilitating access to remote memory residing on other nodes.
 
-\subsection{IPUs and emerging architectures}
-In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This comes in the form of packaging thousands of small processor cores into a single device, where each core has its own local memory, and no device-level shared memory \cite{10.3389/fphy.2023.979699}. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Such architectures necessitates a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial.
+\subsection{Emerging Architectures}
+In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This comes in the form of packaging thousands of small processor cores into a single device, where each core has its own local memory, and no device-level shared memory. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Such architectures necessitate a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial. Another example is Graphcores Colossus MK2 GC200 IPU (Intelligence Processing Unit). Although not as big as WSE-3, it still contains 59.4 billion transistors and has 1472 cores.
 \medskip
+
+Burchard et al. \cite{10.3389/fphy.2023.979699} explored the implementation of unstructured-mesh computations on massively tiled processors, specifically targeting the Graphcore IPU architecture. They ported a cardiac electrophysiology solver, which relies heavily on repeated sparse matrix-vector multiplications (SpMVs) and per-cell ODE integrations, to the IPU platform. The paper highlights how Poplar/C++ was utilized to create per-tile data structures that efficiently manage inter-tile communication necessary for SpMV parallelization. Their results demonstrate both the feasibility and performance benefits of such architectures for irregular scientific computations, providing insight into parallel execution and data distribution on many-core processors without shared memory.
+% \medskip
+
+% Graphcore is another semiconductor company that produces IPUs, although they are smaller than those produced by Cerebras, their \textit{Colossus MK2 GC200} chip contains 59.4 billion transistors, and 1472 cores. \cite{10.3389/fphy.2023.979699}

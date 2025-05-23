@@ -49,11 +49,6 @@ Peter Norvig.
 \newblock \url{https://norvig.com/21-days.html#Latency}, 2021.
 \newblock Accessed: 2025-04-29.
 
-\bibitem{10064025}
-Andreas Thune, Sven-Arne Reinemo, Tor Skeie, and Xing Cai.
-\newblock Detailed modeling of heterogeneous and contention-constrained point-to-point mpi communication.
-\newblock {\em IEEE Transactions on Parallel and Distributed Systems}, 34(5):1580--1593, 2023.
-
 \bibitem{ordersparse}
 James~D. Trotter, Sinan Ekmek\c{c}iba\c{s}\i{}, Johannes Langguth, Tugba Torun, Emre D\"{u}zak\i{}n, Aleksandar Ilic, and Didem Unat.
 \newblock Bringing order to sparsity: A sparse matrix reordering study on multicore cpus.

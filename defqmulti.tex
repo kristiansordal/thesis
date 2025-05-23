@@ -2,7 +2,7 @@
 \begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_defq}
-    \caption{Achieved GFLOPS on multi node setup using the \defq{} chip.}
+    \caption{Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
     \label{fig:gflopsdefqmulti}
 \end{figure}
 % The results presented in Figure \ref{fig:gflopsdefqmulti} illustrate the GFLOPS achieved when running SpMV for 100 iterations in a distributed and shared memory hybrid environment. For these results, 4 nodes running dual-socketed \defq{} chips have been used, with one MPI rank placed on each node. The results largely align with what is expected, as each consecutive communication strategy outperforms the previous.
@@ -18,8 +18,22 @@ It is clear that using only distributed memory far outperforms using only shared
 
 \begin{figure}[H]
     \centering
+    \incfig[1]{t\_2x4\_multi\_defq}
+    \caption{Total execution time for 100 iterations of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
+    \label{fig:tcdefqmulti}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \incfig[1]{tcomp\_2x4\_multi\_defq}
+    \caption{Computation time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
+    \label{fig:tcompdefqmulti}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
     \incfig[1]{tcomm\_2x4\_multi\_defq}
-    \caption{}
+    \caption{Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
     \label{fig:tcommdefqmulti}
 \end{figure}
 
@@ -27,16 +41,17 @@ It is clear that using only distributed memory far outperforms using only shared
 \begin{figure}[H]
     \centering
     \incfig{commload\_2x4\_multi\_defq}
-    \caption{}
-    \label{}
+    \caption{Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
+    \label{fig:commloaddefqmulti}
 \end{figure}
 
 \subsubsection{One MPI rank per socket}
 
+
 \begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_defqmpi}
-    \caption{Multi Node - \defq}
+    \caption{Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per socket) using dual-socket \defq{} processors.}
     \label{fig:gflopsdefqmpimulti}
 \end{figure}
 
@@ -49,7 +64,7 @@ When compared to Figure \ref{fig:gflopsdefqmulti}, we see that the performance d
 \begin{figure}[H]
     \centering
     \incfig[1]{tcomm\_2x4\_multi\_defqmpi}
-    \caption{}
+    \caption{Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket \defq{} processors.}
     \label{fig:tcommdefqmpimulti}
 \end{figure}
 
@@ -57,6 +72,6 @@ When compared to Figure \ref{fig:gflopsdefqmulti}, we see that the performance d
 \begin{figure}[H]
     \centering
     \incfig{commload\_2x4\_multi\_defqmpi}
-    \caption{}
-    \label{}
+    \caption{Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket \defq{} processors.}
+    \label{fig:commloaddefqmpimulti}
 \end{figure}

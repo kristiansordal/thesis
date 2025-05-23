@@ -1,7 +1,7 @@
 \begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_single\_defq}
-    \caption{Single Node - \defq}
+    \caption{Sustained performance (GFLOPS) over 100 iterations of SpMV on a single node equipped with dual-socket \defq{} processors.}
     \label{fig:gflopsdefqsingle}
 \end{figure}
 Figure \ref{fig:gflopsdefqsingle} presents the achieved GFLOPS for each communication strategy. The performance trends largely align with expectations: each successive strategy generally exhibits improved performance over its predecessor. However, an exception arises with strategy E, which consistently underperforms relative to strategy D.
@@ -14,7 +14,7 @@ As discussed in section \ref{sec:memscal}, strategy E reorders the local vector 
 \begin{figure}[H]
     \centering
     \incfig[1]{t\_2x4\_single\_defq}
-    \caption{Total execution time of each communication strategy on a single node using the \defq{} chip.}
+    \caption{Total execution time of each communication strategy on a single node equipped with dual-socket \defq{} processors.}
     \label{fig:tdefqsingle}
 \end{figure}
 
@@ -29,7 +29,7 @@ Figure \ref{fig:tdefqsingle} presents the total execution time for each communic
     \centering
     \incfig[1]{tcomm\_2x4\_single\_defq}
     % \caption{Communication time component of each strategy on a single node using the \defq{} chip.}
-    \caption{Time spent communicating data-dependencies between MPI ranks for each iteration of SpMV.}
+    \caption{Communication time per iteraton of SpMV on a single node equipped with dual-socket \defq{} processors.}
     \label{fig:tcommdefqsingle}
 \end{figure}
 
@@ -38,14 +38,14 @@ Figure \ref{fig:tcommdefqsingle} present the time spent communicating the data d
 \begin{figure}[H]
     \centering
     \incfig[1]{tcomp\_2x4\_single\_defq}
-    \caption{Computation time component of each strategy on a single node using the \defq{} chip.}
+    \caption{Computation time per iteraton of SpMV on a single node equipped with dual-socket \defq{} processors.}
     \label{fig:tcompdefqsingle}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \incfig{commload\_2x4\_single\_defq}
-    \caption{Fraction of the size of the global \(x\) vector communicated per SpMV iteration each strategy on a single node using the \defq{} chip.}
+    \caption{Fraction of the size of the global \(x\) vector communicated per SpMV iteration.}
     \label{fig:commloaddefqsingle}
 \end{figure}
 Figure \ref{fig:commloaddefqsingle} shows the fraction of the input vector \(x\) communicated per SpMV iteration across various matrices and ranks for different communication strategies. This figure provides an important quantitative counterpart to the timing data: it confirms that strategies which yielded lower communication time also effectively minimized the volume of communicated data. The results presented in this figure only show the communication volume for strategies B-D. Strategy A have been left out as the fraction of \(x\) communicated in each iteration is 1 no matter how many ranks are used. Strategy E has been left out as the communication volume for this strategy is the same as strategy D.
