@@ -196,12 +196,12 @@ Let \(n_{p}\) be the total number of ranks, \(n_{i}\) be the number of neighbour
 \begin{figure}[H]
     \centering
     \incfig{1ccomm}
-    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Reuired Separators} communication pattern.}
+    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Required Separators} communication pattern.}
     \label{fig:1ccomm}
 \end{figure}
 
 \section{Strategy D - Exchange only required separator values}
-The final strategy further reduces the communication volume by only communicating the separator elements to the rank with which that element induces a data dependency. This approach eliminates all unnecessary data transfers but introduces additional complexity in managing communication schedules. It requires careful management of the send and recieve lists, and introduces some additional overhead by means of a packing and unpacking step necessary for transmitting the data between ranks. This overhead does however not outweigh the benefits gained from the reduction in communication volume which this strategy yields.
+The final strategy further reduces the communication volume by only communicating the separator elements to the rank with which that element induces a data dependency. This eliminates unnecessary data transfers, but introduces complexity in managing the communication. It requires careful management of the send and recieve lists, and introduces some additional overhead by means of a packing and unpacking step necessary for transmitting the data between ranks. This overhead does however not outweigh the benefits gained from the reduction in communication volume which this strategy yields.
 \medskip
 
 Both strategy B and C requires reordering of the separator values, in order to make the communication of the separators easier, but due to the packing and unpacking step required for this strategy as seen in algorithm \ref{alg:reqsepexchange}, reordering the separator elements is not required for this communication strategy.
@@ -260,7 +260,7 @@ Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of e
 \begin{figure}[ht]
     \centering
     \incfig{1dcomm}
-    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Reuired Elements} communication pattern.}
+    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Required Elements} communication pattern.}
     \label{fig:1dcomm}
 \end{figure}
 

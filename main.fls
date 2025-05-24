@@ -711,14 +711,14 @@ INPUT ./theory.tex
 INPUT ./theory.tex
 INPUT ./theory.tex
 INPUT theory.tex
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT ./latencynumber.tex
 INPUT ./latencynumber.tex
 INPUT ./latencynumber.tex
 INPUT ./latencynumber.tex
 INPUT latencynumber.tex
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/lm/ec-lmr12.tfm
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT ./figures/sharedmemory.pdf_tex

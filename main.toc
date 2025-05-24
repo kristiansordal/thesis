@@ -3,15 +3,14 @@
 \contentsline {chapter}{Abstract}{vii}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Theory}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Sparse Matrix Vector Multiplication}{3}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Definitions}{4}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Latency}{4}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Parallel Architectures}{5}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Shared Memory Architecture}{5}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Distributed Memory Architecture}{5}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Non-Uniform Memory Access}{6}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}First-Touch Policy}{6}{subsection.2.4.4}%
-\contentsline {subsection}{\numberline {2.4.5}Emerging Architectures}{7}{subsection.2.4.5}%
+\contentsline {section}{\numberline {2.1}Sparse Matrices}{3}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Latency}{3}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Parallel Architectures}{4}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Shared Memory Architecture}{4}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Distributed Memory Architecture}{4}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Non-Uniform Memory Access}{5}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}First-Touch Policy}{5}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.5}Emerging Architectures}{6}{subsection.2.3.5}%
 \contentsline {chapter}{\numberline {3}Background}{9}{chapter.3}%
 \contentsline {section}{\numberline {3.1}CSR Storage Format}{9}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Computational Intensity}{10}{subsection.3.1.1}%
@@ -44,8 +43,8 @@
 \contentsline {section}{\numberline {5.3}AMD EPYC 7601{}}{34}{section.5.3}%
 \contentsline {subsection}{\numberline {5.3.1}Single Node Performance}{34}{subsection.5.3.1}%
 \contentsline {subsection}{\numberline {5.3.2}Multi Node Performance}{43}{subsection.5.3.2}%
-\contentsline {subsubsection}{One MPI rank per node}{44}{section*.34}%
-\contentsline {subsubsection}{One MPI rank per socket}{50}{section*.40}%
+\contentsline {subsubsection}{One MPI rank per node}{44}{section*.32}%
+\contentsline {subsubsection}{One MPI rank per socket}{50}{section*.38}%
 \contentsline {section}{\numberline {5.4}AMD EPYC 7302P{}}{55}{section.5.4}%
 \contentsline {section}{\numberline {5.5}AMD EPYC 7413{}}{62}{section.5.5}%
 \contentsline {chapter}{\numberline {6}Related Work}{69}{chapter.6}%

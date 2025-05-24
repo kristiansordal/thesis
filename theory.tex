@@ -1,12 +1,29 @@
 
 \chapter{Theory}
 
-\section{Sparse Matrix Vector Multiplication}
-Sparse Matrix Vector Multiplication (SpMV) is a fundamental operation encountered in many areas of scientific computing. It is especially prominent in solving large systems of linear equations and in large-scale simulations. The matrices involved are typically both very large and very sparse. 
+\section{Sparse Matrices}
+There are many different opinions on what is considered a sparse matrix, and there exists no definition that captures what a sparse matrix is. For this thesis, a matrix is considered sparse if it is worthwhile to treat nonzeros differently than zeros. Usually this means that for an \(n \times n\) matrix, each row has a constant (\(\mathcal{O}\left(1\right)\)) number of nonzero entries per row. Or in other words, a \(n \times  n\) matrix is sparse if it has \(\mathcal{O}\left(n\right)\) nonzero entires.
+\medskip
 
-A matrix can in theory be considered sparse if it is worthwhile to treat zero values separately. In theory, this translates to a matrix being less than full, i.e. less than \( \mathcal{O}\left(n^2\right)\) nonzeros for a \(n \times  n\) matrix. However, in the context of sparse linear algebra, sparse means that there is a constant number of nonzeros per row, i.e. \(\mathcal{O}\left(n\right)\) nonzeros per row. The matrices used in scientific computing, such as matrices based on meshes, or graphs such as social networks all have this property. Optimizing the performance of SpMV, particularly through parallel computing techiniques, is crucial for enhancing the efficiency of many scientific applications.
+Given a sparse matrix \(A\), an input vector \(x\) and the resulting output vector \(y\), Matrix Vector Multiplication is defined as
 
-However, SpMV is notoriously difficult to optimize, both in sequential and parallel implementations. One major reason is its inherently low computational intensity.
+\[y = Ax\]
+
+where the \(y_{i}\) is given by \(y_{i} = \sum_{j=1}^{n}a_{ij}x_{j} \).
+
+% \section{Sparse}
+% Matrix Vector Multiplication is a mathematical operation on the form \(y = Ax\), where \(y\) is the resulting vector obtained 
+% When given a matrix 
+% The mathematical operation of Matrix vector multiplication 
+
+% In theory, a \(n \times n\) matrix is considered sparse if it is less than full, i.e. it contains less that \(n^2\) nonzero entries. In the context of sparse lin
+% A matrix can in theory be considered sparse if it is worthwhile to treat zero values separately. In theory, this translates to a matrix being less than full, i.e. less than \( \mathcal{O}\left(n^2\right)\) nonzeros for a \(n \times  n\) matrix. However, in the context of sparse linear algebra, sparse means that there is a constant number of nonzeros per row, i.e. \(\mathcal{O}\left(n\right)\) nonzeros per row. The matrices used in scientific computing, such as matrices based on meshes, or graphs such as social networks all have this property. Optimizing the performance of SpMV, particularly through parallel computing techiniques, is crucial for enhancing the efficiency of many scientific applications.
+
+% \section{Sparse Matrix Vector Multiplication}
+% Sparse Matrix Vector Multiplication (SpMV) is a fundamental operation encountered in many areas of scientific computing. It is especially prominent in solving large systems of linear equations and in large-scale simulations. The matrices involved are typically both very large and very sparse. 
+
+
+% However, SpMV is notoriously difficult to optimize, both in sequential and parallel implementations. One major reason is its inherently low computational intensity.
 
 % \section{Definitions}
 
@@ -24,21 +41,21 @@ However, SpMV is notoriously difficult to optimize, both in sequential and paral
 % \begin{equation} S = \frac{1}{(1 - t_p) + \frac{t_p}{s_p}} \end{equation}
 % This equation reveals that as \(s_{p} \rightarrow \infty\), the theoretical maximum speedup approaches \(\frac{1}{1-t_{p}}\), illustrating that the non-parallelizable portion becomes the dominant limiting factor in scalability.
 
-\section{Definitions}
+% \section{Definitions}
 
-\begin{table}[H]
-    \begin{center}
-        \begin{tabular}[c]{|p{4cm}|p{8cm}|}
-            \hline
-             \textbf{Term}&\textbf{Definition}  \\
-            \hline
-             Node&A node, or a compute node, is a computeunit within a larger parallel computing system.    \\
-            \hline
-                 Dual/single socket&A dual or single socket node refers to the amount of processors on a node. Dual socketed nodes have two processors, that are connected through an interconnect.\\
-            \hline
-        \end{tabular}
-    \end{center}
-\end{table}
+% \begin{table}[H]
+%     \begin{center}
+%         \begin{tabular}[c]{|p{4cm}|p{8cm}|}
+%             \hline
+%              \textbf{Term}&\textbf{Definition}  \\
+%             \hline
+%              Node&A node, or a compute node, is a computeunit within a larger parallel computing system.    \\
+%             \hline
+%                  Dual/single socket&A dual or single socket node refers to the amount of processors on a node. Dual socketed nodes have two processors, that are connected through an interconnect.\\
+%             \hline
+%         \end{tabular}
+%     \end{center}
+% \end{table}
 
 \section{Latency}
 The execution time of computational operations can vary significantly, and it is important to have some understanding of the latency times associated with typical operations. Referencing these latency numbers can be valuable when interpreting benchmark results and the performance of different programs.
@@ -88,7 +105,7 @@ An important implication of the NUMA memory architecture is how and where memory
 % Unlike traditional symmetric multiprocessing (SMP) systems, where all processors share equal access times to a centralized memory pool, NUMA architectures consist of multiple processor sockets or nodes, each directly connected to its own local memory. These nodes are interconnected by a high-speed communication network, typically an interconnect, facilitating access to remote memory residing on other nodes.
 
 \subsection{Emerging Architectures}
-In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This comes in the form of packaging thousands of small processor cores into a single device, where each core has its own local memory, and no device level shared memory. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Such architectures necessitate a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial. Another example is Graphcores Colossus MK2 GC200 IPU (Intelligence Processing Unit). Although not as big as WSE-3, it still contains 59.4 billion transistors and has 1472 cores.
+In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This involves packing thousands of small processor cores into a single device, where each core has its own local memory, and no device level shared memory. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Such architectures necessitate a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial. Another example is Graphcores Colossus MK2 GC200 IPU (Intelligence Processing Unit). Although not as big as WSE-3, it still contains 59.4 billion transistors and has 1472 cores.
 \medskip
 
 Burchard et al. \cite{10.3389/fphy.2023.979699} explored the implementation of unstructured mesh computations on massively tiled processors, specifically targeting the Graphcore IPU architecture. They ported a cardiac electrophysiology solver, which relies heavily on repeated SpMVs and per cell ODE integrations, to the IPU platform. The paper highlights how Poplar/C++ was utilized to create per-tile data structures that efficiently manage inter tile communication necessary for SpMV parallelization. Their results demonstrate both the feasibility and performance benefits of such architectures for irregular scientific computations, providing insight into parallel execution and data distribution on many core processors without shared memory.

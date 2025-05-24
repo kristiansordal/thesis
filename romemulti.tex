@@ -38,6 +38,12 @@ Figure \ref{fig:gflopsromemulti} presents the achieved GFLOPS across up to eight
 \end{figure}
 
 The results in Figure \ref{fig:tcommromemulti} present the communication time per iteration of SpMV on up to eight \romeq{} nodes. Notably, Strategy A exhibits a sawtooth-like pattern, depending on whether or not the number of nodes used is even or odd. Such irregularities is can be explained by the underlying communication algorithms MPI decides to employ when using \texttt{MPI\_Allgatherv}. MPI decides on some internal algorithm to use in collective communication routines, depending on the number of ranks involved in the operation and the size of the messages amongst other factors. The exact algorithm MPI uses internally for these results is unknown, and outside the scope of this thesis, but it is the most probable reason that this sawtooth pattern is observed, this is also backed up by the fact that the results in Figure \ref{fig:tcomp2x4multirome16q}, which illustrate the computation time for each strategy, don't exhibit this behaviour.
+\medskip
+
+Looking at the single node results in Figure \ref{fig:tcommdefqsingle}, strategy D and E performs comparably, however this is not the case here, as strategy E is beaten by strategies B-D in all matrices except for \texttt{nlpkkt200}. This discrepancy can be attributed to the cost reindexing the local \(x\) vector has on memory locality. In the single node setting, the shared physical memory and fast intra node communication mitigate the effects of these memory access irregularities. However, in the multi node case 
+% When comparing the results 
+% Strategy E is 
+% Another interesting observation of these results show th
 
 \begin{figure}[H]
     \centering

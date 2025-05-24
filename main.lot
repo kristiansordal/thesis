@@ -3,10 +3,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces Latency numbers for common operation, adapted from \cite {norvig_latency}.}}{4}{table.caption.6}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Hardware used in the experiments. STREAM Triad was run with the \texttt {-march=native} and \texttt {-O3} compilation flags.}}{32}{table.caption.25}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Names and description of communication strategies that have been tested.}}{33}{table.caption.26}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces Names and descriptions of the matrices used in the experiments.}}{34}{table.caption.28}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Hardware used in the experiments. STREAM Triad was run with the \texttt {-march=native} and \texttt {-O3} compilation flags.}}{32}{table.caption.23}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Names and description of communication strategies that have been tested.}}{33}{table.caption.24}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Names and descriptions of the matrices used in the experiments.}}{34}{table.caption.26}%
 \addvspace {10\p@ }
