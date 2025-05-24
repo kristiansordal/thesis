@@ -27,6 +27,11 @@ George Karypis and Vipin Kumar.
 \newblock Technical report, University of Minnesota, Department of Computer Science / Army HPC Research Center, 1997.
 \newblock Version 3.0.3.
 
+\bibitem{10.1145/2508834.2513149}
+Christoph Lameter.
+\newblock Numa (non-uniform memory access): An overview: Numa becomes more common because memory controllers get close to execution units on microprocessors.
+\newblock {\em Queue}, 11(7):40–51, July 2013.
+
 \bibitem{llnlparallel}
 {Lawrence Livermore National Laboratory}.
 \newblock Introduction to parallel computing tutorial.

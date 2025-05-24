@@ -254,3 +254,40 @@
                 modeling;point-to-point MPI communication},
     doi = {10.1109/TPDS.2023.3253881},
 }
+@article{10.1145/2508834.2513149,
+    author = {Lameter, Christoph},
+    title = {NUMA (Non-Uniform Memory Access): An Overview: NUMA becomes more
+             common because memory controllers get close to execution units on
+             microprocessors.},
+    year = {2013},
+    issue_date = {July 2013},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {11},
+    number = {7},
+    issn = {1542-7730},
+    url = {https://doi.org/10.1145/2508834.2513149},
+    doi = {10.1145/2508834.2513149},
+    abstract = {NUMA (non-uniform memory access) is the phenomenon that memory
+                at various points in the address space of a processor have
+                different performance characteristics. At current processor
+                speeds, the signal path length from the processor to memory plays
+                a significant role. Increased signal path length not only
+                increases latency to memory but also quickly becomes a throughput
+                bottleneck if the signal path is shared by multiple processors.
+                The performance differences to memory were noticeable first on
+                large-scale systems where data paths were spanning motherboards
+                or chassis. These systems required modified operating-system
+                kernels with NUMA support that explicitly understood the
+                topological properties of the system’s memory (such as the
+                chassis in which a region of memory was located) in order to
+                avoid excessively long signal path lengths. (Altix and UV, SGI’s
+                large address space systems, are examples. The designers of these
+                products had to modify the Linux kernel to support NUMA; in these
+                machines, processors in multiple chassis are linked via a
+                proprietary interconnect called NUMALINK.)},
+    journal = {Queue},
+    month = jul,
+    pages = {40–51},
+    numpages = {12},
+}

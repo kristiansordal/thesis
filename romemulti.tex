@@ -25,22 +25,19 @@ Figure \ref{fig:gflopsromemulti} presents the achieved GFLOPS across up to eight
 
 \begin{figure}[H]
     \centering
+    \incfig{tcomp\_2x4\_multi\_rome16q}
+    \caption{Computation time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
+    \label{fig:tcomp2x4multirome16q}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
     \incfig[1]{tcomm\_2x4\_multi\_rome16q}
     \caption{Communication time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
     \label{fig:tcommromemulti}
 \end{figure}
 
-The results in Figure \ref{fig:tcommromemulti} present the communication time per iteration of SpMV on up to eight \romeq{} nodes. Notably, Strategy A exhibits a sawtooth-like pattern, depending on whether or not the number of nodes used is even or odd. Such irregularities is can be explained by the underlying communication algorithms MPI decides to employ when using \texttt{MPI\_Allgatherv}. MPI decides on some internal algorithm to use in collective communication routines, depending on the number of ranks involved in the operation and the size of the messages amongst other factors. The exact algorithm MPI uses internally for these results is unknown, and outside the scope of this thesis, but it is the most probable reason that this sawtooth pattern is observed.
-
-
-
-
-\begin{figure}[H]
-    \centering
-    \incfig{tcomp\_2x4\_multi\_rome16q}
-    \caption{Computation time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
-    \label{fig:tcomp_2x4_multi_rome16q}
-\end{figure}
+The results in Figure \ref{fig:tcommromemulti} present the communication time per iteration of SpMV on up to eight \romeq{} nodes. Notably, Strategy A exhibits a sawtooth-like pattern, depending on whether or not the number of nodes used is even or odd. Such irregularities is can be explained by the underlying communication algorithms MPI decides to employ when using \texttt{MPI\_Allgatherv}. MPI decides on some internal algorithm to use in collective communication routines, depending on the number of ranks involved in the operation and the size of the messages amongst other factors. The exact algorithm MPI uses internally for these results is unknown, and outside the scope of this thesis, but it is the most probable reason that this sawtooth pattern is observed, this is also backed up by the fact that the results in Figure \ref{fig:tcomp2x4multirome16q}, which illustrate the computation time for each strategy, don't exhibit this behaviour.
 
 \begin{figure}[H]
     \centering

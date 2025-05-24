@@ -1,8 +1,8 @@
 
 \chapter{Theory}
 
-\section{Sparse Matrix-Vector Multiplication}
-Sparse Matrix-Vector Multiplication (SpMV) is a fundamental operation encountered in many areas of scientific computing. It is especially prominent in solving large systems of linear equations and in large-scale simulations. The matrices involved are typically both very large and very sparse. 
+\section{Sparse Matrix Vector Multiplication}
+Sparse Matrix Vector Multiplication (SpMV) is a fundamental operation encountered in many areas of scientific computing. It is especially prominent in solving large systems of linear equations and in large-scale simulations. The matrices involved are typically both very large and very sparse. 
 
 A matrix can in theory be considered sparse if it is worthwhile to treat zero values separately. In theory, this translates to a matrix being less than full, i.e. less than \( \mathcal{O}\left(n^2\right)\) nonzeros for a \(n \times  n\) matrix. However, in the context of sparse linear algebra, sparse means that there is a constant number of nonzeros per row, i.e. \(\mathcal{O}\left(n\right)\) nonzeros per row. The matrices used in scientific computing, such as matrices based on meshes, or graphs such as social networks all have this property. Optimizing the performance of SpMV, particularly through parallel computing techiniques, is crucial for enhancing the efficiency of many scientific applications.
 
@@ -63,13 +63,35 @@ On systems with distributed memory architecture, every processor have their own 
 \end{figure}
 
 \subsection{Non-Uniform Memory Access}
-Non-Uniform Memory Access (NUMA) refers to a multiprocessor system architecture in which memory access latencies depend on the location of the memory relative to a given processor. Unlike traditional symmetric multiprocessing (SMP) systems, where all processors share equal access times to a centralized memory pool, NUMA architectures consist of multiple processor sockets or nodes, each directly connected to its own local memory. These nodes are interconnected by a high-speed communication network, typically an interconnect, facilitating access to remote memory residing on other nodes.
-
-\subsection{Emerging Architectures}
-In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This comes in the form of packaging thousands of small processor cores into a single device, where each core has its own local memory, and no device-level shared memory. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Such architectures necessitate a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial. Another example is Graphcores Colossus MK2 GC200 IPU (Intelligence Processing Unit). Although not as big as WSE-3, it still contains 59.4 billion transistors and has 1472 cores.
+On multiprocessor systems, Non-Uniform Memory Access (NUMA) memory architecture that lays out memory in such a way that the memory access latency depends on the physical distance between the processor core, and the location of the memory being accessed. On these systems each processor has its own local memory, which cores on that processor can access much faster than memory local to another processor. Figure \ref{fig:numanode} illustrates a system with two NUMA nodes, and if a core on node 0 needs to access memory on node 1, it needs to travel through the interconnect that connects the two nodes, which incurs higher latency.
 \medskip
 
-Burchard et al. \cite{10.3389/fphy.2023.979699} explored the implementation of unstructured-mesh computations on massively tiled processors, specifically targeting the Graphcore IPU architecture. They ported a cardiac electrophysiology solver, which relies heavily on repeated sparse matrix-vector multiplications (SpMVs) and per-cell ODE integrations, to the IPU platform. The paper highlights how Poplar/C++ was utilized to create per-tile data structures that efficiently manage inter-tile communication necessary for SpMV parallelization. Their results demonstrate both the feasibility and performance benefits of such architectures for irregular scientific computations, providing insight into parallel execution and data distribution on many-core processors without shared memory.
+It is important to note that NUMA refers specifically to the organization of the main memory, i.e. the DRAM, and not to the on chip caches implemented using SRAM.
+
+\begin{figure}[ht]
+    \centering
+    \incfig{numanode}
+    \caption{System with two NUMA nodes and eight processors (4 per NUMA node) (adapted from \cite{10.1145/2508834.2513149}).}
+    \label{fig:numanode}
+\end{figure}
+
+\subsection{First-Touch Policy}
+\label{sec:firstouch}
+An important implication of the NUMA memory architecture is how and where memory pages are allocated. This is goverend by what is known as the First-Touch Policy, which is the default memory allocation policy Linux and other operating systems. According to this policy, a memory page is allocated in the memory that is closest to the thread that first requires this memory page. As an example, using Figure \ref{fig:numanode} as reference, if a core on NUMA node 0 is the first to access some memory page, it will be allocated in node 0's memory.
+% The first-touch policy stipulates that the initial thread accessing a memory page allocates this page to its local memory domain. Consequently, if thread  first accesses a memory page, it is stored locally to thread . Subsequent accesses by thread  to this page result in non-local memory access, compelling thread  to retrieve the data from either remote or main memory. Such accesses incur performance penalties due to significantly higher latency compared to local memory access.
+
+% depending on the physical distance between the core accessing a given memory address and where the memory at that address is stored, incurs differing latencies.
+
+ 
+% Non-Uniform Memory Access (NUMA) refers to a multiprocessor system architecture in which memory access latencies depend on the location of the memory relative to a given processor. On systems with multiple processors, and by extension, multiple memory controllers, 
+
+% Unlike traditional symmetric multiprocessing (SMP) systems, where all processors share equal access times to a centralized memory pool, NUMA architectures consist of multiple processor sockets or nodes, each directly connected to its own local memory. These nodes are interconnected by a high-speed communication network, typically an interconnect, facilitating access to remote memory residing on other nodes.
+
+\subsection{Emerging Architectures}
+In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This comes in the form of packaging thousands of small processor cores into a single device, where each core has its own local memory, and no device level shared memory. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Such architectures necessitate a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial. Another example is Graphcores Colossus MK2 GC200 IPU (Intelligence Processing Unit). Although not as big as WSE-3, it still contains 59.4 billion transistors and has 1472 cores.
+\medskip
+
+Burchard et al. \cite{10.3389/fphy.2023.979699} explored the implementation of unstructured mesh computations on massively tiled processors, specifically targeting the Graphcore IPU architecture. They ported a cardiac electrophysiology solver, which relies heavily on repeated SpMVs and per cell ODE integrations, to the IPU platform. The paper highlights how Poplar/C++ was utilized to create per-tile data structures that efficiently manage inter tile communication necessary for SpMV parallelization. Their results demonstrate both the feasibility and performance benefits of such architectures for irregular scientific computations, providing insight into parallel execution and data distribution on many core processors without shared memory.
 % \medskip
 
 % Graphcore is another semiconductor company that produces IPUs, although they are smaller than those produced by Cerebras, their \textit{Colossus MK2 GC200} chip contains 59.4 billion transistors, and 1472 cores. \cite{10.3389/fphy.2023.979699}

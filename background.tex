@@ -17,18 +17,22 @@ Throughout the remainder of this thesis, we operate under the assumption that al
 
 
 \subsection{Computational Intensity}
+% The \textit{computational intensity} of an operation describes the relation between the number of floating-point operations (FLOPS) and the number of memory accesses required. It is formally defined as:
 
-The \textit{computational intensity} of an operation describes the relation between the number of floating-point operations (FLOPS) and the number of memory accesses required. It is formally defined as:
+The \textit{computational intensity} of an operation is a key concept in performance analysis, and is defined as the ratio of the number of FLOPS to the number of memory accesses.
 
 \begin{equation}
     \text{Computational intensity} = \frac{\text{FLOPS}}{\text{Memory accesses}}
     \label{eq:computationaldensity}
 \end{equation}
 
-Operations with low computational intensity, such as SpMV, are often \textit{memory bound} rather than \textit{compute bound}. This means that increasing the computational power of a system (e.g., faster processors) does not necessarily lead to proportional speedups in SpMV performance, as memory bandwidth remains the limiting factor.
+This metric helps determine whether a computation is \textit{compute bound} or \textit{memory bound}. Operations with high computational intensity implies that it can benefit from employing faster processors, as it performs a higher number of calculation per byte of memory read. Operations with lower computational intensity implies that the operation in memory bound, and thus employing faster processors wont necessarily yield higher performance, as the limiting factor is not the speed at which the calculations are performed, but rather the speed at which the required memory to perform the operation can be accessed at.
+
+% Operations with low computational intensity, such as SpMV, are \textit{memory bound} rather than \textit{compute bound}. This means that increasing the computational power of a system (e.g., by the use of faster processors) does not necessarily lead to proportional speedups in SpMV performance, as memory bandwidth remains the limiting factor.
 
 \section{Other storage formats}
-There exists many other lesser used storage formats for matrices
+While the CSR format is the most widely used storage format for sparse matrices, there exists sever other storage formats, each with its own benefits and drawbacks. In this section, some of these formats are briefly presented.
+% There exists many other lesser used storage formats for matrices
 % There are of course other ways to store a matrix, each with their own benefits and drawbacks.
 
 \subsection{COO Format}
@@ -136,7 +140,7 @@ An implementation of shared memory SpMV is outlined below.
 
 \subsection{Scheduling options}
 \label{sec:schedulingoptions}
-As seen in \autoref{alg:sharedmemoryspmv}, the outer loop is parallelized, which translates to dividing the rows of the matrix evenly among the threads. This work fine for well structured matrices, but for matrices with dense rows, such as the matrix shown in Figure \ref{fig:staticscheduling}, we obtain large imbalances in the computational load for each thread, which impacts performance. 
+As seen in \autoref{alg:sharedmemoryspmv}, the outer loop is parallelized, which translates to dividing the rows of the matrix evenly among the threads. This work fine for well structured matrices, but for matrices with dense rows, such as the matrix shown in Figure \ref{fig:staticscheduling}, we obtain large imbalances in the computational load for each thread, which impacts performance. This is because the next iteration of SpMV cannot start until all threads have finished their computations on the current iteration, which means that threads will be idle while waiting for the slowest thread to finish its workload.
 
 \begin{figure}[H]
     \centering
@@ -149,14 +153,12 @@ As seen in \autoref{alg:sharedmemoryspmv}, the outer loop is parallelized, which
 
 Dynamic scheduling in OpenMP involves precomputing the range of iterations without assigning specific iteration subsets to individual threads in advance. Under static scheduling, if thread \(A\) receives sparse rows and thread \(B\) receives dense rows, thread \(A\) will become idle prematurely while thread \(B\) remains computationally engaged. In contrast, dynamic scheduling allocates iterations at runtime to threads as they become available, thus potentially balancing the computational load more effectively, particularly when iteration workloads vary significantly.
 
-At first glance, dynamic scheduling appears to resolve the workload imbalance inherent in static scheduling, even though it comes with more overhead. While this assumption holds true on smaller systems, such as personal laptops equipped with fewer physical cores and a single processor socket, it does not readily apply to larger, dual-socket systems utilized in this thesis. Here, the first-touch memory policy becomes particularly significant.
+At first glance, dynamic scheduling appears to resolve the workload imbalance inherent in static scheduling, even though it comes with more overhead. While this assumption holds true on smaller systems, such as personal laptops equipped with fewer physical cores and a single processor socket, it does not readily apply to larger, dual-socket systems utilized for the experiments conducted in this thesis. Here, the first-touch memory policy becomes particularly significant.
 
-\subsection{First-Touch Policy}
-The first-touch policy stipulates that the initial thread accessing a memory page allocates this page to its local memory domain. Consequently, if thread  first accesses a memory page, it is stored locally to thread . Subsequent accesses by thread  to this page result in non-local memory access, compelling thread  to retrieve the data from either remote or main memory. Such accesses incur performance penalties due to significantly higher latency compared to local memory access.
 
 \subsection{Performance Implications of the First-Touch Policy}
+As shown in Table~\ref{tab:latencynumbers}, accesses to main memory are significantly slower than accesses to local cache levels such as L1 or L2. On NUMA architectures, this disparity is further amplified when a thread must access memory located on a remote NUMA node. In dual-socket configurations, for example, such accesses require communication across the inter-socket interconnect. Using dynamic or guided scheduling, threads can be assigned iterations that requires memory localized on a different NUMA node, which in turn introduces additional latency and can lead to congestion of the memory bandwidth through the interconnect.
 
-Table \ref{tab:latencynumbers} illustrates that accesses to main memory exhibit substantially higher latency compared to local cache (e.g., L1 cache) accesses. In dual-socket configurations, accessing memory residing on the remote socket involves inter-socket communication through an interlink, further exacerbating latency. Consequently, dynamic (or guided) scheduling alone does not mitigate the performance degradation arising from poorly structured matrices, as it inadvertently exacerbates memory locality issues inherent to the first-touch policy on NUMA architectures.
 
 \section{Distributed Memory SpMV}
 In distributed memory systems, the computational workload is distributed across multiple nodes, each typically comprising a dual-socket architecture with local memory. Unlike shared memory systems, data access across nodes is non-trivial and requires explicit communication, most commonly implemented using the Message Passing Interface (MPI).
