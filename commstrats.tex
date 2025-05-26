@@ -44,7 +44,7 @@ Let \(n_{p}\) denote the total number of ranks, and let \(\left| x_{i} \right|\)
 
 \begin{equation}
     \label{eq:1a}
-    \text{Total Communication} = n_{p} \cdot  (n_{p}-1) \cdot \left| x_{i} \right|
+    n_{p} \cdot  (n_{p}-1) \cdot \left| x_{i} \right|
 \end{equation}
 
 Figure \ref{fig:1acomm} illustrates the state of the vector before and after communication using this strategy.
@@ -57,7 +57,7 @@ Figure \ref{fig:1acomm} illustrates the state of the vector before and after com
 \end{figure}
 
 \section{Strategy B - Exchange only separators}
-An improvement to the previous strategy can be achieved by recognizing that only separator values, those required by multiple processes, must be communicated. Non-separator values are used exclusively by the process that computed them and therefore do not need to be communicated. 
+The next communication strategy improves upon strategy A by recognizing that only the set of each partitions elements of \(x\) that induce data-dependencies require explicit communication. The set of these elements is called a separator. This communication strategy is at least as good as strategy A regardless of the matrix structure. The size of any partitions separator can at most be as large as the set of elements of that partition, but is usually smarter, thus reducing the communication volume.
 \medskip
 
 Let \(n_{p}\) denote the total number of ranks, and let \(s_{i}\) be the size of the separator of rank \(i\). Since each rank sends its separator to each other rank (i.e. \(n_{p} - 1 other ranks\)), then the total communication volume is given by \ref{eq:1bcomm}.
@@ -67,7 +67,7 @@ Let \(n_{p}\) denote the total number of ranks, and let \(s_{i}\) be the size of
     \sum_{i=1}^{n_{p}}(n_{p} - 1) \cdot s_{i} 
 \end{equation}
 
-To facilitate this strategy, separator values are reordered such that they appear at the beginning of each process's local segment of \(y\). Once this structure is established, communication is performed using \texttt{MPI\_Allgatherv}, transmitting only the subset of \(y\) that contains separator values. The number of separators on each process must be known beforehand, which can be computed by counting the number of elements that have neighbours belonging to a different partition.
+To facilitate this strategy, separator values are reordered such that they appear at the beginning of each process's local segment of \(x\). Once this structure is established, communication is performed using \texttt{MPI\_Allgatherv}, transmitting only the subset of \(x\) that contains separator values. The number of separators on each process must be known beforehand, which can be computed by counting the number of elements that have neighbours belonging to a different partition.
 
 \subsection{Reordering}
 After partitioning the matrix into different parts, we obtain a partition vector \(p\), where the \(p[i]\) stores the index of the partition the \(i^{\text{th}}\) entry in \(A_{p}\). It is necessary to reorder the entries in \(A_{p}\) in accordance with the partition vector, such that all entries belonging to the same partition are stored in sequence. The algorithm below gives an outline of how this can be achieved. Here \(n_{p}\) is the number of partitions, \(n_{r}\) is the size of \(A_{p}\), and \(n_{c}\) is the size of \(A_{j}\) and \(A_{x}\).
