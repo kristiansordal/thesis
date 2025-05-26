@@ -36,14 +36,14 @@
 \contentsline {figure}{\numberline {5.13}{\ignorespaces Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket AMD EPYC 7601{} processors.}}{54}{figure.caption.40}%
 \contentsline {figure}{\numberline {5.14}{\ignorespaces Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket AMD EPYC 7601{} processors.}}{55}{figure.caption.41}%
 \contentsline {figure}{\numberline {5.15}{\ignorespaces Sustained GFLOPS performance of SpMV over 100 iterations on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{57}{figure.caption.42}%
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Total execution time for 100 iterations of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{59}{figure.caption.43}%
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Computation time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{60}{figure.caption.44}%
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Communication time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{61}{figure.caption.45}%
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{63}{figure.caption.46}%
-\contentsline {figure}{\numberline {5.20}{\ignorespaces multi Node - AMD EPYC 7413}}{65}{figure.caption.47}%
-\contentsline {figure}{\numberline {5.21}{\ignorespaces \relax }}{66}{figure.caption.48}%
-\contentsline {figure}{\numberline {5.22}{\ignorespaces \relax }}{67}{figure.caption.49}%
-\contentsline {figure}{\numberline {5.23}{\ignorespaces Multi Node - AMD EPYC 7413}}{68}{figure.caption.50}%
-\contentsline {figure}{\numberline {5.24}{\ignorespaces \relax }}{69}{figure.caption.51}%
-\contentsline {figure}{\numberline {5.25}{\ignorespaces \relax }}{70}{figure.caption.52}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Total execution time for 100 iterations of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{58}{figure.caption.43}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Computation time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{59}{figure.caption.44}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Communication time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{60}{figure.caption.45}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{62}{figure.caption.46}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces multi Node - AMD EPYC 7413}}{64}{figure.caption.47}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces \relax }}{65}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces \relax }}{66}{figure.caption.49}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Multi Node - AMD EPYC 7413}}{67}{figure.caption.50}%
+\contentsline {figure}{\numberline {5.24}{\ignorespaces \relax }}{68}{figure.caption.51}%
+\contentsline {figure}{\numberline {5.25}{\ignorespaces \relax }}{69}{figure.caption.52}%
 \addvspace {10\p@ }

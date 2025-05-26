@@ -1,12 +1,16 @@
+Figure \ref{fig:gflopsromemulti} presents the achieved GFLOPS across up to eight single-socket nodes using the \romeq{} processor. These results offer a more fine-grained perspective on the performance of various communication strategies, particularly when employing a non-power-of-two number of MPI ranks. In contrast to the single node experiments discussed in Section \ref{sec:singlenode}, where the number of ranks were limited to powers of two, this linear range of nodes shows how the communication strategies behave under less ideal conditions.
+\medskip
+
+As is evident from the results, strategy E consistenly underperforms compared to all other strategies. This is not necessarily a cause for worry, as the experiments were only ran on up to 8 nodes. This might not be a large enough number of nodes to show the true performance of strategy E as the number of nodes increase beyond 8 nodes. 
+
+It is possible that strategy E starts off worse than the other communication strategies, but as the number of nodes increases this strategy will start outperforming the other strategies. This is backed up by the consistent increase in communication volume of strategy B and C shown Figure \ref{fig:commloadromemulti}.
+
 \begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_rome16q}
     \caption{Sustained GFLOPS performance of SpMV over 100 iterations on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
     \label{fig:gflopsromemulti}
 \end{figure}
-
-Figure \ref{fig:gflopsromemulti} presents the achieved GFLOPS across up to eight single-socket nodes using the \romeq{} processor. These results offer a more fine-grained perspective on the performance of various communication strategies, particularly when employing a non-power-of-two number of MPI ranks. In contrast to the single node experiments discussed in Section \ref{sec:singlenode}, where the number of ranks were limited to powers of two, this linear range of nodes shows how the communication strategies behave under less ideal conditions.
-\medskip
 
 
 
@@ -49,5 +53,5 @@ Looking at the single node results in Figure \ref{fig:tcommdefqsingle}, strategy
     \centering
     \incfig[1]{commload\_2x4\_multi\_rome16q}
     \caption{Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
-    \label{fig:commlaoadromemulti}
+    \label{fig:commloadromemulti}
 \end{figure}

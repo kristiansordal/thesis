@@ -52,7 +52,7 @@ The communication strategies used have been extensively discussed in \ref{sec:co
 \end{table}
 
 \subsection{Matrices}
-As the field of interest is that of results from scientific computing, the matrices shown in Figure \ref{fig:matricesused} have been selected, and \autoref{tab:matricesused} gives a brief description of the problem the matrices solve. Matrices that are based on scientific computing problems are generally well structured and have nonzero entries centered around the main diagonal. Matrices with these kinds of structures tend to yield a larger cache hit rate than matrices based on social networks and other kinds of graphs. It is important to keep this in mind when interpreting the results, as other kinds of graphs can yield very different results.
+As the field of interest is that of results from scientific computing, the matrices shown in Figure \ref{fig:matricesused} have been selected, and \autoref{tab:matricesused} gives a brief description of the problem the matrices arise from. Matrices that are based on scientific computing problems are generally well structured and have nonzero entries centered around the main diagonal. Matrices with these kinds of structures tend to yield a larger cache hit rate than matrices based on social networks and other kinds of graphs (see \cite{ordersparse}). It is important to keep this in mind when interpreting the results, as other kinds of graphs can give very different results.
 
 \begin{figure}[H]
   \centering
@@ -137,6 +137,7 @@ The results in this section present the performance metrics when ran on one thro
 
 
 \section{\romeq{}}
+The results in this section present the performance metrics of experiments ran on 1-8 nodes with a single-socketed \romeq{} chip. As the nodes are single socketed, only one set of experiments are provided.
 \input{romemulti.tex}
 
 \section{\fpgaq{}}
