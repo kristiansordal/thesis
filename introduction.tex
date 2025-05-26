@@ -1,14 +1,8 @@
-
-
-
-
 \chapter{Introduction}
 
+Sparse-Matrix Vector Multiplication (SpMV) is a fundamental computational kernel in many scientific computing applications. It appears in a broad range of domains, such as iterative solvers for partial differntial equations, machine learning, and when simulating physical systems. As a result, optimizing the performance of SpMV, both on CPUs and GPUs remains a widely researched topic. SpMV lends itself nicely to paralellization, but it is a kernel with an inherently low computational intensity, and its performance is therefore memory bound.
 
-Sparse-Matrix Vector Multiplication (SpMV) is a fundamental computational kernel in many scientific computing applications. It appears in a broad range of domains, such as iterative solvers for partial differntial equations, machine learning, and when simulating physical systems. As a result, optimizing the performance of SpMV, both on CPUs and GPUs remains a widely researched topic.
-\medskip
-
-SpMV lends itself nicely to paralellization, but it is a kernel with an inherently low computational intensity, and its performance is therefore memory bound. This means that the memory bandwidth of the system becomes a primary bottleneck when scaling to multiple compute nodes. It becomes important to carefully manage data dependencies between processes, as performance is directly correlated with the communication volume across the interconnects between nodes.
+% This means that the memory bandwidth of the system becomes a primary bottleneck when scaling to multiple compute nodes. It becomes important to carefully manage data dependencies between processes, as performance is directly correlated with the communication volume across the interconnects between nodes.
 \medskip
 
 This thesis aims to investigate the impact that different communication strategies have on the performance of SpMV. The experiments conducted in this thesis have been conducted using a distributed and shared memory hybrid parallel environment. To facilitate inter node communication, one MPI rank has been placed on each compute node (or on each socket if the compute node is dual-socketed), and shared memory paralleization with OpenMP has been used for intra node communication.

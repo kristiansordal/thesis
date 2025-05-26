@@ -10,6 +10,11 @@ U.V. Catalyurek and C.~Aykanat.
 \newblock Hypergraph-partitioning-based decomposition for parallel sparse-matrix vector multiplication.
 \newblock {\em IEEE Transactions on Parallel and Distributed Systems}, 10(7):673--693, 1999.
 
+\bibitem{10.1145/2049662.2049663}
+Timothy~A. Davis and Yifan Hu.
+\newblock The university of florida sparse matrix collection.
+\newblock {\em ACM Trans. Math. Softw.}, 38(1), December 2011.
+
 \bibitem{gupta2024gamgi}
 Gautam Gupta, Sivasankaran Rajamanickam, and Erik~G. Boman.
 \newblock {GAMGI}: Communication-reducing algebraic multigrid for gpus.
@@ -53,6 +58,11 @@ Peter Norvig.
 \newblock Latency numbers every programmer should know.
 \newblock \url{https://norvig.com/21-days.html#Latency}, 2021.
 \newblock Accessed: 2025-04-29.
+
+\bibitem{55497}
+P.~Stenstrom.
+\newblock A survey of cache coherence schemes for multiprocessors.
+\newblock {\em Computer}, 23(6):12--24, 1990.
 
 \bibitem{ordersparse}
 James~D. Trotter, Sinan Ekmek\c{c}iba\c{s}\i{}, Johannes Langguth, Tugba Torun, Emre D\"{u}zak\i{}n, Aleksandar Ilic, and Didem Unat.

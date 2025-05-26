@@ -90,7 +90,7 @@ A sequential implementation of SpMV on a matrix stored in the CSR format can be 
 \label{alg:sequentialspmv}
 \medskip
 
-For SpMV on well structured matrices such as those similar to the matrix illustrated in Figure \ref{fig:Cube_Coup_dt0}, each non-zero element typically incurs a data movement cost of approximately 12 bytes and results in 2 floating-point operations (FLOPs). This estimation may appear inconsistent with the data access pattern described in \autoref{alg:sequentialspmv}, where two double-precision values and one integer are accessed per non-zero, corresponding to a total of 20 bytes. The apparent discrepancy arises from the caching behavior of the input vector \(x\): after the initial access, elements of \(x\) are frequently reused and thus remain in cache, reducing the effective memory traffic associated with subsequent accesses.
+For SpMV on well structured matrices such as those similar to the matrix illustrated in Figure \ref{fig:Cube_Coup_dt0}, each non-zero element typically incurs a data movement cost of approximately 12 bytes and results in 2 floating-point operations (FLOPs). This estimation may appear inconsistent with the data access pattern described in \autoref{alg:sequentialspmv}, where two doubles and one integer are read per nonzero, corresponding to a total of 20 bytes. This discrepancy stems from the caching behaviours of the input vector \(x\), as after an entry is initially read, it is frequently reused, and thus remains in cache. This means that on average, only one double and one integer is read per nonzero, which corresponds to 12 bytes.
 \medskip
 
 In contrast, for highly unstructured matrices, the absence of data locality can significantly degrade cache reuse. In the worst case scenario, each non-zero may trigger the loading of an entire 64 byte cache line, with only a small fraction of it being used. Consequently, the effective data movement can increase to as much as 76 bytes per 2 FLOPs.
@@ -158,7 +158,6 @@ At first glance, dynamic scheduling appears to resolve the workload imbalance in
 
 \subsection{Performance Implications of the First-Touch Policy}
 As shown in Table~\ref{tab:latencynumbers}, accesses to main memory are significantly slower than accesses to local cache levels such as L1 or L2. On NUMA architectures, this disparity is further amplified when a thread must access memory located on a remote NUMA node. In dual-socket configurations, for example, such accesses require communication across the inter-socket interconnect. Using dynamic or guided scheduling, threads can be assigned iterations that requires memory localized on a different NUMA node, which in turn introduces additional latency and can lead to congestion of the memory bandwidth through the interconnect.
-
 
 \section{Distributed Memory SpMV}
 In distributed memory systems, the computational workload is distributed across multiple nodes, each typically comprising a dual-socket architecture with local memory. Unlike shared memory systems, data access across nodes is non-trivial and requires explicit communication, most commonly implemented using the Message Passing Interface (MPI).
@@ -266,6 +265,9 @@ As the improvement of the communication strategies are the main focus of the con
 
     \KwRet g\\
 \end{algorithm}
+
+\section{SuiteSparse Matrix Collection}
+The matrices that have been used for SpMV in this thesis all come from the SuiteSparse Matric Collection. This is a large dataset of sparse matrices that come from real world applications. The matrices available here cover problems within structural engineering, CFD, FEM, thermodynamics, optimization, economic and financial modeling, amongst many more. For more information on the SuiteSparse Matrix Collection, see \cite{10.1145/2049662.2049663}.
 
 
 % In order to reduce the total communication volume, tools such as graph partiotioners or hypergraph partitioners are often used. These tools
