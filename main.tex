@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{book} % If you want A4 format
+\documentclass[a4paper,12pt]{report} % If you want A4 format
 \raggedbottom
 
 \input{settings}
@@ -7,36 +7,37 @@
 
 
 \begin{document}
-\author{Kristian Sørdal}
-\title{Performance of Distributed and Shared Memory Parallel Sparse Matrix Vector Multiplication}
-\newcommand{\Thesisplaintitle}{Performance of Distributed and Shared Memory Parallel Sparse Matrix Vector Multiplication} 
-\date{2025}
-\newcommand{\Thesisfulldate}{\today}
+% \author{Kristian Sørdal}
+% \title{Performance of Distributed and Shared Memory Parallel Sparse Matrix Vector Multiplication}
+% \newcommand{\Thesisplaintitle}{Performance of Distributed and Shared Memory Parallel Sparse Matrix Vector Multiplication} 
+% \date{2025}
+% \newcommand{\Thesisfulldate}{\today}
 
-\frontmatter
+% \frontmatter
 
 \input{titlepage}
-\input{copyright}
-\input{acknowledgements}
+\clearpage
 \input{quote}
 \input{abstract}
+\input{acknowledgements}
 
 \tableofcontents
 \listoffigures
 \listoftables
 
-\mainmatter
+% \mainmatter
 
 \input{introduction}
 \input{theory}
 \input{background}
 \input{commstrats}
 \input{results}
+\input{conclusion} 
 \input{prevwork}
 
 
 % % add more appendices as needed
-\backmatter
+% \backmatter
 \bibliographystyle{plain} % or another bib style
 \bibliography{references}
 

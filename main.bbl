@@ -64,6 +64,11 @@ P.~Stenstrom.
 \newblock A survey of cache coherence schemes for multiprocessors.
 \newblock {\em Computer}, 23(6):12--24, 1990.
 
+\bibitem{10064025}
+Andreas Thune, Sven-Arne Reinemo, Tor Skeie, and Xing Cai.
+\newblock Detailed modeling of heterogeneous and contention-constrained point-to-point mpi communication.
+\newblock {\em IEEE Transactions on Parallel and Distributed Systems}, 34(5):1580--1593, 2023.
+
 \bibitem{ordersparse}
 James~D. Trotter, Sinan Ekmek\c{c}iba\c{s}\i{}, Johannes Langguth, Tugba Torun, Emre D\"{u}zak\i{}n, Aleksandar Ilic, and Didem Unat.
 \newblock Bringing order to sparsity: A sparse matrix reordering study on multicore cpus.

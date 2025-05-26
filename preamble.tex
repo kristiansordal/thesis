@@ -59,6 +59,11 @@
 % Bold math
 \usepackage{bm}
 
+% \usepackage{abstract}
+\usepackage{datetime}
+\newdateformat{monthyeardate}{%
+  \monthname[\THEMONTH], \THEYEAR}
+
 %Algorithm setup
 \RestyleAlgo{algoruled}
 % Some shortcuts

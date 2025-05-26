@@ -1,25 +1,52 @@
-% title page for UiB thesis
 \begin{titlepage}
 
-    \begin{center} 
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
 
-    
-    %{\linespread{1.5} \Huge {\textbf {\thetitle\strut}}} \vfill
+\center % Center everything on the page
+ 
+%----------------------------------------------------------------------------------------
+%	HEADING SECTIONS
+%----------------------------------------------------------------------------------------
 
-    {\linespread{1.1}\Huge\textbf {\thetitle}\par}
-    
-    \vspace{8ex}
-    
-    {\Large{\textbf \theauthor} %\vfill
-    
-    \includegraphics[width=0.48\columnwidth]{UiBmerkegrayscaleV8}
-    
-    Thesis for Master of Science Degree at the \University \vfill
-    
-    \thedate 
-    \vfill
-    %Thesis date: \Thesisfulldate
-    }
-    \end{center} 
+\textsc{\LARGE University of Bergen \\ Department of Informatics}\\[1.5cm] % Name of your university/college
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.5cm]
+\begin{Huge}
+	\bfseries{Performance of Distributed and Shared Memory Parallel Sparse Matrix Vector Multiplication}\\[0.7cm] % Title of your document
+\end{Huge}
+\HRule \\[0.5cm]
+
+%----------------------------------------------------------------------------------------
+%	AUTHOR SECTION
+%----------------------------------------------------------------------------------------
+
+\large \emph{Author:} Kristian S\o rdal\\
+\large \emph{Supervisor:} Johannes Langguth\\[2cm]
+
+%----------------------------------------------------------------------------------------
+%   LOGO SECTION
+% 	This will require the graphicx package
+%	Change the line to comment if you only want the UiB Logo
+%	Logo for other faculties here: http://kapd.h.uib.no/profilmanual/99LastNed/99a_lastned.html
+%----------------------------------------------------------------------------------------
+
+\centerline{\includegraphics[scale=0.4]{figures/NT_PositivVenstrestilt_NOR}}
+% \centerline{\includegraphics[scale=0.15]{figures/canvas}}  %change for your faculty
+
+%----------------------------------------------------------------------------------------
+%	DATE SECTION
+%----------------------------------------------------------------------------------------
+
+{\large \monthyeardate\today}\\[3cm] % Date, change the \today to a set date if you want to be precise
+
+%----------------------------------------------------------------------------------------
+%	LOGO SECTION
+%----------------------------------------------------------------------------------------
+
+\vfill % Fill the rest of the page with whitespace
 
 \end{titlepage}
