@@ -1,48 +1,48 @@
 \babel@toc {british}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Shared and Distributed Memory Architecture (adapted from \cite {llnlparallel})}}{11}{figure.caption.5}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces System with two NUMA nodes and eight processors (4 per NUMA node) (adapted from \cite {10.1145/2508834.2513149}).}}{12}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Shared and Distributed Memory Architecture (adapted from \cite {llnlparallel})}}{10}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces System with two NUMA nodes and eight processors (4 per NUMA node) (adapted from \cite {10.1145/2508834.2513149}).}}{11}{figure.caption.6}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Matrix represented in the CSR format.}}{14}{figure.caption.7}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Example Matrix represented in the COO format.}}{16}{figure.caption.8}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Matrix represented in the CSC format.}}{16}{figure.caption.9}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Matrix Represented in the ELLPACK format.}}{17}{figure.caption.10}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Well structured (a) and poorly structured (b) matrices.}}{18}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Row distribution among threads under static scheduling.}}{20}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Illustration of multilevel graph partitioning (adapted from \cite {karypis1997metis}).}}{23}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Matrix represented in the CSR format.}}{13}{figure.caption.7}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Example Matrix represented in the COO format.}}{15}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Matrix represented in the CSC format.}}{15}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Matrix Represented in the ELLPACK format.}}{16}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Well structured (a) and poorly structured (b) matrices.}}{17}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Row distribution among threads under static scheduling.}}{18}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Illustration of multilevel graph partitioning (adapted from \cite {karypis1997metis}).}}{22}{figure.caption.14}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Simple graph partitioned amongst ranks - each color represents a rank.}}{28}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Contents of each ranks vector before and after communication under the \textit {Exchange Entire Vector} communication pattern.}}{29}{figure.caption.16}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Separators} communication pattern.}}{32}{figure.caption.17}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Required Separators} communication pattern.}}{33}{figure.caption.18}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Required Elements} communication pattern.}}{36}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Global indexing vs. Local indexing of \(x\).}}{36}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Simple graph partitioned amongst ranks - each color represents a rank.}}{27}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Contents of each ranks vector before and after communication under the \textit {Exchange Entire Vector} communication pattern.}}{28}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Separators} communication pattern.}}{31}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Required Separators} communication pattern.}}{32}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Contents of each ranks \(x\) vector before and after communication under the \textit {Exchange Required Elements} communication pattern.}}{35}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Global indexing vs. Local indexing of \(x\).}}{35}{figure.caption.20}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Matrices used to generate results.}}{40}{figure.caption.23}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Sustained performance (GFLOPS) over 100 iterations of SpMV on a single node equipped with dual-socket AMD EPYC 7601{} processors.}}{42}{figure.caption.25}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Total execution time of each communication strategy on a single node equipped with dual-socket AMD EPYC 7601{} processors.}}{44}{figure.caption.26}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Communication time per iteraton of SpMV on a single node equipped with dual-socket AMD EPYC 7601{} processors.}}{46}{figure.caption.27}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Computation time per iteraton of SpMV on a single node equipped with dual-socket AMD EPYC 7601{} processors.}}{48}{figure.caption.28}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Fraction of the size of the global \(x\) vector communicated per SpMV iteration.}}{49}{figure.caption.29}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{51}{figure.caption.31}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Total execution time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{53}{figure.caption.32}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Computation time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{54}{figure.caption.33}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{55}{figure.caption.34}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{56}{figure.caption.35}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per socket) using dual-socket AMD EPYC 7601{} processors.}}{57}{figure.caption.37}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket AMD EPYC 7601{} processors.}}{59}{figure.caption.38}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket AMD EPYC 7601{} processors.}}{60}{figure.caption.39}%
-\contentsline {figure}{\numberline {5.15}{\ignorespaces Sustained GFLOPS performance of SpMV over 100 iterations on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{62}{figure.caption.40}%
-\contentsline {figure}{\numberline {5.16}{\ignorespaces Total execution time for 100 iterations of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{63}{figure.caption.41}%
-\contentsline {figure}{\numberline {5.17}{\ignorespaces Computation time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{64}{figure.caption.42}%
-\contentsline {figure}{\numberline {5.18}{\ignorespaces Communication time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{65}{figure.caption.43}%
-\contentsline {figure}{\numberline {5.19}{\ignorespaces Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{67}{figure.caption.44}%
-\contentsline {figure}{\numberline {5.20}{\ignorespaces multi Node - AMD EPYC 7413}}{69}{figure.caption.45}%
-\contentsline {figure}{\numberline {5.21}{\ignorespaces \relax }}{70}{figure.caption.46}%
-\contentsline {figure}{\numberline {5.22}{\ignorespaces \relax }}{71}{figure.caption.47}%
-\contentsline {figure}{\numberline {5.23}{\ignorespaces Multi Node - AMD EPYC 7413}}{72}{figure.caption.48}%
-\contentsline {figure}{\numberline {5.24}{\ignorespaces \relax }}{73}{figure.caption.49}%
-\contentsline {figure}{\numberline {5.25}{\ignorespaces \relax }}{74}{figure.caption.50}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Matrices used to generate results.}}{38}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Sustained performance (GFLOPS) over 100 iterations of SpMV on a single node equipped with dual-socket AMD EPYC 7601{} processors.}}{40}{figure.caption.25}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Total execution time of each communication strategy on a single node equipped with dual-socket AMD EPYC 7601{} processors.}}{42}{figure.caption.26}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Communication time per iteraton of SpMV on a single node equipped with dual-socket AMD EPYC 7601{} processors.}}{44}{figure.caption.27}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Computation time per iteraton of SpMV on a single node equipped with dual-socket AMD EPYC 7601{} processors.}}{46}{figure.caption.28}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Fraction of the size of the global \(x\) vector communicated per SpMV iteration.}}{47}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{49}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Total execution time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{51}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Computation time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{52}{figure.caption.33}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{53}{figure.caption.34}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket AMD EPYC 7601{} processors.}}{54}{figure.caption.35}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per socket) using dual-socket AMD EPYC 7601{} processors.}}{55}{figure.caption.37}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket AMD EPYC 7601{} processors.}}{57}{figure.caption.38}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket AMD EPYC 7601{} processors.}}{58}{figure.caption.39}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Sustained GFLOPS performance of SpMV over 100 iterations on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{60}{figure.caption.40}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Total execution time for 100 iterations of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{61}{figure.caption.41}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Computation time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{62}{figure.caption.42}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Communication time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{63}{figure.caption.43}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket AMD EPYC 7302P{} processors.}}{65}{figure.caption.44}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces multi Node - AMD EPYC 7413}}{67}{figure.caption.45}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces \relax }}{68}{figure.caption.46}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces \relax }}{69}{figure.caption.47}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Multi Node - AMD EPYC 7413}}{70}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.24}{\ignorespaces \relax }}{71}{figure.caption.49}%
+\contentsline {figure}{\numberline {5.25}{\ignorespaces \relax }}{72}{figure.caption.50}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
