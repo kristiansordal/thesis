@@ -1,7 +1,7 @@
 \subsubsection{One MPI rank per node}
 \begin{figure}[H]
     \centering
-    \incfig[1]{gflops\_2x4\_multi\_defq}
+    \incfig[1]{gflops\_2x4\_multi\_defq} 
     \caption{Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
     \label{fig:gflopsdefqmulti}
 \end{figure}
@@ -18,21 +18,21 @@ It is clear that using only distributed memory far outperforms using only shared
 
 \begin{figure}[H]
     \centering
-    \incfig[1]{t\_2x4\_multi\_defq}
-    \caption{Total execution time for 100 iterations of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
+    \incfig[1]{t\_2x4\_multi\_defq} 
+    \caption{Total execution time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
     \label{fig:tcdefqmulti}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \incfig[1]{tcomp\_2x4\_multi\_defq}
+    \incfig[1]{tcomp\_2x4\_multi\_defq} 
     \caption{Computation time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
     \label{fig:tcompdefqmulti}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \incfig[1]{tcomm\_2x4\_multi\_defq}
+    \incfig[1]{tcomm\_2x4\_multi\_defq} 
     \caption{Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
     \label{fig:tcommdefqmulti}
 \end{figure}
@@ -40,7 +40,7 @@ It is clear that using only distributed memory far outperforms using only shared
 
 \begin{figure}[H]
     \centering
-    \incfig{commload\_2x4\_multi\_defq}
+    \incfig{commload\_2x4\_multi\_defq} 
     \caption{Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
     \label{fig:commloaddefqmulti}
 \end{figure}

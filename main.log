@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  26 MAY 2025 10:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.3.15)  26 MAY 2025 13:02
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1717,7 +1717,7 @@ Package pdftex.def Info: ./figures/examplegraph.pdf , page1 used on input line 5
 
 [23]
 
-Package hyperref Warning: No autoref name for `algocfline' on input line 20.
+Package hyperref Warning: No autoref name for `algocfline' on input line 26.
 
 (./figures/1acomm-2.pdf_tex
 <./figures/1acomm-2.pdf, id=818, page=1, 682.86612pt x 341.43306pt>
@@ -1738,7 +1738,7 @@ Package pdftex.def Info: ./figures/1acomm-2.pdf , page3 used on input line 62.
 )
 
 [24 <./figures/examplegraph.pdf>]
-Overfull \hbox (9.79208pt too wide) in paragraph at lines 64--65
+Overfull \hbox (9.79208pt too wide) in paragraph at lines 70--71
 \T1/lmr/m/n/12 (-20) struc-ture is es-tab-lished, com-mu-nic-a-tion is per-formed us-ing \T1/lmtt/m/n/12 MPI_Allgatherv\T1/lmr/m/n/12 (-20) ,
  []
 
@@ -1772,7 +1772,7 @@ Package pdftex.def Info: ./figures/1bcomm.pdf , page3 used on input line 62.
 
 [27]
 
-Package hyperref Warning: No autoref name for `algocfline' on input line 154.
+Package hyperref Warning: No autoref name for `algocfline' on input line 160.
 
 (./figures/1ccomm.pdf_tex
 <./figures/1ccomm.pdf, id=857, page=1, 682.86612pt x 341.43306pt>
@@ -1934,15 +1934,15 @@ Overfull \vbox (30.75351pt too high) has occurred while \output is active []
 
 
 [37 <./figures/gflops_2x4_single_defq.pdf>] (./figures/t_2x4_single_defq.pdf_tex
-<./figures/t_2x4_single_defq.pdf, id=1459, page=1, 1084.49625pt x 1742.87758pt>
+<./figures/t_2x4_single_defq.pdf, id=1459, page=1, 1096.49628pt x 1742.87758pt>
 File: ./figures/t_2x4_single_defq.pdf Graphic file (type pdf)
 <use ./figures/t_2x4_single_defq.pdf, page 1>
 Package pdftex.def Info: ./figures/t_2x4_single_defq.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
+(pdftex.def)             Requested size: 369.88583pt x 587.94316pt.
 )
 
 [38]
-Overfull \vbox (30.75351pt too high) has occurred while \output is active []
+Overfull \vbox (24.24597pt too high) has occurred while \output is active []
 
 
 
@@ -1960,15 +1960,15 @@ Overfull \vbox (24.24597pt too high) has occurred while \output is active []
 
 
 [41 <./figures/tcomm_2x4_single_defq.pdf>] (./figures/tcomp_2x4_single_defq.pdf_tex
-<./figures/tcomp_2x4_single_defq.pdf, id=2551, page=1, 1103.14392pt x 1742.87758pt>
+<./figures/tcomp_2x4_single_defq.pdf, id=2551, page=1, 1096.49628pt x 1742.87758pt>
 File: ./figures/tcomp_2x4_single_defq.pdf Graphic file (type pdf)
 <use ./figures/tcomp_2x4_single_defq.pdf, page 1>
 Package pdftex.def Info: ./figures/tcomp_2x4_single_defq.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 369.88583pt x 584.37955pt.
+(pdftex.def)             Requested size: 369.88583pt x 587.94316pt.
 )
 
 [42]
-Overfull \vbox (20.70717pt too high) has occurred while \output is active []
+Overfull \vbox (24.24597pt too high) has occurred while \output is active []
 
 
 
@@ -1997,26 +1997,26 @@ Overfull \vbox (79.20679pt too high) has occurred while \output is active []
 
 
 [46 <./figures/gflops_2x4_multi_defq.pdf>] (./figures/t_2x4_multi_defq.pdf_tex
-<./figures/t_2x4_multi_defq.pdf, id=4743, page=1, 1091.14401pt x 1742.87758pt>
+<./figures/t_2x4_multi_defq.pdf, id=4743, page=1, 1096.49628pt x 1742.87758pt>
 File: ./figures/t_2x4_multi_defq.pdf Graphic file (type pdf)
 <use ./figures/t_2x4_multi_defq.pdf, page 1>
 Package pdftex.def Info: ./figures/t_2x4_multi_defq.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 369.88583pt x 590.81534pt.
+(pdftex.def)             Requested size: 369.88583pt x 587.94316pt.
 )
 
 [47]
-Overfull \vbox (27.13007pt too high) has occurred while \output is active []
+Overfull \vbox (24.24597pt too high) has occurred while \output is active []
 
 
 
 [48 <./figures/t_2x4_multi_defq.pdf>] (./figures/tcomp_2x4_multi_defq.pdf_tex
-<./figures/tcomp_2x4_multi_defq.pdf, id=5189, page=1, 1103.14392pt x 1742.87758pt>
+<./figures/tcomp_2x4_multi_defq.pdf, id=5189, page=1, 1096.49628pt x 1742.87758pt>
 File: ./figures/tcomp_2x4_multi_defq.pdf Graphic file (type pdf)
 <use ./figures/tcomp_2x4_multi_defq.pdf, page 1>
 Package pdftex.def Info: ./figures/tcomp_2x4_multi_defq.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 369.88583pt x 584.37955pt.
+(pdftex.def)             Requested size: 369.88583pt x 587.94316pt.
 )
-Overfull \vbox (20.70717pt too high) has occurred while \output is active []
+Overfull \vbox (24.24597pt too high) has occurred while \output is active []
 
 
 
@@ -2091,24 +2091,24 @@ Overfull \vbox (39.61594pt too high) has occurred while \output is active []
 
 
 [57 <./figures/gflops_2x4_multi_rome16q.pdf>] (./figures/t_2x4_multi_rome16q.pdf_tex
-<./figures/t_2x4_multi_rome16q.pdf, id=9130, page=1, 1091.14401pt x 1742.87758pt>
+<./figures/t_2x4_multi_rome16q.pdf, id=9130, page=1, 1084.49625pt x 1742.87758pt>
 File: ./figures/t_2x4_multi_rome16q.pdf Graphic file (type pdf)
 <use ./figures/t_2x4_multi_rome16q.pdf, page 1>
 Package pdftex.def Info: ./figures/t_2x4_multi_rome16q.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 369.88583pt x 590.81534pt.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
 )
-Overfull \vbox (42.50003pt too high) has occurred while \output is active []
+Overfull \vbox (46.12347pt too high) has occurred while \output is active []
 
 
 
 [58 <./figures/t_2x4_multi_rome16q.pdf>] (./figures/tcomp_2x4_multi_rome16q.pdf_tex
-<./figures/tcomp_2x4_multi_rome16q.pdf, id=9674, page=1, 1115.14395pt x 1742.87758pt>
+<./figures/tcomp_2x4_multi_rome16q.pdf, id=9674, page=1, 1084.49625pt x 1742.87758pt>
 File: ./figures/tcomp_2x4_multi_rome16q.pdf Graphic file (type pdf)
 <use ./figures/tcomp_2x4_multi_rome16q.pdf, page 1>
 Package pdftex.def Info: ./figures/tcomp_2x4_multi_rome16q.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 369.88583pt x 578.10333pt.
+(pdftex.def)             Requested size: 369.88583pt x 594.43213pt.
 )
-Overfull \vbox (14.41411pt too high) has occurred while \output is active []
+Overfull \vbox (30.75351pt too high) has occurred while \output is active []
 
 
 
@@ -2245,7 +2245,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  104i,16n,104p,1177b,789s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr6.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmr9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmri12.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmss10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (90 pages, 5389269 bytes).
+Output written on main.pdf (90 pages, 5328016 bytes).
 PDF statistics:
  16093 PDF objects out of 18468 (max. 8388607)
  10851 compressed objects within 109 object streams

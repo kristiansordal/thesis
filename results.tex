@@ -10,7 +10,7 @@ As has been established, the maximum performance scales with the available memor
 
 
 \section{Experimental Setup}
-In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were ran on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled with the compiler flags \texttt{-march=native} and \texttt{-O3}.
+In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were ran on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled GCC 11.4.0 using the compiler flags \texttt{-march=native} and \texttt{-O3}.
  
 \subsection{Hardware Platforms}
 
@@ -117,11 +117,8 @@ nlpkkt200&Symmetric indefinite KKT matrix\\
 \end{table}
 
 \section{\defq{}}
-The results in the following section present the performance metrics of 100 iteration of SpMV on various configurations using the \defq{} chip. For this hardware, both single node and multi node experiments have been performed.
+For experiments on the dual-socketed \defq{} nodes, three sets of experiments were conducted. The first set of experiments test the performance when using a single node without shared memory paralleization, The second set places only one MPI rank per node, and the final set of experiments place one MPI rank per socket. Both multi node experiments use shared memory parallelization for intra node communication. 
 \medskip
-
-
-For the multi node experiments, 
 
 \subsection{Single Node Performance}
 \label{sec:singlenode}
@@ -131,14 +128,15 @@ For the single node experiments, no shared memory paralleization has been utiliz
 \input{defqsingle}
 
 \subsection{Multi Node Performance}
-The results in this section present the performance metrics when ran on one through four dual-socketed nodes with two \defq{} chips on each node. Two sets of results are presented, the first uses a configuration where only one MPI rank has been placed on each node, and the second places two MPI ranks per node, or in other words, one MPI rank per socket. On both configurations, 64 OpenMP threads have been used, as each chip have 32 physical cores. These results aim to illustrate the difference in performance in a multi-node configuration, both when utilizing only one memory controller (i.e. one MPI rank per node), and when utilizing two memory controllers (i.e. one MPI rank per socket). 
+The multi node experiments illustrate the performance across 1-4 dual-socketed nodes. Two configurations have been tested: One MPI rank per node with 64 OpenMP threads per rank, which utilizes only one of the two memory controller per node. Next, Two MPI ranks per node, or one MPI rank per socket, with 32 OpenMP threads per rank, which utilizes both memory controllers available per node. 
 \medskip
 \input{defqmulti}
 
 
 \section{\romeq{}}
-The results in this section present the performance metrics of experiments ran on 1-8 nodes with a single-socketed \romeq{} chip. As the nodes are single socketed, only one set of experiments are provided.
+The results in this section present the performance metrics of experiments ran on 1-8 nodes with a single-socketed \romeq{} chip. As the nodes are single socketed, only one set of experiments are provided, where one MPI rank is placed per node, each with 16 OpenMP threads, as the \romeq{} chip only has 16 physical cores.
 \input{romemulti.tex}
 
 \section{\fpgaq{}}
+Two sets of experiments were conducted on the \fpgaq{} nodes. As these nodes are also dual-socketed, the experiments conducted are similar to those on the \defq{} nodes, but they only utilize 24/48 OpenMP threads per socket/node, as the \fpgaq{} chip provides 24 physical cores.
 \input{fpgaqmulti.tex}
