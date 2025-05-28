@@ -57,10 +57,10 @@ Figure \ref{fig:1acomm} illustrates the state of the vector before and after com
 \end{figure}
 
 \section{Strategy B - Exchange only separators}
-The next communication strategy improves upon strategy A by recognizing that only the set of each partitions elements of \(x\) that induce data-dependencies require explicit communication. The set of these elements is called a separator. This communication strategy is at least as good as strategy A regardless of the matrix structure. The size of any partitions separator can at most be as large as the set of elements of that partition, but is usually smarter, thus reducing the communication volume.
+The next communication strategy improves upon strategy A by recognizing that only the set of each partitions elements of \(x\) that induce data-dependencies require explicit communication. The set of these elements is called a separator. This communication strategy is at least as good as strategy A regardless of the matrix structure. The size of any partitions separator can at most be as large as the set of elements of that partition, but is usually smaller, thus reducing the communication volume.
 \medskip
 
-Let \(n_{p}\) denote the total number of ranks, and let \(s_{i}\) be the size of the separator of rank \(i\). Since each rank sends its separator to each other rank (i.e. \(n_{p} - 1 other ranks\)), then the total communication volume is given by \ref{eq:1bcomm}.
+Let \(n_{p}\) denote the total number of ranks, and let \(s_{i}\) be the size of the separator of rank \(i\). Since each rank sends its separator to each other rank (i.e. \(n_{p} - 1\) other ranks), then the total communication volume is given by \ref{eq:1bcomm}.
 
 \begin{equation}
     \label{eq:1bcomm}
@@ -274,32 +274,38 @@ Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of e
 
 \section{Strategy E - Memory Scalable}
 \label{sec:memscal}
-The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire vector \(x\), and will run into performance issues when \(x\) is so large that it doesn't fit into memory. Usually, this is not a problem when SpMV is ran on CPUs, as they have large amounts of memory. Even on GPUs this problem might not be encountered, as modern GPUs have sufficient memory for large matrices.
+%Going to disc yields 100x slowdown.
+%reformulate here
+%reference memory scalability book
+%0-indexed - unclear - only store values that are relevant to the computation on that node.
+% communiocation minimal
+% memory minimal - dont waste any space
+The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire \(x\) vector, and as matrices get larger, so does this vector. As the chips have a limited amount of memory, they will eventually run out of memory when the vector gets large enough. When this happens, the vector has to be read from disc instead of from memory, which in turn will essentially kill all performance gained from moving to a parallel setting. This strategy provides a solution to that, by implementing measure to ensure memory scalability.
 \medskip
+
+% These strategies all store the entire vector \(x\), and will run into performance issues \textbf{(WRONG - it wont work, we wont have enough memory to store i.e. reading from DISC instead of DRAM)} when \(x\) is so large that it doesn't fit into memory. Usually, this is not a problem when SpMV is ran on CPUs, as they have large amounts of memory. Even on GPUs this problem might not be encountered, as modern GPUs have sufficient memory for large matrices.
+% \medskip
 
 % \Huge{WRITE ABOUT SEPARATOR REORDERING}
 
-Instead of storing the entire vector, each rank only stores its local part of the vector. In addition, it is necessary to allocate enough space for the separators elements that are needed from the other ranks. In order to achieve this, \(x\) is renumbered such that every ranks part of the vector is 0-indexed. For the local part of the \(x\) vector this is done by simply subtracting the position of the first local entry assigned to that rank from each entry in the local vector. It is also necessary to reorder the separator elements, as they will be stored after the entries in the local vector. This is achieved in a similar manner as the algorithm outlined in \ref{alg:reorderseparators}.
-
-% It is slightly more complicated to renumber the separator elements, and the technicalities of how to do this will not be discussed here.
+Instead of storing the entire vector, each rank only stores the elements of \(x\) that reside within that ranks partition. In addition to storing the local part of \(x\), the separator elements are also stored consecutively in memory after the local elements of \(x\). Doing this requires reodering of the local \(x\) vector, aswell as the separator elements. Figure \ref{fig:2dcomm} illustraes the contents of the \(x\) vector before and after communication. The communication volume is exactly the same as for Strategy D, but as is seen this time only the necessary elements are stored in memory.
 \medskip
-
-
-% There is no specific communication pattern that are required for 
 
 \begin{figure}[H]
     \centering
     \incfig{2dcomm}
-    \caption{Global indexing vs. Local indexing of \(x\).}
+    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Required Separators, memory scalable} communication pattern.}
     \label{fig:2dcomm}
 \end{figure}
 
 
 
 
-Table \ref{tab:commstrats} gives an overview of the reductions in communication strategies described in the previous sections. As the graph in Figure \ref{fig:examplegraph} is very small, this table doesn't illustrate the full potential of any of the strategies, but it does show that the communication volume is reduced for each strategy. 
+Table \ref{tab:commstrats} gives an overview of the reduction in of the total communication volume for the strategies described in the previous sections. As the graph in Figure \ref{fig:examplegraph} is very small, this table doesn't illustrate the full potential of any of the strategies, but it does show that the communication volume is reduced for each strategy. 
 
 \begin{table}[H]
+    \caption{Overview of total communication volume reduction for strategy A-E using graph in Figure \ref{fig:examplegraph}.}
+    \label{tab:commstrats}
     \begin{center}
         \begin{tabular}[c]{|l|l|l|}
             \hline
@@ -313,10 +319,10 @@ Table \ref{tab:commstrats} gives an overview of the reductions in communication 
             \hline
             D&25&16.7  \\
             \hline
+            E&25&0  \\
+            \hline
         \end{tabular}
     \end{center}
-    \caption{Overview of communication volume reduction for strategy A-D using graph in Figure \ref{fig:examplegraph}.}
-    \label{tab:commstrats}
 \end{table}
 
 

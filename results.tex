@@ -59,62 +59,64 @@ As the field of interest is that of results from scientific computing, the matri
   \captionsetup[sub]{font=tiny, textfont=tiny}
   \setlength{\tabcolsep}{3pt} % adjust horizontal padding between columns
   \begin{tabular}{cccc}
-      \subcaptionbox{\tiny{bone010}\label{fig:bone010}}{%
-      \includegraphics[width=0.23\textwidth]{bone010.png}%
+      \subcaptionbox{\tiny{bone010}\label{fig:Bump_2911}}{%
+      \includegraphics[width=0.23\textwidth]{Bump_2911.png}%
     } &
-    \subcaptionbox{\tiny{af\_shell10}\label{fig:af_shell10}}{%
-      \includegraphics[width=0.23\textwidth]{af_shell10.png}%
-    } &
-    \subcaptionbox{\tiny{Serena}\label{fig:Serena}}{%
-      \includegraphics[width=0.23\textwidth]{Serena.png}%
-    } &
-    \subcaptionbox{\tiny{Long\_Coup\_dt0}\label{fig:Long_Coup_dt0}}{%
-      \includegraphics[width=0.23\textwidth]{Long_Coup_dt0.png}%
-    } \\[6pt] % a little extra vertical gap
-    \subcaptionbox{\tiny{dielFilterV3real}\label{fig:dielFilterV3real}}{%
-      \includegraphics[width=0.23\textwidth]{dielFilterV3real.png}%
-    } &
-    \subcaptionbox{\tiny{Cube\_Coup\_dt0}\label{fig:Cube_Coup_dt0_1}}{%
+    \subcaptionbox{\tiny{af\_shell10}\label{fig:Cube_Coup_dt0_1}}{%
       \includegraphics[width=0.23\textwidth]{Cube_Coup_dt0.png}%
     } &
-    \subcaptionbox{\tiny{Bump\_2911}\label{fig:Bump_2911}}{%
-      \includegraphics[width=0.23\textwidth]{Bump_2911.png}%
+    \subcaptionbox{\tiny{Serena}\label{fig:Long_Coup_dt0}}{%
+      \includegraphics[width=0.23\textwidth]{Long_Coup_dt0.png}%
+    } &
+    \subcaptionbox{\tiny{Long\_Coup\_dt0}\label{fig:Serena}}{%
+      \includegraphics[width=0.23\textwidth]{Serena.png}%
+    } \\[6pt] % a little extra vertical gap
+    \subcaptionbox{\tiny{dielFilterV3real}\label{fig:af_shell10}}{%
+      \includegraphics[width=0.23\textwidth]{af_shell10.png}%
+    } &
+    \subcaptionbox{\tiny{Cube\_Coup\_dt0}\label{fig:bone010}}{%
+      \includegraphics[width=0.23\textwidth]{bone010.png}%
+    } &
+    \subcaptionbox{\tiny{Bump\_2911}\label{fig:dielFilterV3real}}{%
+      \includegraphics[width=0.23\textwidth]{dielFilterV3real.png}%
     } &
     \subcaptionbox{\tiny{nlpkkt200}\label{fig:nlpkkt200}}{%
       \includegraphics[width=0.23\textwidth]{nlpkkt200.png}%
     }
   \end{tabular}
-  \caption{Matrices used to generate results.}
+  \caption{Matrices used in the following experiments. (Matrix pattern images collected from the University of Florida Sparse Matrix Collection \cite{10.1145/2049662.2049663}, accessed via the SuiteSparse Matrix Collection Website Interface  \cite{Kolodziej2019}.)}
   \label{fig:matricesused}
 \end{figure}
 
-\begin{table}[H]
-\begin{center}
-\begin{tabular}[c]{|p{3cm}|p{8.5cm}|}
-\hline
-\textbf{Name}&\textbf{Purpose}  \\
-\hline
-bone010&Trabecular Bone Micro-Finite Element Model\\
-\hline
-af\_shell1&Sheet metal forming matrix\\
-\hline
-Serena&Gas reservoir simulation for \(CO_{2}\) sequestration\\
-\hline
-Long\_Coup\_dt0&3D coupled consolidation problem (geological formation)\\
-\hline
-dielFilterV3real&High-order vector finite element method in EM\\
-\hline
-Cube\_Coup\_dt0&3D coupled consolidation problem (3D cube)\\
-\hline
-Bump\_2911&3D geomechanical reservoir simulation\\
-\hline
-nlpkkt200&Symmetric indefinite KKT matrix\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Names and descriptions of the matrices used in the experiments.}
-\label{tab:matricesused}
-\end{table}
+\input{matrixtable.tex}
+
+% \begin{table}[H]
+% \caption{Names and descriptions of the matrices used in the experiments (from \cite{Kolodziej2019}).}
+% \label{tab:matricesused}
+% \begin{center}
+% \begin{tabular}[c]{|p{3cm}|p{8.5cm}|}
+% \hline
+% \textbf{Name}&\textbf{Purpose}  \\
+% \hline
+% bone010&Trabecular Bone Micro-Finite Element Model.\\
+% \hline
+% af\_shell1&Sheet metal forming matrix.\\
+% \hline
+% Serena&Gas reservoir simulation for \(CO_{2}\) sequestration.\\
+% \hline
+% Long\_Coup\_dt0&3D coupled consolidation problem (geological formation).\\
+% \hline
+% dielFilterV3real&High-order vector finite element method in EM.\\
+% \hline
+% Cube\_Coup\_dt0&3D coupled consolidation problem (3D cube).\\
+% \hline
+% Bump\_2911&3D geomechanical reservoir simulation.\\
+% \hline
+% nlpkkt200&Symmetric indefinite KKT matrix.\\
+% \hline
+% \end{tabular}
+% \end{center}
+% \end{table}
 
 \section{\defq{}}
 For experiments on the dual-socketed \defq{} nodes, three sets of experiments were conducted. The first set of experiments test the performance when using a single node without shared memory paralleization, The second set places only one MPI rank per node, and the final set of experiments place one MPI rank per socket. Both multi node experiments use shared memory parallelization for intra node communication. 
@@ -128,13 +130,13 @@ For the single node experiments, no shared memory paralleization has been utiliz
 \input{defqsingle}
 
 \subsection{Multi Node Performance}
-The multi node experiments illustrate the performance across 1-4 dual-socketed nodes. Two configurations have been tested: One MPI rank per node with 64 OpenMP threads per rank, which utilizes only one of the two memory controller per node. Next, Two MPI ranks per node, or one MPI rank per socket, with 32 OpenMP threads per rank, which utilizes both memory controllers available per node. 
+The multi node experiments illustrate the performance across 1-4 dual-socketed nodes. Two configurations have been tested, these being using one MPI rank per node with 64 OpenMP threads per rank, which utilizes only one of the two memory controller per node. Next, Two MPI ranks per node, or one MPI rank per socket, with 32 OpenMP threads per rank, which utilizes both memory controllers available per node. 
 \medskip
 \input{defqmulti}
 
 
 \section{\romeq{}}
-The results in this section present the performance metrics of experiments ran on 1-8 nodes with a single-socketed \romeq{} chip. As the nodes are single socketed, only one set of experiments are provided, where one MPI rank is placed per node, each with 16 OpenMP threads, as the \romeq{} chip only has 16 physical cores.
+The results in this section present the performance metrics of experiments ran on 1-8 nodes with a single-socketed \romeq{} chip. As the nodes are single socketed, only one set of experiments are provided, where one MPI rank is placed per node, each with 16 OpenMP threads, as the \romeq{} chip has 16 physical cores.
 \input{romemulti.tex}
 
 \section{\fpgaq{}}

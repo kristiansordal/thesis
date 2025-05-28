@@ -32,6 +32,11 @@ George Karypis and Vipin Kumar.
 \newblock Technical report, University of Minnesota, Department of Computer Science / Army HPC Research Center, 1997.
 \newblock Version 3.0.3.
 
+\bibitem{Kolodziej2019}
+Scott~P. Kolodziej, Mohsen Aznaveh, Matthew Bullock, Jarrett David, Timothy~A. Davis, Matthew Henderson, Yifan Hu, and Read Sandstrom.
+\newblock The suitesparse matrix collection website interface.
+\newblock {\em Journal of Open Source Software}, 4(35):1244, 2019.
+
 \bibitem{10.1145/2508834.2513149}
 Christoph Lameter.
 \newblock Numa (non-uniform memory access): An overview: Numa becomes more common because memory controllers get close to execution units on microprocessors.

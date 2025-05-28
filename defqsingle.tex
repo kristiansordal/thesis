@@ -4,21 +4,23 @@
     \caption{Sustained performance (GFLOPS) over 100 iterations of SpMV on a single node equipped with dual-socket \defq{} processors.}
     \label{fig:gflopsdefqsingle}
 \end{figure}
-Figure \ref{fig:gflopsdefqsingle} presents the achieved GFLOPS for each communication strategy. The performance trends largely align with expectations: each successive strategy generally exhibits improved performance over its predecessor. However, an exception arises with strategy E, which consistently underperforms relative to strategy D.
-\medskip
 
-As discussed in section \ref{sec:memscal}, strategy E reorders the local vector and separators. The effect this reordering has on well ordered matrices is that it can reduce cache reuse. This has not been measured directly, but it is the most likely culprit to the discrepancy between the results of strategy D and E.
-
-% As detailed in Algorithm \ref{alg:reqsepexchange}, strategy E incurs a significant overhead due to its requirement to pack and unpack every individual element exchanged across separator boundaries. This repeated packing and unpacking operation introduces substantial computational and memory overhead, which offsets the potential benefits of the strategy and explains its inferior performance. It is however important to keep in mind that the goal of strategy E is not necessarily to achieve the absolute highest possible GFLOPS performance, but rather to ensure that it is scalable to large matrices, and is able to run on architectures that have lower local memory.
- 
 \begin{figure}[H]
     \centering
     \incfig[1]{t\_2x4\_single\_defq}
-    \caption{Total execution time of each communication strategy on a single node equipped with dual-socket \defq{} processors.}
+    \caption{Total execution time per iteration of SpMV on a single node equipped with dual-socket \defq{} processors.}
     \label{fig:tdefqsingle}
 \end{figure}
 
+Figure \ref{fig:gflopsdefqsingle} presents the achieved GFLOPS for each communication strategy. The performance trends largely align with expectations: each successive strategy generally exhibits improved performance over its predecessor. However, an exception arises with strategy E, which consistently underperforms relative to strategy D.
+\medskip
+
+As discussed in Section \ref{sec:memscal}, Strategy E reorders the local vector and separators. The effect this reordering has on well ordered matrices is that it can reduce cache reuse, as it can make the structure of the matrices worse. This has not been measured directly, but it is the most likely culprit to the discrepancy between the results of strategy D and E. Trotter et. al conducted a study on the reordering of matrices, and they also found that the reordering of the matrix worsened the performance on \defq{} chips \cite{ordersparse}.
+\medskip
+
 Figure \ref{fig:tdefqsingle} presents the total execution time for each communication strategy. It is closely related to Figure \ref{fig:gflopsdefqsingle}, as computing the GFLOPS number is given by the total number of flops performed divided by the total execution time.
+
+
 
 % \begin{equation}
 %     \label{eq:gflops}
@@ -33,8 +35,6 @@ Figure \ref{fig:tdefqsingle} presents the total execution time for each communic
     \label{fig:tcommdefqsingle}
 \end{figure}
 
-Figure \ref{fig:tcommdefqsingle} present the time spent communicating the data data-dependencies between MPI ranks for each iteration of SpMV. The results clearly illustrate the performance benefits of optimizing communication in distributed single node SpMV. Strategy A acts as a baseline, by naively communicating the entire vector. Each successive communication strategy implements measures to reduce the communication volume, and it can be seen that this does indeed result in lower communication times. Strategy B limited communication to communicating only separators, Strategy C narrowed this to only communicating the separators to the rank that need them. Finally, strategy D and E further reduces the communication volume by only communicating necessary separator elements. This progresion confirms the role communication strategies play in reducing the bottleneck that the data-dependencies between nodes induce. The results emphasize that careful attention to communication minimization yields improvements communication time, and by extension in performance for memory-bound operations like SpMV.
-
 \begin{figure}[H]
     \centering
     \incfig[1]{tcomp\_2x4\_single\_defq}
@@ -42,15 +42,52 @@ Figure \ref{fig:tcommdefqsingle} present the time spent communicating the data d
     \label{fig:tcompdefqsingle}
 \end{figure}
 
+%wouldnt use strategy A unless we have multiple nodes - would use openMP instead
+%rewrite / dont say too much - alof repetition
+%strategy B gives the biggest gains
+%rewrite this n
+%computation - memory bound
+%communication - communication bound
+
+Figure Figure \ref{fig:tcompdefqsingle} and \ref{fig:tcommdefqsingle} present the computation time and communication time, respectively, of each communication strategy. From these figures it becomes evident that as the number of ranks is increased, all strategies goes from being compute-bound (i.e. the computation time dominates the execution time), to being communication-bound (i.e. the communication time dominates the execution time).
+\medskip
+
+Strategy A performs the worst, which is expected. It would be unpractical to use Strategy A instead of shared memory parallelization in practice, but the results are included nonetheless. Strategy B results in a 3-10x reduction in communication time compared to Strategy A when comparing the results of using 64 MPI ranks. Further reductions are observed in Strategy C, with Strategy D and E performing the best. 
+\medskip
+
+Due to the reordering, Strategy E starts off as the worst performing strategy, but catches up in performance when scaling to 16, 32 and 64 MPI ranks. As is evident in Figure \ref{fig:tcompdefqsingle}, Strategy A-D performs comparably, as these strategies don't reorder the matrix, and have essentially the same memory access patterns.
+
+
+% Notably, Strategy E starts off as the worst of the strategies, but quickly catches up to the performance of the other strategies when scaling to multiple ranks. 
+
+
+% Figure \ref{fig:tcommdefqsingle} present the time spent communicating the data-dependencies between MPI ranks for each iteration of SpMV. The results clearly illustrate the performance benefits of optimizing communication in distributed single node SpMV. Strategy A has the worst performance, which is expected. In practice, 
+
+% Strategy A acts as a baseline, by naively communicating the entire vector. Each successive communication strategy implements measures to reduce the communication volume, and it can be seen that this does indeed result in lower communication times. Strategy B limited communication to communicating only separators, Strategy C narrowed this to only communicating the separators to the rank that need them. Finally, strategy D and E further reduces the communication volume by only communicating necessary separator elements. This progresion confirms the role communication strategies play in reducing the bottleneck that the data-dependencies between nodes induce. The results emphasize that careful attention to communication minimization yields improvements communication time, and by extension in performance for memory-bound operations like SpMV.
+
+
+
 \begin{figure}[H]
     \centering
     \incfig{commload\_2x4\_single\_defq}
     \caption{Fraction of the size of the global \(x\) vector communicated per SpMV iteration.}
     \label{fig:commloaddefqsingle}
 \end{figure}
-Figure \ref{fig:commloaddefqsingle} shows the fraction of the input vector \(x\) communicated per SpMV iteration across various matrices and ranks for different communication strategies. This figure provides an important quantitative counterpart to the timing data: it confirms that strategies which yielded lower communication time also effectively minimized the volume of communicated data. The results presented in this figure only show the communication volume for strategies B-D. Strategy A have been left out as the fraction of \(x\) communicated in each iteration is 1 no matter how many ranks are used. Strategy E has been left out as the communication volume for this strategy is the same as strategy D.
+
+Figure \ref{fig:commloaddefqsingle} illustrates the fraction of the global size of \(x\) that is communicated for each iteration of SpMV. This provides important insight into the reason for the differences between the communication times of the strategies.
 \medskip
 
-Notably, when comparing strategy B and C, the rank with the maximum communication volume in strategy C is usually equal to, or lower than the average communication volume of strategy B.
+Using one rank, no communication occurs, and with two ranks, strategy B-D performs the same amount of communication as the entire separator from one rank is required from the other, and vice-versa.
+\medskip
+
+From this figure, observe that both the average and maximum communication volume is reduced in each communication strategy. Note how the maximum communication of both strategy B and C is considerably higher than the maximum of strategy D. This is interesting as the communication routines used to facilitate communication between ranks is blocking, meaning that the communication time is partially dictated by the time the rank with the maximum communication volume spends sending its messages.
+
+
+
+%rewrite this nonsense
+% Figure \ref{fig:commloaddefqsingle} shows the fraction of the input vector \(x\) communicated per SpMV iteration across various matrices and ranks for different communication strategies. This figure provides an important quantitative counterpart to the timing data: it confirms that strategies which yielded lower communication time also effectively minimized the volume of communicated data. The results presented in this figure only show the communication volume for strategies B-D. Strategy A have been left out as the fraction of \(x\) communicated in each iteration is 1 no matter how many ranks are used. Strategy E has been left out as the communication volume for this strategy is the same as strategy D.
+% \medskip
+
+% Notably, when comparing strategy B and C, the rank with the maximum communication volume in strategy C is usually equal to, or lower than the average communication volume of strategy B.
 
 

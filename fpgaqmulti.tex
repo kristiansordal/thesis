@@ -1,45 +1,75 @@
-\begin{figure}[htpb]
+\subsubsection{One MPI rank per node}
+\begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_fpgaq}
-    \caption{multi Node - \fpgaq}
+    \caption{Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per node) using dual-socket \fpgaq{} processors.}
     \label{fig:gflopsfpgaqmulti}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
+    \centering
+    \incfig[1]{t\_2x4\_multi\_fpgaq}
+    \caption{Computation time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \fpgaq{} processors.}
+    \label{fig:tfpgaqmulti}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \incfig[1]{tcomp\_2x4\_multi\_fpgaq}
+    \caption{Computation time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \fpgaq{} processors.}
+    \label{fig:tcompfpgaqmulti}
+\end{figure}
+
+\begin{figure}[H]
     \centering
     \incfig[1]{tcomm\_2x4\_multi\_fpgaq}
-    \caption{}
+    \caption{Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \fpgaq{} processors.}
     \label{fig:tcommfpgaqmulti}
 \end{figure}
 
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
     \incfig{commload\_2x4\_multi\_fpgaq}
-    \caption{}
-    \label{}
+    \caption{Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per node) using dual-socket \fpgaq{} processors.}
+    \label{fig:commloadfpgaqmulti}
 \end{figure}
 
-% \subsection{2 proc per node}
+\subsubsection{One MPI rank per socket}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_fpgaqmpi}
-    \caption{Multi Node - \fpgaq}
+    \caption{Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per socket) using dual-socket \fpgaq{} processors.}
     \label{fig:gflopsfpgaqmpimulti}
 \end{figure}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
+    \centering
+    \incfig[1]{t\_2x4\_multi\_fpgaqmpi}
+    \caption{Computation time per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket \fpgaq{} processors.}
+    \label{fig:tfpgaqmpimulti}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \incfig[1]{tcomp\_2x4\_multi\_fpgaqmpi}
+    \caption{Computation time per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket \fpgaq{} processors.}
+    \label{fig:tcompfpgaqmpimulti}
+\end{figure}
+
+
+\begin{figure}[H]
     \centering
     \incfig[1]{tcomm\_2x4\_multi\_fpgaqmpi}
-    \caption{}
+    \caption{Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket \fpgaq{} processors.}
     \label{fig:tcommfpgaqmpimulti}
 \end{figure}
 
 
-\begin{figure}[htpb]
+\begin{figure}[H]
     \centering
     \incfig{commload\_2x4\_multi\_fpgaqmpi}
-    \caption{}
-    \label{}
+    \caption{Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket \fpgaq{} processors.}
+    \label{fig:commloadfpgaqmpimulti}
 \end{figure}

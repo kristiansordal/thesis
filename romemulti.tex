@@ -1,16 +1,27 @@
-Figure \ref{fig:gflopsromemulti} presents the achieved GFLOPS across up to eight single-socket nodes using the \romeq{} processor. These results offer a more fine-grained perspective on the performance of various communication strategies, particularly when employing a non-power-of-two number of MPI ranks. In contrast to the single node experiments discussed in Section \ref{sec:singlenode}, where the number of ranks were limited to powers of two, this linear range of nodes shows how the communication strategies behave under less ideal conditions.
-\medskip
-
-As is evident from the results, strategy E consistenly underperforms compared to all other strategies. This is not necessarily a cause for worry, as the experiments were only ran on up to 8 nodes. This might not be a large enough number of nodes to show the true performance of strategy E as the number of nodes increase beyond 8 nodes. 
-
-It is possible that strategy E starts off worse than the other communication strategies, but as the number of nodes increases this strategy will start outperforming the other strategies. This is backed up by the consistent increase in communication volume of strategy B and C shown Figure \ref{fig:commloadromemulti}.
-
 \begin{figure}[H]
     \centering
     \incfig[1]{gflops\_2x4\_multi\_rome16q}
     \caption{Sustained GFLOPS performance of SpMV over 100 iterations on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
     \label{fig:gflopsromemulti}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \incfig[1]{t\_2x4\_multi\_rome16q}
+    \caption{Total execution time per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
+    \label{fig:tromemulti}
+\end{figure}
+
+Figure \ref{fig:gflopsromemulti} and \ref{fig:tromemulti} presents the achieved GFLOPS and total execution time across up to eight single-socket nodes using the \romeq{} processor, respectively.These results offers insight on the performance not only on multiple nodes, but also when the number of MPI ranks is not a power of two.
+
+% These results offer a more fine-grained perspective on the performance of the communication strategies, particularly when employing a non-power-of-two number of MPI ranks. In contrast to the single node experiments discussed in Section \ref{sec:singlenode}, where the number of ranks were limited to powers of two, this linear range of nodes shows how the communication strategies behave under less ideal conditions.
+
+\medskip
+
+As is evident from the results, Strategy E consistenly underperforms compared to all other strategies. This is not necessarily a cause for worry, as the experiments were only ran on up to 8 nodes. This might not be a large enough number of nodes to show the true performance of strategy E as the number of nodes increase beyond 8 nodes. 
+
+It is possible that strategy E starts off worse than the other communication strategies, but as the number of nodes increases this strategy will start outperforming the other strategies. This is backed up by the consistent increase in communication volume of strategy B and C shown Figure \ref{fig:commloadromemulti}.
+
 
 
 
@@ -20,12 +31,6 @@ It is possible that strategy E starts off worse than the other communication str
 
 % Strategy A exhibits a sawtooth-like pattern depending on whether the number of nodes is even or odd. This is due to a quirk of how MPI decides to work (see \cite{10064025}).
 
-\begin{figure}[H]
-    \centering
-    \incfig[1]{t\_2x4\_multi\_rome16q}
-    \caption{Total execution time for 100 iterations of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
-    \label{fig:tromemulti}
-\end{figure}
 
 \begin{figure}[H]
     \centering
@@ -41,10 +46,16 @@ It is possible that strategy E starts off worse than the other communication str
     \label{fig:tcommromemulti}
 \end{figure}
 
-The results in Figure \ref{fig:tcommromemulti} present the communication time per iteration of SpMV on up to eight \romeq{} nodes. Notably, Strategy A exhibits a sawtooth-like pattern, depending on whether or not the number of nodes used is even or odd. Such irregularities is can be explained by the underlying communication algorithms MPI decides to employ when using \texttt{MPI\_Allgatherv}. MPI decides on some internal algorithm to use in collective communication routines, depending on the number of ranks involved in the operation and the size of the messages amongst other factors. The exact algorithm MPI uses internally for these results is unknown, and outside the scope of this thesis, but it is the most probable reason that this sawtooth pattern is observed, this is also backed up by the fact that the results in Figure \ref{fig:tcomp2x4multirome16q}, which illustrate the computation time for each strategy, don't exhibit this behaviour. Thune et. al conducted a study investigating the modeling of heterogeneous and contention-constrained point-to-point MPI Communication, see \cite{10064025}.
+The results in Figure \ref{fig:tcommromemulti} present the communication time per iteration of SpMV on up to eight \romeq{} nodes. Notably, Strategy A exhibits a sawtooth-like pattern, depending on whether or not the number of nodes used is even or odd. Such irregularities is can be explained by the underlying communication algorithms MPI decides to employ when using \texttt{MPI\_Allgatherv}. MPI decides on some internal algorithm to use in collective communication routines, depending on the number of ranks involved in the operation and the size of the messages amongst other factors. The exact algorithm MPI uses internally for these results is unknown, and outside the scope of this thesis, but it is the most probable reason that this sawtooth pattern is observed, this is also backed up by the fact that the results in Figure \ref{fig:tcomp2x4multirome16q}, which illustrate the computation time for each strategy, don't exhibit this behaviour. 
+
+
+% Thune et. al conducted a study investigating the modeling of heterogeneous and contention-constrained point-to-point MPI Communication, see \cite{10064025}.
 \medskip
 
-Looking at the single node results in Figure \ref{fig:tcommdefqsingle}, strategy D and E performs comparably, however this is not the case here, as strategy E is beaten by strategies B-D in all matrices except for \texttt{nlpkkt200}. This discrepancy can be attributed to the cost reindexing the local \(x\) vector has on memory locality. In the single node setting, the shared physical memory and fast intra node communication mitigate the effects of these memory access irregularities. However, in the multi node case communication across nodes takes longer
+Looking at the single node results in Figure \ref{fig:tcommdefqsingle}, Strategy D and E performs comparably, however this is not the case here, as Strategy E is beaten by strategies B-D in all matrices except for \texttt{nlpkkt200}. The exact reason for this could be due to how the communication is implemented in Strategy E. Both Strategy D and E uses the same communication strategy, but their implementation differs. Strategy D relies upon MPIs \texttt{MPI\_Ialltoallv}, where as Strategy E has a custom implementation of all to all communication which uses blocking \texttt{MPI\_Send} internally. 
+
+
+% This discrepancy can be attributed to the cost reindexing the local \(x\) vector has on memory locality. In the single node setting, the shared physical memory and fast intra node communication mitigate the effects of these memory access irregularities. However, in the multi node case communication across nodes takes longer
 % When comparing the results 
 % Strategy E is 
 % Another interesting observation of these results show th
@@ -55,3 +66,5 @@ Looking at the single node results in Figure \ref{fig:tcommdefqsingle}, strategy
     \caption{Fraction of the global \(x\) vector communicated per iteration of SpMV on 1–8 nodes (one MPI rank per node) using single-socket \romeq{} processors.}
     \label{fig:commloadromemulti}
 \end{figure}
+
+Figure \ref{fig:commloadromemulti} shows the communication volume for each communication strategy per iteration of SpMV. We can see that communication volume in Strategy B and C are similar, but that the maximum load for a rank in Strategy B is consistently higher than that of Strategy C. Although this is just difference of a few percent at most, it provides numerical data as to why Strategy C beats Strategy B. We can also observe that the greatest difference in communication volume is \(\approx 8.5\%\), and occurs on the \texttt{Long\_Coup\_dt0} matrix.
