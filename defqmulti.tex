@@ -46,6 +46,7 @@ From these results, it is clear that as soon as the network cards connecting the
     \label{fig:tcommdefqmulti}
 \end{figure}
 
+Figure \ref{fig:tcompdefqmulti} and \ref{fig:tcommdefqmulti} illustrates the computation and communication time respetively per iteration of SpMV. For the first plot, nothing out of the ordinary is observed, except for some erraticism on some of the matrices. For the second plot however, we can see that the communication time of Strategy E strats of significantly higher than the other strategies, before sharply dropping as the number of ranks increases. We can observe the start of some trends, with both Strategy B and C increasing in communication time, Strategy D remaining relatively stable, and Strategy E approaching that of Strategy D.
 
 \begin{figure}[H]
     \centering
@@ -55,7 +56,6 @@ From these results, it is clear that as soon as the network cards connecting the
 \end{figure}
 
 \subsubsection{One MPI rank per socket}
-
 
 \begin{figure}[H]
     \centering
@@ -72,10 +72,11 @@ From these results, it is clear that as soon as the network cards connecting the
 \end{figure}
 
 
-Figure \ref{fig:gflopsdefqmpimulti} illustrate the achieved GFLOPS when placing one MPI rank per socket. The benefits of doing this is that we get to utilize the memory controllers on both chips, instead of only one when placing one MPI rank per node.
-\medskip
+% Figure \ref{fig:gflopsdefqmpimulti} illustrate the achieved GFLOPS when placing one MPI rank per socket. The benefits of doing this is that we get to utilize the memory controllers on both chips, instead of only one when placing one MPI rank per node.
+% \medskip
 
-When compared to Figure \ref{fig:gflopsdefqmulti}, we see that the performance drops when using only one node has drastically dropped, but that most communication strategies performs better with this configuration when scaling to multiple nodes. However, even when using four nodes, the performance is not as good as using a single node with one MPI rank.
+Figure \ref{fig:gflopsdefqmpimulti} and \ref{fig:tdefqmpimulti} illustrate the sustained GFLOPS performance achieved across 100 iterations of SpMV, and the execution time per iteration of Spmv, respectively. When compared to the results in Figure \ref{fig:gflopsdefqmulti} and \ref{fig:tdefqmulti}, we see that the performance is better in the multi node case by \(\approx\) 1-2 GFLOPS in most matrices. We also observe a greater spread in performance across the strategeies for all configurations.
+% When compared to Figure \ref{fig:gflopsdefqmulti}, we see that the performance drops when using only one node has drastically dropped, but that most communication strategies performs better with this configuration when scaling to multiple nodes. However, even when using four nodes, the performance is not as good as using a single node with one MPI rank.
 
 \begin{figure}[H]
     \centering
@@ -90,6 +91,8 @@ When compared to Figure \ref{fig:gflopsdefqmulti}, we see that the performance d
     \caption{Communication time per iteration of SpMV on 1–4 nodes (one MPI rank per socket) using dual-socket \defq{} processors.}
     \label{fig:tcommdefqmpimulti}
 \end{figure}
+
+Figure \ref{fig:tcompdefqmpimulti} and \ref{fig:tcommdefqmpimulti} illustrate the computation time and communication time for each iteration of SpMV, respectively. We can observe that the computation time decreases as the number of nodes increases, which is expected. As was the case for Figure \ref{fig:tcommdefqmulti} Strategy E performs worse, but does exhibit trends in decreasing the communication time as the number of nodes increases.
 
 
 \begin{figure}[H]

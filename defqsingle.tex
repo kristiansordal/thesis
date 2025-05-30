@@ -80,7 +80,7 @@ Figure \ref{fig:commloaddefqsingle} illustrates the fraction of the global size 
 Using one rank, no communication occurs, and with two ranks, strategy B-D performs the same amount of communication as the entire separator from one rank is required from the other, and vice-versa.
 \medskip
 
-From this figure, observe that both the average and maximum communication volume is reduced in each communication strategy. Note how the maximum communication of both strategy B and C is considerably higher than the maximum of strategy D. This is interesting as the communication routines used to facilitate communication between ranks is blocking, meaning that the communication time is partially dictated by the time the rank with the maximum communication volume spends sending its messages.
+From this figure, observe that both the average and maximum communication volume is reduced in each communication strategy. Note how the maximum communication of both Strategy B and C is considerably higher than the maximum of Strategy D. This is interesting as the communication routines used to facilitate communication between ranks is blocking, meaning that the communication time is partially dictated by the time the rank with the maximum communication volume spends sending its messages.
 
 
 

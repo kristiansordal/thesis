@@ -79,6 +79,12 @@ James~D. Trotter, Sinan Ekmek\c{c}iba\c{s}\i{}, Johannes Langguth, Tugba Torun, 
 \newblock Bringing order to sparsity: A sparse matrix reordering study on multicore cpus.
 \newblock In {\em Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis}, SC '23, New York, NY, USA, 2023. Association for Computing Machinery.
 
+\bibitem{trotter2025artifacts}
+James~D. Trotter, Sinan Ekmek{\c c}iba{\c s}{\i}, Johannes Langguth, Doğan Sağbili, Xing Cai, and Didem Unat.
+\newblock {Artifacts for “CPU- and GPU-initiated Communication Strategies for Conjugate Gradient Methods on Large GPU Clusters”}.
+\newblock \url{https://doi.org/10.5281/zenodo.15291898}, April 2025.
+\newblock Under review.
+
 \bibitem{ellpackformat}
 Cong Zheng, Shuo Gu, Tong-Xiang Gu, Bing Yang, and Xing-Ping Liu.
 \newblock Biell: A bisection ellpack-based storage format for optimizing spmv on gpus.

@@ -52,7 +52,7 @@ Figure \ref{fig:1acomm} illustrates the state of the vector before and after com
 \begin{figure}[H]
     \centering
     \incfig{1acomm-2}
-    \caption{Contents of each ranks vector before and after communication under the \textit{Exchange Entire Vector} communication pattern.}
+    \caption{Contents of each ranks vector before and after communication under Strategy A}
     \label{fig:1acomm}
 \end{figure}
 
@@ -128,7 +128,7 @@ After partitioning the matrix into different parts, we obtain a partition vector
 \begin{figure}[H]
     \centering
     \incfig{1bcomm}
-    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Separators} communication pattern.}
+    \caption{Contents of each ranks \(x\) vector before and after communication under Strategy B.}
     \label{fig:1bcomm}
 \end{figure}
 
@@ -202,15 +202,15 @@ Let \(n_{p}\) be the total number of ranks, \(n_{i}\) be the number of neighbour
 \begin{figure}[H]
     \centering
     \incfig{1ccomm}
-    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Required Separators} communication pattern.}
+    \caption{Contents of each ranks \(x\) vector before and after communication under Strategy C.}
     \label{fig:1ccomm}
 \end{figure}
 
 \section{Strategy D - Exchange only required separator values}
-The final strategy further reduces the communication volume by only communicating the separator elements to the rank with which that element induces a data dependency. This eliminates unnecessary communicaton, but introduces complexity in managing said communication. It requires careful management of the send and recieve lists, and introduces some additional overhead by means of a packing and unpacking step necessary for transmitting the data between ranks. This overhead does however not outweigh the benefits gained from the reduction in communication volume which this strategy yields.
+The final strategy further reduces the communication volume by only communicating the separator elements to the rank with which that element induces a data dependency. This eliminates unnecessary communicaton, meaning that this strategy is communication minimal, but introduces complexity in managing said communication. It requires careful management of the send and recieve lists, and introduces some additional overhead by means of a packing and unpacking step necessary for transmitting the data between ranks. %This overhead does however not outweigh the benefits gained from the reduction in communication volume which this strategy yields.
 \medskip
 
-Algorithm \ref{alg:reqsepexchange} shows how the communication step for this strategy is implemented. Both strategy B and C requires reordering of the separator values, in order to make the communication of the separators easier. In contrast, strategy D does not require reorderding of the separators, as it packs each of the separators into send lists before communication. The original index of the separator element is stored, and is used to unpack it into the correct position of \(x\) after communication.
+Algorithm \ref{alg:reqsepexchange} shows how the communication step for this strategy is implemented. Both Strategy B and C requires reordering of the separator values, in order to make the communication of the separators easier. In contrast, Strategy D does not require reorderding of the separators, as it packs each of the separators into send lists before communication. The original index of the separator element is stored, and is used to unpack it into the correct position of \(x\) after communication.
 
 % , but due to the packing and unpacking step required for this strategy as seen in algorithm \ref{alg:reqsepexchange}, reordering the separator elements is not required for this communication strategy.
 \medskip
@@ -267,7 +267,7 @@ Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of e
 \begin{figure}[H]
     \centering
     \incfig{1dcomm}
-    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Required Elements} communication pattern.}
+    \caption{Contents of each ranks \(x\) vector before and after communication under Strategy D.}
     \label{fig:1dcomm}
 \end{figure}
 
@@ -280,7 +280,7 @@ Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of e
 %0-indexed - unclear - only store values that are relevant to the computation on that node.
 % communiocation minimal
 % memory minimal - dont waste any space
-The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire \(x\) vector, and as matrices get larger, so does this vector. As the chips have a limited amount of memory, they will eventually run out of memory when the vector gets large enough. When this happens, the vector has to be read from disc instead of from memory, which in turn will essentially kill all performance gained from moving to a parallel setting. This strategy provides a solution to that, by implementing measure to ensure memory scalability.
+The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire \(x\) vector, and as matrices get larger, so does this vector. As the chips have a limited amount of memory, they will eventually run out of memory when the vector gets large enough. When this happens, the vector has to be read from disc instead of from memory, which in turn will essentially kill all performance gained from moving to a parallel environment. This strategy provides a solution to that, by implementing measure to ensure memory scalability.
 \medskip
 
 % These strategies all store the entire vector \(x\), and will run into performance issues \textbf{(WRONG - it wont work, we wont have enough memory to store i.e. reading from DISC instead of DRAM)} when \(x\) is so large that it doesn't fit into memory. Usually, this is not a problem when SpMV is ran on CPUs, as they have large amounts of memory. Even on GPUs this problem might not be encountered, as modern GPUs have sufficient memory for large matrices.
@@ -288,15 +288,17 @@ The communication strategies discussed so far all have a common problem that pre
 
 % \Huge{WRITE ABOUT SEPARATOR REORDERING}
 
-Instead of storing the entire vector, each rank only stores the elements of \(x\) that reside within that ranks partition. In addition to storing the local part of \(x\), the separator elements are also stored consecutively in memory after the local elements of \(x\). Doing this requires reodering of the local \(x\) vector, aswell as the separator elements. Figure \ref{fig:2dcomm} illustraes the contents of the \(x\) vector before and after communication. The communication volume is exactly the same as for Strategy D, but as is seen this time only the necessary elements are stored in memory.
+Instead of storing the entire vector, each rank only stores the elements of \(x\) that reside within that ranks partition. In addition to storing the local part of \(x\), the separator elements are also stored consecutively in memory after the local elements of \(x\). Doing this requires reodering of the local \(x\) vector, aswell as the separator elements. Figure \ref{fig:2dcomm} illustrates the contents of the \(x\) vector before and after communication. The communication volume is exactly the same as for Strategy D, but as is seen this time only the necessary elements are stored in memory, which means that this communication strategy is both communication minimal, but also memory minimal.
 \medskip
 
 \begin{figure}[H]
     \centering
     \incfig{2dcomm}
-    \caption{Contents of each ranks \(x\) vector before and after communication under the \textit{Exchange Required Separators, memory scalable} communication pattern.}
+    \caption{Contents of each ranks \(x\) vector before and after communication under Strategy E.}
     \label{fig:2dcomm}
 \end{figure}
+
+Even though the communication pattern in Strategy D and E is the same, their exact implementation differs. Strategy D relies on \texttt{MPI\_Ialltoallv} as is seen in Algorithm \ref{alg:reqsepexchange}, but Strategy E uses a custom implementation of all to all communication, that relies on \texttt{MPI\_Send} and \texttt{MPI\_Irecv} internally. This does have some impact on performance, as will be seen in Section \ref{sec:romemulti}
 
 
 

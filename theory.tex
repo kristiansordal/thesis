@@ -76,7 +76,9 @@ The execution time of computational operations can vary significantly, and it is
 There are two main architectures used in the parallel computing industry: Shared Memory Architecture and Distributed Memory Architecture. The following sections gives an overview of the key difference between the two.
 
 \subsection{Shared Memory Architecture}
-On a system with shared memory architecture, every processing unit (PU) have access to the same memory, and treat it as a global address space. Although each thread maintains its own private cache for performance, reads and writes target the same shared memory pool. To guarantee correctness, the system must enforce \emph{cache coherence}: any read must observe the most recent write, regardless of which cache holds that value. This is managed through what is called a coherence protocol, without which, threads could see stale or inconsistent data, leading to race conditions and incorrect program behavior \cite{55497}.  
+On a system with shared memory architecture, every processing unit (PU) (often reffered to as threads) have access to the same memory. Although each thread maintains its own private cache for performance, reads and writes occur in the same shared memory pool. To guarantee correctness, the system must enforce \emph{cache coherence}. Cache coherence means that each read must observe the most recent write, regardless of which cache holds that value. As the on-chip memory controller can perform only one write per clock cycle, if a thread requires a value stored in another threads cache, what is known as the \textit{cache coherence protocol} ensures that the thread obtains the correct value. Cache coherence is crucial in a shared memory setting in order to ensure correct program behaviour and avoid race conditions \cite{55497}.
+
+% This is managed through what is called a coherence protocol, without which, threads could see stale or inconsistent data, leading to race conditions and incorrect program behavior \cite{55497}.  
 
 % On a system with shared memory architecture, every processing unit (PU) have access to the same memory, and treat it as a global address space. Each thread have access to the same shared memory pool, but also has its own local cache. It is important that cache coherency is maintained in a shared memory setting, as without it, 
 
@@ -91,15 +93,15 @@ On systems with distributed memory architecture, every processor have their own 
 \medskip
 
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \incfig{sharedmemory}
-    \caption{Shared and Distributed Memory Architecture (adapted from \cite{llnlparallel})}
+    \caption{Shared and Distributed Memory Architecture (adapted from \cite{llnlparallel}).}
     \label{fig:sharedmemory}
 \end{figure}
 
 \subsection{Non-Uniform Memory Access}
-On multiprocessor systems, Non-Uniform Memory Access (NUMA) memory architecture that lays out memory in such a way that the memory access latency depends on the physical distance between the processor core, and the location of the memory being accessed. On these systems each processor has its own local memory, which cores on that processor can access much faster than memory local to another processor. Figure \ref{fig:numanode} illustrates a system with two NUMA nodes, and if a core on node 0 needs to access memory on node 1, it needs to travel through the interconnect that connects the two nodes, which incurs higher latency.
+On multiprocessor systems, Non-Uniform Memory Access (NUMA) memory architecture that lays out memory in such a way that the memory access latency depends on the physical distance between the processor core, and the location of the memory being accessed. On these systems each processor has its own local memory, which cores on that processor can access much faster than memory local to another processor. Figure \ref{fig:numanode} illustrates a system with two NUMA nodes, and if a core on node 0 needs to access memory on node 1, it needs to travel through the interconnect that connects the two nodes, which incurs higher latency (see Table \ref{tab:latencynumbers}).
 \medskip
 
 Single chips can also partition their cores into multiple NUMA domains, as an example, a 32-core chip may have 4 NUMA domains where every domain contains eight nodes each. Respecting the NUMA domains is particularly important if performance is the goal, and can be achieved using tools such as \texttt{numactl}.
@@ -107,7 +109,7 @@ Single chips can also partition their cores into multiple NUMA domains, as an ex
 
 It is important to note that NUMA refers specifically to the organization of the main memory, i.e. the DRAM, and not to the on chip caches implemented using SRAM.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \incfig{numanode}
     \caption{System with two NUMA nodes and eight processors (4 per NUMA node) (adapted from \cite{10.1145/2508834.2513149}).}
@@ -128,7 +130,7 @@ An important implication of the NUMA memory architecture is how and where memory
 % Unlike traditional symmetric multiprocessing (SMP) systems, where all processors share equal access times to a centralized memory pool, NUMA architectures consist of multiple processor sockets or nodes, each directly connected to its own local memory. These nodes are interconnected by a high-speed communication network, typically an interconnect, facilitating access to remote memory residing on other nodes.
 
 \subsection{Emerging Architectures}
-In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This involves packing thousands of small processor cores into a single device, where each core has its own local memory, and no device level shared memory. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Such architectures necessitate a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial. Another example is Graphcores Colossus MK2 GC200 IPU (Intelligence Processing Unit). Although not as big as WSE-3, it still contains 59.4 billion transistors and has 1472 cores.
+In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This involves packing thousands of small processor cores into a single device, where each core has its own local memory, and no device level shared memory. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Another example is Graphcores Colossus MK2 GC200 IPU (Intelligence Processing Unit). Although not as big as WSE-3, it still contains 59.4 billion transistors and has 1472 cores. Such architectures necessitate a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial. 
 \medskip
 
 % \medskip

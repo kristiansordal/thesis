@@ -655,7 +655,6 @@ INPUT ./abstract.tex
 INPUT ./abstract.tex
 INPUT abstract.tex
 INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
-INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm
 INPUT ./acknowledgements.tex
 INPUT ./acknowledgements.tex
 INPUT ./acknowledgements.tex
@@ -716,6 +715,7 @@ INPUT ./introduction.tex
 INPUT ./introduction.tex
 INPUT ./introduction.tex
 INPUT introduction.tex
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm
 INPUT ./theory.tex
 INPUT ./theory.tex
 INPUT ./theory.tex
@@ -1297,9 +1297,19 @@ INPUT ./conclusion.tex
 INPUT ./conclusion.tex
 INPUT ./conclusion.tex
 INPUT conclusion.tex
+INPUT ./appendix.tex
+INPUT ./appendix.tex
+INPUT ./appendix.tex
+INPUT ./appendix.tex
+INPUT appendix.tex
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/lm/ts1lmr.fd
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/lm/ts1lmr.fd
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/tex/latex/lm/ts1lmr.fd
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/tfm/public/lm/ts1-lmr12.tfm
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
+INPUT /opt/homebrew/Cellar/texlive/20250308_1/share/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out

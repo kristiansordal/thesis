@@ -1,7 +1,9 @@
 \chapter{Results} \label{results}
 
 \section{Theoretical Maximum}
-As has been established, the maximum performance scales with the available memory bandwidth of the system, and not with the amount of processes used. For SpMV, a total of 6 bytes are read per FLOP, which means that the theoretical maximum is given by \ref{eq:theoretical_max}. This is under the assumption that all resources on the system is dedicated to the SpMV operation, which is not the case in reality. At most, somewhere in the neighbourhood of 80\% of the systems resources can be expected to be utilized.
+As has been established, the maximum performance scales with the available memory bandwidth of the system, and not with the amount of processes used. For SpMV, a total of 6 bytes are read per FLOP, which means that the theoretical maximum is given by Equation \ref{eq:theoretical_max}. This is under the assumption that the entire memory bandwidth is available during SpMV, which is not the case in reality (see \cite{ordersparse}).
+
+% all resources on the system is dedicated to the SpMV operation, which is not the case in reality. At most, somewhere in the neighbourhood of 70-80\% of the systems resources can be expected to be utilized.
 
 \begin{equation}
 \text{Maximum Theoretical Performance} = \frac{\text{Memory bandwidth}}{6}
@@ -10,10 +12,9 @@ As has been established, the maximum performance scales with the available memor
 
 
 \section{Experimental Setup}
-In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were ran on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled GCC 11.4.0 using the compiler flags \texttt{-march=native} and \texttt{-O3}.
+In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were ran on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled GCC 11.4.0 using the compiler flags \texttt{-march=native} and \texttt{-O3}. The code used to produce the results for strategy A-D is publically available, see the Appendix.
  
 \subsection{Hardware Platforms}
-
 The experiments that have been ran target three high‐performance computing systems. \autoref{tab:hardware} gives an overview of the hardware that has been used in the experiments.
 
 \input{cputable}
@@ -37,22 +38,22 @@ The communication strategies used have been extensively discussed in \ref{sec:co
             \hline
              \textbf{Strategy name}& \textbf{Strategy Description}  \\
             \hline
-             Strategy A&Exchanges entire local vector.  \\
+             Strategy A&Exchange entire local vector.  \\
             \hline
-             Strategy B&Exchanges entire separator.  \\
+             Strategy B&Exchange entire separator.  \\
             \hline
-             Strategy C&Exchanges required separator.  \\
+             Strategy C&Exchange required separator.  \\
             \hline
-             Strategy D&Exchanges required separator elements.  \\
+             Strategy D&Exchange required separator elements.  \\
             \hline
-             Strategy E&Exchanges required separator elements, memory scalable.  \\
+             Strategy E&Exchange required separator elements, memory scalable.  \\
             \hline
         \end{tabular}
     \end{center}
 \end{table}
 
 \subsection{Matrices}
-As the field of interest is that of results from scientific computing, the matrices shown in Figure \ref{fig:matricesused} have been selected, and \autoref{tab:matricesused} gives a brief description of the problem the matrices arise from. Matrices that are based on scientific computing problems are generally well structured and have nonzero entries centered around the main diagonal. Matrices with these kinds of structures tend to yield a larger cache hit rate than matrices based on social networks and other kinds of graphs (see \cite{ordersparse}). It is important to keep this in mind when interpreting the results, as other kinds of graphs can give very different results.
+As the field of interest is that of results from scientific computing, the matrices shown in Figure \ref{fig:matricesused} have been selected, and \autoref{tab:matrices} provides specifications for the matrices. Matrices that are based on scientific computing problems are generally well structured and have nonzero entries centered around the main diagonal. Matrices with these kinds of structures tend to yield a larger cache hit rate than matrices based on social networks and other kinds of graphs (see \cite{ordersparse}). It is important to keep this in mind when interpreting the results, as other kinds of graphs can give very different results.
 
 \begin{figure}[H]
   \centering
@@ -136,9 +137,13 @@ The multi node experiments illustrate the performance across 1-4 dual-socketed n
 
 
 \section{\romeq{}}
+\label{sec:romemulti}
 The results in this section present the performance metrics of experiments ran on 1-8 nodes with a single-socketed \romeq{} chip. As the nodes are single socketed, only one set of experiments are provided, where one MPI rank is placed per node, each with 16 OpenMP threads, as the \romeq{} chip has 16 physical cores.
 \input{romemulti.tex}
 
 \section{\fpgaq{}}
 Two sets of experiments were conducted on the \fpgaq{} nodes. As these nodes are also dual-socketed, the experiments conducted are similar to those on the \defq{} nodes, but they only utilize 24/48 OpenMP threads per socket/node, as the \fpgaq{} chip provides 24 physical cores.
+\medskip
+
+The results on the \fpgaq{} nodes exhibit a high degree of erraticism, and are very inconsistent across the various matrices. This is due to one of the network interface cards on one of the \fpgaq{} nodes being broken. Therefore these results will only be presented, but they will not be analyzed. 
 \input{fpgaqmulti.tex}

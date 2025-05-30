@@ -1,12 +1,12 @@
 \chapter{Background}
 
 \section{CSR Storage Format}
-CSR (Compressed Sparse Row) is the most widely used storage format for sparse matrices. As its name suggests, it compresses the amount of memory used to store a matrix without loss of information. It does so by utilizing three vectors \(A_{p}, A_{j}, A_{x}\). Figure \ref{fig:csrformat} shows an example of a matrix stored in CSR format, adapted from \cite{gupta2024gamgi}.
+CSR (Compressed Sparse Row) is the most widely used storage format for sparse matrices. As its name suggests, it compresses the amount of memory used to store a matrix without loss of information. It does so by utilizing three vectors \(A_{p}, A_{j}, A_{x}\). Figure \ref{fig:csrformat} shows an example of a matrix stored in CSR format.
 
 \begin{figure}[ht]
     \centering
     \incfig{csrformat}
-    \caption{Matrix represented in the CSR format.}
+    \caption{Matrix represented in the CSR format (adapted from \cite{gupta2024gamgi}).}
     \label{fig:csrformat}
 \end{figure}
 
@@ -47,8 +47,7 @@ The Coordinate List (COO) format stores the matrix as a set of triples on the fo
 
 
 \subsection{CSC Format}
-The Compressed Sparse Column (CSC) format is similar to the CSR format, but instead of compressing the rows, we compress the columns. In this matrix format, we have irregular memory writes, but the reads are more regular. This can however be a problem
-
+The Compressed Sparse Column (CSC) format is similar to the CSR format, but instead of compressing the rows, we compress the columns. In this matrix format, we have irregular memory writes, but the reads are more regular. This can however be a problem.
 \begin{figure}[H]
     \centering
     \incfig{cscformat}
@@ -57,12 +56,12 @@ The Compressed Sparse Column (CSC) format is similar to the CSR format, but inst
 \end{figure}
 
 \subsection{ELLPack Format}
-For an \(M \times  N\) matrix with a maximum of \(K\) non-zeros per row, the ELLPack format stores the non-zeros in an \(M \times  K\) matrix \texttt{data}, and an \(M \times  K\) matrix \texttt{indices}. The \texttt{data} matrix store the values of the non-zeros, and \texttt{indices} store the column index of every element. Rows that have fewer than \(K\) non-zeros are padded with zeros. Adapted from \cite{ellpackformat}.
+For an \(M \times  N\) matrix with a maximum of \(K\) nonzeros per row, the ELLPack format stores the nonzeros in an \(M \times  K\) matrix \texttt{data}, and an \(M \times  K\) matrix \texttt{indices}. The \texttt{data} matrix store the values of the nonzeros, and \texttt{indices} store the column index of every element. Rows that have fewer than \(K\) nonzeros are padded with zeros.
 
-\begin{figure}[ht]
+\begin{figure}[H]
     \centering
     \incfig{ellpackformat}
-    \caption{Matrix Represented in the ELLPACK format.}
+    \caption{Matrix Represented in the ELLPACK format (adapted from \cite{ellpackformat}).}
     \label{fig:ellpackformat}
 \end{figure}
 
@@ -90,10 +89,10 @@ A sequential implementation of SpMV on a matrix stored in the CSR format can be 
 \label{alg:sequentialspmv}
 \medskip
 
-For SpMV on well structured matrices such as those similar to the matrix illustrated in Figure \ref{fig:Cube_Coup_dt0}, each non-zero element typically incurs a data movement cost of approximately 12 bytes and results in 2 floating-point operations (FLOPs). This estimation may appear inconsistent with the data access pattern described in \autoref{alg:sequentialspmv}, where two doubles and one integer are read per nonzero, corresponding to a total of 20 bytes. This discrepancy stems from the caching behaviours of the input vector \(x\), as after an entry is initially read, it is frequently reused, and thus remains in cache. This means that on average, only one double and one integer is read per nonzero, which corresponds to 12 bytes.
+For SpMV on well structured matrices such as those similar to the matrix illustrated in Figure \ref{fig:Cube_Coup_dt0}, each nonzero element typically incurs a data movement cost of approximately 12 bytes and results in 2 floating-point operations (FLOPs). This estimation may appear inconsistent with the data access pattern described in \autoref{alg:sequentialspmv}, where two doubles and one integer are read per nonzero, corresponding to a total of 20 bytes. This discrepancy stems from the caching behaviours of the input vector \(x\), as after an entry is initially read, it is frequently reused, and thus remains in cache. This means that on average, only one double and one integer is read per nonzero, which corresponds to 12 bytes.
 \medskip
 
-In contrast, for highly unstructured matrices, the absence of data locality can significantly degrade cache reuse. In the worst case scenario, each non-zero may trigger the loading of an entire 64 byte cache line, with only a small fraction of it being used. Consequently, the effective data movement can increase to as much as 76 bytes per 2 FLOPs.
+In contrast, for highly unstructured matrices, the absence of data locality can significantly degrade cache reuse. In the worst case scenario, each nonzero may trigger the loading of an entire 64 byte cache line, with only a small fraction of it being used. Consequently, the effective data movement can increase to as much as 76 bytes per 2 FLOPs.
 
 \begin{figure}[H]
     \centering
@@ -200,7 +199,7 @@ The way METIS partitions graph does not necessarily optimize for minimizing the 
     \cite{hypergraphpartitioning}
 \end{flushright}
 \medskip
-Hypergraph partitioners try to solve the same problems, and employ similar algorithms as those graph partitioners use, however they use these algorithms on hypergraphs, and not regular graphs. \k Cataly\" urek and Ayakanat showed in \cite{hypergraphpartitioning} that using the hypergraph partitioner they developed, they could get up to 63\% less communication volume, with an average reduction in communication volume of 30\% - 38\%, when compared to METIS.
+Hypergraph partitioners try to solve the same problems, and employ similar algorithms as those graph partitioners use, however they use these algorithms on hypergraphs, and not regular graphs. Cataly\" urek and Ayakanat showed in \cite{hypergraphpartitioning} that using the hypergraph partitioner they developed, they could get up to 63\% less communication volume, with an average reduction in communication volume of 30\% - 38\%, when compared to METIS.
 \medskip
 
 As the improvement of the communication strategies are the main focus of the contents of this thesis, the specific partitioner tool that is used is not the biggest concern, and the programs implemented have opted for the usage of METIS, which as mentioned is a regular graph partitioner. It would be possible to refactor the code in such a way that a hypergraph partitioner such as PaToH can be used.

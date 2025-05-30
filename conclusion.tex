@@ -1,2 +1,28 @@
 \chapter{Conclusion}
-CONCLUSION GOES HERE
+In this thesis, the performance metrics of five increasingly selective communication strategies for parallel Sparse-Matrix Vector Multiplication was tested and evaluated. Eight well-structured sparse matrices were used in the test set, and they were tested with a set of parallel configurations on three different compute nodes, each with different architectures. These experiments were conducted in order to evaluate the communication volume of each strategy, and the effect the communication volume has on the overall performance of SpMV.
+\medskip
+
+The findings show that the communication volume of the strategies were decreased as the strategies became more selective. In the single-node setting, Strategy D and E, which employ the most selective communication pattern, yielded the best results. Between these two, Strategy D consistently outperforms Strategy E, as it omits matrix reordering, thus preserving better cache hit rate that are often encountered in well-structured matrices.
+\medskip
+
+On configurations using multiple compute nodes, the results illustrate more erratic performance characteristics. The findings show that when accessing the network cards connecting the compute nodes, Strategy B and C can outperform D and E, even though their communication volume is greater.
+\medskip
+
+The findings show that optimal SpMV performance in a multi-node environment is not achieved solely by employing the usage of communication minimal and/or memory-minmal strategies. SpMV performance is shown to be impacted by a number of factors, including cache hit rate, load balancing, memory bandwidth, and communication volume. Moreover, exactly which communication strategy performs the best is dependant on the size and structure of the matrix, as well as the specifications of the hardware that is used, and how that hardware is configured.
+\medskip
+
+% Future work would include testing the performance on different hardware, performing tests on a larger amount of compute nodes
+
+% Relevant future work would include using a different test set, with matrices with differnt kinds of structures, in order to obtain data on how reordering imp
+% As for future work, it would be 
+
+% This thesis has investigated the performance impact of five different communication strategies for Sparse-Matrix Vector Multiplication. Each strategy has been tested on eight different matrices, with a wide range of configurations, across three different architectures. The findings show that each strategy consistently reduces the communication volume when compared to the previous, but that this does not always result in better performance.
+% \medskip
+
+% In the single-node non shared memory experiments, the findings show that reducing the communication volume per iteration of SpMV improves performance. Figure \ref{fig:tcommdefqsingle} show that Strategy D and E yields the lowest communication times, which is backed up by the data Figure \ref{fig:commloaddefqsingle}. These strategies also exhibit higher resistance to increases in communication time, as opposted to Strategies A,B and C. Strategy A starts increasing in communication time with as little as four MPI ranks, with B and C starting to diverge when the number of MPI ranks increase to 32. They also demonstrate the effect that reordering an already well structured matrix has on the performance. As reordering the matrix reduces the cache hit rate, the results show that Strategy D outperforms Strategy E on all matrices, and that the difference stems from the difference in computation time, which is largely dictated by the cache hit rate.
+% \medskip
+
+% In the multi-node shared-distributed hybrid experiemnts, the findings are not as clear cut. In the experiments on \defq{}, using one MPI rank per node, Strategy B and C consistently outperforms Strategy D and E, albeit just barely. In addition, the sustained performance in the multi-node case is considerably worse than in the single-node case, and drops in performance is observed when the network cards is accessed (i.e. when using two or more nodes), see \cite{ordersparse}. In these experiments, computation time does decrease as the number of nodes are increased, which is desirable. In the experiments on the same chip, when placing one MPI rank per socket, more of the same behaviours are observed, but performance is increased.
+% \medskip
+
+% On the \romeq{} nodes we observe much better scaling, 
