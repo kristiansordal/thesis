@@ -5,7 +5,6 @@
     \caption{Sustained GFLOPS performance of SpMV over 100 iterations on 1–4 nodes (one MPI rank per node) using dual-socket \defq{} processors.}
     \label{fig:gflopsdefqmulti}
 \end{figure}
-% The results presented in Figure \ref{fig:gflopsdefqmulti} illustrate the GFLOPS achieved when running SpMV for 100 iterations in a distributed and shared memory hybrid environment. For these results, 4 nodes running dual-socketed \defq{} chips have been used, with one MPI rank placed on each node. The results largely align with what is expected, as each consecutive communication Strategy outperforms the previous.
 \medskip
 
 \begin{figure}[H]
@@ -16,21 +15,10 @@
 \end{figure}
 
 
-%Two quirks - not very good with openmp
-% only numa domain 5 works good with communication
-% Andreas Thune found problem regarding which MPI core calls the communication / accressing the network card.
-
-%5.8 - 5.10 are in appendix
-
-
-The results in Figure \ref{fig:gflopsdefqmulti} and \ref{fig:tdefqmulti} illustrate the sustiained GFLOPS performance, and total executution time per iteration SpMV. This configuration uses one MPI rank per node. As is evident from the plots, using only one node (and one MPI rank), consistently yield results that are either better or almost as good as the results achieved when using the maximum amount of available nodes, and when compared to using 64 MPI ranks, one per physical core, the performance is much worse. As an example, for the \texttt{Bump\_2911} matrix, Strategy D achieves a GFLOPS performance of \(\approx 9\) GFLOPS on one node, with 64 OpenMP shared memory threads. When this is compared to Figure \ref{fig:gflopsdefqsingle} using 64 MPI ranks, which achieves \(\approx 30\) GFLOPS for the same matrix.
+The results in Figure \ref{fig:gflopsdefqmulti} and \ref{fig:tdefqmulti} illustrate the sustained GFLOPS performance, and total execution time per iteration SpMV. This configuration uses one MPI rank per node. As is evident from the plots, using only one node (and one MPI rank), consistently yields results that are either better or almost as good as the results achieved when using the maximum amount of available nodes, and when compared to using 64 MPI ranks, one per physical core, the performance is much worse. As an example, for the \texttt{Bump\_2911} matrix, Strategy D achieves a GFLOPS performance of \(\approx 9\) GFLOPS on one node, with 64 OpenMP shared memory threads. When this is compared to Figure \ref{fig:gflopsdefqsingle} using 64 MPI ranks, which achieves \(\approx 30\) GFLOPS for the same matrix.
 \medskip
 
-From these results, it is clear that as soon as the network cards connecting the nodes are accessed, performance sharply drops. The exact reason for this is outside the scope of this thesis. Thune et. al \cite{10064025} performed a study investigating point-to-point MPI communication, and their findings yielded similar degredations in performance when moving to inter-node communications.
-
-% conducted a study on point to point MPI communication, and their findings back up these results, namely that when moving to inter-node communication, depending on the network topology and node location, communication latency can increase which in turn hurts performance. 
-% It is clear that using only distributed memory far outperforms using only shared memory parallelization. The reasons for this is outside the scope of this thesis, but in brief, the \defq{} utilizes the first generation Zen microarchitecture, which had some problems in this area. Thune et. al ran into 
-
+From these results, it is clear that as soon as the network cards connecting the nodes are accessed, performance sharply drops. The exact reason for this is outside the scope of this thesis. Thune et. al \cite{10064025} performed a study investigating point-to-point MPI communication, and their findings yielded similar degradations in performance when moving to inter-node communications.
 
 \begin{figure}[H]
     \centering
@@ -46,7 +34,7 @@ From these results, it is clear that as soon as the network cards connecting the
     \label{fig:tcommdefqmulti}
 \end{figure}
 
-Figure \ref{fig:tcompdefqmulti} and \ref{fig:tcommdefqmulti} illustrates the computation and communication time respetively per iteration of SpMV. For the first plot, nothing out of the ordinary is observed, except for some erraticism on some of the matrices. For the second plot however, we can see that the communication time of Strategy E strats of significantly higher than the other strategies, before sharply dropping as the number of ranks increases. We can observe the start of some trends, with both Strategy B and C increasing in communication time, Strategy D remaining relatively stable, and Strategy E approaching that of Strategy D. The reasons for worse performance of Strategy E will be discussed in Section \ref{sec:romemulti}.
+Figure \ref{fig:tcompdefqmulti} and \ref{fig:tcommdefqmulti} illustrate the computation and communication time respectively per iteration of SpMV. For the first plot, nothing out of the ordinary is observed, except for some erraticism on some of the matrices. For the second plot, however, we can see that the communication time of Strategy E starts off significantly higher than the other strategies, before sharply dropping as the number of ranks increases. We can observe the start of some trends, with both Strategy B and C increasing in communication time, Strategy D remaining relatively stable, and Strategy E approaching that of Strategy D. The reasons for the worse performance of Strategy E will be discussed in Section \ref{sec:romemulti}.
 
 \begin{figure}[H]
     \centering
@@ -72,11 +60,7 @@ Figure \ref{fig:tcompdefqmulti} and \ref{fig:tcommdefqmulti} illustrates the com
 \end{figure}
 
 
-% Figure \ref{fig:gflopsdefqmpimulti} illustrate the achieved GFLiOiPS when placing one MPI rank per socket. The benefits of doing this is that we get to utilize the memory controllers on both chips, instead of only one when placing one MPI rank per node.
-% \medskip
-
-Figure \ref{fig:gflopsdefqmpimulti} and \ref{fig:tdefqmpimulti} illustrate the sustained GFLOPS performance achieved across 100 iterations of SpMV, and the execution time per iteration of Spmv, respectively. When compared to the results in Figure \ref{fig:gflopsdefqmulti} and \ref{fig:tdefqmulti}, we see that the performance is better in the multi node case by \(\approx\) 1-2 GFLOPS in most matrices. We also observe a greater spread in performance across the strategies for all configurations.
-% When compared to Figure \ref{fig:gflopsdefqmulti}, we see that the performance drops when using only one node has drastically dropped, but that most communication strategies performs better with this configuration when scaling to multiple nodes. However, even when using four nodes, the performance is not as good as using a single node with one MPI rank.
+Figure \ref{fig:gflopsdefqmpimulti} and \ref{fig:tdefqmpimulti} illustrate the sustained GFLOPS performance achieved across 100 iterations of SpMV, and the execution time per iteration of Spmv, respectively. When compared to the results in Figure \ref{fig:gflopsdefqmulti} and \ref{fig:tdefqmulti}, we see that the performance is better in the multi-node case by \(\approx\) 1-2 GFLOPS in most matrices. We also observe a greater spread in performance across the strategies for all configurations.
 
 \begin{figure}[H]
     \centering
@@ -92,9 +76,7 @@ Figure \ref{fig:gflopsdefqmpimulti} and \ref{fig:tdefqmpimulti} illustrate the s
     \label{fig:tcommdefqmpimulti}
 \end{figure}
 
-Figure \ref{fig:tcompdefqmpimulti} and \ref{fig:tcommdefqmpimulti} illustrate the computation time and communication time for each iteration of SpMV, respectively. We can observe that the computation time decreases as the number of nodes increases, which is expected. As was the case for Figure \ref{fig:tcommdefqmulti} Strategy E performs worse, but does exhibit trends in decreasing the communication time as the number of nodes increases. Notably, Strategy C (and Strategy B on some matrices) yield communication times comparable to that of Strategy D, with Strategy C beating D in some matrices. This indicates that in the multi-node setting, communication minimal strategies don't always results in the lowest communication times. 
-
-% exhibit the lowest and most consistent communication times in many of the matrices, with B and D following behind.
+Figure \ref{fig:tcompdefqmpimulti} and \ref{fig:tcommdefqmpimulti} illustrate the computation time and communication time for each iteration of SpMV, respectively. We can observe that the computation time decreases as the number of nodes increases, which is expected. As was the case for Figure \ref{fig:tcommdefqmulti} Strategy E performs worse but does exhibit trends in decreasing the communication time as the number of nodes increases. Notably, Strategy C (and Strategy B on some matrices) yield communication times comparable to that of Strategy D, with Strategy C beating D in some matrices. This indicates that in the multi-node setting, communication minimal strategies don't always result in the lowest communication times. 
 
 
 \begin{figure}[H]

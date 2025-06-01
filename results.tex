@@ -3,8 +3,6 @@
 \section{Theoretical Maximum}
 As has been established, the maximum performance scales with the available memory bandwidth of the system, and not with the amount of processes used. For SpMV, a total of 6 bytes are read per FLOP, which means that the theoretical maximum is given by Equation \ref{eq:theoretical_max}. This is under the assumption that the entire memory bandwidth is available during SpMV, which is not the case in reality (see \cite{ordersparse}).
 
-% all resources on the system is dedicated to the SpMV operation, which is not the case in reality. At most, somewhere in the neighbourhood of 70-80\% of the systems resources can be expected to be utilized.
-
 \begin{equation}
 \text{Maximum Theoretical Performance} = \frac{\text{Memory bandwidth}}{6}
 \label{eq:theoretical_max}
@@ -12,23 +10,23 @@ As has been established, the maximum performance scales with the available memor
 
 
 \section{Experimental Setup}
-In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were ran on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled GCC 11.4.0 using the compiler flags \texttt{-march=native} and \texttt{-O3}. The code used to produce the results for the communication strategies is publically available, see the Appendix.
+In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were run on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled GCC 11.4.0 using the compiler flags \texttt{-march=native} and \texttt{-O3}. The code used to produce the results for the communication strategies is publically available, see the Appendix.
  
 \subsection{Hardware Platforms}
-The experiments that have been ran use three different high‐performance computing systems. \autoref{tab:hardware} gives an overview of the hardwares and their specifications that has been used in the experiments.
+The experiments that have been ran use three different high‐performance computing systems. \autoref{tab:hardware} gives an overview of the hardwares and their respective specifications that have been used in the experiments.
 
 \input{cputable}
 
 
-There has been performed experiments measuring both single-node and multi-node performance. For single-node experiments, the number of MPI ranks is doubled until all cores on the given node is assigned a MPI rank, also OpenMP was not utilized for these experiments.
+There have been performed experiments measuring both single-node and multi-node performance. For single-node experiments, the number of MPI ranks is doubled until all cores on the given node are assigned an MPI rank, also OpenMP was not utilized for these experiments.
 \medskip
 
-For multi-node experiments, two configuration have been tested. The first configuration involves assinging one MPI rank per node, and utilizing shared memory paralleization through the use of OpenMP within each node. The second configuration places one MPI rank per socket. These experiments aims to show the performance of the communication strategies on multi-node systems. Furthermore, it is possible to compare the impact that the number of memory controllers utilized have on the results. Using one MPI rank per node only utilizes one of two memory controllers on a dual socketed systems, whereas using one MPI rank per socket utilizes both of the memory controller on the node.
+For multi-node experiments, two configurations have been tested. The first configuration involves assigning one MPI rank per node, and utilizing shared memory parallelization through the use of OpenMP within each node. The second configuration places one MPI rank per socket. These experiments aim to show the performance of the communication strategies on multi-node systems. Furthermore, it is possible to compare the impact that the number of memory controllers utilized has on the performance. Using one MPI rank per node only utilizes one of two memory controllers on dual socketed systems, whereas using one MPI rank per socket utilizes both of the memory controllers on the node.
 
 
 
 \subsection{Communication Strategies}
-The communication strategies used have been extensively discussed in \ref{sec:commstrats}, and \autoref{tab:commstratdesc} gives an overview of what the various communication strategies will be referred to in the folliwing sections, and the key idea they use to communicate the data-dependencies between ranks.
+The communication strategies used have been extensively discussed in \ref{sec:commstrats}, and \autoref{tab:commstratdesc} gives an overview of what the various communication strategies will be referred to in the following sections, and the key idea they use to communicate the data-dependencies between ranks.
 
 \begin{table}[H]
     \caption{Names and description of communication strategies that have been tested.}
@@ -92,25 +90,25 @@ As the field of interest is that of results from scientific computing, the matri
 \input{matrixtable.tex}
 
 \section{\defq{}}
-For experiments on the dual-socketed \defq{} nodes, three sets of experiments were conducted. The first set of experiments test the performance when using a single-node without shared memory paralleization, The second set places only one MPI rank per node, and the final set of experiments place one MPI rank per socket. Both multi-node experiments use shared memory parallelization for intra node communication. 
+For experiments on the dual-socketed \defq{} nodes, three sets of experiments were conducted. The first set of experiments tests the performance when using a single-node without shared memory parallelization, The second set places only one MPI rank per node, and the final set of experiments places one MPI rank per socket. Both multi-node experiments use shared memory parallelization for intra-node communication. 
 \medskip
 
 \subsection{Single-node Performance}
 \label{sec:singlenode}
-For the single-node experiments, no shared memory paralleization has been utilized. Each communication strategy has been ran using \(1,2,4,8,16,32\) and \(64\) MPI ranks, as the dual socketed system provides two 32-core \defq{} chips.
+For the single-node experiments, no shared memory parallelization has been utilized. Each communication strategy has been ran using \(1,2,4,8,16,32\) and \(64\) MPI ranks, as the dual socketed system provides two 32-core \defq{} chips.
 \medskip
 
 \input{defqsingle}
 
 \subsection{Multi-node Performance}
-The multi-node experiments illustrate the performance across 1-4 dual-socketed nodes. Two configurations have been tested, these being using one MPI rank per node with 64 OpenMP threads per rank, which utilizes only one of the two memory controller per node. Next, Two MPI ranks per node, or one MPI rank per socket, with 32 OpenMP threads per rank, which utilizes both memory controllers available per node. 
+The multi-node experiments illustrate the performance across 1-4 dual-socketed nodes. Two configurations have been tested, these being using one MPI rank per node with 64 OpenMP threads per rank, which utilizes only one of the two memory controllers per node. Next, Two MPI ranks per node, or one MPI rank per socket, with 32 OpenMP threads per rank, which utilizes both memory controllers available per node. 
 \medskip
 \input{defqmulti}
 
 
 \section{\romeq{}}
 \label{sec:romemulti}
-The results in this section present the performance metrics of experiments ran on 1-8 nodes with a single-socketed \romeq{} chip. As the nodes are single socketed, only one set of experiments are provided, where one MPI rank is placed per node, each with 16 OpenMP threads, as the \romeq{} chip has 16 physical cores.
+The results in this section present the performance metrics of experiments run on 1-8 nodes with a single-socketed \romeq{} chip. As the nodes are single socketed, only one set of experiments is provided, where one MPI rank is placed per node, each with 16 OpenMP threads, as the \romeq{} chip has 16 physical cores.
 \input{romemulti.tex}
 
 \section{\fpgaq{}}
