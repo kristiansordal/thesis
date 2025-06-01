@@ -12,18 +12,18 @@ As has been established, the maximum performance scales with the available memor
 
 
 \section{Experimental Setup}
-In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were ran on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled GCC 11.4.0 using the compiler flags \texttt{-march=native} and \texttt{-O3}. The code used to produce the results for strategy A-D is publically available, see the Appendix.
+In order to rigorously evaluate and compare the performance of the five communication strategies, a systematic series of experiments were ran on the eX\(^{3}\) machine. Each experiment executes 100 iterations of SpMV on a given sparse matrix, with a given configuration and a given communication strategy. Every program used has been compiled GCC 11.4.0 using the compiler flags \texttt{-march=native} and \texttt{-O3}. The code used to produce the results for the communication strategies is publically available, see the Appendix.
  
 \subsection{Hardware Platforms}
-The experiments that have been ran target three high‐performance computing systems. \autoref{tab:hardware} gives an overview of the hardware that has been used in the experiments.
+The experiments that have been ran use three different high‐performance computing systems. \autoref{tab:hardware} gives an overview of the hardwares and their specifications that has been used in the experiments.
 
 \input{cputable}
 
 
-There has been performed experiments measuring both single node and multi node performance. For single node experiments, the number of MPI ranks is doubled until all cores on the given node is assigned a MPI rank, also OpenMP was not utilized for these experiments.
+There has been performed experiments measuring both single-node and multi-node performance. For single-node experiments, the number of MPI ranks is doubled until all cores on the given node is assigned a MPI rank, also OpenMP was not utilized for these experiments.
 \medskip
 
-For multi node experiments, two configuration have been tested. The first configuration involves assinging one MPI rank per node, and utilizing shared memory paralleization through the use of OpenMP within each node. The second configuration places one MPI rank per socket. These experiments aims to show the performance of the communication strategies on multi node systems. Furthermore, it is possible to compare the impact that the number of memory controllers utilized have on the results. Using one MPI rank per node only utilizes one of two memory controllers on a dual socketed systems, whereas using one MPI rank per socket utilizes both of the memory controller on the node.
+For multi-node experiments, two configuration have been tested. The first configuration involves assinging one MPI rank per node, and utilizing shared memory paralleization through the use of OpenMP within each node. The second configuration places one MPI rank per socket. These experiments aims to show the performance of the communication strategies on multi-node systems. Furthermore, it is possible to compare the impact that the number of memory controllers utilized have on the results. Using one MPI rank per node only utilizes one of two memory controllers on a dual socketed systems, whereas using one MPI rank per socket utilizes both of the memory controller on the node.
 
 
 
@@ -91,47 +91,19 @@ As the field of interest is that of results from scientific computing, the matri
 
 \input{matrixtable.tex}
 
-% \begin{table}[H]
-% \caption{Names and descriptions of the matrices used in the experiments (from \cite{Kolodziej2019}).}
-% \label{tab:matricesused}
-% \begin{center}
-% \begin{tabular}[c]{|p{3cm}|p{8.5cm}|}
-% \hline
-% \textbf{Name}&\textbf{Purpose}  \\
-% \hline
-% bone010&Trabecular Bone Micro-Finite Element Model.\\
-% \hline
-% af\_shell1&Sheet metal forming matrix.\\
-% \hline
-% Serena&Gas reservoir simulation for \(CO_{2}\) sequestration.\\
-% \hline
-% Long\_Coup\_dt0&3D coupled consolidation problem (geological formation).\\
-% \hline
-% dielFilterV3real&High-order vector finite element method in EM.\\
-% \hline
-% Cube\_Coup\_dt0&3D coupled consolidation problem (3D cube).\\
-% \hline
-% Bump\_2911&3D geomechanical reservoir simulation.\\
-% \hline
-% nlpkkt200&Symmetric indefinite KKT matrix.\\
-% \hline
-% \end{tabular}
-% \end{center}
-% \end{table}
-
 \section{\defq{}}
-For experiments on the dual-socketed \defq{} nodes, three sets of experiments were conducted. The first set of experiments test the performance when using a single node without shared memory paralleization, The second set places only one MPI rank per node, and the final set of experiments place one MPI rank per socket. Both multi node experiments use shared memory parallelization for intra node communication. 
+For experiments on the dual-socketed \defq{} nodes, three sets of experiments were conducted. The first set of experiments test the performance when using a single-node without shared memory paralleization, The second set places only one MPI rank per node, and the final set of experiments place one MPI rank per socket. Both multi-node experiments use shared memory parallelization for intra node communication. 
 \medskip
 
-\subsection{Single Node Performance}
+\subsection{Single-node Performance}
 \label{sec:singlenode}
-For the single node experiments, no shared memory paralleization has been utilized. Each communication strategy has been ran using \(1,2,4,8,16,32\) and \(64\) MPI ranks, as the dual socketed system provides two 32-core \defq{} chips.
+For the single-node experiments, no shared memory paralleization has been utilized. Each communication strategy has been ran using \(1,2,4,8,16,32\) and \(64\) MPI ranks, as the dual socketed system provides two 32-core \defq{} chips.
 \medskip
 
 \input{defqsingle}
 
-\subsection{Multi Node Performance}
-The multi node experiments illustrate the performance across 1-4 dual-socketed nodes. Two configurations have been tested, these being using one MPI rank per node with 64 OpenMP threads per rank, which utilizes only one of the two memory controller per node. Next, Two MPI ranks per node, or one MPI rank per socket, with 32 OpenMP threads per rank, which utilizes both memory controllers available per node. 
+\subsection{Multi-node Performance}
+The multi-node experiments illustrate the performance across 1-4 dual-socketed nodes. Two configurations have been tested, these being using one MPI rank per node with 64 OpenMP threads per rank, which utilizes only one of the two memory controller per node. Next, Two MPI ranks per node, or one MPI rank per socket, with 32 OpenMP threads per rank, which utilizes both memory controllers available per node. 
 \medskip
 \input{defqmulti}
 

@@ -1,5 +1,5 @@
 \chapter{Related Work}
-SpMV is a widely reasearched topic within the field of high performance computing, as it is an operation which appears in a wide range of scientific domains. Efforts include the optimization of the performance of SpMV on different architectures, such as CPUs, GPUs, FPGAs and most recently IPUs. Effort has also been put into developing and testing various storage formats, testing the difference between various partitioning methods, and the effect that reordering matrices have on performance.
+SpMV is a widely researched topic within the field of high performance computing, as it is an operation which appears in a broad range of scientific domains. Efforts include the optimization of the performance of SpMV on different architectures, such as CPUs, GPUs, and most recently IPUs. Effort has also been put into developing and testing various storage formats, testing the difference between various partitioning methods, and the effect that reordering matrices have on performance.
 \medskip
 
 The following paragraphs present a selection of papers that are relevant to the work done in this thesis.
@@ -22,10 +22,17 @@ Trotter et al. \cite{ordersparse} conducted a study investigating the potential 
 
 
 
-Merrill and Garland \cite{merrilduane} conducted a study in which they present a merge based method for CSR SpMV, that ensures strict load balancing regardless of the matrix structure, while operating directly on the CSR without preprocessing. To achieve this, they employ a merge-based parallel decompostion method on the matrix. The authors found that their decomposition method yielded highly consistent performance results. Their results matched or exceeded those of existing CSR SpMV implementation that employ other decomposition mehtods such as row-wise or nonzero-wise splitting.
+Merrill and Garland \cite{merrilduane} conducted a study in which they present a merge-based method for CSR SpMV, that ensures strict load balancing regardless of the matrix structure, while operating directly on the CSR without preprocessing. To achieve this, they employ a merge-based parallel decompostion method on the matrix. The authors found that their decomposition method yielded highly consistent performance results. Their results matched or exceeded those of existing CSR SpMV implementation that employ other decomposition mehtods such as row-wise or nonzero-wise splitting.
 \medskip
 
+Alappat et. al \cite{9956740} conducted a study investigating the usage of a level-based blocking method for improving the performance of repeated SpMV. They focused their efforts on the sparse matrix power kernel, where \(Ax, A^2x, A^3x, \hdots ,A^{k}x\) is computed for a matrix \(A\), vector \(x\) and a constant \(k\). In this study, a recursive algebraic coloring engine was used to facilitate blocking of the sparse matrix data, as well as using breadth-first search to form levels on the data. The approach they used is structure independent, and it avoids shortcomings of existing blocking methods. They compared the results of their method to an optimal SpMV baseline, using a single multicore chip with both Intel and AMD architectures, and showed that their method yielded speedups of 3x, and 5x respectively.
+\medskip
+
+% used the recursive algebraic coloring engine to enable blocking of the sparse matrix data across polynomial computations. 
+
+
 Burchard et al. \cite{10.3389/fphy.2023.979699} conducted a study in which they investigated how to parallelize numerical computations involving unstructured meshes on Graphcore IPUs. They demonstrated how they used the Poplar SDK from Graphcore to port two computational kernels (one of which being SpMV) to these IPUs. In addition to this, they present the achievable performance and numerical accuracy of an ODE solver on this architecture.
+\medskip
 
 
 % Merrill and Garland \cite{merrilduane} propose a merge-based parallel SpMV algorithm that operates directly on the Compressed Sparse Row (CSR) format without requiring reformatting or auxiliary data structures. Their method employs a 2D merge-path decomposition that ensures strictly balanced workloads across processing elements, independent of row length variability. This design addresses the primary bottleneck of irregular row distributions in parallel SpMV, which often lead to performance inconsistencies in traditional row- and nonzero-splitting strategies. Evaluated across over 4,000 matrices, their approach demonstrated superior performance consistency and scalability, particularly on architectures with constrained local memories such as NUMA and GPUs. This work offers a compelling alternative to format-specific optimizations by achieving portability and high throughput directly on CSR representations.
@@ -38,4 +45,5 @@ Burchard et al. \cite{10.3389/fphy.2023.979699} conducted a study in which they 
 
 % add work about GPU CSR SPMV.
 
+Gottesb\"{u}ren et. al \cite{10.1145/3626527} presents a scalable high-quality hypergraph partitioning framework they named Mt-KaHyPar. Their framework closes the gap between sequential and distributed memory partitioners by employing shared-memory algorithms in the components that make up the best sequential solvers. They evaluated their solver on a set of over 800 graphs and hypergraphs, and compared it to a set of 25 existing partitioning algorithms, and found that their fastest configuration outperformed most of the existing hypergraph partitioners in both solution quality and execution time. They also found that the highest quality configuration was faster than that of KaHyPar, another hypergraph partitioner (see \cite{schlag2021highqualityhypergraphpartitioning}), while still producing the same quality partitions.
 

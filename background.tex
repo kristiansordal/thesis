@@ -1,7 +1,7 @@
 \chapter{Background}
 
 \section{CSR Storage Format}
-CSR (Compressed Sparse Row) is the most widely used storage format for sparse matrices. As its name suggests, it compresses the amount of memory used to store a matrix without loss of information. It does so by utilizing three vectors \(A_{p}, A_{j}, A_{x}\). Figure \ref{fig:csrformat} shows an example of a matrix stored in CSR format.
+CSR (Compressed Sparse Row) is the most widely used storage format for sparse matrices. As its name suggests, it compresses the amount of memory used to store a matrix without loss of information. It does so by utilizing three vectors \texttt{row\_ptr}, \texttt{col\_idx} and \texttt{values}. Figure \ref{fig:csrformat} shows an example of a matrix stored in CSR format.
 
 \begin{figure}[ht]
     \centering
@@ -10,33 +10,29 @@ CSR (Compressed Sparse Row) is the most widely used storage format for sparse ma
     \label{fig:csrformat}
 \end{figure}
 
-The first vector, \(A_{p}\) stores the indices of the first non-zero in the vectors \(A_{p}\) and \(A_{x}\). For a given entry \(A_{p}[i]\), \(A_{p}[i]\) is the index of the first non-zero in the \(i^{\text{th}}\) row. \(A_{j}[j]\) and \(A_{x}[j]\) denotes the column index and value of the \(j^{\text{th}}\) non-zero, respectively.
+For an \(n \times n\) matrix stored in the CSR format, the vector \texttt{row\_ptr} is of length \(n + 1\). The \(i^{\text{th}}\) entry in this vector indicates the starting index in the vectors \texttt{col\_ptr} and \texttt{values} of the \(i^{\text{th}}\) row. The vectors \texttt{col\_idx} and \texttt{values} store the column indices and values of the entries in the matrix. The column indices for the nonzero entries in the \(i^{\text{th}}\) row are given by the range from \texttt{col\_idx[row\_ptr[}\(i\)\texttt{]]} to \texttt{col\_idx[row\_ptr[}\(i+1\)\texttt{]]}, and similarly for the \texttt{values} vector.
 \medskip
 
-Throughout the remainder of this thesis, we operate under the assumption that all matrices are represented in CSR format, unless explicitly noted otherwise.
+Throughout the remainder of this thesis, we operate under the assumption that all matrices are represented in CSR format unless explicitly noted otherwise.
 
 
-\subsection{Computational Intensity}
-% The \textit{computational intensity} of an operation describes the relation between the number of floating-point operations (FLOPS) and the number of memory accesses required. It is formally defined as:
-
-The \textit{computational intensity} of an operation is a key concept in performance analysis, and is defined as the ratio of the number of FLOPS to the number of memory accesses.
-
-\begin{equation}
-    \text{Computational intensity} = \frac{\text{FLOPS}}{\text{Memory accesses}}
-    \label{eq:computationaldensity}
-\end{equation}
-
-This metric helps determine whether a computation is \textit{compute bound} or \textit{memory bound}. Operations with high computational intensity implies that it can benefit from employing faster processors, as it performs a higher number of calculation per byte of memory read. Operations with lower computational intensity implies that the operation in memory bound, and thus employing faster processors wont necessarily yield higher performance, as the limiting factor is not the speed at which the calculations are performed, but rather the speed at which the required memory to perform the operation can be accessed at.
-
-% Operations with low computational intensity, such as SpMV, are \textit{memory bound} rather than \textit{compute bound}. This means that increasing the computational power of a system (e.g., by the use of faster processors) does not necessarily lead to proportional speedups in SpMV performance, as memory bandwidth remains the limiting factor.
 
 \section{Other storage formats}
-While the CSR format is the most widely used storage format for sparse matrices, there exists sever other storage formats, each with its own benefits and drawbacks. In this section, some of these formats are briefly presented.
-% There exists many other lesser used storage formats for matrices
-% There are of course other ways to store a matrix, each with their own benefits and drawbacks.
+While the CSR format is the most widely used storage format for sparse matrices, there exists several other storage formats, each with its own benefits and drawbacks. In this section, some of these formats are briefly presented.
+
+
+\subsection{CSC Format}
+The Compressed Sparse Column (CSC) format is similar to the CSR format, with the difference being that the columns are compressed instead of the rows. In the context of SpMV and other operations on matrices, CSC can be used if operations on the transposed matrix, i.e. \(A^{T}\), is desirable. For operations on \(A\), this format is less ideal, as cache hit rates will suffer as iteration will be done in a column-major order, instead of a row-major order.
+
+\begin{figure}[H]
+    \centering
+    \incfig{cscformat}
+    \caption{Matrix represented in the CSC format.}
+    \label{fig:cscformat}
+\end{figure}
 
 \subsection{COO Format}
-The Coordinate List (COO) format stores the matrix as a set of triples on the form \(i,j,x\), where \(i\) is the row index, \(j\) is the column index, and \(x\) is the value stored at \((i,j)\) in the matrix. In this format all \(0\) entries are ignored.
+The Coordinate List (COO) format stores the matrix as a set of triples on the form \(i,j,x\), where \(i\) is the row index, \(j\) is the column index, and \(x\) is the value stored at \((i,j)\) in the matrix. In this format all zero entries are ignored.
 
 \begin{figure}[H]
     \centering
@@ -45,18 +41,8 @@ The Coordinate List (COO) format stores the matrix as a set of triples on the fo
     \label{fig:cooformat}
 \end{figure}
 
-
-\subsection{CSC Format}
-The Compressed Sparse Column (CSC) format is similar to the CSR format, but instead of compressing the rows, we compress the columns. In this matrix format, we have irregular memory writes, but the reads are more regular. This can however be a problem.
-\begin{figure}[H]
-    \centering
-    \incfig{cscformat}
-    \caption{Matrix represented in the CSC format.}
-    \label{fig:cscformat}
-\end{figure}
-
 \subsection{ELLPack Format}
-For an \(M \times  N\) matrix with a maximum of \(K\) nonzeros per row, the ELLPack format stores the nonzeros in an \(M \times  K\) matrix \texttt{data}, and an \(M \times  K\) matrix \texttt{indices}. The \texttt{data} matrix store the values of the nonzeros, and \texttt{indices} store the column index of every element. Rows that have fewer than \(K\) nonzeros are padded with zeros.
+The ELLPack format stores a matrix using two tables, these being the \texttt{Data} and \texttt{Indices} tables. These tables have dimensions \(N \times K\), where \(N\) is the number of rows in the matrix, and \(K\) is the number of nonzeros in the row with the largest amount of nonzeros. The \(i^{\text{th}}\) row of the \texttt{Data} and \texttt{Indices} tables store the values and columns indices of the nonzeros in the \(i^{\text{th}}\) row, respectively. For rows where the number of nonzeros is less than \(K\), the rest of the entries in these tables are padded with zeros (adapted from \cite{ellpackformat}).
 
 \begin{figure}[H]
     \centering
@@ -75,13 +61,13 @@ A sequential implementation of SpMV on a matrix stored in the CSR format can be 
     \SetAlgoVlined
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
-    \Input{\(A_{p},A_{j},A_{x},x\)}
+    \Input{\(rowPtr,colIdx,values,x\)}
     \Output{\(y\)\newline}
 
     \For{\(i \gets 0\) \KwTo \(n\)}{
         sum \(\gets 0\)\\
-        \For{\(j \gets A_{p}[i]\) \KwTo \(A_{p}[i+1]\)}{
-            sum \( = \text{sum} + A_{x}[j] \cdot x[A_{j}[j]]\)\\
+        \For{\(j \gets rowPtr[i]\) \KwTo \(rowPtr[i+1]\)}{
+            sum \( = \text{sum} + values[j] \cdot x[colIdx[j]]\)\\
         }
         \(y[i] \gets\) sum
     }
@@ -89,10 +75,11 @@ A sequential implementation of SpMV on a matrix stored in the CSR format can be 
 \label{alg:sequentialspmv}
 \medskip
 
-For SpMV on well structured matrices such as those similar to the matrix illustrated in Figure \ref{fig:Cube_Coup_dt0}, each nonzero element typically incurs a data movement cost of approximately 12 bytes and results in 2 floating-point operations (FLOPs). This estimation may appear inconsistent with the data access pattern described in \autoref{alg:sequentialspmv}, where two doubles and one integer are read per nonzero, corresponding to a total of 20 bytes. This discrepancy stems from the caching behaviours of the input vector \(x\), as after an entry is initially read, it is frequently reused, and thus remains in cache. This means that on average, only one double and one integer is read per nonzero, which corresponds to 12 bytes.
+From Algorithm \ref{alg:sequentialspmv}, computing the interim value of \texttt{sum} requires two floating point operations (FLOPs). As this is done once for every nonzero in the matrix, each nonzero results in two flops per iteration of SpMV. For SpMV on well-structured matrices such as those similar to (a) in Figure \ref{fig:matrixstructure}, each nonzero requires approximately 12 bytes to be read from memory, in order to compute the interim value of \texttt{sum}. This may appear inconsistent with the memory access patterns illustrated in the algorithm, where two doubles and one integer are read per nonzero, corresponding to 20 bytes. This discrepancy stems from the caching behaviors of the input vector \(x\), as after an entry is initially read, it is frequently reused, and thus remains in cache. This means that on average, only one double and one integer is read per nonzero, which corresponds to 12 bytes.
 \medskip
 
-In contrast, for highly unstructured matrices, the absence of data locality can significantly degrade cache reuse. In the worst case scenario, each nonzero may trigger the loading of an entire 64 byte cache line, with only a small fraction of it being used. Consequently, the effective data movement can increase to as much as 76 bytes per 2 FLOPs.
+In contrast, for highly unstructured matrices, such as the one seen in (b) in Figure \ref{fig:matrixstructure}, memory access patterns can be more irregular. In the worst-case scenario, each nonzero triggers the read of an entire cache line of 64 bytes, and only uses a single value stored in this cache line. This can result in \(64 + 12 = 76\) bytes read per nonzero.
+
 
 \begin{figure}[H]
     \centering
@@ -107,8 +94,8 @@ In contrast, for highly unstructured matrices, the absence of data locality can 
         \includegraphics[width=\linewidth]{shermanACd}
         \caption{shermanACd}
     \end{subfigure}
-    \caption{Well structured (a) and poorly structured (b) matrices. (Matrix pattern images collected from the University of Florida Sparse Matrix Collection \cite{10.1145/2049662.2049663}, accessed via the SuiteSparse Matrix Collection Website Interface  \cite{Kolodziej2019}.)}
-    \label{fig:Cube_Coup_dt0}
+    \caption{Well-structured (a) and poorly structured (b) matrices. (Matrix pattern images collected from the University of Florida Sparse Matrix Collection \cite{10.1145/2049662.2049663}, accessed via the SuiteSparse Matrix Collection Website Interface  \cite{Kolodziej2019}.)}
+    \label{fig:matrixstructure}
 \end{figure}
 
 \section{Shared Memory SpMV}
@@ -123,14 +110,14 @@ An implementation of shared memory SpMV is outlined below.
     \SetAlgoVlined
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
-    \Input{\(A_{p},A_{j},A_{x},x\)}
+    \Input{\(rowPtr,colIdx,values,x\)}
     \Output{\(y\)\newline}
 
     \#pragma omp parallel for\\
     \For{\(i \gets 0\) \KwTo \(n\)}{
         sum \(\gets 0\)\\
-        \For{\(j \gets A_{p}[i]\) \KwTo \(A_{p}[i+1]\)}{
-            sum \( = \text{sum} + A_{x}[j] \cdot x[A_{j}[j]]\)\\
+        \For{\(j \gets rowPtr[i]\) \KwTo \(rowPtr[i+1]\)}{
+            sum \( = \text{sum} + values[j] \cdot x[colIdx[j]]\)\\
         }
         \(y[i] \gets\) sum
     }
@@ -139,7 +126,7 @@ An implementation of shared memory SpMV is outlined below.
 
 \subsection{Scheduling options}
 \label{sec:schedulingoptions}
-As seen in \autoref{alg:sharedmemoryspmv}, the outer loop is parallelized, which translates to dividing the rows of the matrix evenly among the threads. This work fine for well structured matrices, but for matrices with dense rows, such as the matrix shown in Figure \ref{fig:staticscheduling}, we obtain large imbalances in the computational load for each thread, which impacts performance. This is because the next iteration of SpMV cannot start until all threads have finished their computations on the current iteration, which means that threads will be idle while waiting for the slowest thread to finish its workload.
+As seen in Algorithm \ref{alg:sharedmemoryspmv}, the outer loop is parallelized, which translates to dividing the rows of the matrix evenly among the threads. This works fine for well-structured matrices, but for matrices with dense rows, such as the matrix shown in Figure \ref{fig:staticscheduling}, we obtain large imbalances in the computational load for each thread, which impacts performance. This is because the next iteration of SpMV cannot start until all threads have finished their computations on the current iteration, which means that threads will be idle while waiting for the slowest thread to finish its workload.
 
 \begin{figure}[H]
     \centering
@@ -151,37 +138,38 @@ As seen in \autoref{alg:sharedmemoryspmv}, the outer loop is parallelized, which
 \subsection{Dynamic Scheduling}
 
 Dynamic scheduling in OpenMP involves precomputing the range of iterations without assigning specific iteration subsets to individual threads in advance. Under static scheduling, if thread \(A\) receives sparse rows and thread \(B\) receives dense rows, thread \(A\) will become idle prematurely while thread \(B\) remains computationally engaged. In contrast, dynamic scheduling allocates iterations at runtime to threads as they become available, thus potentially balancing the computational load more effectively, particularly when iteration workloads vary significantly.
+\medskip
 
 At first glance, dynamic scheduling appears to resolve the workload imbalance inherent in static scheduling, even though it comes with more overhead. While this assumption holds true on smaller systems, such as personal laptops equipped with fewer physical cores and a single processor socket, it does not readily apply to larger, dual-socket systems utilized for the experiments conducted in this thesis. Here, the first-touch memory policy becomes particularly significant.
 
 
 \subsection{Performance Implications of the First-Touch Policy}
-As shown in Table~\ref{tab:latencynumbers}, accesses to main memory are significantly slower than accesses to local cache levels such as L1 or L2. On NUMA architectures, this disparity is further amplified when a thread must access memory located on a remote NUMA node. In dual-socket configurations, for example, such accesses require communication across the inter-socket interconnect. Using dynamic or guided scheduling, threads can be assigned iterations that requires memory localized on a different NUMA node, which in turn introduces additional latency and can lead to congestion of the memory bandwidth through the interconnect.
+As shown in Table~\ref{tab:latencynumbers}, accesses to main memory are significantly slower than accesses to local cache levels such as L1 or L2. On NUMA architectures, this disparity is further amplified when a thread must access memory located on a remote NUMA node. In dual-socket configurations, for example, such accesses require communication across the inter-socket interconnect. Using dynamic or guided scheduling, threads can be assigned iterations that require memory localized on a different NUMA node, which in turn introduces additional latency and can lead to congestion of the memory bandwidth through the interconnect.
 
 \section{Distributed Memory SpMV}
-In distributed memory systems, the computational workload is distributed across multiple nodes, each typically comprising a dual-socket architecture with local memory. Unlike shared memory systems, data access across nodes is non-trivial and requires explicit communication, most commonly implemented using the Message Passing Interface (MPI).
-
-For distributed sparse matrix-vector multiplication (SpMV), the computation proceeds similarly to the shared memory case (\autoref{alg:sharedmemoryspmv}). The sparse matrix is divided across nodes, and each node computes its local segment of the output vector \(y\). At the end of each iteration, partial results are assembled to produce the global vector, necessitating inter-node communication.
-
+In distributed memory systems, the matrix, and consequently the computational workload, is distributed across multiple ranks. Distributing the matrix is achieved using a partitioner, which gives a partition indicating which ranks are responsible for which part of the matrix. As discussed in Section \ref{sec:distributedmemory}, each ranks memory is inaccessible to other ranks, and any data dependency that occurs between ranks must be resolved through the usage of explicit communication of that data. Most commonly this is achieved through the usage of the Message Passing Interface (MPI). For distributed sparse matrix-vector multiplication (SpMV), the computation proceeds similarly to the shared memory case (\autoref{alg:sharedmemoryspmv}). The sparse matrix is divided across nodes, and each node computes its local segment of the output vector \(y\). At the end of each iteration, partial results are assembled to produce the global vector, which necessitates communication to resolve data dependencies.
 \medskip
 
-While the thread scheduling and memory locality issues discussed in \ref{sec:schedulingoptions} remain relevant, distributed memory systems introduce the additional challenge of communication overhead. As shown in Table \ref{tab:latencynumbers}, inter-node communication is significantly more expensive than memory accesses. Consequently, minimizing the total communication volume per SpMV iteration is critical for performance.
+While the thread scheduling and memory locality issues discussed in \ref{sec:schedulingoptions} are still encountered, distributed memory systems introduce the additional challenge of managing communication volume. As shown in Table \ref{tab:latencynumbers}, inter-node communication incurs much higher latencies than that of memory accesses. Therefore, minimizing the total communication volume per iteration of SpMV can have a large impact on the overall performance.
+
+% communication is significantly more expensive than memory accesses. Consequently, minimizing the total communication volume per iteration of SpMV can have a large impact on the overall performance.
 
 
 \subsection{Load Balancing and Graph Partitioning}
-Even with a well-balanced distribution, excessive communication between nodes can become a performance bottleneck if data dependencies span many partitions. An effective partitioning strategy must therefore strike a careful balance between distributing the computational load evenly and reducing the amount of communication required between ranks. This trade-off is naturally captured by the graph partitioning problem.
+It is important that the partitioner yields partitions that are roughly equal in size. But, even with a well-balanced partition, managing the data dependencies between ranks is important. A good partitioner is one that finds a balance between creating parts that are similarly sized, but also reduces the amount of data dependencies between ranks. This is a problem that graph partitioners attempt to solve.
 \medskip
 
-The graph partitioning problem involes dividing an undirected graph \(G(V,E)\), where \(V\) is the set of vertices and \(E\) is the set of edges into \(K\) disjoint subsets (or partitions) such that each subset contains a comparable amount of vertices, and the number of edges connecting different subsets is minimized. Each vertex \(v_{i} \in V\) may be assigned a weight \(w_{i}\), and each edge \(e_{ij} \in E\) may carry a cost \(c_{ij}\). The sum of weights \(W_{k}\) of each partition \(P_{k}\) must not exceed a specified imbalance threshold \(\epsilon\) relative to the average weight of each partition. An edge can be classified as either an internal edge (those that connect nodes in the same partition), or an external edge (those that connect vertices in different partitions), and the cutsize is defined as the sum of the costs of all external edges. The goal is to minize the cutsize, while preserving the balance between the size of each partition. This problem is known to be NP-Hard, even for obtaining bipartitions on unweighted graphs (adapted from \cite{hypergraphpartitioning}).
+The graph partitioning problem involves dividing an undirected graph \(G(V,E)\), where \(V\) is the set of vertices and \(E\) is the set of edges into \(K\) disjoint subsets (or partitions) such that each subset contains a comparable amount of vertices, and the number of edges connecting different subsets is minimized. Each vertex \(v_{i} \in V\) may be assigned a weight \(w_{i}\), and each edge \(e_{ij} \in E\) may carry a cost \(c_{ij}\). The sum of weights \(W_{k}\) of each partition \(P_{k}\) must not exceed a specified imbalance threshold \(\epsilon\) relative to the average weight of each partition. An edge can be classified as either an internal edge (those that connect nodes in the same partition), or an external edge (those that connect vertices in different partitions), and the cutsize is defined as the sum of the costs of all external edges. The goal is to minimize the cutsize, while preserving the balance between the size of each partition. This problem is known to be NP-Hard, even for obtaining bipartitions on unweighted graphs (adapted from \cite{hypergraphpartitioning}).
 \medskip
 
-Algorithms that aim to solve the graph partitioning problem rely on heuristics that provide good approximations in practice. Optimizing for one objective at the expense of the other is trivial but undesirable: assigning all vertices to a single partition minimizes communication to zero but results in extreme load imbalance, whereas naïvely assigning vertices to maintain balance without regard to connectivity may lead to high communication costs.
+Algorithms that aim to solve the graph partitioning problem can only provide approximations, due to the problems inherent difficulty. It is possible to solve the problem in two trivial ways, each optimizing for only one of the two goals, but both of these methods yield undesirable results. Optimizing for communication minimization can be done by simply assigning all vertices to a single partition, which eliminates all need for communication, but results in extreme load imbalance. Optimizing for load balance can be achieved by randomly assigning vertices to the part of the partition that is currently assigned the smallest number of vertices, but this does not take into consideration the data dependencies that such an assignment can incur.
+% Algorithms that aim to solve the graph partitioning problem rely on heuristics that provide good approximations in practice. Optimizing for one objective at the expense of the other is trivial but undesirable: assigning all vertices to a single partition minimizes communication to zero but results in extreme load imbalance, whereas naïvely assigning vertices to maintain balance without regard to connectivity may lead to high communication costs.
 
 \subsection{METIS}
-The graph partitioner used for the experiments in this thesis is called METIS. METIS is a software package for partitioning large irregular graphs, and has other uses such as partitioning meshes and computing fill-reducing orderings of sparse matrices. METIS provides algorithms that are based on multilevel graph partitoning. These algorithms partition the graph through a coarsening and refinement phase. In the coarsening phase, the size of the graph is reduced by way of collapsing the vertices and edges, and then partition the smaller graph. In the refinement phase, the graph is gradually expanded to its original size, and the portion of the graph that is close to the boundary is the primary focus, ensuring the quality of the partition is kept (adapted from \cite{karypis1997metis}). \autoref{alg:partitioning} shows how to partition and reorder the vertices of a graph according to the generated partition, using METIS' \(K\)-way partition algorithm.
+The graph partitioner used for the experiments in this thesis is called METIS. METIS is a software package for partitioning large irregular graphs, and has other uses such as partitioning meshes and computing fill-reducing orderings of sparse matrices. METIS provides algorithms that are based on multilevel graph partitioning. These algorithms partition the graph through a coarsening and refinement phase. In the coarsening phase, the size of the graph is reduced by way of collapsing the vertices and edges, and then partition the smaller graph. In the refinement phase, the graph is gradually expanded to its original size, and the portion of the graph that is close to the boundary is the primary focus, ensuring the quality of the partition is kept (adapted from \cite{karypis1997metis}). Algorithm \ref{alg:partitioning} shows how to partition and reorder the vertices of a graph according to the generated partition, using METIS' \(K\)-way partition algorithm.
 \medskip
 
-The way METIS partitions graph does not necessarily optimize for minimizing the communication volume, but rather obtaining partitions that are roughly equal in size. It is possible that there are partitions that have a larger imbalance between the size of partitions, but much smaller communication volumes. In order to obtain partitions that optimize for minimizing communication, it is necessary to look to hypergraph partitioners.
+The way METIS partitions graph does not necessarily optimize for minimizing the communication volume, but rather obtaining partitions that are roughly equal in size. It is possible that there are partitions that have a larger imbalance between the size of partitions, but smaller communication volumes. In order to obtain partitions that optimize for minimizing communication, it is necessary to look to hypergraph partitioners.
 
 \begin{figure}[H]
     \centering
@@ -192,14 +180,14 @@ The way METIS partitions graph does not necessarily optimize for minimizing the 
 
 \subsection{Hypergraph Partitioning}
 \begin{quote}
-    A \emph{hypergraph} \(H = (V,N)\) is defined as a set of vertices \(V\) and a set of nets (hyperedges) \(N\) among those vertices. Every net \(n_{j} \in N\) is a subset of vertcies, i.e., \(n_{j} \subseteq V\). The vertices in a net \(n_{j}\) are called its \textit{pins} and denoted as \(pins[n_{j}]\). The size of a net is equal to the number of its pins, i.e., \(s_{j} = \left|  pins[n_{j}] \right|\). The set of nets connected to a vertx \(v_{i}\) is denoted as \(nets[v_{i}]\). The degree of a vertex is equal to the number of nets it is connected to, i.e., \(d_{i} = \left| nets[v_{i}] \right|\).
+    A \emph{hypergraph} \(H = (V,N)\) is defined as a set of vertices \(V\) and a set of nets (hyperedges) \(N\) among those vertices. Every net \(n_{j} \in N\) is a subset of vertcies, i.e., \(n_{j} \subseteq V\). The vertices in a net \(n_{j}\) are called its \textit{pins} and denoted as \(pins[n_{j}]\). The size of a net is equal to the number of its pins, i.e., \(s_{j} = \left|  pins[n_{j}] \right|\). The set of nets connected to a vertex \(v_{i}\) is denoted as \(nets[v_{i}]\). The degree of a vertex is equal to the number of nets it is connected to, i.e., \(d_{i} = \left| nets[v_{i}] \right|\).
 \end{quote}
 
 \begin{flushright}
-    \cite{hypergraphpartitioning}
+    \c{C}ataly\"{u}rek \& Ayakanat 1999, p. 7. \cite{hypergraphpartitioning}
 \end{flushright}
 \medskip
-Hypergraph partitioners try to solve the same problems, and employ similar algorithms as those graph partitioners use, however they use these algorithms on hypergraphs, and not regular graphs. Cataly\" urek and Ayakanat showed in \cite{hypergraphpartitioning} that using the hypergraph partitioner they developed, they could get up to 63\% less communication volume, with an average reduction in communication volume of 30\% - 38\%, when compared to METIS.
+Hypergraph partitioners try to solve the same problems, and employ similar algorithms as those graph partitioners use, however, they use these algorithms on hypergraphs, and not regular graphs. \c{C}ataly\"{u}rek and Ayakanat showed in \cite{hypergraphpartitioning} that using the hypergraph partitioner they developed, they could get up to 63\% less communication volume, with an average reduction in communication volume of 30\% - 38\%, when compared to METIS.
 \medskip
 
 As the improvement of the communication strategies are the main focus of the contents of this thesis, the specific partitioner tool that is used is not the biggest concern, and the programs implemented have opted for the usage of METIS, which as mentioned is a regular graph partitioner. It would be possible to refactor the code in such a way that a hypergraph partitioner such as PaToH can be used.
@@ -266,13 +254,4 @@ As the improvement of the communication strategies are the main focus of the con
 \end{algorithm}
 
 \section{SuiteSparse Matrix Collection}
-The matrices that have been used for SpMV in this thesis all come from the SuiteSparse Matric Collection. This is a large dataset of sparse matrices that come from real world applications. The matrices available here cover problems within structural engineering, CFD, FEM, thermodynamics, optimization, economic and financial modeling, amongst many more. For more information on the SuiteSparse Matrix Collection, see \cite{10.1145/2049662.2049663}.
-
-
-% In order to reduce the total communication volume, tools such as graph partiotioners or hypergraph partitioners are often used. These tools
-% A big factor in reducing the communication volume 
-
-% In a distributed memory system, it is important to partition the matrix so that the computational workload is evenly divided among the processes. This is typically achieved through the use of graph partitioning tools. A widely used tool for this purpose is METIS, which provides the function \texttt{METIS\_PartGraphKway}. Given a parameter \(nprocs\), representing the number of procsses the program will run on, \texttt{METIS\_PartGraphKway} attempts to partition the graph into \(nprocs\) equally sized parts. Since finding an optimal partition is an NP-hard problem, METIS does not guarantee an optimal solution, but it produces high-quality approximations that are sufficient for practical use.
-
-% \subsection{Separator}
-% When a graph is partitioned into different parts, there will inevitably be some edges which strides across different partitions. The endpoints of these edges are called separators, and will become important when it comes to reducing the communication load of the SpMV computation.
+The matrices that have been used for SpMV in this thesis all come from the SuiteSparse Matrix Collection. This is a large dataset of sparse matrices that come from real-world applications. The matrices available in the data set cover problems within structural engineering, CFD, FEM, thermodynamics, optimization, economic and financial modeling, amongst many more. For more information on the SuiteSparse Matrix Collection, see \cite{10.1145/2049662.2049663}.

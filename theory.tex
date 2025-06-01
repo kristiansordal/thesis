@@ -1,7 +1,7 @@
 
 \chapter{Theory}
 \section{Sparse Matrices}
-There are many different opinions on what is considered a sparse matrix, and there exists no definition that captures what a sparse matrix is. For this thesis, a matrix is considered sparse if it is worthwhile to treat nonzeros differently than zeros. Usually this means that for an \(n \times n\) matrix, each row has a constant (\(\mathcal{O}\left(1\right)\)) number of nonzero entries per row. Or in other words, a \(n \times  n\) matrix is sparse if it has \(\mathcal{O}\left(n\right)\) nonzero entires.
+There are many different opinions on what is considered a sparse matrix, and there exists no definition that captures what a sparse matrix is. For this thesis, a matrix is considered sparse if it is worthwhile to treat nonzeros differently than zeros. Usually this means that for an \(n \times n\) matrix, each row has a constant (\(\mathcal{O}\left(1\right)\)) number of nonzero entries per row. Or in other words, a \(n \times  n\) matrix is sparse if it has \(\mathcal{O}\left(n\right)\) nonzero entries.
 \medskip
 
 Given a sparse matrix \(A\), an input vector \(x\) and the resulting output vector \(y\), Matrix Vector Multiplication is defined as
@@ -10,86 +10,36 @@ Given a sparse matrix \(A\), an input vector \(x\) and the resulting output vect
 
 where the \(y_{i}\) is given by \(y_{i} = \sum_{j=1}^{n}a_{ij}x_{j} \).
 
-% write on suitesparse
-\section{Sparse Matrix Vector Multiplication}
-Sparse-Matrix Vector Multiplication (SpMV) can benefit from paralellization, both using shared memory and distributed memory, or a hybrid of both. Despite this, it is notoriosly difficult to optimize, sequentially and in a parallel setting. This is especially true for the large matrices that appear when solving problems in scientific computing.
+\section{Sparse-Matrix Vector Multiplication}
+Sparse-Matrix Vector Multiplication (SpMV) can benefit from parallellization, both using shared memory and distributed memory, or a hybrid of both. Despite this, it is notoriously difficult to optimize, sequentially and in a parallel setting. This is especially true for the large matrices that appear when solving problems in scientific computing.
 \medskip
 
-As mentioned in the introduction, SpMV has an inherently low computational intensity, and its performance is therfore memory bound. This means that the memory bandwidth of the system becomes the primary bottleneck when scaling to multiple compute nodes. It becomes important to carefully manage data dependencies between processes, as performance is directly correlated with the communication volume across the interconnects between nodes. This holds true regardless of the hardware that is used, and most of the challenges discussed in this thesis need to be taken into consideration when implementing SpMV on CPUs, GPUs, or other types of architecture.
-
-% SpMV lends itself nicely to paralellization, 
-
-% but it is a kernel with an inherently low computational intensity, and its performance is therefore memory bound. 
+As mentioned in the introduction, SpMV has an inherently low computational intensity, and its performance is therefore memory bound. This means that the memory bandwidth of the system becomes the primary bottleneck when scaling to multiple compute nodes. It becomes important to carefully manage data dependencies between processes, as performance is directly correlated with the communication volume across the interconnects between nodes. This holds true regardless of the hardware that is used, and most of the challenges discussed in this thesis need to be taken into consideration when implementing SpMV on CPUs, GPUs, or other types of architecture.
 
 
-% \section{Sparse}
-% Matrix Vector Multiplication is a mathematical operation on the form \(y = Ax\), where \(y\) is the resulting vector obtained 
-% When given a matrix 
-% The mathematical operation of Matrix vector multiplication 
+\section{Computational Intensity}
+The \textit{computational intensity} of an operation is a key concept in performance analysis, and is defined as the ratio of the number of FLOPS to the number of memory accesses.
 
-% In theory, a \(n \times n\) matrix is considered sparse if it is less than full, i.e. it contains less that \(n^2\) nonzero entries. In the context of sparse lin
-% A matrix can in theory be considered sparse if it is worthwhile to treat zero values separately. In theory, this translates to a matrix being less than full, i.e. less than \( \mathcal{O}\left(n^2\right)\) nonzeros for a \(n \times  n\) matrix. However, in the context of sparse linear algebra, sparse means that there is a constant number of nonzeros per row, i.e. \(\mathcal{O}\left(n\right)\) nonzeros per row. The matrices used in scientific computing, such as matrices based on meshes, or graphs such as social networks all have this property. Optimizing the performance of SpMV, particularly through parallel computing techiniques, is crucial for enhancing the efficiency of many scientific applications.
+\begin{equation}
+    \text{Computational intensity} = \frac{\text{FLOPS}}{\text{Memory accesses}}
+    \label{eq:computationaldensity}
+\end{equation}
 
-% \section{Sparse Matrix Vector Multiplication}
-% Sparse Matrix Vector Multiplication (SpMV) is a fundamental operation encountered in many areas of scientific computing. It is especially prominent in solving large systems of linear equations and in large-scale simulations. The matrices involved are typically both very large and very sparse. 
-
-
-% However, SpMV is notoriously difficult to optimize, both in sequential and parallel implementations. One major reason is its inherently low computational intensity.
-
-% \section{Definitions}
-
-% \begin{definition}[Separator]
-%     In the context of SpMV, a separator is a node in the graph that has an edge that strides between two partitions.
-% \end{definition}
-
-% \section{Amdahl's Law}
-
-% Amdahl’s Law provides a theoretical framework for understanding the limits of performance improvement when additional computational resources are applied to a given problem. It quantifies the potential speedup achieved by optimizing a specific portion of a system, emphasizing that the overall gain is constrained by the proportion of time the optimized component contributes to execution.
-
-% \begin{definition}[Amdahl’s Law] The maximum achievable speedup of a computation is limited by the fraction of execution time that remains sequential, even when an arbitrarily large number of parallel resources is employed. \end{definition}
-
-% In the context of parallel computing, this principle highlights that while increasing the number of processing units can accelerate the parallelizable portion of a workload, the sequential fraction imposes a fundamental performance ceiling. Formally, if \(S\)  denotes the total speedup, \(t_{p}\) represents the fraction of execution time that can be parallelized, and \(s_{p}\) is the speedup achieved for that parallelizable portion, Amdahl’s Law is expressed as:
-% \begin{equation} S = \frac{1}{(1 - t_p) + \frac{t_p}{s_p}} \end{equation}
-% This equation reveals that as \(s_{p} \rightarrow \infty\), the theoretical maximum speedup approaches \(\frac{1}{1-t_{p}}\), illustrating that the non-parallelizable portion becomes the dominant limiting factor in scalability.
-
-% \section{Definitions}
-
-% \begin{table}[H]
-%     \begin{center}
-%         \begin{tabular}[c]{|p{4cm}|p{8cm}|}
-%             \hline
-%              \textbf{Term}&\textbf{Definition}  \\
-%             \hline
-%              Node&A node, or a compute node, is a computeunit within a larger parallel computing system.    \\
-%             \hline
-%                  Dual/single socket&A dual or single socket node refers to the amount of processors on a node. Dual socketed nodes have two processors, that are connected through an interconnect.\\
-%             \hline
-%         \end{tabular}
-%     \end{center}
-% \end{table}
+This metric helps determine whether a computation is \textit{compute bound} or \textit{memory bound}. Operations with high computational intensity implies that it can benefit from employing faster processors, as it performs a higher number of calculation per byte of memory read. Operations with lower computational intensity implies that the operation in memory bound, and thus employing faster processors wont necessarily yield higher performance, as the limiting factor is not the speed at which the calculations are performed, but rather the speed at which the required memory to perform the operation can be accessed at.
 
 \section{Latency Numbers}
 The execution time of computational operations can vary significantly, and it is important to have some understanding of the latency times associated with typical operations. Referencing these latency numbers can be valuable when interpreting benchmark results and the performance of different programs.
 \input{latencynumber}
 
 \section{Parallel Architectures}
-There are two main architectures used in the parallel computing industry: Shared Memory Architecture and Distributed Memory Architecture. The following sections gives an overview of the key difference between the two.
+There are two main architectures used in the parallel computing industry: Shared Memory Architecture and Distributed Memory Architecture. The following sections provides an overview of the key difference between the two.
 
 \subsection{Shared Memory Architecture}
-On a system with shared memory architecture, every processing unit (PU) (often reffered to as threads) have access to the same memory. Although each thread maintains its own private cache for performance, reads and writes occur in the same shared memory pool. To guarantee correctness, the system must enforce \emph{cache coherence}. Cache coherence means that each read must observe the most recent write, regardless of which cache holds that value. As the on-chip memory controller can perform only one write per clock cycle, if a thread requires a value stored in another threads cache, what is known as the \textit{cache coherence protocol} ensures that the thread obtains the correct value. Cache coherence is crucial in a shared memory setting in order to ensure correct program behaviour and avoid race conditions \cite{55497}.
-
-% This is managed through what is called a coherence protocol, without which, threads could see stale or inconsistent data, leading to race conditions and incorrect program behavior \cite{55497}.  
-
-% On a system with shared memory architecture, every processing unit (PU) have access to the same memory, and treat it as a global address space. Each thread have access to the same shared memory pool, but also has its own local cache. It is important that cache coherency is maintained in a shared memory setting, as without it, 
-
-% In the case that two or more threads have stored some portion of memory in its local cache,  
-
-% Since each thread has its own local cache, it is crucial that \textit{cache coherence} is maintained at all times, to ensure correctnes. Maintaining cache coherency prevents race conditions from happening
-
-% w the biggest challenge is that of \textit{cache coherency}, where in order to prevent race conditions, every read of the cache must reflect the latest write (adapted from \cite{manchanda2010non}). 
+On a system with shared memory architecture, every processing unit (PU) (often referred to as threads) has access to the same memory. Although each thread maintains its own private cache for performance, reads and writes occur in the same shared memory pool. To guarantee correctness, the system must enforce \emph{cache coherence}. Cache coherence means that each read must observe the most recent write, regardless of which cache holds that value. As the on-chip memory controller can perform only one write per clock cycle, if a thread requires a value stored in another threads cache, what is known as the \textit{cache coherence protocol} ensures that the thread obtains the correct value. Cache coherence is crucial in a shared memory setting in order to ensure correct program behavior and avoid race conditions \cite{55497}.
 
 \subsection{Distributed Memory Architecture}
-On systems with distributed memory architecture, every processor have their own local memory, not accesible by other processors. When a process needs to access memory from another process, explicit communication of the data stored at that memory address needs to occur, and happens through whichever network the processors are connected with (adapted from \cite{manchanda2010non}). Figure \ref{fig:sharedmemory} illustrates the difference between shared and distributed memory architectures.
+\label{sec:distributedmemory}
+On systems with distributed memory architectures, the constituents of the system have their own local memory, not accessible by the others. The system is comprised typically of either a processor in a chip, or a compute node in a cluster, and is usually referred to as a \textit{rank}.  When a rank needs to access memory from another rank, explicit communication of the data stored at that memory address needs to occur, and happens through whichever network the ranks are connected with (adapted from \cite{manchanda2010non}). Figure \ref{fig:sharedmemory} illustrates the difference between shared and distributed memory architectures.
 \medskip
 
 
@@ -119,20 +69,8 @@ It is important to note that NUMA refers specifically to the organization of the
 
 \subsection{First-Touch Policy}
 \label{sec:firstouch}
-An important implication of the NUMA memory architecture is how and where memory pages are allocated. This is goverend by what is known as the First-Touch Policy, which is the default memory allocation policy Linux and other operating systems. According to this policy, a memory page is allocated in the memory that is closest to the thread that first requires this memory page. As an example, using Figure \ref{fig:numanode} as reference, if a core on NUMA node 0 is the first to access some memory page, it will be allocated in node 0's memory.
-% The first-touch policy stipulates that the initial thread accessing a memory page allocates this page to its local memory domain. Consequently, if thread  first accesses a memory page, it is stored locally to thread . Subsequent accesses by thread  to this page result in non-local memory access, compelling thread  to retrieve the data from either remote or main memory. Such accesses incur performance penalties due to significantly higher latency compared to local memory access.
-
-% depending on the physical distance between the core accessing a given memory address and where the memory at that address is stored, incurs differing latencies.
-
- 
-% Non-Uniform Memory Access (NUMA) refers to a multiprocessor system architecture in which memory access latencies depend on the location of the memory relative to a given processor. On systems with multiple processors, and by extension, multiple memory controllers, 
-
-% Unlike traditional symmetric multiprocessing (SMP) systems, where all processors share equal access times to a centralized memory pool, NUMA architectures consist of multiple processor sockets or nodes, each directly connected to its own local memory. These nodes are interconnected by a high-speed communication network, typically an interconnect, facilitating access to remote memory residing on other nodes.
+An important implication of the NUMA memory architecture is how and where memory pages are allocated. This is governed by what is known as the First-Touch Policy, which is the default memory allocation policy Linux and other operating systems. According to this policy, a memory page is allocated in the memory that is closest to the thread that first requires this memory page. As an example, using Figure \ref{fig:numanode} as a reference, if a core on NUMA node 0 is the first to access some memory page, it will be allocated in node 0's memory.
 
 \subsection{Emerging Architectures}
-In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This involves packing thousands of small processor cores into a single device, where each core has its own local memory, and no device level shared memory. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Another example is Graphcores Colossus MK2 GC200 IPU (Intelligence Processing Unit). Although not as big as WSE-3, it still contains 59.4 billion transistors and has 1472 cores. Such architectures necessitate a careful distribution of relevant data across each processor, and is where memory scalable communication strategies are beneficial. 
+In the ever evolving world of computer chip manufacturing, there has in the past years emerged a new trend in the field of architecture design. This involves packing thousands of small processor cores into a single device, where each core has its own local memory, and no device level shared memory. An example of such a processor is the relatively new Cerebras Wafer-Scale Engine (WSE-3), which is the largest chip ever built. With a spec sheet of 4 trillion transistors, 900 000 cores, memory bandwidth of 21PB/s, and 44 GB of on-wafer memory (see \cite{cerebras2024wse3}). Another example is Graphcores Colossus MK2 GC200 IPU (Intelligence Processing Unit). Although not as big as WSE-3, it still contains 59.4 billion transistors and has 1472 cores. Such architectures necessitate a careful distribution of relevant data across each processor, and is where memory-scalable communication strategies are beneficial. 
 \medskip
-
-% \medskip
-
-% Graphcore is another semiconductor company that produces IPUs, although they are smaller than those produced by Cerebras, their \textit{Colossus MK2 GC200} chip contains 59.4 billion transistors, and 1472 cores. \cite{10.3389/fphy.2023.979699}

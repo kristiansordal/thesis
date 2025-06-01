@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{9956740}
+Christie Alappat, Georg Hager, Olaf Schenk, and Gerhard Wellein.
+\newblock Level-based blocking for sparse matrices: Sparse matrix-power-vector multiplication.
+\newblock {\em IEEE Transactions on Parallel and Distributed Systems}, 34(2):581--597, 2023.
+
 \bibitem{10.3389/fphy.2023.979699}
 Luk Burchard, Kristian~Gregorius Hustad, Johannes Langguth, and Xing Cai.
 \newblock Enabling unstructured-mesh computation on massively tiled ai processors: An example of accelerating in silico cardiac simulation.
@@ -14,6 +19,11 @@ U.V. Catalyurek and C.~Aykanat.
 Timothy~A. Davis and Yifan Hu.
 \newblock The university of florida sparse matrix collection.
 \newblock {\em ACM Trans. Math. Softw.}, 38(1), December 2011.
+
+\bibitem{10.1145/3626527}
+Lars Gottesb\"{u}ren, Tobias Heuer, Nikolai Maas, Peter Sanders, and Sebastian Schlag.
+\newblock Scalable high-quality hypergraph partitioning.
+\newblock {\em ACM Trans. Algorithms}, 20(1), January 2024.
 
 \bibitem{gupta2024gamgi}
 Gautam Gupta, Sivasankaran Rajamanickam, and Erik~G. Boman.
@@ -63,6 +73,10 @@ Peter Norvig.
 \newblock Latency numbers every programmer should know.
 \newblock \url{https://norvig.com/21-days.html#Latency}, 2021.
 \newblock Accessed: 2025-04-29.
+
+\bibitem{schlag2021highqualityhypergraphpartitioning}
+Sebastian Schlag, Tobias Heuer, Lars Gottesbüren, Yaroslav Akhremtsev, Christian Schulz, and Peter Sanders.
+\newblock High-quality hypergraph partitioning, 2021.
 
 \bibitem{55497}
 P.~Stenstrom.

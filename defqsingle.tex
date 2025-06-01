@@ -12,10 +12,10 @@
     \label{fig:tdefqsingle}
 \end{figure}
 
-Figure \ref{fig:gflopsdefqsingle} presents the achieved GFLOPS for each communication strategy. The performance trends largely align with expectations: each successive strategy generally exhibits improved performance over its predecessor. However, an exception arises with strategy E, which consistently underperforms relative to strategy D.
+Figure \ref{fig:gflopsdefqsingle} presents the achieved GFLOPS for each communication strategy. The performance trends largely align with expectations, where each successive strategy exhibits improved performance over its predecessor. However, an exception arises with Strategy E, which consistently underperforms relative to Strategy D.
 \medskip
 
-As discussed in Section \ref{sec:memscal}, Strategy E reorders the local vector and separators. The effect this reordering has on well ordered matrices is that it can reduce cache reuse, as it can make the structure of the matrices worse. This has not been measured directly, but it is the most likely culprit to the discrepancy between the results of strategy D and E. Trotter et. al conducted a study on the reordering of matrices, and they also found that the reordering of the matrix worsened the performance on \defq{} chips \cite{ordersparse}.
+As discussed in Section \ref{sec:memscal}, Strategy E reorders the local vector and separators. The effect this reordering has on well ordered matrices is that it can reduce cache reuse, as it can make the structure of the matrices worse. This has not been measured directly, but it is the most likely culprit to the discrepancy between the results of Strategy D and E. Trotter et. al conducted a study on the reordering of matrices, and they also found that the reordering of the matrix worsened the performance on \defq{} chips \cite{ordersparse}.
 \medskip
 
 Figure \ref{fig:tdefqsingle} presents the total execution time for each communication strategy. It is closely related to Figure \ref{fig:gflopsdefqsingle}, as computing the GFLOPS number is given by the total number of flops performed divided by the total execution time.
@@ -31,14 +31,14 @@ Figure \ref{fig:tdefqsingle} presents the total execution time for each communic
     \centering
     \incfig[1]{tcomm\_2x4\_single\_defq}
     % \caption{Communication time component of each strategy on a single node using the \defq{} chip.}
-    \caption{Communication time per iteraton of SpMV on a single node equipped with dual-socket \defq{} processors.}
+    \caption{Communication time per iteration of SpMV on a single node equipped with dual-socket \defq{} processors.}
     \label{fig:tcommdefqsingle}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \incfig[1]{tcomp\_2x4\_single\_defq}
-    \caption{Computation time per iteraton of SpMV on a single node equipped with dual-socket \defq{} processors.}
+    \caption{Computation time per iteration of SpMV on a single node equipped with dual-socket \defq{} processors.}
     \label{fig:tcompdefqsingle}
 \end{figure}
 
@@ -49,10 +49,10 @@ Figure \ref{fig:tdefqsingle} presents the total execution time for each communic
 %computation - memory bound
 %communication - communication bound
 
-Figure Figure \ref{fig:tcompdefqsingle} and \ref{fig:tcommdefqsingle} present the computation time and communication time, respectively, of each communication strategy. From these figures it becomes evident that as the number of ranks is increased, all strategies goes from being compute-bound (i.e. the computation time dominates the execution time), to being communication-bound (i.e. the communication time dominates the execution time).
+Figure \ref{fig:tcompdefqsingle} and \ref{fig:tcommdefqsingle} present the computation time and communication time, respectively, of each communication strategy. From these figures, it becomes evident that as the number of ranks is increased, all strategies go from being compute-bound (i.e. the computation time dominates the execution time), to being communication-bound (i.e. the communication time dominates the execution time).
 \medskip
 
-Strategy A performs the worst, which is expected. It would be unpractical to use Strategy A instead of shared memory parallelization in practice, but the results are included nonetheless. Strategy B results in a 3-10x reduction in communication time compared to Strategy A when comparing the results of using 64 MPI ranks. Further reductions are observed in Strategy C, with Strategy D and E performing the best. 
+Strategy A performs the worst, which is expected. Strategy B results in a 3-10x reduction in communication time compared to Strategy A when comparing the results of using 64 MPI ranks. Further reductions are observed in Strategy C, with Strategy D and E performing the best. 
 \medskip
 
 Due to the reordering, Strategy E starts off as the worst performing strategy, but catches up in performance when scaling to 16, 32 and 64 MPI ranks. As is evident in Figure \ref{fig:tcompdefqsingle}, Strategy A-D performs comparably, as these strategies don't reorder the matrix, and have essentially the same memory access patterns.
@@ -77,7 +77,7 @@ Due to the reordering, Strategy E starts off as the worst performing strategy, b
 Figure \ref{fig:commloaddefqsingle} illustrates the fraction of the global size of \(x\) that is communicated for each iteration of SpMV. This provides important insight into the reason for the differences between the communication times of the strategies.
 \medskip
 
-Using one rank, no communication occurs, and with two ranks, strategy B-D performs the same amount of communication as the entire separator from one rank is required from the other, and vice-versa.
+Using one rank, no communication occurs, and with two ranks, Strategy B-D performs the same amount of communication as the entire separator from one rank is required from the other, and vice-versa.
 \medskip
 
 From this figure, observe that both the average and maximum communication volume is reduced in each communication strategy. Note how the maximum communication of both Strategy B and C is considerably higher than the maximum of Strategy D. This is interesting as the communication routines used to facilitate communication between ranks is blocking, meaning that the communication time is partially dictated by the time the rank with the maximum communication volume spends sending its messages.

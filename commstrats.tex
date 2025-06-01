@@ -1,29 +1,19 @@
 \chapter{Communication Strategies}
 \label{sec:commstrats}
-This chapter introduces the five different communication strategies that have been tested in the experiments conducted for this thesis. Each communication strategy implements increasingly more selective ways of communicating the data-dependencies that arise when the matrix is partitioned amongst the MPI ranks. Starting from the most simple strategy, where the entire input vector \(x\) is communicated for each iteration of SpMV, moving on to two separator based methods, and finally two strategies where only the required elements that incur data-dependencies are being communicated.  
+This chapter introduces the five different communication strategies that have been tested in the experiments conducted for this thesis. Each communication strategy implements increasingly more selective ways of communicating the data dependencies that arise when the matrix is partitioned amongst the MPI ranks. Starting from the most simple strategy, where the entire input vector \(x\) is communicated for each iteration of SpMV, moving on to two separator-based methods, and finally two strategies where only the required elements that incur data dependencies are being communicated.  
 \medskip
 
-In the subsequent sections, each figure illustrating a communication strategy is based on the graph shown in Figure \ref{fig:examplegraph}. In this figure each color represents a partition, and the nodes residing within each color belongs to that partition.
-
-% In distributed parallel implementations of SpMV, effective communication management is critical due to its influence on overall performance. Communication often emerges as a bottleneck in distributed-memory systems because the speed at which data moves between nodes is significantly lower than within-node memory access speeds. Consequently, reducing communication volume and optimizing communication patterns can yield substantial performance improvements.
-
-
-% \medskip
-
-% This chapter evaluates a series of progressively optimized communication strategies employed in distributed-memory parallel SpMV. Starting from the simplest method, exchanging the entire result vector between all nodes, the strategies become increasingly selective and efficient, focusing specifically on exchanging only the essential data elements required by each node. Finally, a communication strategy that is fully memory scalable is described. These approaches leverage knowledge of the matrix structure, partitioning methods, and computational dependencies to minimize communication overhead.
-% \medskip
-
-% In the subsequent sections, each figure illustrating a communication strategy is based on the graph shown in Figure \ref{fig:examplegraph} as an example of a partitioned graph. In this example, each colour denotes the rank assigned to the vertices contained in the corresponding partition.
+In the subsequent sections, each figure illustrating a communication strategy is based on the graph shown in Figure \ref{fig:examplegraph}. In this figure, each color represents a partition, and the nodes residing within each color belong to that partition.
 
 \begin{figure}[H]
     \centering
-    \incfig{examplegraph}
+    \incfig[0.85]{examplegraph}
     \caption{Simple graph partitioned amongst ranks - each color represents a rank.}
     \label{fig:examplegraph}
 \end{figure}
 
 \section{Strategy A - Exchange entire vector}
-In this strategy, at each iteration every rank sends its locally computed values of \(y\) to all other ranks so that each process obtains a complete copy of the output vector before proceeding. This approach can be implemented with the MPI collective operation \texttt{MPI\_Allgatherv}, which supports different send and receive counts on each rank. \autoref{alg:1acomm} shows how this communication pattern can be implemented.
+The first communication strategy presented implements no measures to reduce communication volume. In this strategy, at each iteration, every rank sends all of its locally computed values of \(y\) to all other ranks so that each rank obtains a complete copy of the output vector before proceeding. This approach can be implemented with the MPI collective operation \texttt{MPI\_Allgatherv}, which supports different send and receive counts on each rank. Algorithm \ref{alg:1acomm} shows how this communication strategy can be implemented. In practice, using shared memory parallelization instead of this communication strategy would be faster, and easier to implement. 
 \medskip
 
 \begin{algorithm}[H]
@@ -38,9 +28,7 @@ In this strategy, at each iteration every rank sends its locally computed values
 \end{algorithm}
 \medskip
 
-Let \(n_{p}\) denote the total number of ranks, and let \(\left| x_{i} \right|\) be the number of vector entries assigned to rank \(i\) (given by the average; \(\frac{\left| x \right|}{n_{p}}\)). Since each rank must send its local block size of \(\left| x_{i} \right|\) to the other \(n_{p}-1\) ranks, the total volume of communication per iteration is given by \ref{eq:1a}.
-
-% Let \(n_{p}\) denote the total number of ranks, and \(\left| x \right|\) be the size of the vector \(x\). Since each rank must send each vector entry it is assigned to each, the total communication volume is given by
+Let \(n_{p}\) denote the total number of ranks, and let \(\left| x_{i} \right|\) be the number of vector entries assigned to rank \(i\) (given by the average, \(\frac{\left| x \right|}{n_{p}}\)). Since each rank must send its local block size of \(\left| x_{i} \right|\) to the other \(n_{p}-1\) ranks, the total volume of communication per iteration is given by Equation \ref{eq:1a}.
 
 \begin{equation}
     \label{eq:1a}
@@ -52,25 +40,25 @@ Figure \ref{fig:1acomm} illustrates the state of the vector before and after com
 \begin{figure}[H]
     \centering
     \incfig{1acomm-2}
-    \caption{Contents of each ranks vector before and after communication under Strategy A}
+    \caption{Contents of each ranks vector before and after communication under Strategy A.}
     \label{fig:1acomm}
 \end{figure}
 
 \section{Strategy B - Exchange only separators}
-The next communication strategy improves upon strategy A by recognizing that only the set of each partitions elements of \(x\) that induce data-dependencies require explicit communication. The set of these elements is called a separator. This communication strategy is at least as good as strategy A regardless of the matrix structure. The size of any partitions separator can at most be as large as the set of elements of that partition, but is usually smaller, thus reducing the communication volume.
+The next communication strategy improves upon strategy A by recognizing that only the set of each partitions elements of \(x\) that induces data dependencies requires explicit communication. The set of these elements is called a separator. This communication strategy is at least as good as Strategy A regardless of the matrix structure. The size of any partitions separator can at most be as large as the set of elements of that partition, but is usually smaller, thus reducing the communication volume. This communication pattern is implemented in the same way as in Strategy A, with the difference being that \texttt{sendcount} now stores the size of the separator, instead of the size of the local part of \(x\).
 \medskip
 
-Let \(n_{p}\) denote the total number of ranks, and let \(s_{i}\) be the size of the separator of rank \(i\). Since each rank sends its separator to each other rank (i.e. \(n_{p} - 1\) other ranks), then the total communication volume is given by \ref{eq:1bcomm}.
+Let \(n_{p}\) denote the total number of ranks, and let \(s_{i}\) be the size of the separator of rank \(i\). Since each rank sends its separator to each other rank (i.e. \(n_{p} - 1\) other ranks), then the total communication volume is given by Equation \ref{eq:1bcomm}.
 
 \begin{equation}
     \label{eq:1bcomm}
     \sum_{i=1}^{n_{p}}(n_{p} - 1) \cdot s_{i} 
 \end{equation}
 
-To facilitate this strategy, separator values are reordered such that they appear at the beginning of each process's local segment of \(x\). Once this structure is established, communication is performed using \texttt{MPI\_Allgatherv}, transmitting only the subset of \(x\) that contains separator values. The number of separators on each process must be known beforehand, which can be computed by counting the number of elements that have neighbours belonging to a different partition.
+To facilitate this strategy, separator values are reordered such that they are stored at the beginning of each ranks local segment of \(x\). Once this structure is established, communication is performed using \texttt{MPI\_Allgatherv}, transmitting only the subset of \(x\) that contains separator values. The number of separators on each rank must be known beforehand, which can be computed by counting the number of elements that have neighbours belonging to a different partition.
 
 \subsection{Reordering}
-After partitioning the matrix into different parts, we obtain a partition vector \(p\), where the \(p[i]\) stores the index of the partition the \(i^{\text{th}}\) entry in \(A_{p}\). It is necessary to reorder the entries in \(A_{p}\) in accordance with the partition vector, such that all entries belonging to the same partition are stored in sequence. The algorithm below gives an outline of how this can be achieved. Here \(n_{p}\) is the number of partitions, \(n_{r}\) is the size of \(A_{p}\), and \(n_{c}\) is the size of \(A_{j}\) and \(A_{x}\).
+After partitioning the matrix into different parts, we obtain a partition vector \(p\), where the \(p[i]\) stores the index of the partition the \(i^{\text{th}}\) entry in \texttt{row\_ptr}. It is necessary to reorder the entries in \texttt{row\_ptr} in accordance with the partition vector, such that all entries belonging to the same partition are stored in sequence. The algorithm below gives an outline of how this can be achieved. Here \(n_{p}\) is the number of partitions, \(n_{r}\) is the size of \texttt{row\_ptr}, and \(n_{c}\) is the size of \texttt{col\_idx} and \texttt{values}.
 
 \begin{algorithm}[H]
     \caption{Reordering of Separators}
@@ -78,8 +66,8 @@ After partitioning the matrix into different parts, we obtain a partition vector
     \SetAlgoVlined
     \SetKwInOut{Input}{Input}
     \SetKwInOut{Output}{Output}
-    \Input{\(n_{p}, n_{r}, n_{c}, p, A_{p}, A_{j}, A_{x}\)}
-    \Output{Reordered \(A_{p}, A_{j}, A_{x}\)}
+    \Input{\(n_{p}, n_{r}, n_{c}, p, rowPtr, colIdx, values\)}
+    \Output{Reordered \(rowPtr, colIdx, values\)}
     
     newId \(\gets [0] \cdot n_{r}\)\\
     oldId \(\gets [0] \cdot n_{r}\)\\
@@ -105,16 +93,16 @@ After partitioning the matrix into different parts, we obtain a partition vector
     
     \phantom{a}\\
     \For{\(i \in \{0, \dotsc, n_{r}-1\}\)}{
-        degree \(\gets A_{p}[\text{oldId}[i]+1] - A_{p}[\text{oldId}[i]]\)\\
+        degree \(\gets rowPtr[\text{oldId}[i]+1] - rowPtr[\text{oldId}[i]]\)\\
         newV[\(i+1\)] \(\gets\) newV[i] + degree\\
     }
     \phantom{a}\\
     
     \For{\(i \in \{0, \dotsc, n_{r}-1\}\)}{
-        degree \(\gets A_{p}[\text{oldId}[i]+1] - A_{p}[\text{oldId}[i]]\)\\
+        degree \(\gets rowPtr[\text{oldId}[i]+1] - rowPtr[\text{oldId}[i]]\)\\
         \For{\(j \in \{0, \dotsc, \text{degree}-1\}\)}{
-            newE[newV[i]+j] \(\gets A_{j}[A_{p}[\text{oldId}[i]] + j]\)\\
-            newA[newV[i]+j] \(\gets A_{x}[A_{p}[\text{oldId}[i]] + j]\)\\
+            newE[newV[i]+j] \(\gets colIdx[rowPtr[\text{oldId}[i]] + j]\)\\
+            newA[newV[i]+j] \(\gets values[rowPtr[\text{oldId}[i]] + j]\)\\
         }
         \For{\(j \in \{newV[i], \dotsc, newV[i+1]-1\}\)}{
             newE[j] \(\gets\) \text{newId}[newE[j]]\\
@@ -122,7 +110,7 @@ After partitioning the matrix into different parts, we obtain a partition vector
     }
     \phantom{a}\\
     
-    Overwrite \(A_{p} \gets\) newV, \(A_{j} \gets\) newE, \(A_{x} \gets\) newA\\
+    Overwrite \(rowPtr \gets\) newV, \(colIdx \gets\) newE, \(values \gets\) newA\\
 \end{algorithm}
 
 \begin{figure}[H]
@@ -132,32 +120,9 @@ After partitioning the matrix into different parts, we obtain a partition vector
     \label{fig:1bcomm}
 \end{figure}
 
-
-% It becomes evident that this is a better strategy when we realize that it is not necessary to communicate non-separator values of \(y\), as these values are only ever needed by the rank they are computed on. Separators on the other hand, are needed by other ranks, and therefore need to be communicated. This strategy can be implemented by reordering and counting the number of separators on each rank, and only sending these values to all other ranks, again using \textit{allgather}.
-
-
-% \begin{figure}[H]
-%     \centering
-%     \begin{subfigure}[t]{0.45\textwidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{1acomm.png}
-%         \caption{Caption for image 1}
-%         \label{fig:1bcomm1}
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[t]{0.45\textwidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{1bcommdone.png}
-%         \caption{Caption for image 2}
-%         \label{fig:1bcomm2}
-%     \end{subfigure}
-%     \caption{Main figure caption describing both subfigures}
-%     \label{fig:1bcomm}
-% \end{figure}
-
-
 \section{Strategy C - Exchange only required separators}
-Further reduciton to the communication volume can be achieved by observing that not all separator values are required by every process. As the number of partitions increases, the set of dependencies between partitions tends towards sparcity. As a consequence of this, certain sets of separators may only need to be communicated to a given subset of processes. Using this strategy, each process only communicates its set of separator values to the processes that require them. The communication pattern in illustrated in Figure \ref{fig:1ccomm}, and Algorithm \autoref{alg:1ccomm} shows how this can be implemented.
+Further reductions to the communication volume can be achieved by observing that not all separator values are required by every rank. As the number of partitions increases, the set of dependencies between partitions tends towards sparcity. As a consequence of this, certain sets of separators may only need to be communicated to a given subset of the ranks. Using this strategy, each rank only communicates its set of separator values to the ranks that require them. The communication strategy is illustrated in Figure \ref{fig:1ccomm}, and Algorithm \ref{alg:1ccomm} shows how this can be implemented.
+\medskip
 
 Let \(n_{p}\) be the total number of ranks, \(n_{i}\) be the number of neighbours of rank \(i\), and \(s_{i}\) the size of the separator of rank \(i\). With \(n_{i} \leq n_{p}\), the total communication volume is given by \ref{eq:1ccomm}.
 
@@ -175,8 +140,6 @@ Let \(n_{p}\) be the total number of ranks, \(n_{i}\) be the number of neighbour
     \Input{y, rank,size, displacements, sendItems, sendCount}
     \Output{\newline}
 
-    % mpiRequests \(\gets\) [MPI\_Request] \(\cdot\)  \(2 \cdot \) size\\
-    % reqCount \(\gets\) 0\\
     MPI\_Requests \(\gets\) 0\\
  
     \For{r = 0; r < size; r++}{
@@ -207,13 +170,18 @@ Let \(n_{p}\) be the total number of ranks, \(n_{i}\) be the number of neighbour
 \end{figure}
 
 \section{Strategy D - Exchange only required separator values}
-The final strategy further reduces the communication volume by only communicating the separator elements to the rank with which that element induces a data dependency. This eliminates unnecessary communicaton, meaning that this strategy is communication minimal, but introduces complexity in managing said communication. It requires careful management of the send and recieve lists, and introduces some additional overhead by means of a packing and unpacking step necessary for transmitting the data between ranks. %This overhead does however not outweigh the benefits gained from the reduction in communication volume which this strategy yields.
+The final strategy further reduces the communication volume by only communicating the separator elements to the rank with which that element induces a data dependency. This eliminates unnecessary communicaton, meaning that this strategy is communication minimal, but introduces complexity in managing said communication. It requires careful management of the send and recieve lists, and introduces some additional overhead by means of a packing and unpacking step necessary for communicating the separator elements between ranks. %This overhead does however not outweigh the benefits gained from the reduction in communication volume which this strategy yields.
 \medskip
 
-Algorithm \ref{alg:reqsepexchange} shows how the communication step for this strategy is implemented. Both Strategy B and C requires reordering of the separator values, in order to make the communication of the separators easier. In contrast, Strategy D does not require reorderding of the separators, as it packs each of the separators into send lists before communication. The original index of the separator element is stored, and is used to unpack it into the correct position of \(x\) after communication.
-
-% , but due to the packing and unpacking step required for this strategy as seen in algorithm \ref{alg:reqsepexchange}, reordering the separator elements is not required for this communication strategy.
+Algorithm \ref{alg:reqsepexchange} shows how the communication step for this strategy is implemented. Both Strategy B and C require reordering of the separator values, in order to make the communication of the separators easier. In contrast, Strategy D does not require reordering of the separators, as it packs each of the separators into send lists before communication. The original index of the separator element is stored, and is used to unpack it into the correct position of \(x\) after communication.
 \medskip
+
+Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of elements in rank \(i\)s separator that are required by other ranks. Since this communication strategy only communicated these elements, the total communication volume is given by \ref{eq:1dcomm}.
+
+\begin{equation}
+    \label{eq:1dcomm}
+    \sum_{i=1}^{n_{p}} d_{i} 
+\end{equation}
 
 \begin{algorithm}[H]
     \label{alg:reqsepexchange}
@@ -256,12 +224,6 @@ Algorithm \ref{alg:reqsepexchange} shows how the communication step for this str
 \end{algorithm}
 \medskip
 
-Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of elements in rank \(i\)s separator that are required by other ranks. Since this communication strategy only communicated these elements, the total communication volume is given by \ref{eq:1dcomm}.
-
-\begin{equation}
-    \label{eq:1dcomm}
-    \sum_{i=1}^{n_{p}} d_{i} 
-\end{equation}
 
 
 \begin{figure}[H]
@@ -280,15 +242,11 @@ Let \(n_{p}\) be the total number of ranks, and let \(d_{i}\) be the number of e
 %0-indexed - unclear - only store values that are relevant to the computation on that node.
 % communiocation minimal
 % memory minimal - dont waste any space
-The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire \(x\) vector, and as matrices get larger, so does this vector. As the chips have a limited amount of memory, they will eventually run out of memory when the vector gets large enough. When this happens, the vector has to be read from disc instead of from memory, which in turn will essentially kill all performance gained from moving to a parallel environment. This strategy provides a solution to that, by implementing measure to ensure memory scalability.
+The communication strategies discussed so far all have a common problem that prevents them from scaling to large matrices. These strategies all store the entire \(x\) vector, and as matrices get larger, so the \(x\) vector. As the chips have a limited amount of memory, they will eventually run out of memory when the vector gets large enough. When this happens, the vector has to be read from disc instead of from memory, which in turn will essentially kill all performance gained from moving to a parallel environment. This strategy provides a solution to that, by implementing measures to ensure memory scalability.
 \medskip
 
-% These strategies all store the entire vector \(x\), and will run into performance issues \textbf{(WRONG - it wont work, we wont have enough memory to store i.e. reading from DISC instead of DRAM)} when \(x\) is so large that it doesn't fit into memory. Usually, this is not a problem when SpMV is ran on CPUs, as they have large amounts of memory. Even on GPUs this problem might not be encountered, as modern GPUs have sufficient memory for large matrices.
-% \medskip
 
-% \Huge{WRITE ABOUT SEPARATOR REORDERING}
-
-Instead of storing the entire vector, each rank only stores the elements of \(x\) that reside within that ranks partition. In addition to storing the local part of \(x\), the separator elements are also stored consecutively in memory after the local elements of \(x\). Doing this requires reodering of the local \(x\) vector, aswell as the separator elements. Figure \ref{fig:2dcomm} illustrates the contents of the \(x\) vector before and after communication. The communication volume is exactly the same as for Strategy D, but as is seen this time only the necessary elements are stored in memory, which means that this communication strategy is both communication minimal, but also memory minimal.
+Instead of storing the entire vector, each rank only stores the elements of \(x\) that reside within that ranks partition. In addition to storing the local part of \(x\), the separator elements are also stored consecutively in memory after the local elements of \(x\). Doing this requires reordering of the local \(x\) vector, aswell as the separator elements. Figure \ref{fig:2dcomm} illustrates the contents of the \(x\) vector before and after communication. The communication volume is exactly the same as for Strategy D, but as is seen this time only the necessary elements are stored in memory, which means that this communication strategy is both communication minimal, but also memory minimal.
 \medskip
 
 \begin{figure}[H]
@@ -299,14 +257,13 @@ Instead of storing the entire vector, each rank only stores the elements of \(x\
 \end{figure}
 
 Even though the communication pattern in Strategy D and E is the same, their exact implementation differs. Strategy D relies on \texttt{MPI\_Ialltoallv} as is seen in Algorithm \ref{alg:reqsepexchange}, but Strategy E uses a custom implementation of all to all communication, that relies on \texttt{MPI\_Send} and \texttt{MPI\_Irecv} internally. This does have some impact on performance, as will be seen in Section \ref{sec:romemulti}
+\medskip
 
 
-
-
-Table \ref{tab:commstrats} gives an overview of the reduction in of the total communication volume for the strategies described in the previous sections. As the graph in Figure \ref{fig:examplegraph} is very small, this table doesn't illustrate the full potential of any of the strategies, but it does show that the communication volume is reduced for each strategy. 
+Table \ref{tab:commstrats} gives an overview of the reduction of the total communication volume for the strategies described in the previous sections. As the graph in Figure \ref{fig:examplegraph} is very small, this table doesn't illustrate the full potential of any of the strategies, but it does show that the communication volume is reduced for each strategy. 
 
 \begin{table}[H]
-    \caption{Overview of total communication volume reduction for strategy A-E using graph in Figure \ref{fig:examplegraph}.}
+    \caption{Overview of total communication volume reduction for strategy A-E using the graph in Figure \ref{fig:examplegraph}.}
     \label{tab:commstrats}
     \begin{center}
         \begin{tabular}[c]{|l|l|l|}
@@ -326,10 +283,3 @@ Table \ref{tab:commstrats} gives an overview of the reduction in of the total co
         \end{tabular}
     \end{center}
 \end{table}
-
-
-
-
-
-
-
