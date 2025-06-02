@@ -1,12 +1,16 @@
 % \chapter{Abstract} \label{abstract}
 \begin{abstract}
-\textsc{Sparse-Matrix Vector Multiplication} (SpMV) is a computational kernel that arise in many applications of scientific computing. It is a kernel that has an inherently low computational intensity, and its performance is therefore bound by the memory bandwidth of the system it is run on. The performance of SpMV can be improved through the use of both shared and distributed memory parallelization. Parallelizing SpMV in a distributed memory environment requires careful attention to managing the communication patterns which arise when a matrix is distributed on multiple nodes, to reduce the memory traffic across the interconnects.
-\medskip
+\textsc{Sparse-Matrix Vector Multiplication} (SpMV) is a computational kernel encountered in many scientific applications. It has an inherently low computational intensity, and its performance is memory-bound. This thesis evaluates the performance metrics of five increasingly selective communication strategies for SpMV in a shared and distributed memory hybrid environment. Experiments were conducted on single-socketed and dual-socketed multicore systems across various configurations. Findings show that reducing the communication volume yield better performance on a single node. In multi node setups, the findings show that performance is impacted by the communication volume, but that other factors such as network and hardware characteristics also play a large role in performance.
 
-This thesis aims to investigate the impact that five increasingly selective communication strategies have on the performance of SpMV. To achieve this, these communication strategies have been tested on a set of parallel hardware that includes both dual-socketed and single-socketed compute nodes. The configurations used on these compute nodes include both single-node non-shared memory, and a selection of multi-node shared and distributed memory configurations. In the experiments, 100 iterations of SpMV were executed for each communication strategy.
-\medskip
 
-The findings from the experiments performed in this thesis show that each communication strategy indeed yields lower communication volumes. The findings show that lower communication volume on a single compute node consistently yields better performance. They also show that in a multi-node environment, performance is not solely dictated by the communication volume, but also by other factors inherent to the network characteristics and hardware of the compute nodes.
+
+% \textsc{Sparse-Matrix Vector Multiplication} (SpMV) is a computational kernel that arise in many applications of scientific computing. It is a kernel that has an inherently low computational intensity, and its performance is therefore bound by the memory bandwidth of the system it is run on. The performance of SpMV can be improved through the use of both shared and distributed memory parallelization. Parallelizing SpMV in a distributed memory environment requires careful attention to managing the communication patterns which arise when a matrix is distributed on multiple nodes, to reduce the memory traffic across the interconnects.
+% \medskip
+
+% This thesis aims to investigate the impact that five increasingly selective communication strategies have on the performance of SpMV. To achieve this, these communication strategies have been tested on a set of parallel hardware that includes both dual-socketed and single-socketed compute nodes. The configurations used on these compute nodes include both single-node non-shared memory, and a selection of multi-node shared and distributed memory configurations. In the experiments, 100 iterations of SpMV were executed for each communication strategy.
+% \medskip
+
+% The findings from the experiments performed in this thesis show that each communication strategy indeed yields lower communication volumes. The findings show that lower communication volume on a single compute node consistently yields better performance. They also show that in a multi-node environment, performance is not solely dictated by the communication volume, but also by other factors inherent to the network characteristics and hardware of the compute nodes.
 
 % However, this does not consistently yield better performance metrics, especially on configurations using multiple compute nodes.
 
@@ -16,3 +20,4 @@ The findings from the experiments performed in this thesis show that each commun
 % This thesis aims to investigate the results of \textit{SpMV} when ran using different communication strategies.
 \end{abstract}
 
+% Sparse Matrix-Vector Multiplication (SpMV) is a key computational kernel in many scientific applications. Due to its low computational intensity, SpMV performance is limited by memory bandwidth, making parallelization across shared and distributed memory systems essential. This thesis investigates the impact of five increasingly selective communication strategies on SpMV performance in hybrid OpenMP/MPI environments. Experiments were conducted on dual- and single-socket multicore systems using various memory configurations. Results show that while lower communication volumes often improve performance on single nodes, in multi-node setups, network and hardware characteristics can outweigh communication volume in determining performance.

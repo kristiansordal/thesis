@@ -25,6 +25,11 @@ Lars Gottesb\"{u}ren, Tobias Heuer, Nikolai Maas, Peter Sanders, and Sebastian S
 \newblock Scalable high-quality hypergraph partitioning.
 \newblock {\em ACM Trans. Algorithms}, 20(1), January 2024.
 
+\bibitem{graphcore_ipu}
+{Graphcore}.
+\newblock {IPU Processors}, 2025.
+\newblock Accessed: 2025-06-01.
+
 \bibitem{gupta2024gamgi}
 Gautam Gupta, Sivasankaran Rajamanickam, and Erik~G. Boman.
 \newblock {GAMGI}: Communication-reducing algebraic multigrid for gpus.
